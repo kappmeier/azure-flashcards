@@ -3,6 +3,8 @@
 % flash card.
 \documentclass{article}
 
+\usepackage[hidelinks]{hyperref}
+
 % Set up XeLaTex font configuration
 \usepackage{fontspec}
 %\setmainfont{Latin Modern Sans}
@@ -19,6 +21,9 @@
 % Nothing to see on flash cards
 \pagestyle{empty}
 \thispagestyle{empty}
+
+% Support showing the license as required by CC-BY-SA-4.0
+\usepackage[type={CC},modifier={by-nc-sa},version={4.0}]{doclicense}
 
 % Flashcard environment similar to the flashcards package
 % Similar to https://tex.stackexchange.com/a/89347/47921
@@ -58,6 +63,10 @@
 
     \clearpage\maketitle
     \thispagestyle{empty}
-    
+    \pagebreak
+
+    \vspace*{\stretch{1}}
+    \doclicenseThis
+    \vspace*{\stretch{1}}
     \pagebreak
 \end{document}
