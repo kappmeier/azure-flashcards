@@ -3,12 +3,13 @@ Flashcards to prepare for the AZ-900 exam
 
 ## Requirements
 
-- XeLaTex
-- Packges: doclicense
+- LuaLaTex
+- Packges: doclicense,xmpincl
 
 ### Ubuntu:
 
 - texlive
+- texlive-luatex
 - texlive-fonts-extra
 
 ## License

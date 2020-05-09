@@ -1,7 +1,7 @@
 % A flashcard like document containing content relevant to prepare for Microsoft AZ-900 Azure
 % fundamentals exam. Supposed to be used by mobile/tablet phones, i.e. each page contains a single
 % flash card.
-\documentclass{article}
+\documentclass{scrartcl}
 
 \usepackage[hidelinks]{hyperref}
 
@@ -24,6 +24,10 @@
 
 % Support showing the license as required by CC-BY-SA-4.0
 \usepackage[type={CC},modifier={by-nc-sa},version={4.0}]{doclicense}
+
+% Use meta data for creative commons in the produced pdf
+\usepackage{xmpincl}
+\includexmp{CC-BY-SA-4.0}
 
 % Flashcard environment similar to the flashcards package
 % Similar to https://tex.stackexchange.com/a/89347/47921
@@ -57,7 +61,7 @@
 
 \begin{document}
 
-    \title{Microsoft Certified Azure Fundamentals}
+    \title{Microsoft Certified Azure Fundamentals Flashcards}
     \date{2020-05-09}
     \author{Jan-Philipp Kappmeier}
 
