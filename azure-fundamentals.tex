@@ -1,0 +1,63 @@
+% A flashcard like document containing content relevant to prepare for Microsoft AZ-900 Azure
+% fundamentals exam. Supposed to be used by mobile/tablet phones, i.e. each page contains a single
+% flash card.
+\documentclass{article}
+
+% Set up XeLaTex font configuration
+\usepackage{fontspec}
+%\setmainfont{Latin Modern Sans}
+\setmainfont{Myriad Pro}
+
+% Size of flash cards
+\usepackage[a6paper,landscape]{geometry}
+
+% Vertical alignment also of the title page
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+% Nothing to see on flash cards
+\pagestyle{empty}
+\thispagestyle{empty}
+
+% Flashcard environment similar to the flashcards package
+% Similar to https://tex.stackexchange.com/a/89347/47921
+\newenvironment{flashcard}[2][]{%
+    #1
+    \vfill
+    \centerline{\Large{#2}}
+    \vfill
+    \newpage
+}
+{\newpage}
+
+% No intendation for multi line text on cards
+\setlength{\parindent}{0cm}
+
+% Use a single card for section
+\newcommand{\sectioncard}[1]{
+    \vspace*{\stretch{1}}
+    \section{#1}
+    \vspace*{\stretch{1}}
+    \pagebreak
+}
+
+% Use a single card for sub section
+\newcommand{\subsectioncard}[1]{
+    \vspace*{\stretch{1}}
+    \subsection{#1}
+    \vspace*{\stretch{1}}
+    \pagebreak
+}
+
+\begin{document}
+
+    \title{Microsoft Certified Azure Fundamentals}
+    \date{2020-05-09}
+    \author{Jan-Philipp Kappmeier}
+
+    \clearpage\maketitle
+    \thispagestyle{empty}
+    
+    \pagebreak
+\end{document}
