@@ -11,7 +11,7 @@
 \setmainfont{Myriad Pro}
 
 % Size of flash cards
-\usepackage[a6paper,landscape]{geometry}
+\usepackage[a6paper,landscape,margin=1cm]{geometry}
 
 % Vertical alignment also of the title page
 \usepackage{titling}
@@ -570,21 +570,153 @@
 
     \subsectioncard{Describe Core Azure Identity Services}
 
-    \begin{flashcard}[Understand]{Difference between authentication and authorization}
+    \begin{flashcard}[Definition]{Authentifizierung}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Überprüfung einer \emph{Person} oder eines \emph{Dienstes} vor Zugriff auf Ressource
+            \item Anforderung von Anmeldeinformationen
+            \item Nachweis, dass es tatsächlich die Person/der Dienst ist
+            \item Grundlage eines Sicherheitsprinzipals-Security Principle
+            \item verwaltet über Azure Active Directory
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Active Directory}
+    \begin{flashcard}[Definition]{Autorisierung}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Überprüfung der Zugriffsebene einer authentifizierten Entität (Person oder Dienst)
+            \item auf welche Daten darf zugegriffen werden
+            \item welche Aktionen dürfen ausgeführt werden
+            \item verwaltet über Azure Active Directory
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Aure Multi-Factor Authentication}
+    \begin{flashcard}[Verstehen]{Unterschied zwischen Authentifizierung und Autorisierung}
         \vspace*{\stretch{1}}
+        \begin{center}
+            Authentifizierung bestimmt \emph{wer ein Nutzer ist}
+            \vspace{5mm}
 
+            vs.
+            \vspace{5mm}
+
+            Autorisierung bestimmt \emph{was ein Nutzer darf}
+        \end{center}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Azure Active Directory}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Cloudbasierter Identitätsdienst
+            \item Alle Anwendungen können dieselben Anmeldeinformationen verwenden\newline
+            unabhängig davon, ob \emph{lokal}, \emph{in der Cloud}, oder \emph{mobil}
+            \item \emph{Active Directory-Mandant}: ein Active Directory Instanz in der Organisation
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Features von Azure Active Directory}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Synchronisierung mit lokalen Active Directory-Instanzen oder LDAP
+            \item Zugriffssteuerung zentral über Regeln/Richtlinien\newline
+            siehe auch RBAC
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Dienste von Azure Active Directory}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Authentifizierung
+            \item Single Sign-On (SSO)
+            \item Verwaltung von Anwendungen
+            \item Business-to-Business Identitätsdienste (B2B)
+            \item Business-to-Customer Identitätsdienste (B2C)
+            \item Geräteverwaltung
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Azure Active Directory-Authentifizierung}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Überprüfen der Identität
+                \newline(siehe Authentifizierung)
+            \item Kennwortrücksetzung
+            \item Multi-Factor Authentication
+            \item Smart Lockout
+            \item Gesperrte Kennwörter verwalten
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Azure Multi-Factor Authentication}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Mindestens zwei Methoden zur Authentifizierung
+            \item Drei Kategorien:
+                \begin{itemize}
+                    \item etwas, das der Nutzer \emph{weiß}: Kennwort oder Antwort auf Sicherheitsfrage
+                    \item etwas, das der Nutzer \emph{hat}: App (Microsoft Authenticator, oder Google Authenticator, etc) oder Tokengerät
+                    \item persönliche \emph{Merkmale} des Nutzers: Fingerabdruck, Gesichtsscan, ...
+            \end{itemize}
+            \item Erhöhung der Sicherheit, denn: falls eine Anmeldeinformation an einen Angreifer gerät, kann er sich nicht authentifizieren.
+            \item Automatisch in Azure Active Directory integriert und kombinierbar mit MFA von Dittanbietern
+            \item Globaler Administrator sollte \emph{auf jeden Fall} diese Methode verwenden
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Identitäten für Dienste}
+        \vspace*{\stretch{1}}
+            Problem bei der Identifizierung:
+            \begin{itemize}
+                \item Anmeldeinformationen sind in Konfigurationsdateien enthalten.
+                \item Mangelnde Sicherheitsrichtlinien ermöglichen Zugriff für jeden mit Zugriff auf die entsprechendne Systeme und Repositories
+            \end{itemize}
+            $\Rightarrow$ Lösung sind \emph{Identitäten für Dienste}
+
+            Zwei Möglichkeiten in Azure:
+            \begin{enumerate}
+                \item Dinstprinzipale
+                \item verwaltete Identitäten
+            \end{enumerate}
+            \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Dienstprinzipale}
+        \vspace*{\stretch{1}}
+            \begin{itemize}
+                \item \emph{Identität}: eine Entität, die Authentifiziert werden kann \newline
+                    (Sowohl Benutzer als auch Anwendungen, Server, …)
+                \item \emph{Prinzipal}: eine Identität zusammen mit Rollen \newline
+                    (z.\,B. Administrator-Zugriff)
+                \item \emph{Dienstprinzipal}: eine Identität, die von einem Dienst oder einer App verwendet wird
+                \item[$\Rightarrow $] Dienstprinzipale sind keine Benutzer
+                \item haben Rollen wie jede andere Identität
+            \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Verwaltete Identität}
+        \vspace*{\stretch{1}}
+            \begin{itemize}
+                \item Konto in der ActivevDirectory-Instanz
+                \item Wird automatisch von Azure authentifiziert und verwaltet
+                \item Dieses Konto kann wie jedes Azure Active Directory-Konto verwendet werden
+                    \begin{itemize}
+                        \item z.\,B. Rollen
+                    \end{itemize}
+            \end{itemize}
+            Vorteile gegenüber Dienstprinzipalen:
+            \begin{itemize}
+                \item Einrichtung von Dienstprinzipal aufwändig
+                \item direkt nutzbar von unterstützten Diensten
+            \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -628,9 +760,25 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Role-Based Access Control (RBAC)}
+    \begin{flashcard}[Definition]{Role-Based Access Control (RBAC)}
         \vspace*{\stretch{1}}
+        \begin{enumerate}
+            \item Rollen: bestimmte eingeschränkte Berechtiungen (Schreibgeschützt, Mitwirkender) die einer Identität für bestimmte Azure-Dienstinstanzen zu gewiesen werden
+            \item Identitäten erben Rollen über Gruppenmitgliedschaft
+            \item Rollen vererben sich von höheren Stufen (gesamtes Abonnement (Subscription) über Resourcengruppen zu einzelnen Resourcen) etc.
+        \end{enumerate}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
 
+    \begin{flashcard}[]{Vorteile von RBAC}
+        \vspace*{\stretch{1}}
+        \begin{enumerate}
+            \item Trennung von Sicherheitsprinzipalen?, Zugriffsrechten und Resourcen
+            \item ermöglilcht einfache Verwaltung und differenzierte Steuerung.
+            \item Sicherstellung, dass nur erforderliche \emph{Mindestberechtigung} gewährt werden
+            \item[$\Rightarrow$] es sollten nie mehr Berechtigungen, als notwendig vergeben werden
+        \end{enumerate}
+        Fazit: genau bekannt wer auf welche Daten und Infrastruktur zugreifen kann
         \vspace*{\stretch{1}}
     \end{flashcard}
 
