@@ -10,6 +10,11 @@
 %\setmainfont{Latin Modern Sans}
 \setmainfont{Myriad Pro}
 
+\usepackage{polyglossia}
+\enablehyphenation
+\setdefaultlanguage[]{german}
+\setotherlanguage[]{english}
+
 % Size of flash cards
 \usepackage[a6paper,landscape,margin=1cm]{geometry}
 
@@ -62,7 +67,7 @@
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
-    \date{2020-05-10}
+    \date{2020-05-12}
     \author{Jan-Philipp Kappmeier}
 
     \clearpage\maketitle
@@ -143,41 +148,90 @@
 
     \sectioncard{Describe the differences between Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (Paas), and Software-as-a-Service (SaaS)}
 
+    \begin{flashcard}[Definition]{Kategorien von Cloud-Services}
+        \vspace*{\stretch{1}}
+        Cloud-Services lassen sich in die folgenden Kategorien einteilen:
+        \begin{itemize}
+            \item Infrastructure-as-a-Service (IaaS)
+            \item Platform-as-a-Service (PaaS)
+            \item Software-as-a-Service (SaaS)
+        \end{itemize}
+        Die Kategorien unterscheiden sich in der Aufteilung der Anforderungen für den Nutzer und den Cloudanbieter.
+
+        Von IaaS zu SaaS sinkt die Flexibilität für Nutzer und der Umfang der bereitgestellten Services steigt.
+
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Modell der gemeinsamen Verantwortung}
+        \vspace*{\stretch{1}}
+        Cloudanbieter und Nutzer teilen sich die Verantwortung für die Funktionalität eines Services:
+        \begin{itemize}
+            \item Cloudanbieter stellt sicher, dass Infrastruktur funktioniert
+            \item Nutzer ist verantwortlich, dass sein Dienst korrekt funktioniert
+        \end{itemize}
+        Trifft für IaaS zu. (In geringerem Umfang auch für PaaS).
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
     \begin{flashcard}[Definition]{IaaS}
         \vspace*{\stretch{1}}
-        IaaS = Infrastructure as a Service
+        IaaS = Infrastructure-as-a-Service
 
-        Managed infrastructure.
-
-        Core services such as network, data storage, and compute is provided by Azure.
-
-        Customers are responsible to completely set up their own environments, create storage,
-        reserve compute power, install custom software, etc.
+        \begin{itemize}
+            \item Infrastruktur wird vom Cloudanbieter verwaltet:
+            \begin{itemize}
+                \item Virtuelle Maschinen
+                \item Netzwerk
+                \item Betriebssysteme (teilweise)
+                \item Speicher
+            \end{itemize}
+            \item Kunden mieten die Infrastructure, anstatt sie zu kaufen.
+            \item Kunden sind komplett selbst verantwortlich für ihre eigene Umgebung.
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Definition]{PaaS}
         \vspace*{\stretch{1}}
-        PaaS = Platform as a Service
+        PaaS = Platform-as-a-Service
 
-        Managed services.
-
-        Basis to install own software is provided, but no manual setup for
-        resources such as Network or Storage is required.
+        \begin{itemize}
+            \item Vom Cloudanbieter wird eine komplette Umgebung zum Erstellen, Testen und Bereitstellen von Softwareanwendungen angeboten
+            \item Kunden müssen sich \emph{nicht} um die Infrastructure kümmern\newline
+            (Wartung, Betriebssysteme, Systemupdates, Webserver, ...)
+            \item Vollständige Entwicklung und Deployment in der Cloud
+            \item Sämtliche Vorteile der Cloud (Skalierbarkeit, Hochverfügbarkeit, ...) sind\newline automatisch vorhanden
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Definition]{SaaS}
         \vspace*{\stretch{1}}
-        SaaS = Software as a Service
+        SaaS = Software-as-a-Service
 
-        Fully managed software installation.
-
-        Services, platform, software is installed, maintained, and provided by Azure.
-
-        No manual interaction required or possible
+        Vollständige vom Cloudanbieter bereitgestellte Software
+        \begin{itemize}
+            \item Infrastruktur wird vom Cloudanbier verwaltet, gewartet, und bereitgestellt
+            \item Software wird für Endkunden bereitgestellt
+            \item typischerweise eine Softwareversion für alle Kunden
+            \item Abrechnung über Abonnement
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
+
+    \begin{flashcard}[\ ]{Unterschiede der Cloud-Service-Kategorien (verantwortlichkeit)}
+        \vspace*{\stretch{1}}
+        \begin{tabular}{l|p{34mm}p{34mm}p{34mm}}
+                 & \textbf{IaaS}                                             & \textbf{PaaS}                                                                     & \textbf{SaaS} \\
+          \hline
+          Kosten & Nutzung                                                   & Nutzung                                                                           & Abonnement                                                  \\
+          Nutzer & Installation, Verwaltung, Konfiguration eigener Software  & Entwicklung und Bereitstellung eigener Anwendungen bei Nutzung der Cloud-Services & Verwendung der bereitgestellten Software                    \\
+          Cloud  & Verantwortlich für Infrastruktur (VM, Netzwerk, Speicher) & Verantwortung für alles \emph{außer} der vom Nutzer entwickelten Software         & Komplette Verantwortung für die Bereitstellung der Software \\
+        \end{tabular}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+   
 
     \subsectioncard{Describe the Differences Between Public, Private, and Hybrid Cloud Models}
 
