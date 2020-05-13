@@ -123,30 +123,97 @@
 
     \begin{flashcard}[Definition]{CapEx}
         \vspace*{\stretch{1}}
+        
+        Investitionsausgaben (Capital Expenditure)
+        \begin{itemize}
+            \item Anschaffungskosten physischer Infrastruktur
+            \item abschreibbar über die Zeit
+            \item Anschaffungskosten, deren Wert über die Zeit geringer wird
+        \end{itemize}
 
+        Typisches Kostemodell für lokale Rechenzentren
+
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+    
+    \begin{flashcard}[Beispiele]{CapEx}
+        \vspace*{\stretch{1}}        
+        \begin{itemize}
+            \item Serverkosten: Hardware + Support
+            \item Speicher: Storageserver, ..., + Support
+            \item Netwerkinfrastruktur: inklusive Kabel, WAN, ...
+            \item Backup + Archivierung
+            \item Infrastruktur für das Rechenzentrum
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Definition]{OPex}
         \vspace*{\stretch{1}}
+        Betriebskosten (Operational Expenditure)
+        \begin{itemize}
+            \item laufende Kosten für Dienste und Produkte
+            \item keine Anschaffungskosten
+            \item Zahlung nur für Dienste, die in Anspruch genommen werden
+            \item abschreibbar im laufenden Geschäftsjahr
+        \end{itemize}
+
+        Typisches Kostenmodell für Cloud-Computing
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Beispiel]{OPex}
+        \vspace*{\stretch{1}}
+        Betriebskosten (Operational Expenditure)
+        \begin{itemize}
+            \item laufende Kosten für Dienste und Produkte
+            \item keine Anschaffungskosten
+            \item Zahlung nur für Dienste, die in Anspruch genommen werden
+            \item abschreibbar im laufenden Geschäftsjahr
+        \end{itemize}
+
+        Typisches Kostenmodell für Cloud-Computing
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Vergleiche]{CapEx and OpEx}
+        \vspace*{\stretch{1}}
+        Vorteile CapEx:
+        \begin{itemize}
+            \item Ausgaben fix, d.\,h. planbar
+            \item praktisch, falls mit begrenzten Budgets geplant werden muss
+        \end{itemize}
+        
+        Vorteile OpEx:
+        \begin{itemize}
+            \item schnelle Reaktion auf geänderte Nachfrage und Wachstum
+            \item keine hohen Anschaffungskosten bei Projektstart
+        \end{itemize}
+        $\Rightarrow$ bei unbekannter oder schwankender Nachfrage
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Differences]{CapEx and OpEx}
-        \vspace*{\stretch{1}}
 
+    \begin{flashcard}[Definition]{Verbrauchsbasierendes Modell}
+        \vspace*{\stretch{1}}
+            \begin{itemize}
+                \item es werden nur benutzte Resourcen bezahlt
+                \item bei hoher Nachfrage in einem Monat kann gemäß der Nachfrage skaliert werden (und auch bezahlt)
+                \item bei sinkender Auslastung können die Kosten wieder reduziert werden
+            \end{itemize}
+            $\Rightarrow$ im verbrauchsbasierenden Modell gibt es hauptsächlich OpEx-Kosten
+
+            \vspace{5mm}
+            Im dediziertern Modell wird eine bestimmte Hardware (entsprechend der erwarteten Auslastung) angeschafft:
+            \begin{itemize}
+                \item häufig wird zu viel bezahlt
+                \item \emph{trotzdem} können Spitzen nicht bedient werden
+            \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-
-    \begin{flashcard}[Definition]{Consumption-based model}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \sectioncard{Describe the differences between Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (Paas), and Software-as-a-Service (SaaS)}
+    \sectioncard{Beschreibe die Unterschiede zwischen Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (Paas) und Software-as-a-Service (SaaS)}
 
     \begin{flashcard}[Definition]{Kategorien von Cloud-Services}
         \vspace*{\stretch{1}}
