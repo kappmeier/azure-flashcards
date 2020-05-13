@@ -67,49 +67,103 @@
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
-    \date{2020-05-12}
+    \date{2020-05-13}
     \author{Jan-Philipp Kappmeier}
 
     \clearpage\maketitle
     \thispagestyle{empty}
     \pagebreak
 
-    \sectioncard{Understand Cloud Concepts}
+    \sectioncard{Verständnis von Cloud-Konzepten}
 
-    \subsectioncard{Describe the benefits and considerations of using cloud services}
+    \subsectioncard{Beschreibe die Vorteile und Erwägungen bei Nutzung von Cloud-Services}
 
-    \begin{flashcard}[Definition]{High Availability}
+    \begin{flashcard}[Definition]{Hochverfügbarkeit}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item die Möglichkeiten einer Anwendung ohne signifikante Auszeit durchgehend zu laufen
+            \item es wird erwartet, dass die Anwendung reagiert und Nutzer mit ihr interagieren können
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Kosteneffizienz}
+        \vspace*{\stretch{1}}
+        Preismodell der nutzungsbasierten Bezahlung:
+        \begin{itemize}
+            \item keine Vorausszahlung
+            \item teure Infrastruktur muss nicht gekauft werden
+            \item Resourcen müssen nur bezahlt werden, wenn sie benötigt werden
+        \end{itemize}
+
+        \vspace{5mm}
+        Alternativ: dedizierte Hardware in der Cloud mieten
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Skalierbarkeit}
+        \vspace*{\stretch{1}}
+        Anzahl der Resourcen und Dienste nach Nachfrage verändern
+        
+        \vspace{5mm}
+        Vertikale Skalierung (Hochskalieren)
+        \begin{itemize}
+            \item Leistung von Servern oder Diensten erhöhen\newline
+            z.\,B. mehr CPUs, mehr Speicher, schnellere Anbindung
+        \end{itemize}
+        
+        Horizontale Skalierung
+        \begin{itemize}
+            \item zusätzliche Server werden hinzugefügt
+            \item sämtliche Maschinen funktionieren als Einheit
+        \end{itemize}
+
+        \vspace{5mm}
+        Skalierung kann automatisch anhand gewisser Kriterien durchgeführt werden
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Elastizität der Cloud}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item automatische Hinzunahme oder Wegnahme von Resourcen bei ändernder Nachfrage
+            \item Beispiel: kurzzeitige Lastspitzen, aber auch jahreszeitliche Änderungen oder täglich, wöchentlich
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Definition]{Scalability}
+    \begin{flashcard}[Definition]{Agilität}
         \vspace*{\stretch{1}}
+
+        \vspace{5mm}
+        Schnelle Anpassung an wechselnde Anforderungen eines Unternehmens
+        \begin{itemize}
+            \item das kann zeitlich schwankender Zugriff sein (Elastizität)
+            \item aber auch schnelle Anpassungen an Änderung der Unternehmensstrategie oder Ähnliches
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Definition]{Elasticity}
+    \begin{flashcard}[Definition]{Fehlertoleranz}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Definition]{Agility}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Definition]{Fault Tolerance}
-        \vspace*{\stretch{1}}
-
+        
+        \begin{itemize}
+            \item Datensicherung, Notfallwiederherstellung, Replikation
+            \item redundante Architektur
+        \end{itemize}
+        Diese Maßhnahmen sollen sicherstellen, dass Kunden nicht von auftretenden Fehlern betroffen sind
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Definition]{Disaster Recovery}
+    \begin{flashcard}[Definition]{Notfallwiederherstellung}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item die Fähigkeit des Systems der Erholung nach einem Zwischenfall\newline
+            Zwischenfall = weiträumiger Ausfall (z.\,B. ganze Region)
+            \item Datensicherung, Archivierung, Wiederherstellung
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -117,7 +171,12 @@
 
     \begin{flashcard}[Definition]{Principles of economy of scale}
         \vspace*{\stretch{1}}
-
+        Arbeit kann pro Einheit günstiger durchgeführt werden, wenn sie in großem Umfang durchgeführt wird.
+        
+        \vspace{5mm}
+        Bezogen auf cloud:
+        
+        Cloudanbieter können Hardware günstiger erwerben, effizienter warten und anderweitig sparen als einzelne Kunden das könnten.
         \vspace*{\stretch{1}}
     \end{flashcard}
 
