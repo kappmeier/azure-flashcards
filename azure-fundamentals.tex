@@ -64,6 +64,11 @@
     \pagebreak
 }
 
+% Other packages required for content
+\usepackage{booktabs}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\tabitemindent}{~~~~}
+
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
@@ -104,14 +109,14 @@
     \begin{flashcard}[Definition]{Skalierbarkeit}
         \vspace*{\stretch{1}}
         Anzahl der Resourcen und Dienste nach Nachfrage verändern
-        
+
         \vspace{5mm}
         Vertikale Skalierung (Hochskalieren)
         \begin{itemize}
             \item Leistung von Servern oder Diensten erhöhen\newline
             z.\,B. mehr CPUs, mehr Speicher, schnellere Anbindung
         \end{itemize}
-        
+
         Horizontale Skalierung
         \begin{itemize}
             \item zusätzliche Server werden hinzugefügt
@@ -148,7 +153,7 @@
 
     \begin{flashcard}[Definition]{Fehlertoleranz}
         \vspace*{\stretch{1}}
-        
+
         \begin{itemize}
             \item Datensicherung, Notfallwiederherstellung, Replikation
             \item redundante Architektur
@@ -172,17 +177,17 @@
     \begin{flashcard}[Definition]{Skaleneffekte (Economy of scale)}
         \vspace*{\stretch{1}}
         Arbeit kann pro Einheit günstiger durchgeführt werden, wenn sie in großem Umfang durchgeführt wird.
-        
+
         \vspace{5mm}
         Bezogen auf cloud:
-        
+
         Cloudanbieter können Hardware günstiger erwerben, effizienter warten und anderweitig sparen als einzelne Kunden das könnten.
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Definition]{CapEx}
         \vspace*{\stretch{1}}
-        
+
         Investitionsausgaben (Capital Expenditure)
         \begin{itemize}
             \item Anschaffungskosten physischer Infrastruktur
@@ -194,9 +199,9 @@
 
         \vspace*{\stretch{1}}
     \end{flashcard}
-    
+
     \begin{flashcard}[Beispiele]{CapEx}
-        \vspace*{\stretch{1}}        
+        \vspace*{\stretch{1}}
         \begin{itemize}
             \item Serverkosten: Hardware + Support
             \item Speicher: Storageserver, ..., + Support
@@ -242,7 +247,7 @@
             \item Ausgaben fix, d.\,h. planbar
             \item praktisch, falls mit begrenzten Budgets geplant werden muss
         \end{itemize}
-        
+
         Vorteile OpEx:
         \begin{itemize}
             \item schnelle Reaktion auf geänderte Nachfrage und Wachstum
@@ -357,31 +362,76 @@
         \end{tabular}
         \vspace*{\stretch{1}}
     \end{flashcard}
-   
+  
 
-    \subsectioncard{Describe the Differences Between Public, Private, and Hybrid Cloud Models}
+    \subsectioncard{Beschreibe die  Unterschiede zwischen öffentlicher, privater, und Hybrid Cloud}
 
-    \begin{flashcard}[Describe]{Public Cloud}
+    \begin{flashcard}[Describe]{Öffentliche Cloud}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item typische Methode der Cloudnutzung
+            \item keine loakle Hardware
+            \item \emph{alle} Workloads werden in der Cloud ausgeführt
+            \item ggf. können Resourcen für andere Cloudbenutzer freigegeben werden
+        \end{itemize}
 
+        \vspace{5mm}
+        Azure ist eine öffentliche Cloud
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Private Cloud}
         \vspace*{\stretch{1}}
+        Aufbau einer Cloudumgebung im lokalen Rechenzentrum
+
+        \begin{itemize}
+            \item aus Nutzersicht kein Unterschied zu Cloudbenutzung
+            \item Unternehmen ist selbst für Anschaffung und Wartung von Hardware verantwortlich
+        \end{itemize}
+
+        \vspace{5mm}
+        Von Azure unterstützt durch Azure Stack
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Hybrid Cloud}
         \vspace*{\stretch{1}}
+        Verbindet öffentliche und private cloud \newline
+        $\Rightarrow$ Anwendungen können in der passenden Umgebung ausgeführt werden
+
+        \vspace{5mm}
+        Use cases:
+        \begin{itemize}
+            \item Übergang von lokalen Datencentern zu Cloud
+            \item Aufteilung von Daten und Verarbeitung z.\,B. aus rechtlichen Gründen
+            \item Abfang von Leistungsspitzen
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Compare and Contrast]{Three different Cloud Models}
+    \begin{flashcard}[Gegenüberstellung]{Drei Cloudmodelle}
         \vspace*{\stretch{1}}
-
+            \begin{tabular}{l|ll}
+                Modell     & Vorteile                                     & Nachteile                                  \\
+                \hline
+                Öffentlich & \tabitem hohe Skalierbarkeit (Agilität)      & \tabitem Sicherheitsanforderungen          \\
+                           & \tabitem keine CapEx-Kosten                  & \tabitem rechtliche Anforderungen          \\
+                           & \tabitem ausgelagerte Wartung                & \tabitem Legacy-Kompatibilität             \\
+                           & \tabitem geringe technische Kenntnisse       & \tabitem kein Eigentum an Diensten +       \\
+                           & \tabitemindent der Mitarbeiter erforderlich  & \tabitemindent Hardware (eingeschränkt)    \\
+                [.5\normalbaselineskip]
+                Private    & \tabitem Kontrolle der Konfiguration         & \tabitem hohe CapEx-Kosten (Anschaffung)   \\
+                           & \tabitem Kontrolle über Sicherheit           & \tabitem geringe Skalierbarkeit (Agilität) \\
+                           & \tabitem rechtlicher Anforderungen           & \tabitem hohe Fachkenntnis erforderlich    \\
+                [.5\normalbaselineskip]
+                Hybrid     & \tabitem Eigene Hardware verwendbar          & \tabitem möglicherweise CapEx-Kosten       \\
+                           & \tabitem Flexibilität (Lokal + Cloud)        & \tabitem komplizierte Einrichtung          \\
+                           & \tabitem Skaleneffekte + lokales sparen      &                                            \\
+                           & \tabitem Kontrolle über Sicherheit           &                                            \\
+                           & \tabitem rechtliche Anforderungen            &                                            \\
+            \end{tabular}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
