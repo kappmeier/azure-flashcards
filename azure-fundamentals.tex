@@ -204,8 +204,8 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item Serverkosten: Hardware + Support
-            \item Speicher: Storageserver, ..., + Support
-            \item Netwerkinfrastruktur: inklusive Kabel, WAN, ...
+            \item Speicher: Storageserver, \ldots, + Support
+            \item Netwerkinfrastruktur: inklusive Kabel, WAN, \ldots
             \item Backup + Archivierung
             \item Infrastruktur für das Rechenzentrum
         \end{itemize}
@@ -330,9 +330,9 @@
         \begin{itemize}
             \item Vom Cloudanbieter wird eine komplette Umgebung zum Erstellen, Testen und Bereitstellen von Softwareanwendungen angeboten
             \item Kunden müssen sich \emph{nicht} um die Infrastructure kümmern\newline
-            (Wartung, Betriebssysteme, Systemupdates, Webserver, ...)
+            (Wartung, Betriebssysteme, Systemupdates, Webserver, \ldots)
             \item Vollständige Entwicklung und Deployment in der Cloud
-            \item Sämtliche Vorteile der Cloud (Skalierbarkeit, Hochverfügbarkeit, ...) sind\newline automatisch vorhanden
+            \item Sämtliche Vorteile der Cloud (Skalierbarkeit, Hochverfügbarkeit, \ldots) sind\newline automatisch vorhanden
         \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -469,132 +469,266 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \subsectioncard{Describe Some of the Core Products Available in Azure}
+    \subsectioncard{Beischreibe einige der in Azure verfügbaren Kernkomponenten}
 
-
-    \begin{flashcard}[Describe]{Virtual Machine}
+    \begin{flashcard}[Definition]{Virtuelle Maschine}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item virtueller Computer, der in der Azure cloud gehostet wird und läuft
+            \item verfügbar für Linux (verschiedene Distributionen) und Windows
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Skalierungsgruppen für Virtuelle Maschinen}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item automatische Skalierung von in Azure gehosteten virtuellen Maschinen
+            \item mehrere virtuelle Maschinen gehören zu einer Gruppe
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Virtual Machine Scale Set}
+    \begin{flashcard}[Definition]{App Service Functions}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item PaaS-Service in Azure\newline
+            $\Rightarrow$ keine eigene Infrastruktur notwendig
+            \item Enterprise-Anwendungen wie Webseiten, (REST)-APIs und für Mobilgeräte
+            \item unterstützt Entwicklung und Deployment
+            \item automatische Skalierung
+            \item unterstützte Programmiersprachen:
+            \begin{itemize}
+                \item Python
+                \item Java
+                \item Ruby
+                \item Node.js
+                \item .NET/.NET Core
+                \item PHP
+            \end{itemize}
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{App Service Functions}
+    \begin{flashcard}[Definition]{Azure Container Instances (ACI)}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Container-Anwendungen in Azure
+            \item benötigt keine virtuelle Maschine oder Server
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Container Instances (ACI)}
+    \begin{flashcard}[Definition]{Azure Kubernetes Service (AKS)}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item verwaltet ein Kubernetes-Cluster aus mehreren virtuellen Maschinen
+            \item Dienste werden in Containern auf den Maschinen im Cluster ausgeführt
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Kubernetes Service (AKS)}
+    \begin{flashcard}[Definition]{Azure Batch}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item verwalteter Dienst für parallele Berechnungen
+            \item Batch-Dienst unterstüzt viele Batch-Knoten (virtuelle Maschinen oder Skalierungsgruppe)
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Virtuelles Netzwerk}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Dienst, der virtuelle Maschinen mit eingehenden VPN-Verbindungen (Virtual Private Network) verknüpft
+            \item Verbindung von Azure-VPN mit einem lokalen VPN ermöglicht sichere Kommunikation zwischen Azure und lokalem Datacenter
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Virtual Network}
+    \begin{flashcard}[Definition]{Load Balancer}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item verteilt ein- und ausgehende Verbindungen
+            \item Ziel ist gleichmäßige Auslastung von Anwendungen und Endpunkten
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Load Balancer}
+    \begin{flashcard}[Definition]{VPN Gateway}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item ermöglicht den Zugriff auf Azure-VPNs
+            \item hochleistungsfähige Gateways
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{VPN Gateway}
+    \begin{flashcard}[Definition]{Application Gateway}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item optimieren die Auslieferung aus Anwendungs-Serverfarmen
+            \item erhöht gleichzeitig Anwendungssicherheit
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Application Gateway}
+    \begin{flashcard}[Definition]{Content Delivery Network (CDN)}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Auslieferung von Inhalten mit hoher Bandbreite
+            \item schnelle Auslieferung weltweit
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Blob-Speicher}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Binary Large OBject
+            \item sehr große binäre Objekte, z.\,B. Videodateien oder Bilder
+            \item Schlüssel-Wert-Speicher
+            \item ansprechbar über HTTP-API (Bibliotheken für viele Sprachen verfügbar)
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Content Delivery Network}
+    \begin{flashcard}[Definition]{Disk Storage}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{Blob Storage}
-        \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Festplatten für virtuellle Maschinen, Apps, und Dienste
+            \item Managed Disk: verwaltete Disk, wird von Azure erstellt und freigegeben
+            \item größe beliebig, bezahlt nach Gigabytes in Zweierpotenzen
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Disk Storage}
+    \begin{flashcard}[Definition]{File Storage}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{File Storage}
-        \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Dateifreigaben, die übe SMB eingebunden werden können
+            \item Zugriff wie auf Dateiserver
+            \item ermöglicht Quota
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Archive Storage}
+    \begin{flashcard}[Definition]{Archivierung}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{Cosmos DB}
-        \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item speichern von Daten, die selten benötigt werden
+            \item Zugriff langsam
+            \item Zugriff teuer
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure SQL Database}
+    \begin{flashcard}[\ ]{Eigenschaften von Speicherdiensten}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item dauerhafte Speicherung durch Redundanz und Replikation\newline
+            Replikation auf Wunsch
+            \item sichere Daten durch Verschlüsselung\newline
+            entweder durch Azure, oder durch Kunden
+            \item Skalierbarkeit,
+            \begin{itemize}
+                \item Kapazität: zwar endliche, aber für die meisten Anwendungsfälle unbegrenzte
+                \item Zugriffe: kann für zahllose parallele Zugriffe eingerichtet werden
+            \end{itemize}
+            \item sämtliche Speicherdienste sind verwaltet, d.\,h. keine Wartung und Fehlerbehandlung (des Dienstes selbst) notwendig
+            \item Zugriff über HTTP(S) weltweit möglich
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
 
+
+    \begin{flashcard}[Definition]{Cosmos DB}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item NoSQL-Datenbank
+            \item global verteilt
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Azure SQL-Datenbank}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item verwaltete relationale Datenbank (generisch SQL)
+            \item automatische Skalierung
+            \item robuste Sicherheit
+            \item integrierte intelligente Funktionen?
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Azure Database for MySQL}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item verwaltete relationale Datenbank (MySQL)
+            \item hohe Verfügbarkeit
+            \item Skalierbarkeit
+            \item Sicherheit
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Database for PostgreSQL}
+    \begin{flashcard}[Definition]{Azure Database for PostgreSQL}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item verwaltete relationale Datenban (PostgreSQL)
+            \item hohe Verfügbarkeit
+            \item Skalierbarkeit
+            \item Sicherheit
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Azure Database Migration Service}
         \vspace*{\stretch{1}}
+        Unterstützung beim Migrieren von Datenbanken in die Cloud
 
+        $\Rightarrow$ keine Änderungen am Anwendungscode notwendig
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Marketplace}
+    \begin{flashcard}[Definition]{Azure Marketplace}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Sammlung von Applikationen und Services \newline
+            von verschiedenen Anbietern, zertifiziert für Azure-Kompatibilität
+            \begin{itemize}
+                \item KI + Machine Learning
+                \item Disk-Images
+                \item Webanwendungen
+                \item \ldots
+            \end{itemize}
+            \item erlaubt das Suchen, Ausprobieren, Kaufen und Bereitstellen mithilfe einer Benutzeroberfläche
+            \item Unterstützt die Verbindung von Endnutzern mit
+            \begin{itemize}
+                \item Microsoft-Parnern
+                \item unabhängige Softwareentwickler
+                \item Start-Ups, die Azure-Lösungen bereitstellen
+            \end{itemize}
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Marketplace usage scenarios}
+    \begin{flashcard}[\ ]{Marketplace Anwendungsfälle}
         \vspace*{\stretch{1}}
-
+            \begin{itemize}
+                \item Verwenden von WordPress für eine Webseite
+                \item Suchen von Diensten und Lösungen für ein Problem
+            \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -684,9 +818,14 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Functions}
+    \begin{flashcard}[Definition]{Azure Functions}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Dienst, der vorgegebene Funktion ausführt
+            \item ereignisgesteuert
+            \item serverlos
+            \item kurze Laufzeit (maximal wenige Minuten)
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -892,7 +1031,7 @@
                 \begin{itemize}
                     \item etwas, das der Nutzer \emph{weiß}: Kennwort oder Antwort auf Sicherheitsfrage
                     \item etwas, das der Nutzer \emph{hat}: App (Microsoft Authenticator, oder Google Authenticator, etc) oder Tokengerät
-                    \item persönliche \emph{Merkmale} des Nutzers: Fingerabdruck, Gesichtsscan, ...
+                    \item persönliche \emph{Merkmale} des Nutzers: Fingerabdruck, Gesichtsscan, \ldots
             \end{itemize}
             \item Erhöhung der Sicherheit, denn: falls eine Anmeldeinformation an einen Angreifer gerät, kann er sich nicht authentifizieren.
             \item Automatisch in Azure Active Directory integriert und kombinierbar mit MFA von Dittanbietern
