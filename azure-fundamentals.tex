@@ -72,7 +72,7 @@
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
-    \date{2020-05-14}
+    \date{2020-05-18}
     \author{Jan-Philipp Kappmeier}
 
     \clearpage\maketitle
@@ -483,9 +483,12 @@
     \begin{flashcard}[Definition]{Skalierungsgruppen für Virtuelle Maschinen}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item automatische Skalierung von in Azure gehosteten virtuellen Maschinen
+            \item \emph{automatische} Skalierung von in Azure gehosteten virtuellen Maschinen
             \item mehrere virtuelle Maschinen gehören zu einer Gruppe
+            \item die Elemente der Skalierungsgruppe sind \emph{identisch}
+            \item eine große Zahl an Instanzen kann innerhalb von Minuten verwaltet werden
         \end{itemize}
+        $\Rightarrow$ gut geeignet für Big Data-Analysen und Containerworkloads
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -496,7 +499,7 @@
             \item PaaS-Service in Azure\newline
             $\Rightarrow$ keine eigene Infrastruktur notwendig
             \item Enterprise-Anwendungen wie Webseiten, (REST)-APIs und für Mobilgeräte
-            \item unterstützt Entwicklung und Deployment
+            \item unterstützt Entwicklung und Deployment, CI über Git-Repository
             \item automatische Skalierung
             \item unterstützte Programmiersprachen:
             \begin{itemize}
@@ -507,6 +510,16 @@
                 \item .NET/.NET Core
                 \item PHP
             \end{itemize}
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Azure App Service-Kosten}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item festgelegt durch App Service-Plan
+            \item bestimmt die größe/Anzahl der verfügbaren Hardware
+            \item SKU F1 ermöglicht kostenlose Verwendung von kleinen Resourcen im Free-Tarif
         \end{itemize}
 
         \vspace*{\stretch{1}}
@@ -732,88 +745,196 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \subsectioncard{Describe Some of the Solutions Available on Azure}
+    \subsectioncard{Beschreibe einige der in Azure verfügbaren Lösungen}
 
-    \begin{flashcard}[Describe]{Internet of Things (IoT)}
+    \begin{flashcard}[Definition]{Internet der Dinge (IoT)}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{Products for IoT on Azure}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{IoT Hub}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{IoT Central}
-        \vspace*{\stretch{1}}
+        Nicht primär zur Informationstechnik gehörende Geräte, die Daten sammeln und über das Internet übertragen.
+        
+        \vspace{5mm}
+        Die Gesamtheit der vernetzten Geräte ist das Internet der Dinge'' (IoT)
+        
+        \vspace{5mm}
+        Beispiele:
+        \begin{itemize}
+            \item Waschmaschine
+            \item Smart-Watch
+            \item Kühlschrank
+            \item Smart-Home-Thermostate
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Big Data Analytics}
+    \begin{flashcard}[\ ]{Produkte für IoT in Azure}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item IoT Central
+            \item IoT Hub
+            \item IoT Edge
+        \end{itemize}
 
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{IoT Hub}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Messaging-Hub für sichere Kommunikation
+            \item ermöglicht Überwachung von millionen IoT-Geräten
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{IoT Central}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item skalierbare, verwaltete SaaS-Lösung für IoT
+            \item einfache Vernetzung von IoT-Resourcen
+            \item Verwaltung, Überwachung
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{IoT Edge}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Datenanalyse-Modelle auf IoT-Geräte schicken
+            \item ermöglicht schnelle Reaktion auf Zustandsänderungen
+            \item keine cloudbasierte Berechnung notwendig
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Big Data Analytics}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Lösungen und Dienste zur Analyse und Verarbeitung von großen Datenmengen
+            \item ``Big Data'' große Datenvolumen, einzelne Datensätze können groß oder klein sein
+            \item Beispiele:
+                \begin{itemize}
+                    \item Genomanalyse
+                    \item Kommunikationssysteme
+                    \item \ldots
+                \end{itemize}
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Big Data Products + Analytics Products}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Synapse Analytics
+            \item HDInsight
+            \item Databricks
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{SQL Data Warehouse}
         \vspace*{\stretch{1}}
+        Umbenannt: nun Azure Synapse.
 
+        \begin{itemize}
+            \item Big-Data-Analysedienst
+            \item kombiniert Data Warehousing und Big-Data-Analysen
+            \item schnelle Ausführung komplexer Abfragen in großen Datenmengen (Petabyte)
+            \item nutzt das cloudbasierte Enterprise Data Warehouse (EDW)
+            \item Massively Prallel Processing (MPP) mit Unterstützung von freien On-Demand-Resourcen
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{HDInsight}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Verarbeitung großer Datenmengen
+            \item verwaltete Hadoop-Cluster
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Azure Databricks}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Analyseplattform basierend auf Apache Spark
+            \item optimiert für Microsoft Cloudplattform
+            \item interkative Zusammenarbeit/Kollaboration von Datenspezialisten, Data Engineers und Business Analysts
+            \item einfache Einrichtung mit One-Click-Workflow
+            \item Erfassung von Rohdaten aus Batch-Prozessierung oder Live-Streaming
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Artificial Intelligence (AI)}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Sammlung von Diensten, die auf maschinellem Lernen beruhen
+            \item Computer lernen aus Daten, zukünftiges Verhalten, Ergebnisse oder Trends vorherzusagen
+            \item keine Programmierung wird benötigt, da Algorithmen implizit aus den Daten gelernt werden
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Products Available for AI}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Azure Machine Learning-Dienst
+            \item Azure Machine Learning Studio
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Machine Learning Service and Studio}
+    \begin{flashcard}[Describe]{Azure Machine Learning-Dienst}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Entwicklung, Test, Deployment und Analyse von Machine Learning-Modellen
+            \item unterstützt Generierung und Optimiierung von Modellen
+            \item Beginn des Trainings auf dem lokalen Rechner
+            \item Nutzung von Cloud-Kapazitäten durch horizontale Hochskalierung
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
 
+    \begin{flashcard}[Describe]{Azure Machine Learning Studio}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Visuelle Entwiclung von Lösungen für machinelles Lernen
+            \item unterstützt Modellentwicklung durch Drag \& Drop
+            \item geeignet für Kollaboration mehrerer Entwickler
+            \item Auswahl aus verschiedenen vordefinierten Algorithmen und Modulen für maschinelles Lernen
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Serverless Computing}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item direkte Ausführung von Code\newline
+            $\Rightarrow$ vollständige Abstraktion der Hostumgebung
+            \item Konfiguration und Wartung der Infrastruktur ist weder erforderlich noch zulässig
+            \item[$\Rightarrow$] PaaS
+            \item hochverfügbar
+            \item jede Arbeit muss schnell erledigt werden (Sekunden, maximal Minuten)
+            \item gut geeignet für ereignisgesteuerte Berechnungen
+            \item Microbilling nur nach ausgeführter Berechnungszeit, evtl. auch nur wenige Sekunden
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Products for Serverless}
+    \begin{flashcard}[\ ]{Azure Serverless-Dienste}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Azure Functions\newline
+            Ausführung von Code einer beliebigen modernen Programmiersprache
+            \item Logic Apps\newline
+            graphische Anwendungen ohne Programmcode
+            \item Event Grid\newline
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -822,21 +943,51 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item Dienst, der vorgegebene Funktion ausführt
-            \item ereignisgesteuert
-            \item serverlos
+            \item ereignisgesteuert, serverlos
             \item kurze Laufzeit (maximal wenige Minuten)
+            \item Varianten: zustandslos (Standard), zustandsbehaftet (\emph{Durable}), die einen Kontext erhalten
         \end{itemize}
+        $\Rightarrow$ automatische Skalierung. Gut geeignet für schwankende Anforderungen, z.\,B. aus dem Internet der Dinge
+        
+        \vspace{5mm}
+        \textbf{Vorteile}: keine Kosten während Leerlaufzeiten
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Logic Apps}
+    \begin{flashcard}[Definition]{Logic Apps}
         \vspace*{\stretch{1}}
+        Ähnlich wie Functions, aber nicht programmiert!
+        \begin{itemize}
+            \item Workflows aus vordefinierten Logikblöcken\newline
+            Zusammenstellung im visuellen Designer im Azure-Portal
+            \item Orchestrierung von Aufgaben und Business-Prozessen
+            \item Beginn der Ausführung mit einem Trigger
+            \item Integration von Daten, Anwendungen, und Systemen\newline
+            zahllose vordefinierte Module vorhanden um mit anderen Diensten zu kommunizieren
+        \end{itemize}
 
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+    
+    \begin{flashcard}[\ ]{Vergleich Azure Functions und Azure Logic Apps}
+        \vspace*{\stretch{1}}
+        \begin{tabular}{l|p{34mm}p{34mm}}
+                 & \textbf{Functions}                                             & \textbf{Logic Apps} \\
+          \hline
+          Zustand & Standard: Zustandslos, aber auch Durable                  & zustandsbehaftet                                                                         \\
+          Entwicklung & imperativ/mit code                                        & deklarativ/grafisch                                                               \\
+          Kontext  & Lokal und in der Cloud                                    & Nur in der Cloud                                                                  \\
+        \end{tabular}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Event Grid}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Aufbau von Anwendungen mit Event-basierer Architektur
+            \item verwalteter Dienst
+            \item Event-Routing über Publish/Subscribe for Eventverarbeitung
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
