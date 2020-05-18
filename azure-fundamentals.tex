@@ -1438,13 +1438,20 @@
 
     \subsectioncard{Understand Planning and Management of Costs}
 
-    \begin{flashcard}[Understand]{Options for purchasing Azure products and services}
+    \begin{flashcard}[\ ]{Möglichkeiten Azure-Produkte und Services zu erwerben}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Azure Portal: Aus dem Menü auswählen, Resourcen erstellen
+            \item Resourcen können aus Cloud Shell oder Azure CLI erstellt werden
+            \item Infrakstruktur automatisch erstellen, z.\,B. Terraform
+        \end{itemize}
 
+        \vspace{5mm}
+        Achtung: Sobald eine Resource erstellt wird, muss eine Verbrauchseinheit bezahlt werden
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Options around Azure Free Account}
+    \begin{flashcard}[\ ]{Azure Free Account}
         \vspace*{\stretch{1}}
 
         \vspace*{\stretch{1}}
@@ -1452,54 +1459,123 @@
 
     \begin{flashcard}[Understand]{Factors affecting costs}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Resourcentyp
+            \item Dienste
+            \item Standord
+            \item Abrechnungszone
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Cost influence of resource types}
+    \begin{flashcard}[\ ]{Einfluss des Resourcentyps auf Kosten}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Kosten sind ressourcenspezifisch\newline
+            Resourcentyp bestimmt preis pro Verbrauchseinheit
+            \item werden Bestimmt durch die Anzahl der Verbrauchseinheiten
+            \item und der Nutzungsart
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Cost influence of services}
+    \begin{flashcard}[\ ]{Kosteneinfluss von Diensten}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item unterscheien sich abhängig vom Konto
+            \begin{itemize}
+                \item Enterprise
+                \item Web Direct
+                \item CSP
+            \end{itemize}
+            \item vorhandene Kontingente
+            \item verschiedene Abrechnungsstrukturen für Drittanbieterdienste
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Einfluss des Standorts auf Kosten}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Variierende Kosten je nach Datencenter wegen
+            \begin{itemize}
+                \item Nachfrage
+                \item lokalen Infrastrukturkosten
+                \item Beliebtheit
+            \end{itemize}
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Cost influence of locations}
+    \begin{flashcard}[\ ]{Einfluss von ausgehendem Datenverkehr}
         \vspace*{\stretch{1}}
+        Daten, die aus Azure-Datencentern fließen, werden entsprechend der Abrechungszone abgerechnet
+
+        \vspace{5mm}
+        \emph{Meistens} sind 5 Gigabypte \emph{pro Zone} kostenfrei
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Kosten von eingehendem Datenverkehr}
+        \vspace*{\stretch{1}}
+        Daten, die in Azure-Datenzenter fließen sind kostenlos.
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Definition]{Abrechnungszonen}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item geografische Gruppierung von Azure-Regionen
+            \item \emph{nur} zu Abrechnungszwecken
+            \item wird für ausgehenden Datenverkehr genutzt
+            \item üblicherweise 5 Gigabyte pro Monat kostenlos
+        \end{itemize}
+        Nicht zu verwechseln mit \emph{Verfügbarkeitszonen}
+
+        \begin{tabular}{l|lll}
+            Zone        &  Bereich\\
+            \hline
+            Zone 1      &  Nordamerika, US Government, UK\\
+                        & Europa, Kanada, Frankreich, Schweiz\\
+            Zone 2      &  Asien (Osten, Südosten), Japan, Australien, Indien, Südkorea\\
+            Zone 3      &  Brasilien, Südafrika, VAE\\
+            Deutschland & Deutschland\\
+        \end{tabular}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Cost influence of ingress traffic}
+    \begin{flashcard}[Understand]{Preisrechner}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Cost influence of egress traffic}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Zones for billing purposes}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Pricing calculator}
-        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Web-Werkzeug zur Kostenschätzung von Azure-Diensten
+            \item erlaubt verschiedene Eigenschaften und Optionen auszuwählen
+            \item unterstützt verschiedene Standorte
+            \item Auswahl des Azure-Tarifs (Free, Basic, \ldots)
+            \item Supportoptionen
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Understand]{Total Cost of Ownership (TCO) calculator}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Tool zum Vorhersagen der Gesamtkosten einer existierenden Umgebung in Azure
+            \item Daten der existierenden lokalen Struktur als Eingabe
+            \item Benötigt spezifikation von
+            \begin{itemize}
+                \item Server
+                \item Datenbanken
+                \item Speicher
+                \item Netzwerk
+            \end{itemize}
+            \item Konfiguration von zahlreichen Parametern:\newline
+            Strom, Speicher, IT, Software, Hardware, Datencenter, \ldots
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
