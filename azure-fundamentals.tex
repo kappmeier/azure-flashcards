@@ -361,8 +361,7 @@
           Cloud  & Verantwortlich für Infrastruktur (VM, Netzwerk, Speicher) & Verantwortung für alles \emph{außer} der vom Nutzer entwickelten Software         & Komplette Verantwortung für die Bereitstellung der Software \\
         \end{tabular}
         \vspace*{\stretch{1}}
-    \end{flashcard}
-  
+    \end{flashcard}  
 
     \subsectioncard{Beschreibe die  Unterschiede zwischen öffentlicher, privater, und Hybrid Cloud}
 
@@ -1554,7 +1553,7 @@
 
     \begin{flashcard}[Understand]{Support Plans}
         \vspace*{\stretch{1}}
-
+        
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -1600,42 +1599,123 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \subsectioncard{Describe Azure Service Leven Agreements (SLAs)}
+    \subsectioncard{Beschreibe Vereinbarungen zum Servicelevel für Azure (SLAs)}
 
-    \begin{flashcard}[Describe]{Service Level Agreement (SLA)}
+    \begin{flashcard}[Definition]{Vereinbarungen zum Servicelevel (SLA)}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item formales Dokument/Vertrag mit spezifischen Bedinungen/Verpflichtungen, die Microsoft eingeht
+            \item Leistungsstandards, die eingehalten werden
+            \item spezifisch für einzelne Azure-Produkte und -Dienste
+            \item Bedingungen für nicht einhalten der Vereinbarung
+            \item
+                \begin{itemize}
+                    \item Leistungsziele
+                    \item Betriebszeit und Konnektivität
+                    \item Dienstguthaben
+                \end{itemize}
 
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Composite SLAs}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{How to determine an appropriate SLA for an application}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \subsectioncard{Understand Service Lifecycle in Azure}
-
-    \begin{flashcard}[Understand]{Public and private preview features}
-        \vspace*{\stretch{1}}
-
+        \end{itemize}
+        Keine SLAs für Free- und Shared-Tarife.
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{General Availability (GA)}
+    \begin{flashcard}[\ ]{Auswirkungen der Betriebszeit}
         \vspace*{\stretch{1}}
-
+        \begin{tabular}{l|lll}
+            SLA      &  Woche  & Monat  & Jahr    \\
+            \hline
+            99\%     &  1,68 h & 7,2 h  & 3,65 d  \\
+            99,9\%   &  10,1 M & 43,2 M & 8,76 h  \\
+            99,95\%  &  5 M    & 21,6 M & 4,38 h  \\
+            99,99\%  &  1,01 M & 4,32 M & 52,56 M \\
+            99,999\% &  6 s    & 25,9 s & 5,26 M  \\
+        \end{tabular}
+        
+        \vspace{5mm}
+        Wenn die Betriebszeit in den Servicelevel-Vereinbarungen zu klein ist, kann sie schwer garantiert werden
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{How to Monitor updates and product changes}
+
+    \begin{flashcard}[\ ]{Zusammengesetzte SLAs}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Kombination von mehreren Azure-Diensten
+            \item kann je nach Architektur \emph{niedrigere} oder \emph{höhere} Betriebszeiten ergeben
+        \end{itemize}
+        ``UND''
+        \begin{itemize}
+            \item eine Anwendung benötigt zwei (oder mehr) Dienste zusammen
+            \item zusammengesetzte Fehlerwahrscheinlichkeit \emph{höher}
+        \end{itemize}
+        ``ODER''
+        \begin{itemize}
+            \item eine Anwendung benötigt mindestens einer von zwei (oder mehreren) Diensten
+            \item zusammengesetzte Fehlerwahrscheinlichkeit \emph{niedriger}
+            \item teurer und komplexere Architektur
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    
+    
+    \begin{flashcard}[Beschreibe]{Ein angemessenes SLA für eine Anwendung bestimmen}
+        \vspace*{\stretch{1}}
+            \begin{itemize}
+                \item bestimmen der Anforderungen an die Anwendung
+                \item die passenden Azure-Dienste auswählen, sollten keine kleinere Verfügbarkeit haben als das angestrebte Ziel
+                \item höhere Verfügbarkeit erfordert komplexere Systeme\newline
+                Verfügbarkeitsklasse 4 (99,99\%) nicht mit manuellem Eingriff möglich
+                \item Zeitfenster für Betriebszeit enorm wichtig\newline
+                $\Rightarrow$ stündliche oder tägliche Betriebszeit führt zu unerreichbar kleinen Toleranzen
+            \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \subsectioncard{Verstehen des Azure Service-Lebenszyklus}
+
+    \begin{flashcard}[Definition]{Öffentliche and private Previewfeatures}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Betaversionen oder Vorabversionen zum Testen
+            \item private Vorschau: nur für einge Kunden verfügbar\newline
+            benötigt Einladung
+            \item öffentliche Vorschau: für alle Kunden verfügbar
+            \item eingeschränkte Gechäftsbedingungen: kein Service oder keine Verfügbarkeitsgarantie
+            \item Das Azure-Portal hat auch eine Vorschau\newline
+            (\href{https://preview.portal.azure.com/}{https://preview.portal.azure.com/})
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+    
+    \begin{flashcard}[\ ]{Benutzung von öffentlichen Previewfeatures}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Im Azure-Portal: Resourcen mit namen ``Preview''
+            \item RSS-Feed
+            \item Webseite: \href{https://azure.microsoft.com/services/preview/}{https://azure.microsoft.com/services/preview/}
+        \end{itemize}
+        
+        \vspace{5mm}
+        Feedback: Über das Portal
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+    
+    
+
+    \begin{flashcard}[Definition]{General Availability (GA)}
+        \vspace*{\stretch{1}}
+        Produkte und Dienste die mit Support für alle Kunden verfügbar sind
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Wie können Produktänderungen und Features verfolgt werden}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Webseite \href{https://azure.microsoft.com/updates/}{https://azure.microsoft.com/updates/}
+            \item Eintrag ``Neuheiten'' im Azure-Portal
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
