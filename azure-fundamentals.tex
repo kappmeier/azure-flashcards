@@ -41,7 +41,7 @@
     \vfill
     \centerline{\Large{#2}}
     \vfill
-    \newpage
+\newpage
 }
 {\newpage}
 
@@ -394,7 +394,7 @@
 
     \begin{flashcard}[Describe]{Hybrid Cloud}
         \vspace*{\stretch{1}}
-        Verbindet öffentliche und private cloud \newline
+        Verbindet öffentliche und private cloud\newline
         $\Rightarrow$ Anwendungen können in der passenden Umgebung ausgeführt werden
 
         \vspace{5mm}
@@ -713,7 +713,7 @@
     \begin{flashcard}[Definition]{Azure Marketplace}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item Sammlung von Applikationen und Services \newline
+            \item Sammlung von Applikationen und Services\newline
             von verschiedenen Anbietern, zertifiziert für Azure-Kompatibilität
             \begin{itemize}
                 \item KI + Machine Learning
@@ -1161,7 +1161,7 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item Überprüfen der Identität
-                \newline(siehe Authentifizierung)
+\newline(siehe Authentifizierung)
             \item Kennwortrücksetzung
             \item Multi-Factor Authentication
             \item Smart Lockout
@@ -1207,9 +1207,9 @@
     \begin{flashcard}[Definition]{Dienstprinzipale}
         \vspace*{\stretch{1}}
             \begin{itemize}
-                \item \emph{Identität}: eine Entität, die Authentifiziert werden kann \newline
+                \item \emph{Identität}: eine Entität, die Authentifiziert werden kann\newline
                     (Sowohl Benutzer als auch Anwendungen, Server, …)
-                \item \emph{Prinzipal}: eine Identität zusammen mit Rollen \newline
+                \item \emph{Prinzipal}: eine Identität zusammen mit Rollen\newline
                     (z.\,B. Administrator-Zugriff)
                 \item \emph{Dienstprinzipal}: eine Identität, die von einem Dienst oder einer App verwendet wird
                 \item[$\Rightarrow $] Dienstprinzipale sind keine Benutzer
@@ -1404,23 +1404,44 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \sectioncard{Understand Azure Pricing and Support}
+    \sectioncard{Azure Bezahlmodell und Support}
 
-    \begin{flashcard}[Describe]{Azure subscription}
+    \begin{flashcard}[Describe]{Azure Abbonement}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Uses and options with Azure subscriptions}
-        \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item mindestens ein pro Account, aber auch mehrere möglich
+            \item logischer Container in dem Resourcen bereitgestellt werden
+            \item Kosten werden aggregiert und dem Abbonement in Rechnung gestellt
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Subscription access control}
+    \begin{flashcard}[\ ]{Anwendungsbeispiele von Abonements}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item mindestens ein pro Account, aber auch mehrere möglich
+            \item ermöglicht Strukturierung, z.\,B. für
+            \begin{itemize}
+                \item Umgebungen (dev, test, staging, prod)
+                \item Organisationsstrukturen und Zugriffsbeschränkung (Abteilungen, ...)
+                \item Abrechnung
+                \item Grenzwerte pro Abonnement (Anzahl Ressourcen, etc)
+            \end{itemize}
+            \item logischer Container in dem Resourcen bereitgestellt werden
+            \item Kosten werden aggregiert und dem Abonnement in Rechnung gestellt
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
 
+    \begin{flashcard}[\ ]{Abonnementbeschränkungen}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Zugriff auf Resourcen wird auf Abonnement-Ebene festgelegt
+            \item z.\,B. jede Abteilung kann auf ihr Abonnement zugreifen\newline
+            IT-Abteilung kann auf alle Abonnements zugreifen
+            \item Zugriffsbeschränkung auch für verschiedene Umgebungen:\newline
+            z.\,B. Produktions-Umgebung
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -1438,6 +1459,19 @@
 
     \subsectioncard{Understand Planning and Management of Costs}
 
+    \begin{flashcard}[\ ]{Azure kaufen}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item \href{azure.com}{azure.com}\newline
+            einfachste Möglichkeit für Kunden aller Größen
+            \item Microsoft-Vertreter\newline
+            Für Großkunden, die direkt mit Microsoft zusammenarbeiten
+            \item Microsoft-Partner\newline
+            erwerb von verwalteten Diensten über Partner
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+    
     \begin{flashcard}[\ ]{Möglichkeiten Azure-Produkte und Services zu erwerben}
         \vspace*{\stretch{1}}
         \begin{itemize}
@@ -1453,6 +1487,12 @@
 
     \begin{flashcard}[\ ]{Azure Free Account}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item kostenloses Konto zum ausprobieren
+            \item 12 Monate kostenloser Zugriff auf einige Azure-Produkte
+            \item Guthaben für die ersten 30 Tage
+            \item benötigt Microsoft- oder GitHub-Konto
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1622,53 +1662,83 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \subsectioncard{Understand the Support Options Available with Azure}
+    \subsectioncard{Verfügbare Supportoptionen in Azure}
 
-    \begin{flashcard}[Understand]{Support Plans}
+    \begin{flashcard}[\ ]{Supportpläne}
+        \vspace*{\stretch{1}}
+        Basis-Support für Abrechnung und Abbonementverwaltung ist inklsive
+        
+        \vspace{5mm}
+        Darüber hinaus supportpläne:
+        \begin{itemize}
+            \item Developer
+            \item Standard
+            \item Professional Direct
+        \end{itemize}
+
+        \vspace{5mm}
+        Kaufen im Azure-Portal
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Eigenschaften]{Developer-Supportplan}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item geeignet für unkritsche Workloads
+            \item Reaktionszeit: 1 Werktag (langsamster)
+            \item kein proaktiver Support
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Eigenschaften]{Standard-Supportplan}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item geeignet für Produktionsworkloads
+            \item Reaktionszeit: 1 Stunde für kritsche Fälle
+            \item kein proaktiver Support
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Eigenschaften]{Professional Direct-Supportplan}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item geeignet für geschäftskritische Workloads
+            \item Reaktionszeit: 1 Stunde und Prioritätsverfolgung
+            \item kein proaktiver Support
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[Understand]{Premium support plan}
         \vspace*{\stretch{1}}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Dev support plan}
+    \begin{flashcard}[\ ]{Wie wird ein Support-Ticket eröffnet}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Standard support plan}
-        \vspace*{\stretch{1}}
-
+        Hilfe-Menü im Azure-Portal
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Professional Direct support plan}
+    \begin{flashcard}[\ ]{Verfügbare Kanäle außerhalb des Supportplans}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Premiur support plan}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{How to open a support ticket}
-        \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Understand]{Available support channels (outside of support plan)}
-        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Azure Knowledge Center
+            \item Microsoft Tech Community
+            \item Stack Overflow, Server Fault, Cloud Stackexchange
+            \item Azure-Feedbackforen
+            \item Twitter: @AzureSupport
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Knowledge Center}
         \vspace*{\stretch{1}}
-
+        Durchsuchbare Datenbank mit FAQs
         \vspace*{\stretch{1}}
     \end{flashcard}
 
