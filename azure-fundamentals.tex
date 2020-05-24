@@ -359,7 +359,7 @@
           Cloud  & Verantwortlich für Infrastruktur (VM, Netzwerk, Speicher) & Verantwortung für alles \emph{außer} der vom Nutzer entwickelten Software         & Komplette Verantwortung für die Bereitstellung der Software \\
         \end{tabular}
         \vspace*{\stretch{1}}
-    \end{flashcard} 
+    \end{flashcard}
 
     \subsectioncard{Beschreibe die  Unterschiede zwischen öffentlicher, privater, und Hybrid Cloud}
 
@@ -585,7 +585,11 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item optimieren die Auslieferung aus Anwendungs-Serverfarmen
-            \item erhöht gleichzeitig Anwendungssicherheit
+            \item erhöht gleichzeitig Anwendungssicherheit:
+            \begin{itemize}
+                \item fungiert als Web Application Firewal (WAF)
+                \item[$\Rightarrow$] Schutz vor bekannten Sicherheitsrisiken
+            \end{itemize}
         \end{itemize}
 
         \vspace*{\stretch{1}}
@@ -1046,10 +1050,24 @@
 
     \sectioncard{Understand Security, Privacy, Compliance, and Truts}
 
-    \subsectioncard{Understand Securing Network Connectivity in Azure}
-
-    \begin{flashcard}[Describe]{Network Security Groups (NSG)}
+    \begin{flashcard}[Definition]{Mehrstufiges Sicherheitskonzept}
         \vspace*{\stretch{1}}
+        Sicherheit in verschiedenen Stufen
+        \begin{itemize}
+            \item Netzwerksicherheit: zwischen Dienten, oder bei externem Zugriff
+            \item Verschlüsselung: letzte Maßnahme um Daten noch zu schützen, wenn unberechtigter Zugriff möglich ist
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \subsectioncard{Sichere Netzwerkverbindungen in Azure}
+
+    \begin{flashcard}[Definition]{Netzwerksicherheitsgruppe (NSG)}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item stellen Richtlinien bereit, wie bestimmte IaaS-Infrastruktur im Netzwerk abgesichert sein sollen
+            \item Integration in Azure Security Center: jede Resource mit externem Internetzugriff soll in einer NSG sein
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1066,8 +1084,15 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Firewall}
+    \begin{flashcard}[Definition]{Azure Firewall}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item verwalteter cloudbasierter Dienst (Firewall-as-a-Service)
+            \item zustandsbehaftete Firewall
+            \item viele Protokolle: RDP, SSH, FTP, \ldots
+            \item Schutz für alle Protokolle auf Netzwerkebene für eingehende und ausgehende Verbindungen
+            \item Anwendungsebene: ebenfalls Schutz für HTTP(S)
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1238,6 +1263,37 @@
 
     \subsectioncard{Describe Security Tools and Features of Azure}
 
+    \begin{flashcard}[\ ]{Verschlüsselung}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item \emph{Azure-Speicherdienstverschlüsselung} ermöglichen transparente (symmetrische) Verschlüsselung\newline
+                Verwaltete Festplatten, Blob, Azure Files, Queues, \ldots
+            \item \emph{Azure Disk Encryption} ermöglicht IaaS-Datenträger-Verschlüsselung\newline
+                \texttt{dm-crypt} mit Verbindung zu Azure Key Vault
+            \item \emph{Transparent Data Encryption}: transparente symmetrische Verschlüsselun von Azure SQL und Data Warehouse
+            \item \emph{Key Vault} speichert geheime Daten\newline
+                Schlüssel, Token, Kennwörter, Zertifikate, \ldots
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Zertifikate}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Dienstzertifikate
+            \begin{itemize}
+                \item manuell hochladen oder über Azure Portal
+                \item validierung von HTTPS-Endpunkten
+                \item getrennte Verwaltung von Diensten und zugeordneten Zertifikaten\newline
+                Aktualisierung ohne Update der Dienste möglich
+            \end{itemize}
+            \item Verwaltungszertifikate
+            \item automatische Verwaltung mit Azure Key VAult (z.\,B. Verlängerung)
+        \end{itemize}
+
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
     \begin{flashcard}[Describe]{Azure Security Center}
         \vspace*{\stretch{1}}
 
@@ -1250,8 +1306,27 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Key Vault}
+    \begin{flashcard}[Definition]{Key Vault}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Clouddienst zum Schützen von wichtigen geheimen Informationen
+            \item insbesondere Schlüssel, die für Ver- und Entschlüsselung notwendig sind
+            \item stellt Funktionen für Zugriff, Berechtigungen und Protokollierung bereit
+            \item unterstützt Verschlüsselung per Software oder mit Hardwaresicherheitsmodulen nach FIPS 140-2 Level 2
+        \end{itemize}
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Vorteile von Azure Key Vault}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item zentrale Verwaltung von Geheimnissen
+            \item sichere Speicherung nach aktuellen Sicherheitsstandards
+            \item Zugriff nur nach Authentifizierung und mit Autorisierung
+            \item Überwachung der Zugriffe auf Geheimnissen
+            \item Unterstützung bei der Verwaltung von Zertifikaten
+            \item einfache Integration in andere Azure-Dienste (z.\,B. Speicherdienste)
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1471,7 +1546,7 @@
         \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
-    
+
     \begin{flashcard}[\ ]{Möglichkeiten Azure-Produkte und Services zu erwerben}
         \vspace*{\stretch{1}}
         \begin{itemize}
@@ -1667,7 +1742,7 @@
     \begin{flashcard}[\ ]{Supportpläne}
         \vspace*{\stretch{1}}
         Basis-Support für Abrechnung und Abbonementverwaltung ist inklsive
-        
+
         \vspace{5mm}
         Darüber hinaus supportpläne:
         \begin{itemize}
@@ -1799,8 +1874,6 @@
         \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
-
-
 
     \begin{flashcard}[Beschreibe]{Ein angemessenes SLA für eine Anwendung bestimmen}
         \vspace*{\stretch{1}}
