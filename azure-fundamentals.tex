@@ -72,7 +72,7 @@
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
-    \date{2020-05-26}
+    \date{2020-06-08}
     \author{Jan-Philipp Kappmeier}
 
     \clearpage\maketitle
@@ -98,7 +98,7 @@
         \begin{itemize}
             \item keine Vorausszahlung
             \item teure Infrastruktur muss nicht gekauft werden
-            \item Resourcen müssen nur bezahlt werden, wenn sie benötigt werden
+            \item Ressourcen müssen nur bezahlt werden, wenn sie benötigt werden
         \end{itemize}
 
         \vspace{5mm}
@@ -108,7 +108,7 @@
 
     \begin{flashcard}[Definition]{Skalierbarkeit}
         \vspace*{\stretch{1}}
-        Anzahl der Resourcen und Dienste nach Nachfrage verändern
+        Anzahl der Ressourcen und Dienste nach Nachfrage verändern
 
         \vspace{5mm}
         Vertikale Skalierung (Hochskalieren)
@@ -131,7 +131,7 @@
     \begin{flashcard}[Definition]{Elastizität der Cloud}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item automatische Hinzunahme oder Wegnahme von Resourcen bei ändernder Nachfrage
+            \item automatische Hinzunahme oder Wegnahme von Ressourcen bei ändernder Nachfrage
             \item Beispiel: kurzzeitige Lastspitzen, aber auch jahreszeitliche Änderungen oder täglich, wöchentlich
         \end{itemize}
 
@@ -260,7 +260,7 @@
     \begin{flashcard}[Definition]{Verbrauchsbasierendes Modell}
         \vspace*{\stretch{1}}
             \begin{itemize}
-                \item es werden nur benutzte Resourcen bezahlt
+                \item es werden nur benutzte Ressourcen bezahlt
                 \item bei hoher Nachfrage in einem Monat kann gemäß der Nachfrage skaliert werden (und auch bezahlt)
                 \item bei sinkender Auslastung können die Kosten wieder reduziert werden
             \end{itemize}
@@ -369,7 +369,7 @@
             \item typische Methode der Cloudnutzung
             \item keine loakle Hardware
             \item \emph{alle} Workloads werden in der Cloud ausgeführt
-            \item ggf. können Resourcen für andere Cloudbenutzer freigegeben werden
+            \item ggf. können Ressourcen für andere Cloudbenutzer freigegeben werden
         \end{itemize}
 
         \vspace{5mm}
@@ -516,7 +516,7 @@
         \begin{itemize}
             \item festgelegt durch App Service-Plan
             \item bestimmt die größe/Anzahl der verfügbaren Hardware
-            \item SKU F1 ermöglicht kostenlose Verwendung von kleinen Resourcen im Free-Tarif
+            \item SKU F1 ermöglicht kostenlose Verwendung von kleinen Ressourcen im Free-Tarif
         \end{itemize}
 
         \vspace*{\stretch{1}}
@@ -792,7 +792,7 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item skalierbare, verwaltete SaaS-Lösung für IoT
-            \item einfache Vernetzung von IoT-Resourcen
+            \item einfache Vernetzung von IoT-Ressourcen
             \item Verwaltung, Überwachung
         \end{itemize}
         \vspace*{\stretch{1}}
@@ -843,7 +843,7 @@
             \item kombiniert Data Warehousing und Big-Data-Analysen
             \item schnelle Ausführung komplexer Abfragen in großen Datenmengen (Petabyte)
             \item nutzt das cloudbasierte Enterprise Data Warehouse (EDW)
-            \item Massively Prallel Processing (MPP) mit Unterstützung von freien On-Demand-Resourcen
+            \item Massively Prallel Processing (MPP) mit Unterstützung von freien On-Demand-Ressourcen
         \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1068,7 +1068,7 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item stellen Richtlinien bereit, wie bestimmte IaaS-Infrastruktur im Netzwerk abgesichert sein soll
-            \item Integration in Azure Security Center: jede Resource mit externem Internetzugriff soll in einer NSG sein
+            \item Integration in Azure Security Center: jede Ressource mit externem Internetzugriff soll in einer NSG sein
             \item filtern Datenverkehr (ein- und ausgehend) zu Ressourcen, z.\,B. nach IP-Adresse, Port, Protokoll, Subnetzen, \ldots
             \item öffentlicher Zugriff kann komplett gesperrt werden
         \end{itemize}
@@ -1103,7 +1103,7 @@
 
     \begin{flashcard}[Beschreibung]{Schutz vor DDoS-Angriffen}
         \vspace*{\stretch{1}}
-        Denial-of-Service-Angriffe: Überlastung einer (Netwzerk-)Resource durch zahlreiche Anfragen
+        Denial-of-Service-Angriffe: Überlastung einer (Netwzerk-)Ressource durch zahlreiche Anfragen
         \begin{itemize}
             \item nutzt Umfang und Elastizität des globalen Microsoft-Netzwerks
             \item Überwachung des Datenverkehrs im Edge-Bereich
@@ -1419,7 +1419,7 @@
         \begin{enumerate}
             \item Rollen: bestimmte eingeschränkte Berechtiungen (Schreibgeschützt, Mitwirkender) die einer Identität für bestimmte Azure-Dienstinstanzen zu gewiesen werden
             \item Identitäten erben Rollen über Gruppenmitgliedschaft
-            \item Rollen vererben sich von höheren Stufen (gesamtes Abonnement (Subscription) über Resourcengruppen zu einzelnen Resourcen) etc.
+            \item Rollen vererben sich von höheren Stufen (gesamtes Abonnement (Subscription) über Ressourcengruppen zu einzelnen Ressourcen) etc.
         \end{enumerate}
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1427,7 +1427,7 @@
     \begin{flashcard}[]{Vorteile von RBAC}
         \vspace*{\stretch{1}}
         \begin{enumerate}
-            \item Trennung von Sicherheitsprinzipalen?, Zugriffsrechten und Resourcen
+            \item Trennung von Sicherheitsprinzipalen?, Zugriffsrechten und Ressourcen
             \item ermöglilcht einfache Verwaltung und differenzierte Steuerung.
             \item Sicherstellung, dass nur erforderliche \emph{Mindestberechtigung} gewährt werden
             \item[$\Rightarrow$] es sollten nie mehr Berechtigungen, als notwendig vergeben werden
@@ -1548,7 +1548,7 @@
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item mindestens ein pro Account, aber auch mehrere möglich
-            \item logischer Container in dem Resourcen bereitgestellt werden
+            \item logischer Container in dem Ressourcen bereitgestellt werden
             \item Kosten werden aggregiert und dem Abbonement in Rechnung gestellt
         \end{itemize}
         \vspace*{\stretch{1}}
@@ -1565,7 +1565,7 @@
                 \item Abrechnung
                 \item Grenzwerte pro Abonnement (Anzahl Ressourcen, etc)
             \end{itemize}
-            \item logischer Container in dem Resourcen bereitgestellt werden
+            \item logischer Container in dem Ressourcen bereitgestellt werden
             \item Kosten werden aggregiert und dem Abonnement in Rechnung gestellt
         \end{itemize}
         \vspace*{\stretch{1}}
@@ -1574,7 +1574,7 @@
     \begin{flashcard}[\ ]{Abonnementbeschränkungen}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item Zugriff auf Resourcen wird auf Abonnement-Ebene festgelegt
+            \item Zugriff auf Ressourcen wird auf Abonnement-Ebene festgelegt
             \item z.\,B. jede Abteilung kann auf ihr Abonnement zugreifen\newline
             IT-Abteilung kann auf alle Abonnements zugreifen
             \item Zugriffsbeschränkung auch für verschiedene Umgebungen:\newline
@@ -1613,13 +1613,13 @@
     \begin{flashcard}[\ ]{Möglichkeiten Azure-Produkte und Services zu erwerben}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item Azure Portal: Aus dem Menü auswählen, Resourcen erstellen
-            \item Resourcen können aus Cloud Shell oder Azure CLI erstellt werden
+            \item Azure Portal: Aus dem Menü auswählen, Ressourcen erstellen
+            \item Ressourcen können aus Cloud Shell oder Azure CLI erstellt werden
             \item Infrakstruktur automatisch erstellen, z.\,B. Terraform
         \end{itemize}
 
         \vspace{5mm}
-        Achtung: Sobald eine Resource erstellt wird, muss eine Verbrauchseinheit bezahlt werden
+        Achtung: Sobald eine Ressource erstellt wird, muss eine Verbrauchseinheit bezahlt werden
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -1638,7 +1638,7 @@
     \begin{flashcard}[Understand]{Factors affecting costs}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item Resourcentyp
+            \item Ressourcentyp
             \item Dienste
             \item Standord
             \item Abrechnungszone
@@ -1647,11 +1647,11 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[\ ]{Einfluss des Resourcentyps auf Kosten}
+    \begin{flashcard}[\ ]{Einfluss des Ressourcentyps auf Kosten}
         \vspace*{\stretch{1}}
         \begin{itemize}
             \item Kosten sind ressourcenspezifisch\newline
-            Resourcentyp bestimmt preis pro Verbrauchseinheit
+            Ressourcentyp bestimmt preis pro Verbrauchseinheit
             \item werden Bestimmt durch die Anzahl der Verbrauchseinheiten
             \item und der Nutzungsart
         \end{itemize}
@@ -1970,7 +1970,7 @@
     \begin{flashcard}[\ ]{Benutzung von öffentlichen Previewfeatures}
         \vspace*{\stretch{1}}
         \begin{itemize}
-            \item Im Azure-Portal: Resourcen mit namen ``Preview''
+            \item Im Azure-Portal: Ressourcen mit namen ``Preview''
             \item RSS-Feed
             \item Webseite: \href{https://azure.microsoft.com/services/preview/}{https://azure.microsoft.com/services/preview/}
         \end{itemize}
