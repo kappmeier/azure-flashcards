@@ -72,7 +72,7 @@
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
-    \date{2020-06-09}
+    \date{2020-06-10}
     \author{Jan-Philipp Kappmeier}
 
     \clearpage\maketitle
@@ -1503,23 +1503,46 @@
                 \item Typ von erlaubten Ressourcen
                 \item Einforderung bestimmter Tags
             \end{itemize}
-
-        \end{itemize}
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Definition]{Initiatives}
-        \vspace*{\stretch{1}}
-        \begin{itemize}
-            \item Sammlung von Richtlinien (aus Azure Policy)
-            \item Initiatives bündeln Richtlinien für ein bestimmtes Ziel, z.\,B. eine spezielle Compliance-Anforderung
         \end{itemize}
         
         \vspace{5mm}
-        $\Rightarrow$ meistens ist es sinnvoll Initiatives anstatt Richtlinien zu verwenden:
+        Richtlinien beschreiben \emph{explizite Verbote}, während standardmäßíg alles zugelassen ist
+        
+        $\Rightarrow$ dies ist das Gegenteil von RBAC
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[\ ]{Verwenden von Richtlinien}
+        \vspace*{\stretch{1}}
+        \begin{enumerate}
+            \item Erstellen einer \emph{Richtliniendefinition}\newline
+            z.\,B. im JSON-Format
+            \item Registrierung einer Richtlinie
+            \item Zuweisen der Richtliniendefinition\newline
+            z.\,B. für Resourcengruppen, ein gesamtes Abbonement, \ldots
+            \item Auswirkungen bei verletzten Richtlinien\newline
+            z.\,B. Ressourcenerstellung abbrechen, Audit, \ldots
+        \end{enumerate}
+        
+        \vspace{5mm}
+        Ergebnisse von Richtlinien können in der \emph{Richtlinienkonformität} im Protal angeschaut werden
+    \end{flashcard}
+    
+    \begin{flashcard}[Definition]{Initiativen}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Initiativendefinition:\newline
+            Sammlung von Richtliniendefinitionen (aus Azure Policy)
+            \item Initiatives bündeln Richtlinien für ein bestimmtes Ziel, z.\,B. eine spezielle Compliance-Anforderung
+            \item \emph{Initiativenzuweisung} analog zu Richtlinienzuweisung
+        \end{itemize}
+        
+        \vspace{5mm}
+        $\Rightarrow$ meistens ist es sinnvoll Initiativen anstatt Richtlinien zu verwenden:
         \begin{itemize}
             \item einfachere Verwaltung
             \item oft mehrere Richtlinien für ein Ziel notwendig
+            \item sogar für einzelne Richtlinien!
         \end{itemize}
 
         \vspace*{\stretch{1}}
@@ -1574,22 +1597,53 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure Blueprints}
+    \begin{flashcard}[Describe]{Azure Blaupausen}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Unterstützung von Sicherheits- und Complience-Anforderungen durch Vorlagen
+            \item ermöglicht wiederholbare Erstellung von Ressourcen
+            \item Vorlage ermöglicht schnelle Bereitstellung von ähnlichen und konformen Umgebungen
+            \item benutzbar auf allen Levels, bereits von Verwaltungsgruppen abwärts
+            \item Blaupausen werden an Azure Ressource Manager übergeben um Ressourcen zu erstellen
+            \item eingebaute Versionierung (direkt in Azure, im Unterschied zu Ressource-Manager-Vorlagen)
+        \end{itemize}
+        $\Rightarrow$ Richtlinien und Rollen auf Verwaltungsgruppen-Ebene sind der größte Vorteil von Blaupausen gegenüber Tools wie Terraform.
+        Für kleinteiligere Erstellung von Ressourcen weniger geeignet
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \subsectioncard{Understand monitoring and Reporting Options in Azure}
+    \subsectioncard{Verstehen der Überwachungs-Optionen in Azure}
 
     \begin{flashcard}[Describe]{Azure Monitor}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Dienst für das Sammeln, Analysieren und Reagieren auf Telemetriedaten
+            \item ermöglicht Verständnis der Leistung von eigenen Anwendungen in Azure
+            \item detektierung von Problemen, die auftreten können (proaktiv)
+            \item Datengewinnunga aus verschiedensten Datenquellen:\newline
+            Anwendung, Betriebssystem, Ressourcen, Abbonement, Active Directory, \ldots
+            \item sammelt automatisch und im Hintergrund Daten und speichert in \emph{Aktivitätsprotokollen}\newline
+            $\Rightarrow$ Bereitstellung im Portal als Metriken
+            \item Datenabruf für spezielle Ressourcen: Webanwendungen/Azure Apps (Application Insights), Container/AKS, Virtuelle Maschinen
+            \item Integration der Überwachungsdienste in Azure Service Health
+            \item automatische Benachrichtigung im Problemfall
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Azure Service Health}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Sammlung mit Anleitungen und Unterstützung bei Problemen mit Azure-Diensten
+            \item Azure Status:\newline
+                Globale Übersicht (d.\,h. nicht für einzelne Azure-Kunden)
+            \item Service Health:\newline
+                Dashboard mit Stati der genutzten Azure-Dienste, Ereignisübersicht, Regionsübersicht
+            \item Ressource Health:\newline
+                Diagnoseunterstützung bei Problemen von Ressourcen. Personalisiert.
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1626,33 +1680,65 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Microsoft Privacy Statement}
+    \begin{flashcard}[\ ]{Microsoft Datenschutzerklärung}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{Trust Center}
-        \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item beschreibt welche Daten Microsoft verarbeitet
+            \item Grundlage zu vertrauensvollen Zusammenarbeit
+            \item gilt für sämtliche Interaktionen zwischen Microsoft und dem \emph{Azure}-Kunden für alle Dienste, Webseiten, \ldots
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Service Trust Portal}
+    \begin{flashcard}[Definition]{Trust Center}
         \vspace*{\stretch{1}}
-
-        \vspace*{\stretch{1}}
-    \end{flashcard}
-
-    \begin{flashcard}[Describe]{Complieance Manager}
-        \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Webseite mit Informationen zu Datenschutz, Sicherheit, Transparenz, Konformität
+            \item Unterstützung für Rechtsbereiche und Konformität
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Determine]{if Azure is complieant for a business need}
+    \begin{flashcard}[Definition]{Service Trust Portal}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Webseite mit Informationen zu Konformität und Überwachungsberichte
+            \item unterstütze Berichte von externen Prüfern/Dienstleistern
+            \item Nachverfolgung von Standards, wie z.\,B. ISO, DSGVO, \ldots
+        \end{itemize}
+        
+        \vspace{5mm}
+        Enthält ebenfalls den Compliance Manager
+        \vspace*{\stretch{1}}
+    \end{flashcard}
 
+    \begin{flashcard}[Describe]{Compliance Manager}
+        \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Dashboard für Risikobewertungen:\newline
+            Überprüfung, ob gesetzliche Vorschriften eingehalten werden
+            \item öffentliche, von Microsoft bereitgestellte Informationen zu Standards (z.\,B. ISO, NIST) und Bestimmungen (z.\,B. DSGVO)
+            \item Nachverfolgung von Konformität in der Organisation
+            \item unterstützung durch \emph{Konformitätspunktzahl}
+            \item Verwaltung von Zertifizierungen der Konformität einer Organisation
+            \item automatische Berichte zu Konformitätsaktivitäten
+            \item empfohlene Aktionen zur Verbesserung der Konformität
+        \end{itemize}
+        
+        $\Rightarrow$ es bleibt in der Verantwortung des Azure-Konden die Konformität der Organisation zu überwachen!
+        \vspace*{\stretch{1}}
+    \end{flashcard}
+
+    \begin{flashcard}[]{Ist Azure konform mit den Geschäftsanforderungen?}
+        \vspace*{\stretch{1}}
+        Nachlesen der von Azure unterstützten Standards und Bestimmungen in
+        \begin{itemize}
+            \item Trust Center
+            \item Service Trust Portal
+        \end{itemize}
+        
+        \vspace{5mm}
+        Anzeige und Verwaltung eigener Aktivitäten im Compliance Manager
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -1715,9 +1801,18 @@
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Understand]{Subscription management using Management groups}
+    \begin{flashcard}[Understand]{Subscription management mit Verwaltungsgruppen}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Zusammenfassung mehrerer Abonnements zu Verwaltungsgruppen
+            \item ermöglicht Richtlinien und Konformität über mehrere Abonnements hinweg
+        \end{itemize}
+        $\Rightarrow$ Verwaltung für Unternehmen in großem Umfang
 
+        \vspace{5mm}
+        Unterschied Subscription: Zugriffskontrolle basierend auf Zuständigkeit und Anforderung
+        
+        Verwaltungsgruppe: übergeordnete Anforderungen, die von (einer oder mehreren) Abteilungen oder Firmenbereichen eingehalten werden müssen
         \vspace*{\stretch{1}}
     \end{flashcard}
 
