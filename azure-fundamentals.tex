@@ -72,7 +72,7 @@
 \begin{document}
 
     \title{Microsoft Certified Azure Fundamentals Flashcards}
-    \date{2020-06-10}
+    \date{2020-06-14}
     \author{Jan-Philipp Kappmeier}
 
     \clearpage\maketitle
@@ -1082,13 +1082,34 @@
 
     \begin{flashcard}[Describe]{Azure DevOps}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Azure-Service mit Tools zur Unterstützung von DevOps-Prozessen
+            \item Azure Pipelines:
+            \begin{itemize}
+                \item Continuous Delivery
+                \item Continuous Integration
+            \end{itemize}
+            \item Azure Boards: Issue tracking, Organisation, \ldots
+            \item Azure Test Plans: Test-Tools für manuelles Testen
+            \item Azure Repos: source code Verwaltung mit Git
+            \item Azure Artifacts: Binary repository
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Azure DevTest Labs}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Umgebung für Test/Entwicklung mit virtuellen Maschinen und PaaS Services
+            \item Richtlinien ermöglichen Nutzung von Ressourcen ohne Genehmigung
+            \begin{itemize}
+                \item vorkonfigurierte und vor-erstellte Systeme
+                \item automatischer Shutdown
+            \end{itemize}
+            \item vorkonfigurierte Systeme basierend auf Resource Manager-Vorlagen
+            \item Kontrolle über verschwendete Ressourcen, Kosten, Budgests
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
@@ -1100,32 +1121,66 @@
 
     \subsectioncard{Understand Azure Management Tools}
 
-    \begin{flashcard}[Understand]{Azure Portal}
+    \begin{flashcard}[\ ]{Azure Portal}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Eine von drei möglichen Azure Management tools
+            \item Web-Frontend zur Verwaltung von Azure Services und Ressourcen
+            \item Kontaktaufnahme zu Microsoft, z.\,B. über Service-Tickets
+            \item Anzeige von Logs, Dashboards, Fehlermeldungen
+            \item nicht so gut geeignet um Ressourcen/Infrastruktur tatsächlich zu erstellen und Verwalten
+            \item keine Automatisierung
+        \end{itemize}
+        $\Rightarrow$ Infrastructur as Code besser geeignet
 
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure PowerShell}
+    \begin{flashcard}[\ ]{Azure PowerShell}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Eine von drei möglichen Azure Management tools
+            \item Modul dasin Windows PowerShell oder PowerShell Core eingebunden werden kann
+            \item verfügbar als \emph{Azure Cloud Shell}, oder lokal
+            \item unterstützt Automatisierung
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Azure CLI}
+    \begin{flashcard}[Definition]{Azure CLI}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Eine von drei möglichen Azure Management tools
+            \item Kommandozeilen-Programm um mit Azure zu Verbinden und Befehle abzusetzen
+            \item verwaltet Azure Ressourcen
+            \item verfügbar als \emph{Azure Cloud Shell}, oder lokal
+            \item unterstützt Automatisierung
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{Cloud Shell}
+    \begin{flashcard}[Definition]{Cloud Shell}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Im webbrowser laufende Shell, die sich mit Azure verbinden kann
+            \item Unterstütz Azure CLI und Azure PowerShell
+            \item pro Benutzer werden Daten in Azure Blob gespeichert
+        \end{itemize}
 
+        \vspace{5mm}
+        Um auf Azure-Ressourcen zugreifen zu können, muss die IP des cloud shell servers freigegeben sein!
         \vspace*{\stretch{1}}
     \end{flashcard}
 
     \begin{flashcard}[Describe]{Azure Advisor}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item von Microsoft bereitgstelltes Tool
+            \item analysiert Cloud-Nutzung und erkennt Probleme in verschiedenen Kategorieen
+            \item Sicherheit, Kosten, \ldots
+            \item markiert in Kategorien von unwichtig bis wichtig
+            \item grundversion Kostenlos
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
@@ -1160,12 +1215,33 @@
 
     \begin{flashcard}[Describe]{Application Security Groups (ASG)}
         \vspace*{\stretch{1}}
-
+        \begin{itemize}
+            \item Sicherheit auf Netzwerkebene nicht auf IP adressen, sondern Anwendungen
+            \item Virtuelle Maschinen können zu Gruppen zusammengefasst werden
+            \item Virtuelle Maschinen können teil mehrerer Application Security Groups sein
+            \item Zugriffskontrolle basierend auf Workloads
+            \item Spezifikation von Zugriffen auf Anwendungs-Ebene ermöglicht, die Anzahl der Netzwerksicherheitsgruppen zu reduzieren
+        \end{itemize}
         \vspace*{\stretch{1}}
     \end{flashcard}
 
-    \begin{flashcard}[Describe]{User Defined Rules (UDR)}
+    \begin{flashcard}[Definition]{User Defined Rules (UDR)}
         \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item zusätzliche Netzwerkrouten in einem Subnetzen
+            \item benutzerdefinierte Routen können Systemrouten überschreiben
+            \item benutzerdefinierte Routen haben höchste Priorität
+            \item einzelne Routentabellen können mehreren virtuellen Subnetzen zugefügt werden
+            \item unterstützte nächste Hops:
+            \begin{itemize}
+                \item virtuelles Gerät
+                \item Gateway für virtuelle Netzwerke, \emph{außer ExpressRoute}
+                \item keine: falls Netzwerkverkehr verworfen werden soll
+                \item virtuelles Netzwerk: zum Überschreiben des Standardroutings
+                \item Internet
+            \end{itemize}
+
+        \end{itemize}
 
         \vspace*{\stretch{1}}
     \end{flashcard}
