@@ -24,6 +24,21 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Verfügbarkeit von Virtuellen Maschinen}
+    \vspace*{\stretch{1}}
+    \begin{tabular}{l|l}
+        Setup       & Verfügbarkeit \\
+        \hline
+        VM in der \emph{alle} Datenträger verwaltete \texttt{Standard\_HDD} sind & 95\% \\
+        VM in der \emph{alle} Datenträger verwaltete \texttt{Standard\_SSD} sind & 99,5\% \\
+        VM in der \emph{alle} Datenträger \texttt{Premium\_SSD} oder \texttt{Ultra}
+        sind & 99,9\% \\
+        $\geq$ 2 VMs in einer \emph{Verfügbarkeitsgruppe} & 99,95\% für $\geq$ 1 VM  \\
+        $\geq$ 2 VMs in \emph{verschiedenen} Verfügbarkeitszonen & 99,99\% für $\geq$ 1 VM
+    \end{tabular}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
 \subsubsectioncard{configure Monitoring}
 
 \begin{flashcard}[Definition]{Ressourcne-Auslastung einer VM überwachen}
