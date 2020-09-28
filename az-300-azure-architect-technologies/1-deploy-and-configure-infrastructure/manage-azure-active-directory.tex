@@ -1,0 +1,261 @@
+\subsectioncard{Azure Active Directory verwalten}
+
+\begin{flashcard}[Definition]{Azure Active Directory Lizenzen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Free: grundlegene Features
+            \begin{itemize}
+                \item Benutzer und Gruppenverwaltung
+                \item lokale Synchronisierung
+                \item Self-Service-Kennwortrücksetzung
+                \item Single Sign On
+            \end{itemize}
+        \item Premium P1: lokale und Cloudbasierte Resourcen werden unterstützt, MFA, Kennwortrückschreiben (Azure Kennwörter werden ins lokale Active Directory rückübermittelt) (Andere Richtung ist in Free enthalten)
+            \begin{itemize}
+                \item automatische Gruppenverwaltung
+                \item Identitätsverwltung: Identity Manager
+                \item Self-Service-Kennwortrücksetzung auch für lokale Nutzer
+            \end{itemize}
+        \item Premium P2:
+                unterstützt \emph{Identity Protection} und \emph{Privileged Identity Management} (Adminstratorverfolgung und -zugriff)
+        \item nutzungsbasierte Zahlung: bestimmte Features
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Active Directory Enterprise Roaming}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Synchronisierung von Nutzer-Einstellungen für mehrere Geräte (Windows)
+        \item Aktivieren:\newline
+            \texttt{Azure Active Directory | Devices | Enterprise State Roaming}
+            \begin{itemize}
+                \item alle Einstellungen synchronisieren
+                \item Benutzerdefinierte
+                \item keine Einstellungen synchronisieren
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Persönliche Benachrichtigung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Im Portal:\newline
+            \texttt{Azure Active Directory | Identity Governance | Nutzungsbedingungen }
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Privileged Identity Management}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Erlaubt einmaliges Anmelden mit höherer Berechtigung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{add custom domains}
+
+\begin{flashcard}[Definition]{Benutzerdefinierte Domain}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item speichern in Azure Active Directory
+        \item Standard-Domain-Name: \emph{domain.onmicrosoft.com}\newline
+            $\Rightarrow$ kann nicht geändert werden
+        \item ein benutzerdefinierter kann hinzugefügt werden
+        \item Voraussetzungen:
+            \begin{itemize}
+                \item Eine Domain ist vorhanden
+                \item Directory in Azure AD
+            \end{itemize}
+        \item \texttt{Custom domain names | + Add custom domain} im Active Directory-Blade\newline
+            Domainname inklusive Top-Level-Domain
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eine benutzerdefinierte Domain verifizieren}
+    \vspace*{\stretch{1}}
+    Standardmäßig erstellte benutzerdefinierte Domain ist nicht verifiziert
+    \begin{itemize}
+        \item Beim Registrar muss ein Record gespeichert werden
+            \begin{itemize}
+                \item \texttt{TXT}: Besitznachweis
+                \item \texttt{MX}: Mail
+            \end{itemize}
+        \item Werte eintragen (von Azure zum Registrar kopieren):
+            \begin{itemize}
+                \item Alias/Hostname
+                \item Destination
+                \item TTL (Standard 3600, 1 Stunde)
+            \end{itemize}
+    \end{itemize}
+    $\Rightarrow$ wenn alles eingetragen ist, kann verifiziert werden
+    \vspace{1cm}
+    ! Ein Domainname kann nur für ein AD-Verzeichnis genutzt werden\newline
+    (aber mehrere Domains pro Verzeichnis)
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Azure AD Identity Protection}
+
+\begin{flashcard}[Definition]{Identity Protection}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item automatische Erkennung von Risiken
+        \item Warnung bei risikobehaftetem Zugriff
+        \item exportieren von Daten, z.\,B. zum Erstellen von Berichten oder zur Analyse
+        \item Risikorichtlinien mit Anweisungen für Bedrohungen
+            \begin{itemize}
+                \item Mehrfaktor-Authentifizierung erzwingen
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Azure AD Join}
+
+\subsubsectioncard{configure self-service password reset}
+
+\begin{flashcard}[Definition]{Self Service Kennwortrücksetzung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benutzer können ihr Kennwort selbst ändern
+            \begin{itemize}
+                \item entweder, wenn sie eingeloggt sind und es ändern (immer)
+                \item wenn sie keinen Zugriff mehr haben (nur wenn aktiviert, nicht in Free)
+            \end{itemize}
+        \item Azure verwaltet Authentifizierung und Sicherheit (z.\,B. Captcha)
+            \begin{itemize}
+                \item Mehrere sicherheitsmethoden: App, Code, Mail, Telefon, Sicherheitsfrage
+                \item Mindestzahl an Methoden (1 oder 2)
+                \item nicht alle für Administratorn verfügbar (und mindestens 2)!
+            \end{itemize}
+        \item Rückschreiben in lokales AD nur mit Azure AD Premium
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement conditional access policies}
+
+\begin{flashcard}[Definition]{Legacy-Protokolle}
+    \vspace*{\stretch{1}}
+    Unterstützt von Azure Active Directory:
+    \begin{itemize}
+        \item alte Office-Versionen
+        \item Mail-Protokolle: \texttt{IMAP}, \texttt{SMTP}, \texttt{POP3}
+    \end{itemize}
+    \vspace{1cm}
+    trotz mehrstufiger Authentifizierung können Legacy-Protokolle noch genutzt werden\newline
+    $\Rightarrow$ gefährliche logins
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bedingte Zugriffsrichtlinien}
+    \vspace*{\stretch{1}}
+    Nicht jeder Zugriff wird mit zweitem Faktor abgesichert
+
+    \vspace{1cm}
+    Abhängig von verschiedenen Faktoren mehr Sicherheit einfordern
+
+    \vspace{1cm}
+    Teile einer Richtlinie:
+    \begin{itemize}
+        \item Name
+        \item Zuweisungen
+        \item Zugriffs-Kontrolle
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bedingte Zugriffsrichtlinien zuweisen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item für Benutzer oder Gruppen
+        \item mit Cloud-Apps und -Aktionen verbinden (zum Auslösen der Richtlinie)\newline
+            $\Rightarrow$ einfordern zusätzlicher Aktionen, z.\,B. MFA
+        \item weitere Bedingungen:\newline
+            Plattform, Standort, \ldots
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bedingungen für Zugriffsrichtlinie}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Geräteplattform
+        \item Standort
+            \begin{itemize}
+                \item Alle
+                \item vertrauenswürdig
+                \item ausgewählte Standorte (IP-Bereiche, benannt/Länder)
+            \end{itemize}
+        \item Apps
+            \begin{itemize}
+                \item Browser
+                \item Apps
+                    \begin{itemize}
+                        \item Modern, mit Active Directory Authentication Library (ADAL)
+                        \item Exchange ActiveSync
+                        \item Andere
+                    \end{itemize}
+            \end{itemize}
+        \item Gerätestatus
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bedingte Zugriffsrichtlinien Zugriffs-Kontrolle}
+    \vspace*{\stretch{1}}
+    Legen fest, welche Kontrolle erforderlich ist
+    \begin{itemize}
+        \item blockieren
+        \item verschiedene Methoden
+        \item eine von mehreren, oder alle erzwingen
+    \end{itemize}
+    \vspace{1cm}
+    Mögliche Zugriffsmethoden:
+    \begin{itemize}
+        \item mehrstufige Authentifizierung erforderlich
+        \item Gerät muss konform sein
+        \item Hybrid Azure AD-Gerät
+        \item zugelassene Apps
+        \item Schutz-Policy
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Baseline-Richtlinien}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Standardwerte für Sicherheit
+        \item mehrere zur Auswahl
+            \begin{itemize}
+                \item MFA für alle Nutzer verpflichtend
+                \item MFA für Administratoren
+                \item \emph{Alle} legacy logins verbieten. Für spezifischere Regeln, Conditional Access
+                \item MFA für Nutzer, falls notwendig
+                \item Schutz von Zugriff mit hohen Rechten: z.\,B. den Resource Manager nutzen
+            \end{itemize}
+
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{manage multiple directories}
+
+\subsubsectioncard{perform an access review}
+
+\begin{flashcard}[Definition]{Azure AD Anmeldeprotokolle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Auflistung aller Anmeldungen, nach App und Benutzer
+        \item Im Portal: \newline
+            \texttt{Azure Active Directory | Anmeldungen}
+        \item Filterbar nach Client-App, Zeitraum, Status, \ldots
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

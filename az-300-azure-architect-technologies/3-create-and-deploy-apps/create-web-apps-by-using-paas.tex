@@ -1,0 +1,261 @@
+\subsectioncard{Erstellen von Webanwendungen und PaaS}
+
+\subsubsectioncard{create an Azzure app service Web App}
+
+\begin{flashcard}[Definition]{Was wird für eine Web App benötigt?}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item App Service Plan
+            \begin{itemize}
+                \item App Service Plan: dauerhafte Bezahlung
+                \item Consumption Plan: bezahlung nach Nutzen, maximale Laufzeit einer Funktion 10 Minuten
+            \end{itemize}
+        \item Web App
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+
+\begin{flashcard}[Definition]{App Service Plan erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Resourcegruppe + Location
+            \item SKU
+            \item Name
+        \end{itemize}
+        \item CLI: \texttt{az appservice plan create --resource-group \ldots\ --location \ldots --SKU \ldots\ --number-of-workers \ldots}
+            \begin{itemize}
+                \item \texttt{--is-linux} für Linux-Maschinen
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{App Service Plan-Tarife}
+    \vspace*{\stretch{1}}
+    Aufteilung basierend auf Rechen-Ressourcen:
+    \begin{itemize}
+        \item Freigegebene Ressourcen
+            \begin{itemize}
+                \item Free (F1)
+                \item Shared (D1)
+            \end{itemize}
+        \item Dedizierte Ressourcen (1, 2, 4 CPUs)
+            \begin{itemize}
+                \item Basic (B1, B2, B3)
+                \item Standard (S1, S2, S3)
+                \item Premium
+                \item Premium v2 (P1v2, P2v2, P3v3)
+            \end{itemize}
+        \item Isoliert (I1, I2, I3)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{App Service Plan-Features Free/Shared}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item nur für Entwicklung und Tests
+        \item Ausführung auf Maschinen, die auch andere Azure-Nutzer verwenden
+    \end{itemize}
+    Eigenschaften:
+    \begin{itemize}
+        \item 10/100 Apps
+        \item 1 G(i?)B Festplattenspeicher
+        \item Ab \emph{Shared}: benutzerdefinierte Domäne
+        \item Nur Free: kostenlos
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{App Service Plan-Features Basic/Standard/Premium/Premium v2}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Nur Apps desselben Plans können sich eine VM teilen
+        \item bessere Stufe $\Rightarrow$ höhere Anzahl Instanzen für horizontale Skalierung verfügbar
+    \end{itemize}
+    Eigenschaften: (Über Pläne für freigegebene Resourcen hinaus)
+    \begin{itemize}
+        \item Zertifikate\vspace{-0.5mm}
+        \item Unbegrenzte App-Anzahl\vspace{-0.5mm}
+        \item Hybrid-Konnektivität\vspace{-0.5mm}
+        \item SLA: 99,95 \%\vspace{-0.5mm}
+        \item Skalierbarkeit: 3/10/30 Instanzen\vspace{-0.5mm}
+        \item Ab \emph{Standard}:\vspace{-1mm}
+            \begin{itemize}
+                \item automatische Skalierung\vspace{-1mm}
+                \item integration virtueller Netzwerke\vspace{-1mm}
+                \item 5 Staging-Slots, dann 20\vspace{-1mm}
+                \item Backups\vspace{-1mm}
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{App Service Plan-Features Isoliert}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Netzwerkisolation: die dedizierten VMs werden in eigneen virtuellen Netzen ausgeführt\newline
+            (zusätzlich zu Isolation für Berechnungen (wie dedizierte Ressourcen))
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Web App erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Resourcegruppe
+            \item Name
+            \item App-Service-Plan
+            \item deployment source (URL, Branch)
+        \end{itemize}
+        \item CLI: \texttt{az webapp create --name \ldots --resource-group}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create documentation for the API}
+
+\subsubsectioncard{create an App Service Web App for Containers}
+
+\begin{flashcard}[Definition]{Web App erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Für Linux mit Docker-Image von DockerHub:
+        \item CLI: \texttt{az webapp create --name \ldots\ --resource-group \ldots\ \\--deployment-container-image-name}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create an App Service background task by using WebJobs}
+
+\begin{flashcard}[Definition]{WebJobs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Teil von Azure App Service
+        \item Arten:
+            \begin{itemize}
+                \item Fortlaufend: werden in einer Schleife ausgeführt
+                \begin{itemize}
+                    \item Multi-Instance: Script auf jeder Instanz ausführen (Ja/Nein).\newline
+                        (Nicht bei freigegebenen Resourcen (Free, Shared), da nicht horizontal skalierbar)
+                \end{itemize}
+                \item Ausgelöst: werden nach Zeitplan oder manuell ausgeführt
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Vergleich Funktionen/WebJob}
+    \vspace*{\stretch{1}}
+    Features von Funktionen:
+    \begin{itemize}
+        \item automatische Skalierung
+        \item Entwicklung im Browser
+        \item Bezahlung nach Nutzung
+        \item Integration in Logik-Apps
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\subsubsectioncard{enable diagnostics logging}
+
+\begin{flashcard}[Definition]{Diagnoseprotokollierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item automatisch verfügbares Logging zum Debuggen von Web Service-Anwendungen
+        \item Aktivieren:\newline
+            \texttt{App Service-Protokolle} im App-Blade
+        \item Daten können im Speicher der Anwendung oder als Blob gespeichert werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Arten von Web Service-Logging}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Anwendungsprotokollierung
+        \item Webserverprotokollierung
+        \item Detaillierte Fehlermeldungen
+        \item Ablaufverfolgung fehlgeschlagener Anforderungen
+        \item Bereitstellungsprotokollierung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Web Service Anwendungsprotokollierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Windows + Linux
+        \item normale Anwendungslogs
+        \item Webframework und Anwendungscode
+        \item Levels Kritisch bis Trace
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Web Service Webserverprotokollierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item[!] nur Windows
+        \item protokollierung von HTTP-Anforderungen
+        \item geeignet für Metriken
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Detaillierte Web Service Fehlermeldungen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item[!] nur Windows
+        \item Kopie der Fehlerseiten
+        \item ab 400 aufwärts
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ablaufverfolgung fehlgeschlagener Web Service Anforderungen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item[!] nur Windows
+        \item detaillierte Verfolgung im Fehlerfall
+        \item inklusive IIS
+        \item enthält genaue Timings für jede Komponente
+        \item praktisch, um Seitenperformance nachzuvollziehen
+        \item genaue analyse eines speziellen HTTP-Fehlers
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Web Service Bereitstellungsprotokollierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Windows + Linux
+        \item automatische Protokollierung der Bereitstellung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Backup}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item ein Backup kann erstellt und wieder eingespielt werden
+        \item ab Standard-App Service Plan
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Snapshots}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Snapshots ab Premium
+        \item kann nur in die gleichen Slots zurückgespielt werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

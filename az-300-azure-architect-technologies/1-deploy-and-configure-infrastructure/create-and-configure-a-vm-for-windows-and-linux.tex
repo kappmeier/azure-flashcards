@@ -1,0 +1,316 @@
+\subsectioncard{Erstellen und Konfigurieren von VMs für Windows und Linux}
+
+\begin{flashcard}[Definition]{Hybrid Benefit}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item eigene Lizenzen (Windows, SQL)
+        \item sparen 49\%
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure High Availability}
+
+\begin{flashcard}[Definition]{Fehler- und Updatedomänen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Update-Domänen\newline
+            Sichern zu, dass eine Verfügbarkeitsgruppe während Updates verfügbar bleibt
+        \item Fehler-Domänen\newline
+            Sichert zu, dass VMs einer Verfügbarkeitsgruppe bei Ausfall einer Zone verfügbar bleiben
+        \item Im Portal:\newline
+            \texttt{Eigenschaften | Hochverfügbarkeit}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Monitoring}
+
+\begin{flashcard}[Definition]{Ressourcne-Auslastung einer VM überwachen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure Montior-Metriken
+        \item Azure Monitoring Insights
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Networking}
+
+\subsubsectioncard{configure Storage}
+
+\begin{flashcard}[Definition]{Disks for VMs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcegruppe
+                \item Location
+                \item Name
+                \item Betriebssystem-Image
+                \item Admin-Username
+                \item ggf. ssh keys
+            \end{itemize}
+        \item Portal: \texttt{Neue Ressource | Virtuelle Maschine}
+        \item CLI: \texttt{az vm create}
+        \item PowerShell: \texttt{New-AzVm}
+    \end{itemize}
+    NIC + Public IP + OS Disk werden automatisch erstellt
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Disks for VMs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Betriebssystemdatenträger
+            \begin{itemize}
+                \item Ein pro VM, basierend auf Image
+                \item maximal 2 TiB
+            \end{itemize}
+
+        \item Daten-Disks
+            \begin{itemize}
+                \item Ein oder mehrere pro VM
+                \item Anzahl abhängig von VM Sku
+                \item bis zu 32 TiB Größe
+            \end{itemize}
+
+        \item Temporärer Speicher\newline
+            \begin{itemize}
+                \item Ein pro VM
+                \item geht bei Wartung verloren. Nicht auf einem Speicherkonto
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenträger-Typen}
+    \vspace*{\stretch{1}}
+    Kurzlebig
+    \begin{itemize}
+        \item Lokal im Host
+        \item sehr Schnell, auch bei der Initialisierung
+        \item bei Ausfall sind Daten verloren
+        \item gut für zustandslose Workloads (z.\,B. Microservice)
+    \end{itemize}
+    Verwaltet
+    \begin{itemize}
+        \item Skalierbar, hochverfügbar (Verfügbarkeitszonen),
+        \item sind zwar Seitenblobs im Speicherkonto, aber im Hintergrund
+        \item Sicherheit: RBAC, Verschlüsselung
+    \end{itemize}
+    Nicht-Verwaltet
+    \begin{itemize}
+        \item Nutzer müssen sich selbst um Speicherkonto kümmern
+        \item Sicherheit pro Speicherkonto, nicht pro Disk
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenträger für VMs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item beim Erstellen im Azure-Portal
+        \item Bereich ``Datenträger''
+        \item Auswahl, ob Datenträger verwaltet oder nicht verwaltet
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Virtual Machine Size}
+
+\begin{flashcard}[Definition]{VM-Größen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Viele SKUs:
+            \begin{itemize}
+                \item Allgemein
+                \item Balanciert: Dsv, Dv3, DS, D
+                \item Arbeitsspeicher: E, M, G, D, DS, Dv2
+                \item Compute: F, Fs
+                \item Speicher: L
+                \item GPU: N,
+                \item Leistung: H, A
+            \end{itemize}
+        \item Bestimmen Parameter wie Disk-Größe, anzahl NICs, Disks, \ldots
+        \item \texttt{az vm list-sizes}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{VM-Größe ändern}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Liste der verfügbaren:\newline
+            \texttt{az vm list-vm-resize-options --resource-group \ldots --name \ldots}
+        \item Nur im aktuellen Cluster verfügbare Größen können gewählt werden
+        \item Portal: \texttt{Einstellungen | Größe | Größe ändern} im VM-Blade\newline
+            (Verfügbare Größen werden angezeigt)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement dedicated hosts}
+
+\subsubsectioncard{deploy and configure scale sets}
+
+\begin{flashcard}[Definition]{Skalierungsgruppe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Skalierung von Web-Services, Container-Workloads, Big-Data, \ldots
+        \item horizontale Skalierung: dynamische Anzahl VMs
+        \item vertikale Skalierung: dynamische VM-Größe
+        \item alle VMs haben die gleiche Konfiguration
+        \item maximal 1000 VMs
+        \item bei Bedarf Lastenausgleich (z.\,B. über Ping)
+        \item Skalierungsgruppe mit niedriger Priorität: günstiger
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Durchführung einer Skalierung}
+    \vspace*{\stretch{1}}
+    Geplante Skalierung
+    \begin{itemize}
+        \item geplante Bereitstellung von zusätzichen Maschinen
+    \end{itemize}
+    \vspace{1cm}
+    Automatische Skalierung
+    \begin{itemize}
+        \item metrikbasierte Bereitstellung von Maschinen
+        \item Schwellwertskalierung
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bereitstellung einer Skalierungsgruppe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement und Resourcengruppe
+                \item Name
+                \item VM-Parameter, z.\,B. VM-Image, User, SSH, \ldots
+                \item
+            \end{itemize}
+        \item CLI: \texttt{az vmss create}
+    \end{itemize}
+    zwei Instanzen und Lastenausgleich sind automatisch erstellt
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Lastenausgleich mit Skalierungsgruppe}
+    \vspace*{\stretch{1}}
+    Integritätstest:
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Abonnement und Resourcengruppe
+            \item Name
+            \item Test-Spezifikation: Port, Protokoll, Pfad, \ldots
+        \end{itemize}
+        \item CLI: \texttt{az network lb probe create}
+    \end{itemize}
+    Lastenausgleich:
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Abonnement und Resourcengruppe
+            \item Name
+            \item Integritätstest-Referenz
+            \item Scale-Set als Backend-Pool
+            \item Front- und Backend-Spezifikation: Port, Potokoll, \ldots
+        \end{itemize}
+        \item CLI: \texttt{az network lb rule create}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Manuelle Skalierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Portal: \texttt{Einstellungen | Wird Skaliert | Manuelle Skalierung} im Skalierungsgruppen-Blade
+        \item CLI: \texttt{az vmss scale --new-capacity \ldots}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Automatische Skalierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Zeitplan
+            \begin{itemize}
+                \item Portal: \texttt{Einstellungen | Wird Scaliert | Benutzerdefinierte Autoskalierung} im Skalierungsgruppen-Blade
+                \item \texttt{"Auf eine bestimmte Anzahl von Instanzen skalieren"}
+                \item mit Zeitplan
+            \end{itemize}
+        \item Metriken
+            \item Portal: \texttt{Einstellungen | Wird Scaliert | Benutzerdefinierte Autoskalierung} im Skalierungsgruppen-Blade
+            \item \texttt{"Basierend auf einer Metrik"}
+            \item \texttt{"Regel hinufügen"}
+            \begin{itemize}
+                \item CPU-Auslastung
+                \item Daten(ein|aus)fluss
+                \item Datenträgervorgänge
+                \item Warteschlangentiefe für Datenträger
+            \end{itemize}
+        \item Aggregierung von für \emph{alle} Instanzen
+            \begin{itemize}
+                \item Durchschnitt
+                \item Minimum/Maximum
+                \item Summe
+                \item Letzte
+                \item Anzahl
+            \end{itemize}
+        \item Aggregierungsdauer: mindestens 5 Minuten
+        \item Operator: \emph{kleiner}, \emph{größer}, \ldots
+        \item Abkühldauer: mindextens 5 Minuten. Währenddessen wird Regel nicht nochmal angewandt
+        \item Regeln
+            \begin{itemize}
+                \item Erhöhung der Instanzzahl bei x\%
+                \item Verringerung der Instanzzahl bey y\%
+                \item für ein Regelpaar Schwellwerte \emph{nicht} auf einen Wert festlegen
+            \end{itemize}
+
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Autoscale-Profil einrichten mit CLI}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt Resourcegruppe und Skalierungsgruppe
+        \item Standardwert, minimum, maximum von VMs
+        \item \texttt{az monitor autoscale create\\--resource-group \ldots\\--resource <scale-set>\\--resource-type Microsoft.Compute/virtualMachineScaleSets\\--name autoscale --min-count \ldots --max-count \ldots --count \ldots}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Autoscale-Regel einrichten mit CLI}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt Resourcegruppe und Autoscale-Profil
+        \item \texttt{az monitor autoscale rule create\\--resource-group \ldots\\--autoscale-name \ldots\\--condition <condition-string>\\--scale <out|in> \ldots}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Aktualisierungen von VMs}
+    \vspace*{\stretch{1}}
+    Mit benutzerdefinierter Skripterweiterung
+    \begin{itemize}
+        \item genau so, wie bei VMs
+        \item \texttt{az vmss extension set \ldots}
+        \item nochmalige Anwendung zum Aktualisieren
+        \item Upgraderichtlinie
+            \begin{itemize}
+                \item Automatisch: könnte für alle VMs gleichzeitig sein
+                \item Parallel: vermeidet Dienstaufall
+                \item Manuell: standard
+            \end{itemize}
+            Festlegen mit \texttt{upgrade-policy-mode}-Parameter bei Erstellung der Skalierungsgruppe
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+   

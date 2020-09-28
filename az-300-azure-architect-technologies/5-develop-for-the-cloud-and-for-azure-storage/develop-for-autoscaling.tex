@@ -1,0 +1,29 @@
+\subsectioncard{Analysieren von Resourcen-Nutzung und -Verbrauch}
+
+\begin{flashcard}[Definition]{Services, die Autoscaling unterstützen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Skalierungsgruppen
+        \item App Service (Plan) / Web Apps
+        \item API Management
+        \item Data Explorer
+        \item Azure Cloud Services
+        \item AKS
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Autoscaling-Muster}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Off and on: Manuelle skalierung, also vom Nutzer im Portal\newline
+            Wenn eine bestimmte gerade anfallende Last bedient werden soll
+        \item Unverhersagbar nach CPU-Last: Matrikbasiert\newline
+            Auslastung meistens stabil, aber unklar wann und wie groß eine zu erwartende Spitzenbelastung ist
+        \item Kapaztiät erweitern: Manuell\newline
+            Dauerhaft die Resourcen erhöhen, da die Nachfrage generell gestiegen ist
+        \item Vorhersagbar: Skalierung nach Zeitplan\newline
+            Wenn voraussehbar ist, dass eine Laststeigerung kommt (z.\,B. bestimmte Tage, Uhrzeiten, \ldots)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

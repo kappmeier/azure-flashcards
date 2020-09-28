@@ -1,0 +1,212 @@
+\subsectioncard{Konfigurieren von Serverless}
+
+\begin{flashcard}[Definition]{Logic App}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Kombination von vielen Diensten mit vorkonfigurierten Modulen
+        \item Modellierung von Work-Flows in einem Design-First-Ansatz
+        \item Erstellt im Logic-App-Designer im Portal
+        \item Alternativ: JSON-Format
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Logic App-Komponenten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Trigger:\newline
+            Auslösen einer Logic App
+        \item Aktionen:\newline
+            Aufruf eines Dienstes mit Daten: SQL, Machine Learning, \ldots
+        \item Steureung:\newline
+            Entscheidungen, Abfragen, Schleifen, \ldots
+    \end{itemize}
+    \vspace{1cm}
+    Connector: Kombination von verknüpften Triggern und Aktionen
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Trigger}
+    \vspace*{\stretch{1}}
+    Typen:
+    \begin{itemize}
+        \item Daten: Email, Tween, \ldots
+            \begin{itemize}
+                \item Abfragemodell: \emph{Häufigkeit (Einheit)}, \emph{Intervall (Anzahl)}
+                \item Push-getrieben: webhooks
+            \end{itemize}
+            $\Rightarrow$ Abfragen verursachen Kosten!
+        \item Serientrigger: zeitgesteuert
+        \item manuelle Anforderung: webhooks, \ldots
+    \end{itemize}
+    Eigenschaften:
+    \begin{itemize}
+        \item Parameter: optional und notwendig
+        \item Rückgabewerte: ein Objekt, oder mehrere ($\rightarrow$ Schleifen), teilen und parallel ausführen
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Aktionen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item externe Dienste: Zugriff auf Dienste, z.\,B. mit Verbindungszeichenfolgen, Logins, \ldots
+        \item Bearbeiten von Daten: z.\,B. Konkatenation, Array-Auswahl, \ldots
+        \item Steuerung: Bedingungen, Schleifen, \ldots
+    \end{itemize}
+    \vspace{1cm}
+    Eigenschaften:
+    \begin{itemize}
+        \item Parameter: Eingaben für die Aktion, statisch oder dynamisch
+        \item Rückgabewerte:
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Logic App erstellen}
+    \vspace*{\stretch{1}}
+    Logic-App-Designer
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Name
+                \item Abonnement + Ressourcengruppe
+                \item Standort
+            \end{itemize}
+        \item im Portal: \texttt{+ Ressource erstellen | Logik-App}\newline
+        \item Katalog von Konnectoren, Triggern, Aktionen
+        \item \texttt{Logik-App-Designer | Vorlagen} im Logik-App-Blade, und entweder vorlage oder \texttt{Leere Logik-App}
+        \item grafische Modellierung im Portal: \texttt{Logik-App-Designer} im Logik-App-Blade
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Logic-App-Designer}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Konnektor/Aktion suchen
+        \item Parameter setzen
+        \item neue Hinzufügen
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Funktion}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Code First
+        \item Code im Portal oder in Quellcode-Verwaltung
+        \item zustandslos (Alternative: Durable Functions)
+        \item ereignisgesteuert: werden als Reaktion auf Trigger ausgeführt
+        \item beschränkte Ausführungszeit: standard 5 Minuten, maximal 10
+        \item bei häufiger Ausführung: VM kann günstiger sein
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{App-Serviceplan}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verbrauchsbasiert: serverless mit automatischer Skalierung, bezahlen nach Nutzung
+        \item Azure App Service-Plan: Ausführung auf definierter VM, ermöglicht längere Funktionsausführung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Funktions-App erstellen}
+    \vspace*{\stretch{1}}
+    Funktions-App: Container zum Verwalten von Funktionen
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement + Resourcengruppe
+                \item Name (global eindeutig)
+                \item Runtime/Sprache, Version
+                \item Region
+                \item Speicherkonto
+                \item Betriebssystem
+                \item Serviceplan
+            \end{itemize}
+        \item Im Portal: \texttt{+ Neue Ressource erstellen | Compute | Funktions-App}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konfigurieren einer Funktions-App}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Ereignisse/Trigger zur Ausführung:
+        \item Bindung
+        \item Autorisierung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Funktions-App-Trigger}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Blob-Speicher: bei Änderungen an Blobs
+        \item Azure Cosmos DB: Einfügung/Aktualisierung
+        \item Event Grid: bei empfangenem Ereignis
+        \item HTTP: bei hook
+        \item Microsoft-Graph webhooks
+        \item Queue Storage: bei Elementen in Warteschlangen, Element als Eingabe
+        \item Service Bus: bei Nachrichten aus einer Service Bus-Schlange
+        \item Timer: regelmäßig
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Funktions-App-Bindung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Kommunikation mit Diensten
+        \item wird automatisch bereitgestellt
+        \item Richtung
+        \begin{itemize}
+            \item Eingabebindung: zum Lesen von Daten
+            \item Ausgabebindung: zum Ausgeben von Daten
+        \end{itemize}
+    \end{itemize}
+    Beispiel:
+    \begin{enumerate}
+        \item \emph{Azure Queue Storage Trigger}: liest Daten aus Queue
+        \item \emph{Azure Table Storage-Ausgabebindung}: schreibt Daten in Tabelle
+    \end{enumerate}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Funktion App-Autorisierungsstufen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Funktion:\newline
+            spezifischer API-Schlüssel
+        \item Administrator\newline
+            globaler Schlüssel
+        \item anonym\newline
+            keine Autorisierung erforderlich
+    \end{itemize}
+    Im Bereich \texttt{Entwickler | Funktionsschlüssel} im Funktions-Blade
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Funktion erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Im Portal:\newline
+            \texttt{Function-App | Funktionen | + Hinzufügen}
+        \item Vorlage auswählen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+

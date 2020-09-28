@@ -1,0 +1,230 @@
+\subsectioncard{Die Bereitstellung von VMs automatisieren}
+
+\begin{flashcard}[Definition]{Deployment-Plattformen für Source Code}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item BitBucket
+        \item GitHub
+        \item Azure Repo
+        \item Team Foundation Version Control
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{modify Azure Resource Manager template}
+
+\begin{flashcard}[Definition]{Resource-Manager-Vorlage}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item JSON-Datei
+        \item Vereinheitlichen VMs und Konfiguration (über Erweiterungen)
+        \item können mit Variablen und Paramtern konfiguriert werden\newline
+            $\Rightarrow$ benötigt Parameter-Datei
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Komponenten einer Resource-Manager-Vorlage}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Parameter: vom Nutzer anzugebende Werte, ggf. mit Defaults\newline
+            \texttt{"parameters"}
+        \item Variablen: Werte, die mehrmals verwendet werden können\newline
+            \texttt{"variables"}
+        \item Funktionen: Mehrfach genutzte Funktionen (mit Parametern)\newline
+            \texttt{"functions"}
+        \item Ressourcen: Azure-Ressourcen, die bereitgestellt werden\newline
+            \texttt{"resources"}
+        \item Ausgaben: Generierte Informationen der Bereitstellung, z.\,B. IP-Adresse\newline
+            \texttt{"outputs"}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Location of new VMs}
+
+\subsubsectioncard{configure VHD template}
+
+\begin{flashcard}[Definition]{VHD-Vorlagen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Virtuelle Festplatte, die in Azure gespeichert wird: hochverfügbar, managed, \ldots
+        \item VHD Image: Festplatte, die ein Betreibssystem für VMs enthält
+            \begin{itemize}
+                \item Ubuntu und andere Linux-Varianten
+                \item Windows Server, SQL
+                \item zahllose Varianten
+            \end{itemize}
+        \item generalisiertes Image:\newline
+            modifiziertes Image, ohne Nutzerinformationen
+        \item spezialisiertes Image:\newline
+            Kopie einer Live-VM, z.\,B. als Backup
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Unterstützte Formate}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item[!] nur VHD kann hochgeladen werden
+        \item VHDX muss konvertiert werden
+        \item Größe muss fest sein (kann konvertiert werden)
+        \item Version 1 und 2 VMs
+        \item maximale größe 2 T(i?)B für Generation 2
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Custom Image erstellen}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Zwei Möglichkeiten:
+            \begin{itemize}
+                \item VM starten mit existierendem Basisimage
+                \item mit Hyper-V von Grund auf neu erstellen
+            \end{itemize}
+        \item In das System einloggen, ggf. konfigurieren
+        \item Generalisieren im System vorbereiten
+            \begin{itemize}
+                \item Linux: waagent
+                \item Windows: Sysprep
+            \end{itemize}
+        \item Generalisieren: \newline
+                \texttt{az vm deallocate}
+                \texttt{az vm generalize}
+        \item Image erstellen:
+            \begin{itemize}
+                \item Portal: \texttt{Capture} im VM-Blade der generalisierten VM
+                \item CLI: \texttt{az vm image create --source vm-name}
+            \end{itemize}
+
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{deploy from template}
+
+\begin{flashcard}[Definition]{Ressourcen von einer Eine Resource-Manager-Vorlage bereitstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcegruppe
+                \item Vorlagen-Datei
+                \item Parameter: \texttt{--parameters name=value name2=aValue}
+            \end{itemize}
+        \item \emph{Vor} dem Bereitstellen validieren:\newline
+            CLI: \texttt{az deployment group validate}, benötigt auch Parameter
+        \item Portal: \texttt{Neue Ressource} + Suchen nach \texttt{Template} und eigenes Template erstellen.
+        \item CLI: \texttt{az deployment group create}
+        \item Während der Bereitstellung: kann im Portal als Bereitstellung verfolgt werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bereitstellungs-Modi}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Komplett\newline
+            Ressourcengruppe wird erstetzt mit der im Template konfigurierten Infrastruktur
+        \item Inkrementell\newline
+            Existierende Infrastruktur bleibt unverändert
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{save a deployment as an Azure Resource Manager template}
+
+\begin{flashcard}[Definition]{Herunterladen einer ARM-Vorlage}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Aus dem Portal:\newline
+            \texttt{Vorlage Exportieren}
+        \item Zip-Datei
+        \item Enthält:
+            \begin{itemize}
+                \item template.json
+                \item parameters.json
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{deploy Windows and Linux VMs}
+
+\begin{flashcard}[Definition]{VM mit Resource Manager Template definieren}
+    \vspace*{\stretch{1}}
+    Resource Manager Template:
+    \begin{itemize}
+        \item Resource vom Typ \texttt{Microsoft.Compute/virtualMachines}
+        \item Eigenschaften:
+            \begin{itemize}
+                \item \texttt{hardwareProfile}: VM SKU
+                \item \texttt{osProfile}: Username, Password, VM-Name
+                \item \texttt{storageProfile}: OS disk, Daten-Disk
+                \item \texttt{networkProfile}: die Netzwerkinterfaces
+            \end{itemize}
+
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Spezifikation des Betriebssystems im ARM-Template}
+    \vspace*{\stretch{1}}
+    In den Eigenschaften für \texttt{storageProfile}:
+    \begin{enumerate}
+        \item \texttt{imageReference}
+            \begin{itemize}
+                \item \texttt{publisher} (Microsoft, oder RedHat, \ldots)
+                \item \texttt{offer} (Betriebssystem, z.\,B. CentOS, WindowsServer, \ldots)
+                \item \texttt{sku} (Version, z.\,B. 2016, oder 8.0)
+                \item \texttt{version} (Bugfix-Release)
+            \end{itemize}
+        \item \texttt{osDisk}:\newline
+            Setze auf \texttt{FromImage} um das unter 1 spezifizierte Image zu wählen
+        \item \texttt{dataDisks}\newline
+            Leer:
+            \begin{itemize}
+             \item \texttt{diskSizeGB}
+             \item \texttt{lun}: fortlaufende Nummer
+             \item \texttt{createOption}: \texttt{Empty}. (Für verwaltete Datenträger \texttt{Copy} oder \texttt{Attach})
+            \end{itemize}
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Windows als Betriebssystem}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Publisher: MicrosoftWindowsServer
+        \item Offer: WindowsServer
+        \item SKU: 2016-Datacenter(-\ldots), 2019-Datacenter, 2012-Datacenter, \ldots
+        \item Version: latest
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Linux als Betriebssystem}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Publisher: OpenLogic, Debian, RedHat, SUSE, Canoncial
+        \item Offer: CentOS, debian-10, RHEL, SLES, UbuntuServer
+        \item SKU: 7.5, 10, 7-LVM, 15, 18.04-LTS
+        \item version: latest
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verschieben in andere Ressourcen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Portal:\newline
+            Ressoruce auswählen, \texttt{Übersicht | Ressourcengruppe (Ändern)}, Zielgruppe auswählen
+        \item CLI:\newline
+            \texttt{az resource move --destination-group \ldots --ids \ldots}
+        \item PowerShell:\newline
+            \texttt{Move-AzResource\ -DestinationResourceGroupName "\ldots"\ -ResourceId <id>}
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}

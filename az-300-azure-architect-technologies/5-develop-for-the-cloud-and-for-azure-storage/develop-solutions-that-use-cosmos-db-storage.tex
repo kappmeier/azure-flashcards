@@ -1,0 +1,304 @@
+\subsectioncard{Entwicklung von Lösungen mit Azure Cosmos DB}
+
+\subsubsectioncard{create, read, update, and delete data by using appropriate APIs}
+
+\begin{flashcard}[Definition]{Cosmos DB}
+    \vspace*{\stretch{1}}
+    Account:
+    \begin{itemize}
+        \item Benötigt Cosmos DB-Konto (wie Speicherkonto)
+        \item verschlüsselung: immer aktiviert (at rest)
+    \end{itemize}
+    mehrere Datenmodell-APIs verfügbar: SQL, Graphen, Tabellen
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Cosmos DB-Struktur}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Instanz
+        \item Datenbank
+        \item Sammlung
+        \item Dokument
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Abrechnung}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Anforderungseinheit (RU): 1 GET-Anfrage für ein Dokument per id von 1 KiB
+        \item Andere Anfragen (PUT, ...) teurer
+        \item Preis steigt mit höheren Konsistenz-anforderungen (stark, begrenzte Veraltung)
+        \item Für gleiche Anfragen ist der Preis deterministisch
+        \item alle Container teilen sich die Anforderungseinheiten
+    \end{enumerate}
+    $\Rightarrow$ Anforderungseinheiten ermöglichen Skalierung und Anpassung an Last
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}{Azure Cosmos DB-Konto erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Abonnement + Ressourcengruppe
+            \item global eindeutiger Name
+            \item API: Core (SQL), MongoDB, Cassandra, Tabelle, Gremlin
+            \item Location
+            \item Kontotyp
+            \item Schreibvorgänge in mehreren Regionen?
+        \end{itemize}
+        \item Portal: \texttt{Neue Ressource | Erste Schritte | Azure Cosmos DB} (oder suchen)
+        \item CLI:\newline
+        \texttt{az cosmosdb create --name NAME --kind GlobalDocumentDB --resource-group grp}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}{Azure Cosmos DB}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Cosmos DB-Kontoname + Resourcengruppe
+            \item Datenbank-ID (Name), kann mehrere Container enthalten
+            \item Durchsatz in RUs pro Sekunde
+        \end{itemize}
+        \item CLI:\newline
+        \texttt{az cosmosdb sql database create}
+    \end{itemize}
+    $\Rightarrow$ Container muss per CLI extra erstellt werden
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}{Azure Cosmos DB Container}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Cosmos DB-Kontoname + Resourcengruppe
+            \item Datenbank-ID (Name), kann mehrere Container enthalten
+            \item Container-ID (Name)
+            \item Durchsatz in RUs pro Sekunde
+        \end{itemize}
+        \item Portal: \texttt{Daten-Explorer | Neuer Container} im Cosmos DB-Konto-Blade
+        \item CLI:\newline
+        \texttt{az cosmosdb sql container create}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Daten-Explorer}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benutzeroberfläche um Cosmos DB-Daten zu verwalten
+        \item Im Portal: \texttt{Daten-Explorer} im Blade der Cosmos DB
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Daten in Cosmos DB einfügen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Auswahl des Containers: \texttt{Konto | Container | Datenbank}
+        \item Neues Element erstellen: \texttt{New Item}
+        \item Dokument kann eingetragen Werden (als JSON)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Daten Lesen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Eine SQL-Abfrage erstellen: Innerhalb einer Datenbank
+        \item \texttt{FROM} kann einen Container oder eine Datenbank sein
+        \item Zugriff auf Datenbank: \texttt{Container.Datenbank}
+        \item Auch auf unter-elemente des JSON-Objekts kann so zugegriffen werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Gespeicherte Prozeduren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Sammlung von mehreren Operationen in einer Transaktion
+        \item einzige Möglichkeit \emph{ACID}-Transaktionen zu garantieren
+        \item im Container gespeichert
+        \item JavaScript
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verbinden}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Verbindungs-Richtlinie: Liste von bevorzugten Regionen (geordnet)
+        \item Verbindung herstellen
+        \item benötigt den Schlüssel für die Verbindung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement partitioning schemes}
+
+\begin{flashcard}[Definition]{Partitionierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item horizontale Skalierung für Cosmos DB-Datenbanken
+        \item \emph{Partitionsschlüssel}: Strategie für Erstellung von Partitionen \emph{pro Container}\newline
+            \emph{Kann nicht geändert werden!}
+        \item \emph{Hot Partition}: eine Partition, die deutlich mehr Anforderungen erhält, als andere\newline
+            Schlüssel sollten sowohl eindeutig sein als auch zum Suchen benutzt werden (\emph{id} z.\,B.)
+        \item Limit: 20 GiB pro Partitionsschlüssel\newline
+            falls Schlüssel zu groß: Schlüssel kombinieren
+        \item physische Partition: von Azure Cosmos DB verwaltet \newline
+            Abhängig von Anforderungen der Leistung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Partitionsschlüssel auswählen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item viele Werte sind gut. Ermöglichen gute Skalierung (\emph{Hohe Kardinalität})
+        \item am häufigsten in \texttt{WHERE} enthaltener Wert ist ein Kandidat
+        \item die Anforderungseinheiten (RUs) sollten gleichmäßig auf alle Partitionen aufgeteilt sein
+        \item Speicherplatz sollte gleichmäßig aufgeteilt werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{set the appropriate consistency level for operations}
+
+\begin{flashcard}[Definition]{Cosmos DB Datenreplikation}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item für Hochverfügbarkeit
+        \item mehrere Regionen können ausgewählt werden
+        \item erlaubt Failover
+        \item einzelne Schreib-Regionen: schreiben nur in einer Region
+        \item multi Schreib-Regionen: teuer
+        \item automatisches Failover: falls die Schreibregion ausfällt, automatisch eine andere Region zur Schreibregion promovieren
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenreplikation aktivieren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Portal: \texttt{Einstellungen | Daten global replizieren} im Cosmos DB-Konto-Blade
+        \item Auswahl: \texttt{+ Region hinzufügen}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konsistenz}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Wenn Daten repliziert werden, müssen sie konsistent gehalten werden
+        \item Multimaster: regionen, die Schreibberechtigung haben (Aktiv/Aktiv)
+        \begin{itemize}
+            \item 99,999\% Lese/Schreibverfügbarkeit
+            \item Unbegrenzte Skalierbarkeit
+            \item Schreiblatenz < 10\,ms
+        \end{itemize}
+        \item Konfliktlösungen:
+        \begin{itemize}
+            \item Last-Writer-Wins (LWW): ganzzahlige Eigenschaft im Dokument, z.\,B. Zeitstempel
+            \item Benutzerdefiniert: spezielle gespeicherte Prozedur, fallback Asynchron
+            \item Asynchron: Konflikte werden ausgeschlossen und in einem Feed an Benutzer geleitet
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konsistenzmodelle}
+    \vspace*{\stretch{1}}
+    Von Konsistenz zu Inkonsistenz:
+    \begin{enumerate}
+        \item stark\newline
+            Linearisiert. Garantiert neueste Version gelesen.
+        \item Begrenzte veraltung\newline
+            Präfixkonsistenz + Lesen höchstens hängt k zurück
+        \item Sitzung\newline
+            Präfixkonsistenz + Monotone schreib/lesevorgänge
+        \item Präfixkonsistenz\newline
+            Aktualisierungen sind Präfix aller Aktualisierungen ohne Lücken
+        \item letztlich\newline
+            Lesevorgänge in falscher Reihenfolge möglich
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Starke Konsistenz}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Linearisierbarkeit:\newline
+            Lesevorgänge geben garantiert die neueste Version zurück
+        \item Schreibvorgang wird erst sichtbar, nachdem er repliziert worden ist
+        \item Lesevorgänge liefer immer neueste bestätigte Version zurück
+        \item wenn mehrere Regionen genutzt werden, kein Vorteil durch geringe Latenz
+        \item hohe Kosten (gleich wie \emph{begrenzte veraltung})
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Begrenzte veraltung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Ergebnis eines Lesevorgangs ist begrenzt alt
+            \begin{itemize}
+                \item entweder $K$ Versionen (Präfixlnge)
+                \item oder Zeitintervall $t$
+            \end{itemize}
+            (wie starke Konsistenz, aber zeitlich verzögert)
+        \item ideal für hohe Konsistenz und hohe Verfügbarkeit (99,99\%) und niedrige Latenz
+        \item höhere Konsistenzgarantie als \emph{Sizung}, \emph{Präfixkonsistenz} und \emph{letztliche Konsistenz}
+        \item unterstützen beliebige Anzahl von Regionen
+        \item höhere Kosten, wie bei \emph{stark}er Konsistenz
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Sitzungskonsistenz}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Beschränkt auf Clientsitzung (im Unterschied zu globaler Konsistenz)
+        \item Geeignet für Szenarien mit Geräte- oder Benutzersitzung\newline
+            Read Your Own Writes
+        \item Lesen und Schreiben mit niedrigster Latenz
+        \item unterstützen beliebige Anzahl von Regionen
+        \item mittlere Kosten (bezüglich Anforderungseinheiten (RUs))
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Präfixkonsistenz}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Konsistenz für clients in einer Region oder mit Single-Master-Konto. Multi-Region-Kontos: letztlich konsistent
+        \item Keine Lücken oder Lesevorgänge außer der Reihenfolge
+        \item unterstützen beliebige Anzahl von Regionen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Letztliche Konsistenz}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item alle Replikate konvergieren zum gleichen Zustand
+        \item es können sogar ältere Werte als bereits gelesene Werte gelesen werden
+        \item niedrigste Latenz für Lese- und Schreibvorgänge (dafür auch schwächste Konsistenz)
+        \item niedrigste Kosten (bezüglich Anforderungseinheiten (RUs))
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konsistenz einstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Portal: \texttt{Einstellungen | Standardkonsistenz} im Cosmos DB-Konto-Blade
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

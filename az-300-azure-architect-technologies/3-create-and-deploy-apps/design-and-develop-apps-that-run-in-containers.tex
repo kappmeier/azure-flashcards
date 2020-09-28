@@ -1,0 +1,147 @@
+\subsectioncard{Design und Entwicklung von Apps in Containern}
+
+\subsubsectioncard{configure diagnostic settings on resources}
+
+\subsubsectioncard{create a container image by using a Dockerfile}
+
+\begin{flashcard}[Definition]{Docker-Images mit Dockerfile}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item manuelle Anpassungen eines Docker-Images
+        \item Datei namens \emph{Dockerfile}
+        \item Teile eines Dockerfiles:
+            \begin{itemize}
+                \item \texttt{FROM}: Basisimage, das angepasst word
+                \item \texttt{RUN}: beliebiger Befehl, der im Container ausgeführt wird
+                \item \texttt{COPY}: kopiert Dateien vom Hostcomputer
+                \item \texttt{EXPOSE}: öffnet einen Port
+                \item \texttt{ENTRYPOINT}: was im Container ausgeführt wird
+            \end{itemize}
+        \item mit \texttt{docker build} wird ein neues Image gebaut
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{creat an Azure Kubernetes Service}
+
+\begin{flashcard}[Definition]{Kobernetes-Komponenten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item kube-apiserver\newline
+            stellt Kubernetes-API bereit
+        \item etcd\newline
+            Key-Value-Speicher in Kubernetes mit Statusdaten
+        \item kube-scheduler\newline
+            weist Knoten zu
+        \item kube-advisor\newline
+            gives best practice hints
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Kubernets-Cluster erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcegruppe + Abonnement
+                \item Name
+            \end{itemize}
+        \item CLI:\newline
+            \texttt{az aks create --resource-group \ldots\ --name \ldots}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eigenschaften AKS}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Master von Azure bereitgestellt
+        \item Knotenzahl konfigurierbar
+        \item[!] Knotengröße nicht mehr änderbar
+        \item HTTP-Routing
+        \item SSH-Zugriff
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\subsubsectioncard{publish an image to the Azure Container Registry}
+
+\begin{flashcard}[Definition]{Azure Containerregistrierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item In Azure bereitgestellte Registrierung von Docker-Containern\newline
+            Analog zu Docker Hub
+        \item Benötigt:
+            \begin{itemize}
+                \item Name: global eindeutig
+            \end{itemize}
+        \item Erstellen:
+            \begin{itemize}
+                \item Portal: \texttt{+ Ressource erstellen | Container | Container Registry}
+                \item CLI: \texttt{az acr create --name \ldots}
+            \end{itemize}
+        \item Administratorbenutzer für Zugriffsschlüssel
+        \item[!] eine private Registrierunt, anonymer Zugriff ist nicht möglich
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ein Image hochladen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \texttt{docker login myregistry.azurecr.io}\newline
+            Credentials aus CLI oder Portal abrufen
+        \item \texttt{docker tag myapp:v1 myregistry.azurecr.io/myapp:v1}
+        \item \texttt{docker push myregistry.azurecr.io/myapp:v1}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ein Containerimage erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Voraussetzung: \texttt{Dockerfile}
+        \item \texttt{az acr build --registry \ldots --image name:version <path-to-dockerfile>}\newline
+            Alternativ \texttt{--file} für die genaue Docker-Datei
+        \item Das Image ist anschließend in der Registrierung gespeichert
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Container in der Registrierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \texttt{az acr repository list --name registry-name}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Container in der Registrierung replizieren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item um Container in anderer Region zu speichern (zwecks schnellem Zugriff)
+        \item \texttt{az acr replication create --registry \ldots --location <target>}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement an application that runs on an Azure Container Instance}
+
+\begin{flashcard}[Definition]{Container-Instanz starten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement + Ressourcengruppe
+                \item Containername
+                \item Quelle: Azure Containerregistrierung (oder Docker Hub, Schnellstart)
+                \item Image und Tag
+            \end{itemize}
+        \item Portal: \texttt{+ Ressoruce Erstellen | Container | Container Instance}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{manage container settings by using code}

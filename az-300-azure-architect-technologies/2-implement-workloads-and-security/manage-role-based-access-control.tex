@@ -1,0 +1,139 @@
+\subsectioncard{Verwalten von rollenbasierter Zugrangsbeschränkung}
+
+\subsubsectioncard{create a custom role}
+
+\begin{flashcard}[Definition]{Zugriffsbeschränkung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement
+                \item Name
+                \item Liste der erlaubten+verbotenen Aktionen
+                \item mögliche Anwendungsbereiche
+            \end{itemize}
+        \item Portal: Im \texttt{Subscription}-Blade
+        \item CLI: \texttt{az role definition create}
+        \item PowerShell: \texttt{New-AzRoleDefinition}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure access to Azure resources by assigning roles}
+
+\begin{flashcard}[Definition]{Zugriffsbeschränkung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item einzelne Zugriffe können beschränkt werden
+        \item Beschränkungen haben höheren Rang als RBAC-Rollen-Erlaubnisse
+    \end{itemize}
+    \vspace{1cm}
+    z\,B. Mitarbeiter, der VMs nicht runterfahren darf
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Besitzer-Rolle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item hat vollständigen Zugriff auf Resourcen
+        \item kann weitere Rollendefinitionen setzen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Mitarbeiter-Rolle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item hat vollständigen Zugriff auf Resourcen
+    \end{itemize}
+    $\Rightarrow$ kann nicht weitere Nutzer hinzufügen/entfernen
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Leser-Rolle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item hat Lesezugriff auf alle resourcen
+        \item \emph{keine} Nutzerverwaltung möglich
+        \item \emph{keine} Veränderungen von Resourcen möglich
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Nutzerzugriff-Adminstrator-Rolle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item kann Rollen für Azure-Resourcen vergeben
+        \item \emph{keine} Veränderungen von Resourcen mölgich
+    \end{itemize}
+    $\Rightarrow$ Besitzer = Mitarbeiter + Nutzerzugriff-Administrator
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Backups}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Sicherungsoperator: durchführen von Sicherungen, aber \emph{nicht löschen}, Tresorerstellung oder anderen Rechte zuweisen
+        \item Sicherungsmitwirkender: komplette Verwaltung von Sicherungen, inklusive löschen, keine Tresorerstellung und Rechtezuweisung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Site Recovery}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Site-Recovery-Leser: Anzeige des Status
+        \item Site-Recovery-Operator: durchführen von Failover und Failback
+        \item Site-Recovery-Mitwirkender: verwaltung von Site Recovery, aber keine Tresorerstellung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Administratoren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Password Administrator: darf Passwörter ändern (von normalen Nutzern)
+        \item Nutzer-Administrator: Nutzer verwalten (erstellen, \ldots)
+        \item Nutzerzugriff-Administrator: darf Rollen für Nutzer ändern
+        \item Helpdesk-Administrator: kann verschiedene Service-Aufträge erledigen (auch Paswörter)
+        \item Sicherheits-Adminsotrator: viele Rechte für Sicherheitsaspekte, aber keine Nutzerrechte
+        \item Global Administrator: hat alle Rechte
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure management access to Azure}
+
+\subsubsectioncard{troubleshoot RBAC}
+
+\subsubsectioncard{implement Azure Policies}
+
+\subsubsectioncard{assign RBAC roles}
+
+\begin{flashcard}[Definition]{RBAC-Rollen zuweisen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Im Portal:\newline
+            \item eine Resource auswählen
+            \item \texttt{Zugriffssteuerung (IAM)}
+            \item \texttt{+ Hinzufügen}
+        \item CLI:\newline
+            \texttt{az role assignment create --role \ldots\\--assignee <name|email-adress|object-id> --scope}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{RBAC-Rollen entfernen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Im Portal:\newline
+            \item eine Resource auswählen
+            \item \texttt{Zugriffssteuerung (IAM)}
+        \item CLI:\newline
+            \texttt{az role assignment delete --role \ldots\\--assignee <name|email-adress|object-id> --scope}
+        \item PowerShell:\newline
+            \texttt{Remove-AzRoleAssignment -SignInName \ldots\ -RoleDefinitionName \ldots\ -Scope \ldots}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

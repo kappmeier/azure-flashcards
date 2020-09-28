@@ -1,0 +1,61 @@
+\subsectioncard{Virtuelle Maschinen nach Azure migrieren}
+
+\begin{flashcard}[Definition]{Azure Migrate}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item bereitgestellter Dienst
+        \item analysiert lokale Systeme
+        \item feststellen der Azure-Bereitschaft
+        \item berechnet notwendige Dimensionierung
+        \item kann Hyper-V, VMware-VMs und physische Server bewerten\newline
+            phyisisch nur Windows!
+        \item berechnet monatliche Kosten
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Durchführen einer Migration}
+    \vspace*{\stretch{1}}
+    Von virtuellen Maschinen:
+    \begin{enumerate}
+        \item Collectorapplience in vCenter Server installieren
+        \item Abhängigkeits-Agenten auf lokalen VMs erstellen
+        \item Bewertung für jeden Computer erstellen
+        \item Bearbeiten der Bewertung je nach Anforderung
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Migration im Portal}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \emph{Azure Migrate: Servermigration} in Azure Migrate hinzufügen
+        \item maximal 100 VMs können gleichzeitig migriert werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenbanken migrieren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure Database Migration Service
+        \item Offline-Migration:\newline
+            Server heruntergefahren
+        \item Online-Migration\newline
+            Migration während des laufenden Betriebs
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Durchführen einer Datenmigration}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Datenmigrations-Assistent auf dem lokalen Server installileren
+        \item Azure VM für Datenbank erstellen
+        \item Netzwerksicherheitsgruppe in Azure einrichten
+        \item lokale Instanz vorbereiten: Firewall öffnen
+        \item Anmeldeinformationen zu SQL-Server hinzufügen
+        \item Datenbank in Azure bereitstellen
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}

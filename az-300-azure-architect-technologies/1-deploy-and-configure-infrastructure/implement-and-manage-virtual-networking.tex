@@ -1,0 +1,324 @@
+\subsectioncard{Einrichten und Verwalten von virtuellen Netzwerken}
+
+\subsubsectioncard{configure private IP addressing}
+
+\begin{flashcard}[Definition]{Private IP-Adressen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Dynamisch: DHCP-Lease basierend, können sich ändern
+        \item Statisch: statisch während der Lebensdauer einer Resource
+        \item Restriktionen: die ersten drei und die letztze IP-Adressen in jedem \emph{Subnetz}.
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure public IP addresses}
+
+\begin{flashcard}[Definition]{Öffentliche IP-Adressen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Basic SKU:
+            \begin{itemize}
+                \item offen
+                \item Netzwerksicherheitsgruppen empfohlen
+                \item[!] Nicht für Verfügbarkeitszonen
+            \end{itemize}
+        \item Standard SKU:
+            \begin{itemize}
+                \item immer statisch
+                \item Standardmäßig geschlossen
+                \item Netzwerksicherheitsgruppen erforderlich
+            \end{itemize}
+        \item Load-Balancer muss zum SKU passen (Basic, Standard)
+        \item IP-Bereiche je nach Region
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure network routes}
+
+\begin{flashcard}[Definition]{Systemrouten}
+    \vspace*{\stretch{1}}
+    Typ des nächsten Hops für Systemrouten
+    \begin{itemize}
+        \item Virtuelles Netzwerk:
+        \item Internet: \emph{0.0.0.0/0} leitet an das Internet weiter
+        \item Keiner: Datenverkehr wird gelöscht
+    \end{itemize}
+
+    Weitere Systemrouten:
+    \begin{itemize}
+        \item VNET-Peering
+        \item Dienstverkettung
+        \item Gateway des virtuellen Netzwerks
+        \item VNET-Dienstendpunkte
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Nächster Hop für Benutzerdefinierte Routen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Virtuelles Gerät: z.\,B. Firewall, typischerweise IP
+        \item Gateway für virtuelle Netzwerke: z.\,B. VPN
+        \item Virtuelles Netzwerk: zum Überschreiben der Systemroute
+        \item Internet: leitet an das Internet weiter
+        \item Keiner: Datenverkehr wird gelöscht
+    \end{itemize}
+    \vspace{1cm}
+    Nächster Hop jeweils für Adress-Präfix (w.x.y.z/p)
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Erstellen von Routen}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Routing Tabelle
+        \item Route
+        \item Zuordnen der Route an Subnetz
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Route-Tabelle einrichten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcegruppe
+                \item Name
+                \item disable-bgp-route-propagation / Gateway-Weiterleitung
+            \end{itemize}
+        \item CLI: \texttt{az network route-table create}
+        \item Portal: neue Resource vom Typ Route Table
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Route erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcegruppe
+                \item Name
+                \item Route Table, zu dem die Route gehört
+                \item address-prefix
+                \item Nächster Hop: Typ und Adresse
+            \end{itemize}
+        \item CLI: \texttt{az network route-table route create}
+        \item Portal: \texttt{Einstellungen | Routen | Hinzufügen} im Route-Tabellen-Blade
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Routentabelle einem Subnetz zuordnen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Identifikation: Subnetz + VNET + Resourcegruppe
+                \item Routentabelle
+            \end{itemize}
+        \item CLI: \texttt{az network vnet subnet update}
+        \item Portal: \texttt{Routingtabelle} im \texttt{Subnetz}-Blade ( \texttt{Einstellungen | Subnetz} im VNET-Blade) \newline
+            oder \newline
+            \texttt{Einstellungen | Subnetze | Subnetz zuordnen} im Routen-Tabellen-Blade
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure network interface}
+
+\begin{flashcard}[Definition]{Erstellen von Netzwerkinterfaces}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Standardmäßig hat jede VM ein Netzwerkinterfaces
+        \item zusätzliche können erstellt werden
+        \item je nach SKU können VMs mehrere haben
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Einstellungen für Netzwerkinterfaces}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item private IP
+        \item öffentliche IP (optional)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Nicht-Zugelassene IP-Adressen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Multicast:\newline
+            224.0.0.0 bis 239.255.255.255
+        \item Broadcast:\newline
+            255.255.255.255\newline
+            1-Bits für die CIDR-Maske, z.\,B. 10.20.0.255 für 10.20.0.0/24
+        \item Loopback:\newline
+            127.0.0.0
+        \item Link-Local:\newline
+            169.254.0.0 bis 169.254.255.255
+        \item Azure-Internes DNS:\newline
+            168.63.129.16
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure subnets}
+
+\begin{flashcard}[Definition]{Subnetze}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Teil eines virtuellen Netzwerks
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Subnetz erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Name
+            \item Adressbereich
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Adressbereiche in Subnetzen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item die ersten vier Adressen in jedem Subnetz sind reserviert
+        \item[$\Rightarrow$] \texttt{x.y.z.4} ist die erste vergebbare Adresse
+        \item[$\Rightarrow$] Ein /30-Netz macht keinen Sinn
+        \item x.y.z.255 ist Broadcast-Adresse
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure virtual network}
+
+\begin{flashcard}[Definition]{Virtuelles Netzwerk}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Isolation von Resourcen
+        \item Verbindung mit lokalen Computern (und anderen Netzen)
+        \item externe Verbindung (zum Internet)
+        \item Kommunikation zwischen Azure-Ressourcen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Erstellen eines virtuellen Netzwerks}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+        \begin{itemize}
+            \item Ressourceengruppe + Abonnement, Location
+            \item Name
+            \item Adressraum (CIDR)
+            \item Subnetz (oder neu anlegen)
+            \item Eigenschaften: DDos-Schutz, Dienstendpunkte, Firewall
+        \end{itemize}
+        \item CLI: \texttt{az network vnet create}
+        \item Portal: \texttt{Ressource erstellen | Netzwerk | virtuelles Netzwerk}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure Network Security Groups and Application Security Groups}
+
+\begin{flashcard}[Definition]{Netzwerksicherheitsgruppe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Teil eines virtuellen Netzwerks
+        \item Filtern von Datenverkehr für virtuelles Netzwerk oder Subnetz
+        \begin{itemize}
+            \item IP-Adresse (Quelle oder Ziel)
+            \item Port
+            \item Protokoll
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Erstellen einer Netzwerksicherheitsgruppe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcengruppe: existierende Resourcengruppe
+                \item Name: beliebiger Name
+            \end{itemize}
+        \item Portal: Ressource erstellen, Netzwerksicherheitsgruppe suchen
+        \item CLI: \texttt{az network nsg create}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Netzwerksicherheitsgruppe zuordnen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Virtuelles Netzwerk
+                \item Subnetz
+            \end{itemize}
+        \item Portal: \texttt{Einstellungen | Subnetze | Zuordnen} im Blade der Netzwerksicherheitsgruppe
+        \item CLI: \texttt{az network nsg ???}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konfigurieren von Netzwerksicherheitsgruppen}
+    \vspace*{\stretch{1}}
+    Konfiguration über Regeln:
+    \begin{itemize}
+        \item Regeln (>= 1) zum Zulassen oder Verweigern von Datenverkehr
+        \item Priorität (100 bis 4069), kleiner ist besser (wird zuerst evaluiert)
+        \item Quelle/Ziel: CIDR, Anwendungssicherheitsgruppe, Tag, oder \emph{Any}
+        \item Ports
+        \item Protokolle (TCP, UDP, \emph{Any}
+        \item Ein- oder ausgehender Datenverkehr
+        \item Aktion: Allow or Deny
+    \end{itemize}
+    Standardregeln: DenyAll, AllowLoadBalancer, AllowVNetInbound (vom gleichen Subnetz)
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Regeln für Netzwerksicherheitsgruppe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Priorität 1000 bis 65000
+        \item Port-Bereiche (einzeln, Kommagetrennt, Bereiche)
+        \item Quellen+Zieladressen:
+        \begin{itemize}
+            \item IP-Adressen, z.\,B. \texttt{10.0.0.4}
+            \item Anwendungssicherheitsgruppe: leerer Präfix, und asg definieren
+            \item Nur Quelle: Virtuelles Netzwerk
+            \item Nur Ziel: Service Tag, z.\,B. Endpunkte wie \emph{Storage}
+        \end{itemize}
+        \item CLI: \texttt{az network nsg rule create}
+        \item Portal: Einstellungen im Netzwerksicherheitsgruppen-Blade:\newline
+            \texttt{Eingangssicherheitsregeln}, \texttt{Ausgangssicherheitsregeln}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Anwendungssicherheitsgruppen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Wird NIC zugeordnet
+        \item Verbindung mit Netzwerksicherheitsgruppe über Regeln:\newline
+            \texttt{--source-asgs ERP-DB-SERVERS-ASG} anstelle von \texttt{--source-address-prefixes}
+        \item Allow/Deny funktioniert auch mit Dienstendpunkten, z.b. \texttt{Storage} \newline
+            Dienstendpunkte werden als storage-account network-rule definiert
+        \item \texttt{az network asg create}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

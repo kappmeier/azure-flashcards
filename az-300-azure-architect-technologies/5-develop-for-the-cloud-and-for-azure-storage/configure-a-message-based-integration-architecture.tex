@@ -1,0 +1,268 @@
+\subsectioncard{Konfigurieren einer Nachrichtengestützten Architektur}
+
+\begin{flashcard}[Definition]{SendGrid}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Service zum Senden und Empfangen von Emails
+        \item skalierbar
+    \end{itemize}
+    \vspace{1cm}
+    Alternative zum Mailen: Action in Web App
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Nachrichtenmodelle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Ziel: Kommunikation von Diensten
+        \item lose Verbindung. Alle Kommunikation mit \emph{await} oder ähnlichen Konstrukten
+        \item Nachrichten
+            \begin{itemize}
+                \item enthält komplette Rohdaten, nicht einen Verweis
+                \item Sender erwartet, dass die Nachricht verarbeitet wird
+            \end{itemize}
+        \item Ereignisse
+            \begin{itemize}
+                \item Benachrichtigung über ein Ereignis (an oft viele Empfänger/Abonnenten)
+                \item enthält oft einen Verweis auf Daten
+                \item Sender hat keine Erwartung bezüglich Verarbeitung
+                \item Ereignisse können zusammenhangslos sein, oder Teil einer Reihe
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Notification Hub}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Sended push-Benachrictigungen and alle Plattformen (iOS, Android, Windows, \ldots)
+        \item Skalierbarer Service
+        \item Quellen sowohl Azure als auch lokale Server
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Nachrichten-Zustellung in Azure}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item einfache Warteschlangen: Azure Queue Storage:\newline
+            Teil eines Speicherkontos, keine Speicher-Limits, Fortschritt in der Schlange
+        \item Azure Service Bus
+            \begin{itemize}
+                \item Warteschlangen:\newline
+                    Warteschlange mit anderen Garantien als Azure Queue Storage
+                \item Themen:\newline
+                    Mehrere Abonnenten, die \emph{alle} die Nachricht verarbeiten müssen
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eigenschaften Azure Service-Bus}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item At-Most-Once-Zustellungsgarantie
+        \item FIFO
+        \item Transaktionen: Garantie, dass \emph{alle} Nachrichten einer Gruppe verarbeitet werden, \emph{oder keine}
+        \item Unterstützt RBAC
+        \item Nachrichtengröße von 64 KiB bis 256 KiB
+        \item maximale Kapazität 80 G(i?)B
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ereignis-Zustellung in Azure}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Event Grid
+        \item Event Hub
+            \begin{itemize}
+                \item Optimiert auf hohe Durchsätze, Sicherheit, Resilienz\newline
+                    Big Data-Ereignisse: Unzählige
+                \item ähnlich wie Event Grid, aber zusätzliche Features
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eigenschaften Azure Event Grid}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Ereignisse: was ist passiert
+        \item Maximale Ereignisgröße 64 KiB
+        \item Ereignisquelle: Wo hat das Ereignis Stattgefunden.\newline
+            Z.\,B. Storage, IoT Hub, \ldots
+        \item Thema: Endpunkt, an den Ereignisse gesendet werden
+        \item Abonnements: Weiterleitung von Ereignissen an Handler
+        \item Handler: App/Dienst, der Ereignisse bearbeitet.\newline
+            Z.\,B. Logik-App, Function, Webhook, \ldots
+        \item Abrechnung pro Ereignis
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Event Grid erstellen}
+    \vspace*{\stretch{1}}
+    Automatisch von Azure-Fabric bereitgestellt.
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Auf Ereignisse mit Event Grid reagieren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item z.\,B. Logik-App
+        \item als Trigger "Bei Auftreten eines Event-Grid-Ereignisses"
+        \item[] oder
+        \item "Bei Eintritt eines Ressourcenereignisses"
+            \begin{itemize}
+                \item Abonnement + Ressourcengruppe
+                \item Ressourcentyp
+                \item Ereignis-Typ
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Relay-Service}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Verfügbarmachen eines geschützten Dienstes (z.\,B. hinter Firewall) ohne Änderung der Netzwerkstruktur
+        \item Azure Relay definiert HTTP-Endpunkt
+        \item geschützter Dienst verbindet sich mit HTTP-Endpunkt (abgesichert mit Token)
+        \item externe Clients verbinden sich mit HTTP-Endpunkt
+        \item[$\Rightarrow$] Externer und geschützter Dienst können kommunizieren
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Erstellen von Azure Relay}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item benötigt:
+            \begin{itemize}
+                \item Abonnement + Ressourcengruppe
+                \item Standort
+                \item Name: global eindeutig, da Endpunkt
+            \end{itemize}
+        \item Im Portal: \texttt{Ressource erstellen | Relay}
+        \item Für Anwendungen: \texttt{Freigegebene Zugriffsrichtlinien}:
+        \begin{itemize}
+            \item Primärschlüssel
+            \item Verbindungszeichenfolge abrufen
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eigenschaften Azure Event-Hub}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Partitionen:\newline
+            Ereignispuffer zum Zwischenspeichern. Mindestens zwei, pro Puffer verschiedene Abonnements
+        \item Capture:\newline
+            Dauerhaftes Speichern von Ereignissen (Data Lake, Blob)
+        \item Authentifizierung mit Token
+        \item ermöglicht aggregierte Analyse der Ereignisse
+        \item zuverlässig (Zwischenspeicher) und Resilienz
+        \item millionen von Ereignissen mit geringer Latenz
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Event-Hub erstellen (Namespace)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Zunächst \emph{Namespace} erstellen, dann einzelne Event Hubs
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement + Ressourcengruppe
+                \item Namespacename: global eindeutig
+                \item Tarif: Basic, Standard, Dedicated
+                \item Durchsatzeinheiten: kann nicht geändert werden, pro Namespace!
+            \end{itemize}
+        \item Im Portal: {+ Resource Erstellen | Event Hubs}
+        \item CLI: \texttt{az eventhubs namespace create \ldots}
+        \item zum Senden und Empfangen: Zugriffsrichtlinien mit Key und Verbindungszeichenfolge
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Event-Hub erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item wenn Namespace verfügbar ist
+        \item Benötigt:
+            \begin{itemize}
+                \item
+            \end{itemize}
+        \item Im Portal: \texttt{Entitäten | Event Hubs | + Event Hub} im Event-Hubs-Blade des Namespaces
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Service Bus erstellen (Namespace)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Zunächst \emph{Namespace} erstellen, dann einezelne Topics und Warteschlangen
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement + Resourcengruppe
+                \item Name: global eindeutig, da URL
+                \item Tarif
+                \item Standort
+            \end{itemize}
+        \item Im Portal: \texttt{+ Neue Ressource | Alle Dienste | Service Bus}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bus-Warteschlangen und Bus-Thema erstellen (Service Bus)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Name
+                \item Größe (Gigabyte)
+                \item Gültigkeitsdauer von Nachrichten
+            \end{itemize}
+        \item Bus-Warteschlange im Portal:\newline
+            \texttt{+Warteschlange} im Namespace-Blade des Service Bus
+        \item Bus-Thema im Portal:\newline
+            \texttt{+Topic} im Namespace-Blade des Service Bus
+        \item Topics können nur ab Standard-Tarif erstellt werden
+        \item Anmelden mit Zugriffsrichtlinie: Schlüssel und Verbindungszeichenfolge
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

@@ -1,0 +1,160 @@
+\subsectioncard{Implementieren von sicheren Lösungen}
+
+\subsubsectioncard{encrypt and decrypt data at rest and in transit}
+
+\begin{flashcard}[Definition]{Datenverschlüsselung}
+    \vspace*{\stretch{1}}
+    Ruhende Daten:
+    \begin{itemize}
+        \item symmetrische Verschlüsselung von gespeicherten Daten (Storage Account, \ldots)
+        \item gestohlene Daten sind nutzlos
+        \item Schlüssel wird in Key Vault gespeichert
+        \item Azure-Verwaltete Schlüssel, oder Kundenschlüssel importieren
+        \item Aktivieren nach Modell:
+            \begin{itemize}
+                \item SaaS: aktivieren in der Software
+                \item Paas: Speicher (BLob, \ldots) kann verschlüsselt werden
+                \item IaaS: Azure Disk Encryption für VHDs und VMs, und Speicher\newline
+                    Standardmäßig verschlüsselt
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verschlüsselung Speicherkonto}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Daten im Speicherkonto sind standardmäßig verschlüsselt
+        \item Microsoft verwaltet Schlüssel standardmäßig (in Microsoft Key Store)
+        \item Benutzer-Verwaltet: benötigt Azure Key Vault.\newline
+            Nur Blob und Azure Files
+        \item vom Benutzer bereitgestellt: eigener Key Store des nutzers\newline
+            Nur Blob!
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verschlüsselung in Transit}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Zugriff auf Endpunkte nur verschlüsselt
+        \item HTTPS-Protokoll
+        \item aktivieren in Eigenschaften von Speicherkonto
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Transparent Data Encryption}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Data at rest-Verschlüsselung von SQL-Datenbanken
+        \item schützt vor Offline-Angriffen
+        \item verschlüsselt die Datenbank, Backups, und Transaction logs
+        \item[$\Rightarrow$] transparent für Anwendungen
+        \item standardmäßig aktiviert
+    \end{itemize}
+    \vspace{1cm}
+    Im Unterschied zu Always Encrypted kennt die Datenbank (bzw. der Azure Service) den Schlüssel (DEK)
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{encrypt data with Always Encoded}
+
+\begin{flashcard}[Definition]{Always Encrypted}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Verschlüsselung in Transit
+        \item Verschlüsselung von Daten in SQL-Datenbank
+        \item Entschlüsselung der Daten erst in Client-Anwendung
+        \item Durchführung:
+            \begin{itemize}
+             \item PowerShell/T-SQL (nicht vollständig unterstützt)
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Always Encrypted und Windows Certificate Store}
+    \vspace*{\stretch{1}}
+    Speichert den Schlüssel auf der lokalen Maschine
+
+    \vspace{1cm}
+    $\Rightarrow$ nur in der Anwendung sind Daten verfügbar
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement Azure Confidential Compute}
+
+\begin{flashcard}[Definition]{Azure Confidential Computing}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item geschützte Verarbeitung von Daten während der Berechnung\newline
+            (während Daten normalerweise nach Lesen vom Ruhezustand entschlüsselt sind)
+        \item benötigt Trusted Execution Environment (TEE)
+        \item Code wird in geschütztem Container ausgeführt
+        \item benötigt eine VM mit Intel XGX
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement SSL/TLS communications}
+
+\begin{flashcard}[Definition]{SSL/TLS-Verbindungen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Speicherkonto: in Einstellungen aktivieren
+        \item Andere Endpunkte: aktivieren
+        \item[$\Rightarrow$] muss erzwungen werden
+        \item VMs: können Schlüsselpaar erstellen bei der Erstellung, oder eigenen Schlüssel
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create, read, update, and delete keys, secrets, and certificates by using the KeyVault API}
+
+\begin{flashcard}[Definition]{Key Vault}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Speicher für verschlüsselte Daten
+        \item Hardware (FIPS-2) oder Software
+        \item Signierungen werden in sicherem Bereich durchgeführt, Schlüssel verlässt den Tresor nicht
+        \item Verwaltung von Zertifikaten, inklusive Verlängerung
+        \item Integration in Azure-Dienste: App Service, Virtuelle Maschinen, \ldots
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Key Vault-Zugriff}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Geheimnis-URL:\newline
+            \texttt{https://vault-name.vault.azure.net/secrets/secret-name}\newline
+        \item Schlüssel URL: (POST)\newline
+            \texttt{https://vault-name.vault.azure.net/keys/key-name}\newline
+        \item Zertifikat-URL:\newline
+            \texttt{https://vault-name.vault.azure.net/certificates/cert-name}\newline
+        \item Versionen: können an die URL angehängt werden
+    \end{itemize}
+    Operationen:
+    \begin{itemize}
+        \item GET (abrufen), POST (erstellen), DELETE (löschen), PATCH (aktualisieren)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Löschen und Wiederherstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item wenn ein Wert gelöscht wird, ist er zunächst als gelöschtes Geheimnis weiterhin vorhanden
+        \item das gelöschte Geheimnis kann wiederhergestellt, oder wirklich gelöscht werden
+        \item Wiederherstellen:\newline
+            \texttt{https://vault-name.vault.azure.net/deletedsecrets/secret-name/recover}\newline
+            POST, da das alte Gemeimnis wieder hergestellt wird
+        \item Löschen:\newline
+            \texttt{https://vault-name.vault.azure.net/deletedsecrets/secret-name}\newline
+            DELETE (löschen)
+    \end{itemize}
+    Analog: \texttt{deletedkeys}, \texttt{deletedcertificates}
+    \vspace*{\stretch{1}}
+\end{flashcard}

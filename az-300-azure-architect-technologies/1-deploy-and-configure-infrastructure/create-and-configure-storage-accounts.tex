@@ -1,0 +1,428 @@
+\subsectioncard{Erstellen und Konfigurieren von Speicherkonten}
+
+\begin{flashcard}[Definition]{Datenklassifizierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item strukturiert\newline
+        $\Rightarrow$ relationale Daten in Tabellen, Business-Daten, SQL
+        \item teilweise strukturiert\newline
+        $\Rightarrow$ getaggte Daten, unterschiedliche Klassifizierer, JSON
+        \item unstrukturiert\newline
+        $\Rightarrow$ Texte, Bilder, Videos, \ldots
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Anforderungen an Speicher ermitteln}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Latenz
+        \item Anzahl Operation pro Zeiteinheit
+        \item Komplexität einzelner Anfragen
+        \item notwendige Filtermöglichkeiten
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure network access to the storage account}
+
+\begin{flashcard}[Definition]{Netzwerkzugriff auf Speicherkonten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Konnektivitätsmethode:
+        \begin{itemize}
+            \item öffentlich, alle Netzwerke
+            \item öffentlich, ausgewählte Netzwerke\newline
+            Nur ausgewählte virtuelle Netzwerke können auf den Speicher zugreifen
+            \item privat
+        \end{itemize}
+        \item Netzwerkrouting
+        \begin{itemize}
+            \item Methode für Routing
+            \item Microsoft-Routing
+            \item Internet-Routing
+        \end{itemize}
+
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure sotrage account}
+
+\begin{flashcard}[Definition]{Azure Storage}
+    \vspace*{\stretch{1}}
+    Die Speicherdienste, die in einem Speicherkonto gespeichert werden
+    \begin{itemize}
+        \item Azure-Blob
+        \item Azure-Files
+        \item Azure-Warteschlangen
+        \item Azure-Tabellen
+    \end{itemize}
+    Nicht dazu gehören weitere Speicherdienste
+    \begin{itemize}
+        \item Azure SQL
+        \item Cosmos DB
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Speicherkonto}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure Resourcen (in Resourcengruppe)
+        \item kann mehrere Datendienste enthalten
+        \item kombiniert Einstellungen, die für sämtliche enthaltenen Dienste gelten
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Speicherkonto-Typen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item General Purpose v1\newline
+            vorherige Version, unterstützt nicht alle Features
+        \item General Purpose v2\newline
+            sämtliche Features (inklusive Data Lake), empfohlen
+        \item Blob\newline
+            spezieller Speicher, der nur Blob unterstützt\newline
+            bessere Leistung
+    \end{itemize}
+    v1 und v2 unterstützen Blob, Files, Queues, Tables
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Erstellen eines Speicherkontos}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Name. 3-24 Zeichen aus \texttt{[a-z0-9]}, weltweit eindeutig
+                \item Bereitstellungsmodell: ARM (Azure Resource Manager), klassich\newline
+                klassisch ist veraltet und wird schlecht unterstützt. Nicht verwenden.
+                \item Kontoart: General Purpose v1/v2, Blob
+            \end{itemize}
+        \item Im Portal:
+        \item CLI: \texttt{az storage account create --name name --resource-group grp\\ --sku Standard\_GRS --kind StorageV2}
+    optional \texttt{--hierarchical-namespace true}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konfigurationsoptionen von Speicherkonten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Abonnement
+        \item Standort
+        \item Leistung: Standard, Premium
+        \item Daten-Replikation: Datenkopien zum Schutz vor Hardwarefehlern und Katastrophen. LRS, ZRS, GRS, GZRS, RA-GZRS, ...
+        \item Zugriffsebene: heiß, kalt, archiviert
+        \item Sichere Übertragung: HTTPS zwangsweise
+        \item IP-Filter: Viertuelle Netzwerke, oder IP-Adresse-Bereiche
+        \item Hierarchischer Speicher
+        \item vorläufiges Löschen (Blob, Files), Versionierung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+    $\Rightarrow$ jeder Unterschied erfordert eigenes Speicherkonto!
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eigenschaften von Azure File Storage}
+    \vspace*{\stretch{1}}
+    Standard:
+    \begin{itemize}
+        \item 100 TiB
+        \item maximual 1000 IOPS
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{generate Shared Access Signature}
+
+\begin{flashcard}[Definition]{SAS Token}
+    \vspace*{\stretch{1}}
+    Generierung:
+    \begin{itemize}
+        \item im Speicherkonto-Blade in Azure
+        \item über Storage Explorer
+        \item per command line\newline
+            \texttt{az storage container generate-sas}
+        \item als code (Signieren des Strings mit dem Zugriffsschlüssel)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement Azure AD authentication for storage}
+
+\begin{flashcard}[Definition]{Azure AD-Authorisierung für Speicher}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item empfohlener Zugriff (sicherer als SAS)
+        \item für General Purpose Speicher und Blob für Blobs und Warteschlangen
+        \item für Files: preview
+        \item Table: not supported
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zugriffskontrolle auf Speicher mit Azure AD}
+    \vspace*{\stretch{1}}
+    RBAC: verschiedene Rollen für Verwaltung und Datenzugriff
+    \begin{itemize}
+        \item Verwaltung:
+            \begin{itemize}
+                \item Besitzer, Mitwirkender, Speicherkontomitwirkender
+            \end{itemize}
+        \item Datenzugriff:
+            \begin{itemize}
+                \item Blobs: Mitwirkender an Blobdaten, Blobdatenleser
+                \item Blobdatenbesitzer: Vollzugriff, POSIX-Zugriff auf Data Lake
+                \item Blob-Delegierer: erstellt user SAS key
+                \item Warteschlangen: Mitwirkender/Absender/Verarbeiter/Leser von Warteschlangendaten
+            \end{itemize}
+        \item Schlüssel:\newline
+            Berechtigung \texttt{Microsoft.Storage/storageAccounts/listKeys/action} erlaubt Erstellung eines Shared Keys $\Rightarrow$ kann sich selbst Lesezugriff selbst verschaffen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Umfang der Rechte}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Container (geringste Berechtigung)
+        \item Warteschlange (geringste Berechtigung)
+        \item Speicherkonto
+        \item Resourcengruppe
+        \item Abonnement
+        \item Managmentgruppe
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{install and use Azure Storage Explorer}
+
+\begin{flashcard}[Definition]{Azure Storage Explorer}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item externes Tool für Windows, Linux, macOS, Azure Portal (als Preview)
+        \item ermöglicht Ansicht/Bearbeitung von Speicherkonten, ähnlich Windows Explorer
+        \item mehrere Speicherkonten und Abonnements können Verbunden werden
+        \item unterstützt CosmosDB und Data Lake
+        \item unterstützt lokale Speicher-Emulatoren
+        \item hochladen, verschieben, runterladen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Features Storage Explorer}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Dateien/Blobs kopieren
+        \item SAS-Generierung
+        \item Snapshot-Erstellung
+        \item Upload/Download Blobs oder Dateien
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Storage Explorer Verbinden}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure-Account direkt verbinden\newline
+        Zugriff auf Blobs, Files, Warteschlangen, Tabellen
+        \item CosmosDB einbinden mit Verbindungszeichenfolge (Key aus Azure abrufen), Typ SQL oder Tabelle\newline
+        Erstellen von Datenbanken, Sammlungen und Dokumenten. Editieren.
+        \item Data Lake Gen2\newline
+        Features im Storage Explorer wie Blobs.
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{manage access keys}
+
+\begin{flashcard}[Definition]{Zugriffsschlüssel}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item müssen geheim gehalten werden
+        \item entsprechen Benutzername und Kennwort\newline
+            Speicherkontoname=Nutzer, Schlüssel=Kennwort
+        \item Zwei Schlüssel ermöglichen Rotation
+    \end{itemize}
+    \vspace{1cm}
+    Abruf von Zugriffsschlüsseln
+    \begin{itemize}
+        \item über Azure Portal (im Blade für das Speicherkonto)
+        \item über Azure CLI\newline
+            \texttt{az storage account key list}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zugriff auf ein Speicherkonto}
+    \vspace*{\stretch{1}}
+    Mit SAS-Token
+    \begin{itemize}
+        \item verschlüsselt mit Zugriffsschlüssel
+        \item legen Zugriffsrechte fest:
+        \begin{itemize}
+            \item API-Endpunkt (Blob, File, Tabelle, Warteschlange)
+            \item Rechte (Lesen, Schreiben, Auflisten, ...)
+        \end{itemize}
+    \end{itemize}
+
+    Direkt mit Zugriffsschlüssel
+    \begin{itemize}
+        \item ermöglicht Vollzugriff
+        \item Verbindungszeichenfolge:\newline
+            \texttt{DefaultEndpointsProtocol=https;AccountName={\ldots};\\AccountKey={\ldots};EndpointSuffix=core.windows.net}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zugriffsschlüssel}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item zwei Schlüssel: primär und sekundäre
+        \item ermöglicht key rotation
+            \begin{enumerate}
+            \item Primary -> Secondary
+            \item Recreate Primary
+            \item Secondary -> Primary
+            \item Recreate Secondary
+            \end{enumerate}
+        \item Zugriffsschlüssel müssen geheim bleiben\newline
+            im Unterschied zu SAS-Token
+        \item Verwaltung in CLI:\newline
+            \texttt{az storage account keys ...}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure AD-Zugriff auf Speicherkonto}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item jeder Zugriff auf Speicherkonto ist über Azure AD authentifiziert
+        \item Ausnahme: es kann öffentlicher Lesezugriff eingestellt werden (im Account)
+        \item RBAC-Rollen: Betragender zum Speicherkonto
+        \item Rollenverwaltung außerdem auch für Verwaltung, nicht nur Datenzugriff
+        \item Rollen für:
+            \begin{itemize}
+                \item ganzes Speicherkonto
+                \item einzelne Container
+                \item Warteschlangen
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{monitor Activity log by using Azure Monitor logs}
+
+\begin{flashcard}[Definition]{Logging von Speicherkonten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item aktiviere Logs als "Diagnoseeinstellungen 2.0": alle Aktivitäten
+        \item Azure CLI + PowerShell
+        \item gespeichert als \texttt{\$logs}-Container im Blob-Speicher
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Aktivitätsprotokoll-Warnungen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Arten:
+            \begin{itemize}
+                \item Vorgänge: werden bei Änderungen von Ressourcen ausgelöst
+                \item Service-Health
+            \end{itemize}
+        \item Attribute:
+            \begin{itemize}
+                \item Kategorie: Verwaltung, Dienstintegrität, Autoskalierung, Richtlinie, Empfehlung
+                \item Bereich: Abbonement/Ressourcengruppe/Ressource
+                \item Ressourcengruppe: Speicherort der Regel
+                \item Ressourcentyp:
+                \item Vorgangsname
+                \item Grad: 0 (Ausführlich) - 4 (Kritisch)
+                \item Status: Gestartet, Fehlgeschlagen, Erfolgreich
+                \item Initiiert von:
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Aktivitätsprotokollregel erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Signaltyp \texttt{Aktivitätsprotokoll}
+        \item aus Liste der Warnungen auswählen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement Azure storage replication}
+
+\begin{flashcard}[Definition]{Speicher-Redundanz in Azure Speicherkonten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item jeder Speicher in Azure ist immer redundant
+        \item verschieden Stufen möglich
+        \begin{itemize}
+            \item LRS: Lokal redundanter Speicher: 3 Kopien in einem Datencenter\newline
+                Schutz vor Hardwarefehlern (Rack + Disk)
+            \item ZRS: Zonenredundanter Speicher: 3 Kopien Verfügbarkeitszonen\newline
+                Schutz vor komplettem Datencenter-Ausfall
+            \item GRS: Geo-redundanter Speicher: 6 Kopien in zwei Regionen (jeweils LRS)\newline
+                Schutz vor Ausfall einer kompletten Region
+            \item RA-GRS: Geo-redundanter Speicher mit Lesemöglichkeit in der zweiten Region\newline
+            Angehängtes \texttt{-secondary} an den Namen in der URL
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Speicher-Redundanz herstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item bereits Angabe bei der Erstellung (Portal, CLI, \ldots)\newline
+            Parameter \texttt{--sku}, z.\,B. \texttt{Standard\_RAGRS}
+        \item Wechsel von LRS zu ZRS
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement Azure storage account failover}
+
+\begin{flashcard}[Definition]{Speicherkonto-Failover}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item feste sekundäre Region für eine Region
+        \item Daten werden (asynchron) in der zweiten Region gesichert
+        \item delay wenige Minuten, aber ohne SLA
+        \item falls primäre Region ausfällt, muss Failover durchgeführt werden
+        \begin{itemize}
+            \item Start über Portal oder CLI
+            \item DNS-Einträge werden aktualisiert
+            \item nach Failover ist das Speicherkonto LRS
+            \item sobald Problem behoben ist, muss erneut auf (RA-)GRS gesetzt werden
+        \end{itemize}
+        \item Failover kann zu Datenverlust führen! (letztlich konsistent)
+    \end{itemize}
+    Statusabfrage: \texttt{az storage account show --name \ldots\\--query "[statusOfPrimary, statusOfSecondary]"}
+
+    Durchführung: \texttt{az storage account failover --name \ldots}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Lesen von Geo-redundanten Daten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Leseanforderung bei mehreren Regionen mit Priorisierung:
+        \begin{itemize}
+            \item \texttt{PrimaryOnly} (standard)
+            \item \texttt{PrimaryThenSecondary}
+            \item \texttt{SecondaryOnly}
+            \item \texttt{SecondaryThenPrimary}
+        \end{itemize}
+        \item Sicherungsmuster sollte von \texttt{PrimaryThenSecondary} auf \texttt{SecondaryOnly} wechseln, falls Probleme erkannt werden.
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

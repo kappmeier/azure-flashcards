@@ -1,0 +1,105 @@
+\subsectioncard{Verbindungen zwischen virtuellen Netzwerken}
+
+\subsubsectioncard{create and configure Vnet peering}
+
+\begin{flashcard}[Definition]{VNet-Peering}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item peering virtueller Netzwerke: VNETs in der gleichen Region
+        \item peering globaler virtueller Netzwerke: VNETs in unterschiedlichen Regionen
+        \item Peering ist \emph{nicht} transitiv
+        \item überlappende Adressräume sind nicht möglich
+        \item Limit: 500 peerings pro Netzwerk
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{VNET Peering-Anwendungsfälle}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item einfachste Möglichkeit, Azure-Netzwerke zu verbinden\newline
+            einfacher, als z.\,B. Verbindung mit lokalen Netzwerken
+        \item über Peering und Gateways verbundene Netze \emph{bevorzugen} die Peering-Verbindung
+        \item Geräte in VNETs als wenn sie im gleichen Netz wären
+        \item Verbindung in Azure: schnell, nicht von Verbindung, Gateways, \ldots abhängig
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{VNET Peering herstellen}
+    \vspace*{\stretch{1}}
+    Voraussetzungen:
+    \begin{itemize}
+        \item wenn in verschiedenen Abonnements, Rolle \emph{Netzwerkmitwirkender} notwendig
+        \item beide Netzwerke müssen geegenseitig verbunden werden\newline
+            sonst: Status ist \emph{Initiiert}
+    \end{itemize}
+
+    \begin{itemize}
+        \item CLI: \texttt{az network vnet peering create}\newline
+            CLI erfordert zwei Peerings zu erstellen
+        \item Azure Portal: Im VNet-Blade \texttt{Einstellungen | Peerings | Hinzufügen}
+        \begin{itemize}
+            \item Name
+            \item Resourcen-ID oder Abonnement + VNET
+            \item VNET-Zugriff zulassen
+        \end{itemize}
+        Im Portal wird die Verbindung automatisch reziprok erstellt!
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{VNET-Peering konfigurieren}
+    \vspace*{\stretch{1}}
+    Gatewaytransit
+    \begin{itemize}
+        \item erlaubt weiterleitung von Daten (also ähnlich wie Transitivität)
+        \item Netzwerk mit Gateway: \emph{Gatewaytransit zulassen}\newline
+            Transit-Verkehr darf das Gateway nutzen.
+        \item anderes Netzwerk: \emph{Remotegateways benutzen}\newline
+            Verkehr darf das Remote-Gateway benutzen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and configure Vnet to Vnet connections}
+
+\begin{flashcard}[Definition]{Transit über virtuelle Netzwerke}
+    \vspace*{\stretch{1}}
+    Eigenschaften einer Peer-Verbindung:
+    \begin{itemize}
+        \item weitergeleiteten Verkehr zulassen
+        \item[$\Rightarrow$] erlaubt Verkehr aus anderen Netzwerken als dem Quell-Netzwerk weiterzuleiten
+        \item ermöglicht Reihenschaltung von Netzwerken
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Globale VNet-Peerings}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Resourcen in virtuellem netz können \emph{nicht} mit der Front-end-IP eines internen Load Balancers im Basic SKU kommunizieren
+        \item Load Balancer kann generell eingeschränkt sein bei globalem Peering
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{verify virtual network connectivity}
+
+\begin{flashcard}[Definition]{Verifizieren der Verbindung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item CLI Liste der Peerings:\newline
+            \texttt{az network vnet peering list --resource-group \ldots --vnet-name \ldots}
+        \item Routen:\newline
+            \texttt{az network nic show-effective-route-table --resource-group \ldots --name \ldots}
+        \item Routen im Portal:\newline
+            \texttt{VM | Netzwerkschnittstelle | Support + Problembehandlung | Effektive Routen}
+        \item Ausgabe:
+            \texttt{Default   Active   10.2.0.0/16       VNetPeering} falls verbunden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create virtual network gateway}

@@ -1,0 +1,477 @@
+\subsectioncard{Einrichten von Anwendungs-Load-Balancing}
+
+\begin{flashcard}[Definition]{Lastenausgleichs-Lösungen in Azure}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Application Gateway\newline
+            Level 7, HTTP-Basierter Ausgleich
+        \item Load Balancer\newline
+            Hochperformanter Level 4-Load-Balancer (IP-Basiert)
+        \item Traffic Manager\newline
+            DNS lastenausgleich
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}   
+
+\subsubsectioncard{configure application gateway}
+
+\begin{flashcard}[Definition]{Application Gateway}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Weiterleitung abhängig von URL
+        \item Anwendungsschichtrouting
+        \item Ziele: VMs, Skalierungsgruppen, lokale Server\newline
+            genaugenommen: nicht nur lokale Server sondern beliebige Endpunkte! (Externe URLs)
+        \item Routing
+            \begin{itemize}
+                \item Pfadbasiert:\newline
+                    abhängig von URL, z.\,B. \emph{/videos/}
+                \item mehrere Webseiten
+            \end{itemize}
+
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}   
+
+\begin{flashcard}[Definition]{Lastenausgleich im Application Gateway}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Round robin
+        \item möglich: Persistenz
+        \item auf Anwendngsschicht (OSI 7)\newline
+            $\Rightarrow$ im Unterschied zu Load Balancer (OSI 4, IP-Adressen)
+        \item z.\,B. Ausgleich von Traffic zum Webserver
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway-Komponenten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Front-End-IP-Adresse: öffentliche oder private Adresse
+        \item Listener: empfängt Daten nach \emph{Protokoll,Port,Host,IP}
+        \item Routing-Regeln: binden Listener an Back-End-Pools
+        \item Back-End-Pools: mehrere Webserver, z.\,B. auch Skalierungsgruppen oder App Service App
+        \item Web Application Firewall: optional, blockiert eingehende Anfragen vor Listener
+        \item Integritätstest: tested Server im Back-End-Pool\newline
+            Integritätstest für Port und Pool an den weitergeleitet wird
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway-Listener}
+    \vspace*{\stretch{1}}
+    Basislistener
+    \begin{itemize}
+        \item beachtet nur URL
+    \end{itemize}
+    \vspace{1cm}
+    Listener für mehrere Standorte
+    \begin{itemize}
+        \item nutzt auch Hostname
+        \item für Unter-Domänen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway erstellen}
+    \vspace*{\stretch{1}}
+    Eigenes Subnetz im VNET für skalierung benötigt!
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Resourcegruppe + Name
+                \item SKU: Standard, WAF, jeweils v1 und v2
+                \item Kapazität
+                \item VNET + Subnet
+                \item Frontend-IP + Port
+                \item HTTP-Einstellungen: Protokoll, Port, \ldots
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway create}
+        \item Portal
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Leistungsstufen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Standard v1
+            \begin{itemize}
+             \item Web-Protokoll-Balancing
+            \end{itemize}
+        \item Standard v2 (empfohlen)
+            \begin{itemize}
+                \item Autoscaling
+                \item Zonenredundanz (Verfügbarkeitszonen)
+                \item Statische IPs
+            \end{itemize}
+        \item WAF v1: features von Web Application Firewall
+        \item WAF v2: zusätzlich benutzerdefinierte Regeln
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Web Application Firewall}
+    \vspace*{\stretch{1}}
+    Managed Service, der eine HTTP Firewall darstellt
+    \begin{itemize}
+        \item Eingebundne in weitere Systeme:
+            \begin{itemize}
+                \item Application Gateway
+                \item Front Door
+                \item CDN
+            \end{itemize}
+        \item SQL injection
+        \item Cross site scripting
+        \item viele weitere Regeln
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Back-End-Pool erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name
+                \item Resourcegruppe + Name
+                \item Server (als IPs)
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway address-pool create}
+        \item Portal
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Frontend erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name
+                \item Resourcegruppe + Name
+                \item Port
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway frontend-port create}
+        \item Portal
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Listener erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name
+                \item Resourcegruppe
+                \item Name
+                \item Frontend-Port-Name
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway http-listener create}
+        \item Portal
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Integritätstest}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Ziel: testen, ob VMs im Backend erreichbar sind
+        \item über HTTP-Anfragen
+        \item mögliche Tests:
+            \begin{itemize}
+                \item HTTP-Result-Code:\newline
+                    z.\,B. \texttt{200-399}
+                \item return body:\newline
+                    z.\,B. \texttt{Status: OK}
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Integritätstest erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name + Resourcegruppe
+                \item Name
+                \item Pfad
+                \item Intervall, Threshold, Timeout
+                \item Protokoll: \emph{HTTP}
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway probe create}
+        \item Portal
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Regeln erstellen}
+    \vspace*{\stretch{1}}
+    Schritt 1: URL-Pfad-Zuordnung
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name + Resourcegruppe
+                \item Name
+                \item Pfade
+                \item HTTP-Einstellungen
+                \item zu benutzender Backend-Pool
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway url-path-map create}
+        \item Portal:
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Regeln erstellen}
+    \vspace*{\stretch{1}}
+    Schritt 2: URL-Pfad-Zuordnuns-Regel erstellen
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name + Resourcegruppe
+                \item Name
+                \item Pfade
+                \item HTTP-Einstellungen
+                \item zu benutzender Backend-Pool
+                \item zu benutzende Pfad-Map
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway url-path-map rule reate}
+        \item Portal
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway Regeln erstellen}
+    \vspace*{\stretch{1}}
+    Schritt 3: Routingregel mit der Pfadzuordnung erstellen
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Gateway-Name + Resourcegruppe
+                \item Name
+                \item Listener
+                \item Regeltyp: \emph{PathBasedRouting}
+                \item zu benutzender Backend-Pool
+                \item zu benutzende Pfad-Map
+            \end{itemize}
+        \item CLI: \texttt{az network application-gateway rule reate}
+        \item Portal
+    \end{itemize}
+    Achtung: standardmäßig wird eine Regel erstellt
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konfiguration von Application Gateway-Komponenten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Listener: \texttt{az network application-gateway http-listener}
+        \item Regeln: \texttt{az network application-gateway rule}
+        \item Front-End-IP: \texttt{az network application-gateway front-end-port}
+        \item Back-End-Pools: \texttt{az network application-gateway address-pool}
+        \item Integritätstest: \texttt{az network application-gateway http-settings}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Azure Front Door service}
+
+\begin{flashcard}[Definition]{Front Door}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Anwendungs-Auslieferungs-Netz, also level 7 Lastausgleich
+        \item Beschleunigung
+        \item Realzeit-Failover
+        \item hochverfügbar und skalierbar, vollständig von Azure verwaltet
+        \item unterstützte Protokolle: HTTP, HTTPS, HTTP/2 (nur Front End)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Vergleich Front Door $\leftrightarrow$ Application Gateway}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Front Door ist global\newline
+            $\Rightarrow$ Ausgleich zwischen verschiedenen Clustern über Regionen
+        \item Application Gateway ist lokal\newline
+            $\Rightarrow$ Ausgleich zwischen VMs, Containern in einer Skalierungsgruppe
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zusammenspiel mit Azure Load Balancer}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Mögliche Verbindungen von/zu Front Door:
+            \begin{itemize}
+                \item eine öffentliche IP als Eingang
+                \item öffentlicher DNS-Name als Ausgang
+            \end{itemize}
+        \item Azure Load Balancer kann intern eingesetzt werden
+    \end{itemize}
+    $\Rightarrow$ Load Balancer hinter Front Door ist möglich
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Routing-Methoden}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Latency: das am schnellsten zu erreichende Backend wird genutzt
+        \item Priority: Priorisierung von Backends mit Backup-Backend
+        \item Weighted: Gewichtung für die verschiedneen Backends
+        \item Session Affinity: nachfolgende Anforderungen werden an das gleiche Backend geliefert
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Health-Probe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item GET: ruft Information von URL ab
+        \item HEAD: nur Header, kein Message Body
+        \item Status: muss 200 sein
+        \item Latency: zeit zwischen Senden der Probe und erhalt der Antwort
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Traffic-Weiterleitung}
+    \vspace*{\stretch{1}}
+    Front Door kann als Redirection-Service eingesetzt werden
+    \begin{itemize}
+        \item Untertsützt Forward/Redirect (301)
+        \item Protokolle: HTTPS, HTTP, wie angefordert
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Azure Traffic Manager}
+
+\begin{flashcard}[Definition]{Azure Traffic Manager}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item DNS-basierendes Load Balancing
+        \item unterstützt Hochverfügbarkeit, Resilienz, Reaktionszeit:
+            \begin{itemize}
+                \item automatisches Failover
+                \item regionale Umleitung von Client-Anforderungen
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Funktion von Traffic Manager}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item DNS-basiert, Traffic Manager hat keinen Zugriff auf Daten
+        \item stellt passende IP-Adresse zur Verfügung (Klienten verbinden sich direkt dahin)\newline
+            $\rightarrow$ \emph{Endpunkt}
+        \item \emph{nicht}: Proxy, Gateway
+    \end{itemize}
+    \vspace{1cm}
+    Endpunkte
+    \begin{itemize}
+        \item Azure: Dienste oder VMs in Azure
+        \item Extern: \emph{externe} Dienste, per IP oder FQDN
+        \item geschachtelt: kombination von Profilen für komplexe Anforderungen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Traffic Manager Routing-Optionen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item gewichtetes Routing
+            \begin{itemize}
+                \item gleichmäßig (ggf. gewichtete) Verteilung\newline
+                    (von 1 - 1000)
+                \item Auswahl zufällig anhand Gewichtung
+            \end{itemize}
+        \item leistungsbasiertes Routing
+            \begin{itemize}
+                \item möglich, wenn verschiedene geographische Standorte existierende
+                \item Auswahl nach Internetlatenztabelle
+            \end{itemize}
+        \item geographisches Routing
+            \begin{itemize}
+                \item verbindung nach Geographieen (aber nicht Latenz)
+                \item z.\,B. für Complience-Anforderungen
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Traffic Manager Routing-Optionen 2}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item mehrere Endpunkte
+            \begin{itemize}
+                \item mehrere Endpunkte in einer DNS-Abfrage
+                \item erhöht Verfügbarkeit und verringert Latenz im Fehlerfall
+            \end{itemize}
+        \item prioritätsbasiertes Routing
+            \begin{itemize}
+                \item Endpunkte sortiert nach Priorität
+                \item es wird immer der mit der höchsten Priorität verwendet, der Verfügbar ist
+            \end{itemize}
+        \item Subnetz-Routing
+            \begin{itemize}
+                \item Endpunkte per IP-Adresse bestimmen
+                \item Filtern z.\,  B. nach Nutzern, Anbietern, \ldots
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Konfiguration von Traffic Manager}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Traffic Manager-Profil erstellen
+        \item Endpunkt hinzufügen
+    \end{enumerate}
+    \vspace{1cm}
+    Endpunkte können deaktiviert werden
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Traffic Manager-Profil erstellen}
+    \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Benötigte Parameter:
+                \begin{itemize}
+                    \item Name
+                    \item eindeutiger DNS-Name\newline
+                        DNS-Name: FQDN=name.trafficmanager.net
+                    \item Abonnement
+                    \item Resourcengruppe
+                    \item Routingmethode: \emph{Performance}, \emph{Priority}
+                    \item Standort
+                \end{itemize}
+            \item CLI: \texttt{az network traffic-manager profile create}\newline
+                eindeutiger DNS-Name kann selbst vergeben werden
+            \item Portal: Traffic Manager-Profil-Resource\newline
+                Name ist gleichzeitig eindeutiger DNS-Name
+        \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Traffic Manager Endpunkt erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigte Parameter:
+            \begin{itemize}
+                \item Resourcegruppe
+                \item Profilname: das Traffic Manager-Profil
+                \item Name
+                \item Typ: Azure, Extern, geschachtelt
+                \item Ziel-ID: z.\,B. IP-Adresse, Azure Dienst, \ldots
+                \item Parameter für Routingmethode, z.\,B. Priorität, nichts für Performance
+            \end{itemize}
+        \item CLI: \texttt{az network traffic-manager endpoint create}
+        \item Portal: \texttt{Einstellungen | Endpunkte | Hinzufügen} im Traffic-Manager-Blade
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

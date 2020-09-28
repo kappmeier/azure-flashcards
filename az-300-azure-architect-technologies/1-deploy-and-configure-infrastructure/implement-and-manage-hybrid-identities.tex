@@ -1,0 +1,112 @@
+\subsectioncard{Einführen und verwalten von Hybrididentitäten}
+
+\subsubsectioncard{install and configure Azure AD Connect}
+
+\begin{flashcard}[Definition]{Azure AD Connect}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item zum Synchronisieren lokaler Benutzer mit Azure
+        \item synchronisiert in beide Richtungen
+        \item kostenlos in jedem Abonnement
+        \item beidseitige Synchronisierung erfordert P2
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Hybride Identität}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item einzelne (Benutzer-)Identität für zwei Systeme
+            \begin{itemize}
+                \item Active Directory (für lokalen Zugriff)
+                \item Azure Active Directory (für Web-Zugriff)
+            \end{itemize}
+        \item mehrere Authentifizierungsmethoden
+        \item[$\Rightarrow$] erlauben Single sign on
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Benutzer-Authentifizierung für Hybrididentitäten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure AD-Kennwortsynchronisierung:\newline
+            synchronisiert Benutzer + Passwort zwischen Azure AD und Active Directory\newline
+            (Passwort-Hash-Synchronisierung (PHS)
+        \item Azure AD-Passthrough:\newline
+            Ein Agent leitet Authentifizierungsanfragen von Azure-AD an lokales Active Directory weiter\newline
+            (PTA)
+        \item Verbundauthentifizierung\newline
+            Authentifizierung über lokalen AD FS-Server\newline
+            (AD FS)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure federation}
+
+\begin{flashcard}[Definition]{Federated Authentifizierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Authentifizierung wird von einer vertrauenswürdigen Organisation durchgeführt
+        \item z.\,B. lokale Installation von \emph{Active Directory Federation Services (AD FS)}
+        \item Authentifizierungssystem kann weitergehende Bedingungen erfüllen\newline
+            z.\,B. Smartcard, einbindung Dritter, \ldots
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure single sign-on}
+
+\begin{flashcard}[Definition]{Single Sign On}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item ein Login (eine Identität) für mehrere Services
+        \item nur ein Passwort für mehrere Services
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Single Sign On-Varianten}
+    \vspace*{\stretch{1}}
+    Cloud-Anwendungen:
+    \begin{itemize}
+        \item OpenID/OAuth
+        \item SAML
+        \item Passwort-Basierend
+        \item verknüpft
+    \end{itemize}
+    Lokale Anwendungen:
+    \begin{itemize}
+        \item Passwort-Basiert
+        \item Integrated Windows Authentifizierung (IWA)
+        \item Header-Basiert
+        \item verknüpft
+    \end{itemize}
+    Deaktiviert: für Anwendungen, die inkompatibel sind
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Voraussetzungen für Seamless Single Sign-On}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Klienten müssen in der Domäne eingebunden sein (domain -joined)
+        \item[!] nicht für Azure AD-eingebundene geräte
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{manage and troubleshoot Azure AD Connect}
+
+\begin{flashcard}[Definition]{Es wird nicht synchronisiert}
+    \vspace*{\stretch{1}}
+    Das scheduling ist pausiert
+    \begin{itemize}
+        \item PowerShell:\newline
+            \texttt{Set-ADSyncScheduler -SyncCycleEnabled \$true}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\subsubsectioncard{troubleshoot password sync and writeback}

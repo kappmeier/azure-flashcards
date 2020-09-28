@@ -1,0 +1,203 @@
+\subsectioncard{Analysieren von Resourcen-Nutzung und -Verbrauch}
+
+\subsubsectioncard{configure diagnostic settings on resources}
+
+\begin{flashcard}[Definition]{Diagnoseeinstellungen überprüfen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \texttt{Azure Monitor | Diagnoseeinstellungen}: zeigt für bis 5 Abonnements alle Resourcen
+        \item \texttt{Diagnoseeinstellungen} für eine Ressourcengruppen zeigt Einstellungen für alle Ressourcen
+         \item \texttt{Diagnoseeinstellungen} für eine einzelne Ressource
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Diagnoseeinstellungen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Anwendungslogs: Protokollierung der Anwendung
+            \begin{itemize}
+                \item Kritisch
+                \item Verbose
+            \end{itemize}
+        \item Systemlogs: Systemmeldungen
+        \item Absturzabbild: erstellt einen Speicherabbild, wenn eine Anwendung abstürzt
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create baseline for resources}
+
+\begin{flashcard}[Definition]{Dynamische Regeln}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item für eine Metrik-Regel typ \texttt{Dynamisch} auswählen
+        \item von Azure wird ein dynamischer Schwellwert aus der Vergangenheit berechnet
+        \item Regeln abhängig von diesem dynamischen Schwellwert ausgelöst
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{create and test alerts}
+
+\begin{flashcard}[Definition]{Warnungstypen in Azure Monitor}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Metrik-Warnungen:\newline
+            basierend auf Schwellwerten von Metriken (CPU-Nutzung, \ldots)
+        \item Activity Log-Warnungen:\newline
+            basierend auf Zustandsänderungen von Ressourcen (löschen, \ldots)
+        \item Log-Warnungen:\newline
+            basierend auf Analyse von Log-Dateien (Fehlermeldungen, \ldots)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Warnungsregel erstellen}
+    \vspace*{\stretch{1}}
+    Benötigte Einstellungen
+    \begin{itemize}
+        \item Ressource/Ziel-Ressource:\newline
+            Die Ressource für die Regel (auch mehrere). Bestimmt auch den Signaltyp.
+        \item Bedingung:\newline
+            Typ des Signals (Metrik, Activity Log, Log) und angewendete Prüflogik
+        \item Aktion:\newline
+            Ausgeführte Tätigkeit (z.\,B. Email versenden) an eine Aktionsgruppe
+        \item Details:\newline
+            Textuelle Beschreibung und Schweregrad (0 bis 4)
+    \end{itemize}
+    \vspace{1cm}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Metrik-Warnung erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item CLI:\newline
+            \texttt{az monitor metrics alert create \
+            -name \ldots\
+            --resource-group \ldots\\
+            --scopes <vm>\\
+            --condition "max percentage CPU > 80"\\
+            --description \ldots\\
+            --evaluation-frequency \ldots\ --window-size \ldots\\
+            --severity <0-4>}
+        \item Im Portal:\newline
+            \texttt{Monitor | Warnungen | + Regel erstellen}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{analyze alerts across subscription}
+
+\begin{flashcard}[Definition]{Warnungszusammenfassung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \texttt{Montior | Warnungen}
+        \item Liste der Warnungen z.\,B. nach Abonnements, Ressourcengruppen, Zeitbereich
+        \item Zustände von Warnungen
+            \begin{enumerate}
+                \item Neu: initialer Zustand
+                \item Bestätigt: tatsächlich ein Problem wurde festgestellt
+                \item Geschlossen: wenn das Problem gelöst worden ist
+            \end{enumerate}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{analyze metrics across subscription}
+
+\subsubsectioncard{create action group}
+
+\begin{flashcard}[Definition]{Aktionsgruppe}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Aktionen, die bei Auslösung einer Warnung ausgeführt werden
+        \item mehrere Aktionen in einer Gruppe
+        \item verfügbare Aktionen
+            \begin{itemize}
+                \item Nachricht senden (Email, SMS, Push, Sprachanruf)
+                \item Azure-Funktion/Logik-App
+                \item Webhook
+                \item Ticket erstellen
+                \item Runbook (zum Neustarten oder Skalieren von VMs)
+            \end{itemize}
+        \item Aktionsgruppen können mit mehreren Regeln verknüpft werden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Aktionsgruppe erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Im Portal:\newline
+            \texttt{Metriken | + Neue Warnungsregel | AKTIONEN | Aktionsgruppe erstellen}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{monitor for unused resources}
+
+\begin{flashcard}[Definition]{Azure Advisor}
+    \vspace*{\stretch{1}}
+    integrierter Dienst in Azure mit Empfehlungen, z.\,B. zu Kosten
+    \begin{itemize}
+        \item nicht bereitgestellte ExpressRoute-Verbindungen
+        \item erwerb von reservierten VM-Instanzen
+        \item ungenutzte/überdimensionerte virtuelle Maschinen
+    \end{itemize}
+    Im Portal: \texttt{Verwaltung + Governance | Advisor | Kosten}
+    oder \texttt{Kostenverwaltung + Abrechnung | Kostenverwaltung | Ratgeberempfehlungen }
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{monitor spend}
+
+\begin{flashcard}[Definition]{Azure Cost Management}
+    \vspace*{\stretch{1}}
+
+    \begin{itemize}
+        \item Übersicht über Kosten
+        \item Filtern und Gruppieren nach Service-Art, Resourcegruppe, Region, \ldots
+        \item verschiedene Zeiträume, z.\,B. aktueller Monat (Rechnungszeitraum)
+    \end{itemize}
+    Im Portal: \texttt{Kostenverwaltung + Abrechnung | Kostenverwaltung | Kostenanalyse}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Budgetwarnungen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item automatische Warnung sobald monatliches Budget erreicht ist
+        \item für Kosten und Verbrauch
+        \item Warnung im Portal bei Kostenwarnungen oder per Email
+        \item auch Warnungen pro Abteilung
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{report on spend}
+
+\begin{flashcard}[Definition]{Export von Kostenübersicht}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Exporte nach: Abonnements, Resourcengruppen, Konten, Abteilungen, Registrierungen
+        \item Zeitpläne: täglich aktueller Monat, wöchentlich, monatlich, benutzerdefiniert
+        \item export in Speicherkonto
+        \item Im Portal:\newline
+            \texttt{Kostenanalyse | Einstellungen | Konfiguration | Exporte }
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Rechnung}
+    \vspace*{\stretch{1}}
+    Die (monatliche) Rechnung zeigt detaillierte Übersichten, welche Ressourcen welche Kosten verursachen.
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{utilize Log Search query functions}
+
+\subsubsectioncard{view Alerts in Azure Monitor logs}
+
+\subsubsectioncard{visualize diagnostics data using Azure Monitor Workbooks}

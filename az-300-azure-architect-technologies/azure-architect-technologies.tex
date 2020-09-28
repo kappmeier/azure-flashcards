@@ -1,0 +1,148 @@
+% A flashcard like document containing content relevant to prepare for Microsoft AZ-300 Azure
+% architect technologies exam. Supposed to be used by mobile/tablet phones, i.e. each page contains
+%  single flash card.
+\documentclass{scrartcl}
+
+\usepackage[hidelinks]{hyperref}
+
+% Set up XeLaTex font configuration
+\usepackage{fontspec}
+%\setmainfont{Latin Modern Sans}
+\setmainfont{Myriad Pro}
+
+\usepackage{polyglossia}
+\enablehyphenation
+\setdefaultlanguage[]{german}
+\setotherlanguage[]{english}
+
+% Size of flash cards
+\usepackage[a6paper,landscape,margin=1cm]{geometry}
+
+% Vertical alignment also of the title page
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+% Nothing to see on flash cards
+\pagestyle{empty}
+\thispagestyle{empty}
+
+% Support showing the license as required by CC-BY-SA-4.0
+\usepackage[type={CC},modifier={by-nc-sa},version={4.0}]{doclicense}
+
+% Use meta data for creative commons in the produced pdf
+\usepackage{xmpincl}
+\includexmp{../CC-BY-SA-4.0}
+
+% Flashcard environment similar to the flashcards package
+% Similar to https://tex.stackexchange.com/a/89347/47921
+\newenvironment{flashcard}[2][]{%
+    #1
+    \vfill
+    \centerline{\Large{#2}}
+    \vfill
+\newpage
+}
+{\newpage}
+
+% No intendation for multi line text on cards
+\setlength{\parindent}{0cm}
+
+% Use a single card for section
+\newcommand{\sectioncard}[1]{
+    \vspace*{\stretch{1}}
+    \section{#1}
+    \vspace*{\stretch{1}}
+    \pagebreak
+}
+
+% Use a single card for sub section
+\newcommand{\subsectioncard}[1]{
+    \vspace*{\stretch{1}}
+    \subsection{#1}
+    \vspace*{\stretch{1}}
+    \pagebreak
+}
+
+% Invisible sub section, not actually a card
+\newcommand{\subsubsectioncard}[1]{
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}%
+    \sectionmark{#1}
+}
+
+% Other packages required for content
+\usepackage{booktabs}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\tabitemindent}{~~~~}
+
+\begin{document}
+
+    \title{Microsoft Certified Azure Solutions Architect Expert Flashcards}
+    \date{2020-09-27}
+    \author{Jan-Philipp Kappmeier}
+
+    \clearpage\maketitle
+    \thispagestyle{empty}
+    \pagebreak
+
+    \sectioncard{Bereitstellung und Konfiguration von Infrastruktur}
+
+    \input{1-deploy-and-configure-infrastructure/analyze-resource-utilization-and-consumption}
+
+    \input{1-deploy-and-configure-infrastructure/create-and-configure-storage-accounts}
+
+    \input{1-deploy-and-configure-infrastructure/create-and-configure-a-vm-for-windows-and-linux}
+
+    \input{1-deploy-and-configure-infrastructure/automate-deployment-of-vms}
+
+    \input{1-deploy-and-configure-infrastructure/create-connectivity-between-virtual-networks}
+
+    \input{1-deploy-and-configure-infrastructure/implement-and-manage-virtual-networking}
+
+    \input{1-deploy-and-configure-infrastructure/manage-azure-active-directory}
+
+    \input{1-deploy-and-configure-infrastructure/implement-and-manage-hybrid-identities}
+
+    \input{1-deploy-and-configure-infrastructure/implement-solutions-that-use-virtual-machines-vm}
+
+    \sectioncard{Workloads und Sicherheit}
+
+    \input{2-implement-workloads-and-security/migrate-servers-to-azure}
+
+    \input{2-implement-workloads-and-security/configure-serverless-computing}
+
+    \input{2-implement-workloads-and-security/implement-application-load-balancing}
+
+    \input{2-implement-workloads-and-security/integrate-onpremises-network-with-azure-virtual-network}
+
+    \input{2-implement-workloads-and-security/implement-multi-factor-authentication}
+
+    \input{2-implement-workloads-and-security/manage-role-based-access-control}
+
+    \sectioncard{Apps erstellen und bereitstellen}
+
+    \input{3-create-and-deploy-apps/create-web-apps-by-using-paas}
+
+    \input{3-create-and-deploy-apps/design-and-develop-apps-that-run-in-containers}
+
+    \sectioncard{Authentifikation und Sicherung von Daten}
+
+    \input{4-implement-authentication-and-secure-data/implement-authentication}
+
+    \input{4-implement-authentication-and-secure-data/implement-secure-data-solutions}
+
+    \sectioncard{Entwickeln für Cloud und Azure Storage}
+
+    \input{5-develop-for-the-cloud-and-for-azure-storage/configure-a-message-based-integration-architecture}
+
+    \input{5-develop-for-the-cloud-and-for-azure-storage/develop-for-autoscaling}
+
+    \input{5-develop-for-the-cloud-and-for-azure-storage/develop-solutions-that-use-cosmos-db-storage}
+
+    \input{5-develop-for-the-cloud-and-for-azure-storage/develop-solutions-that-use-a-relational-database}
+
+    \vspace*{\stretch{1}}
+    \doclicenseThis
+    \vspace*{\stretch{1}}
+    \pagebreak
+\end{document}

@@ -1,0 +1,225 @@
+\subsectioncard{Entwickeln von Lösungen, die relationale Datenbanken umfassen}
+
+\subsubsectioncard{provision and configure relational databases}
+
+\begin{flashcard}[Definition]{Datenbank-Varianten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Single Database:\newline
+            für kleine Services geeignet
+        \item Verwlatet:\newline
+            verwaltete, große Instanz
+        \item elastische Pools:\newline
+            mehrere Datenbanken, die einen Pool teilen
+        \item virtuelle Maschine:\newline
+            vollständige Kontrolle über Datenbank, Server, aber kostet
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Vorteile von Azure SQL-Datenbank}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Verwaltet (PaaS): Hardware, Software und Betriebssysteme werden aktualisiert
+        \item Kosten: abhängig von Instanzgröße, aber keine dedizierte Hardware
+        \item dynamische Skalierbarkeit
+        \item Sicherheit: Firewall standardmäßig aktiv
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure-SQL-Datenbank}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure-SQL-Datenbank: logischer Server\newline
+            Pro Server: Verwaltung von Anmeldung, Sicherheit, Firewall, \ldots für alle Datenbanken
+        \item Datenbank: in einem logischen Server
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Typen von SQL-Datenbank}
+    \vspace*{\stretch{1}}
+    DTUs
+    \begin{itemize}
+        \item \emph{Database Transaction Unit}:\newline
+            Kombination aus Rechenleistung, Speicher, Eingabe/Ausgabe
+        \item vorkonfiguriert
+        \item kann für kleine Anwendungen günstiger sein
+    \end{itemize}
+    vKern
+    \begin{itemize}
+        \item virtuelle Kerne (für den Datenbank-Server)
+        \item Kerne und Speicher können unabhängig konfiguriert werden
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{SQL-Server erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Global eindeutiger Servername (URL)
+                \item Administrator-Zugangsdaten
+                \item Location
+                \item Zugriff von Azure-Diensten?
+            \end{itemize}
+        \item Portal: \texttt{Resource erstellen | Datenbanken | SQL-Datenbank | Server | Neu erstellen }
+        \item Azure CLI: \newline
+            \texttt{az sql server create}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{SQL-Datenbank erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement und Ressourcengruppe
+                \item Datenbank-Name
+                \item Server
+                \item elastische Pools Ja/Nein?
+                \item Leistung (Rechenkraft und Speicher)
+            \end{itemize}
+        \item Portal: \texttt{Resource erstellen | Datenbanken | SQL-Datenbank}
+        \item Azure-CLI:\newline
+            \texttt{az sql db create \ldots}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Leistung für Datenbank einstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Portal: Beim Erstellen einer Datenbank ("Compute + Storage")
+        \item vCore-Basiert
+        \item Basic, Standard, Premium für DTUs
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Firewall für SQL-Datenbank konfigurieren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item
+        \item Portal: \texttt{Serverfirewall festlegen} im Datenbank-Blade
+        \begin{itemize}
+            \item \texttt{Client-IP-Adresse hinzufügen}: aktuelle Adresse hinzufügen
+            \item[$\Rightarrow$] wird als Regel eingetragen
+            \item Regeln: Name und IP-Bereich
+            \item Virtuelle Netzwerke
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure elastic pools for Azure SQL Database}
+
+\begin{flashcard}[Definition]{Pools für elastische SQL-Datenbanken}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item gemeinsam genutzte Resourcen (eDTUs) für mehrere Datenbanken
+        \item Datenbanken können (mit Beschränkung) Resourcen von dem Pool nutzen
+        \item Anwendungsfälle: unterschiedlicher, unverhergesehener Ressourcnebedarf
+        \item Architektur:
+            \begin{itemize}
+                \item gewisse Ressourcen für den gesamten Pool
+                \item verschiedene Datenbanken werden dem Pool zugewiesen
+                \item[$\Rightarrow$] teilen sich die Ressourcen
+            \end{itemize}
+        \item Größe: kombinierte Ressourcen (theoretisch) müssen 1,5 mal die Kapaztität für den Pool überschreiben. Mehr als 2 S3-Datenbanken oder 15 S0-Datenbanken
+        \item Grenzen: 100 bzw. 500 Datenbanken pro Pool
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Elastischen Pool erstellen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Benötigt:
+            \begin{itemize}
+                \item Abonnement + Ressourcengruppe
+                \item Pool-Name
+                \item SQL-Server-Instanz
+            \end{itemize}
+        \item Azure-CLI:\newline
+            \texttt{az sql elastic-pools create}
+        \item Portal: \texttt{Elastischer SQL-Datenbankpool} suchen als Ressourcetyp
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zuweisen eines Pools an eine Datenbank}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Bei der Erstellung:\newline
+            \texttt{az sql db create --elastic-pool-name \ldots}
+        \item Im Portal: \newline
+            \texttt{Einstellungen | Konfigurieren | Datenbanken | + Datenbanken hinzufügen} im Pool-Blade\newline
+            (Datenbanken müssen bereits existieren)
+        \item Im Portal: \newline
+            \texttt{Übersicht | + Datenbank erstellen} für eine neue Datenbank direkt im Pool
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Elastische Pools für SQL-Datenbanken konfigurieren}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item DTU: drei Tarife, \texttt{Basic}, \texttt{Standard}, \texttt{Premium}
+        \item vCore: Anzahl Kerne, Generation
+        \item Portal: \texttt{Einstellungen | Konfiguration | Pooleinstellungen} im Pool-Blade
+    \end{itemize}
+    Datenbank:
+    \begin{itemize}
+        \item Grenzwerte pro Datenbank (min, max DTUs)
+        \item Portal: \texttt{Einstellungen | Konfiguration | Pro Datenbank - Einstellungen} im Pool-Blade
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenbanken in Pool verwalten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item CLI:\newline
+            \texttt{az cli db create --resource-group \ldots\ --server \ldots\newline --name <db> --elastic-pool \ldots}
+        \item PowerShell:\newline
+            \texttt{Set-AzSqlDatabase}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Zugriff auf SQL-Datenbank}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure CLI: \texttt{az sql db \ldots}
+        \item Verbindungszeichenfolge: \texttt{az sql db show-connection-string}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{implement Azure SQL Database managed instances}
+
+\subsubsectioncard{create, read, update, and delete data tables by using code}
+
+\begin{flashcard}[Definition]{CRUD-Operationen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Erstellen\newline
+            \texttt{CREATE TABLE \ldots} (Tabelle erstellen)\newline
+            \texttt{INSERT INTO table (\ldots) VALUES (\ldots);} (Werte einfügen)
+        \item Lesen\newline
+            \texttt{SELECT x, y FROM table;}
+        \item Update\newline
+            \texttt{UPDATE table SET x=y WHERE a=b;}
+        \item Löschen\newline
+            \texttt{DELETE FROM table WHERE x=y;}
+    \end{itemize}
+    Login von CloudShell z.\,B. über \texttt{sqlcmd}
+    \vspace*{\stretch{1}}
+\end{flashcard}

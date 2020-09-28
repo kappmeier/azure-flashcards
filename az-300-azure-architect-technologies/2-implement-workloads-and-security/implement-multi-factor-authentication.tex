@@ -1,0 +1,103 @@
+\subsectioncard{Mehrstufige Authentifikation einrichten}
+
+\begin{flashcard}[Definition]{Mehrstufige Authentifikation}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Mindestens zwei Methoden zum Login
+            \begin{itemize}
+                \item Passwort (immer)
+                \item eine zweite Methode
+            \end{itemize}
+        \item Für Administratoren verpflichtend
+        \item Kann aus, für einige Gruppen, für alle Mitglieder im Active Directory an sein
+    \end{itemize}
+    \vspace{1cm}
+    Möglichkeit, mit Legacy-Login MFA zu umgehen!
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure user accounts for MFA}
+
+\begin{flashcard}[Definition]{Zeitraum zwischen Abfragen des zweiten Faktors}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item nicht jeder Authentifizierungs-Versuch muss mit zwei Methoden abgesichert sein
+        \item Caching-Regel erlaubt, eine Periode, in der es nicht notwendig ist, anzugeben
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure fraud alerts}
+
+\begin{flashcard}[Definition]{Betrugs-Benachrichtigung}
+    \vspace*{\stretch{1}}
+    Benutzer können betrügerische Anmeldeverusche melden
+    \begin{itemize}
+        \item Betrugsversuch:\newline
+            falls eine MFA-Aufforderung ohne Anmeldeversuch eingeht
+        \item Automatische Blockierung:\newline
+            Sperrung von Benutzerkonten, die Betrug melden für 90 Tage oder \emph{bis ein Administrator die Sperre aufhebt}
+        \item Code zur Meldung über Telefonanrufe (standard 0)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure bypass methods}
+
+\begin{flashcard}[Definition]{Organisations-Mitglieder}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Nutzer innerhalb der Organisation können MFA überspringen
+        \item benötigt einen Nachweis durch Active Directory Federation Services (AD FS)
+        \item bestimmte Ip-Bereiche können übersprungen werden (Trusted IP)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{One-time bypass}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Für eine einmalige Anmeldung wird der zweite Faktor deaktiviert
+        \item Bypass ist zeitlich begrenzt für einige Sekunden
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure Trusted IPs}
+
+\begin{flashcard}[Definition]{Trusted IPs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item IP-Bereiche, für die keine mehrstufige Authentifizierung notwendig ist
+        \item[!] für das intranet der Organisation\newline
+            für generelle Standort-Freigate: Bedingter Zugriff
+        \item Bis zu 50 CIDR-Bereiche
+    \end{itemize}
+    Zwei Möglichkeiten:
+    \begin{itemize}
+        \item Einstellung für mehrstufige Authentifizierung:\newline
+            \texttt{Azure Active Directory | Benutzer | Multi-Factor Authentication | service Settings | Trusted IPs}
+        \item Über Bedingten Zugriff:\newline
+            \texttt{Azure Active Directory | Sicherheit | Conditional Access | Named Locations}
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{configure verification methods}
+
+\begin{flashcard}[Definition]{Authentifizierungsmethoden}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Passwort
+        \item Textnachricht
+        \item (Microsoft-)App
+        \item Sicherheitsfragen
+        \item FIDO
+        \item Biometrie
+    \end{itemize}
+    \vspace{1cm}
+    ! Sicherheitsfragen können nur in der Self-Service-Kennwortrücksetzung verwendet werden
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
