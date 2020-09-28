@@ -110,6 +110,26 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Gegenseitige TLS-Authentifizierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item benötigt mindestens Basic-Tarif
+        \item Web App vorbereiten:
+            \begin{itemize}
+                \item Im Portal:\newline
+                    \texttt{Eingehende Zertifikate anfordern}
+                \item CLI:\newline
+                    \texttt{az webapp update --set clientCertEnabled=true --name \ldots\\--resource-group \ldots}
+            \end{itemize}
+        \item Abrufen des Zertifikats
+            \begin{itemize}
+                \item ASP.NET: als Eigenschaft \texttt{HttpRequest.ClientCertificate}
+                \item Andere Apps: HTML-Header \texttt{X-ARR-ClientCert}, base64 kodiert
+            \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
 \subsubsectioncard{create, read, update, and delete keys, secrets, and certificates by using the KeyVault API}
 
 \begin{flashcard}[Definition]{Key Vault}
