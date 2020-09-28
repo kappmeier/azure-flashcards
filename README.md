@@ -1,12 +1,19 @@
-# azure-fundamentals-flashcards
-Flashcards to prepare for the AZ-900 exam
+# azure-flashcards
 
-## Requirements
+Flashcards for some Azure exams by Microsoft.
+
+## Content
+
+- [AZ-900 Azure Fundamentals](az-900-fundamentals)
+
+## Compilation
+
+### Requirements
 
 - LuaLaTex
 - Packges: doclicense,xmpincl
 
-### Ubuntu:
+#### Ubuntu:
 
 - texlive
 - texlive-luatex
@@ -14,4 +21,4 @@ Flashcards to prepare for the AZ-900 exam
 
 ## License
 
-This project is [licensed](LICENSE) under the terms of the [CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
+This project is [licensed](LICENSE) under the terms of the [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode) license.
