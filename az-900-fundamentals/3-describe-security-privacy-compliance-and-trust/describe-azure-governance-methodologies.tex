@@ -1,0 +1,123 @@
+\subsectioncard{Describe Azure Governance Methodologies}
+
+\begin{flashcard}[Definition]{Richtlinien mit Azure Policy}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Richtlinien und Regeln für die Ressourcenerstellung\newline
+        $\Rightarrow$ erzwingt Konformität von Ressourcen
+        \item Mögliche Kriterien:
+        \begin{itemize}
+            \item mögliche Regionen für Ressourcenerstellung
+            \item Benennungskonvention
+            \item Typ von erlaubten Ressourcen
+            \item Einforderung bestimmter Tags
+        \end{itemize}
+    \end{itemize}
+    
+    \vspace{5mm}
+    Richtlinien beschreiben \emph{explizite Verbote}, während standardmäßíg alles zugelassen ist
+    
+    $\Rightarrow$ dies ist das Gegenteil von RBAC
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Verwenden von Richtlinien}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Erstellen einer \emph{Richtliniendefinition}\newline
+        z.\,B. im JSON-Format
+        \item Registrierung einer Richtlinie
+        \item Zuweisen der Richtliniendefinition\newline
+        z.\,B. für Resourcengruppen, ein gesamtes Abbonement, \ldots
+        \item Auswirkungen bei verletzten Richtlinien\newline
+        z.\,B. Ressourcenerstellung abbrechen, Audit, \ldots
+    \end{enumerate}
+    
+    \vspace{5mm}
+    Ergebnisse von Richtlinien können in der \emph{Richtlinienkonformität} im Protal angeschaut werden
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Initiativen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Initiativendefinition:\newline
+        Sammlung von Richtliniendefinitionen (aus Azure Policy)
+        \item Initiatives bündeln Richtlinien für ein bestimmtes Ziel, z.\,B. eine spezielle Compliance-Anforderung
+        \item \emph{Initiativenzuweisung} analog zu Richtlinienzuweisung
+    \end{itemize}
+    
+    \vspace{5mm}
+    $\Rightarrow$ meistens ist es sinnvoll Initiativen anstatt Richtlinien zu verwenden:
+    \begin{itemize}
+        \item einfachere Verwaltung
+        \item oft mehrere Richtlinien für ein Ziel notwendig
+        \item sogar für einzelne Richtlinien!
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Role-Based Access Control (RBAC)}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Rollen: bestimmte eingeschränkte Berechtigungen (Schreibgeschützt, Mitwirkender) die einer Identität für bestimmte Azure-Dienstinstanzen zu gewiesen werden
+        \item Identitäten erben Rollen über Gruppenmitgliedschaft
+        \item Rollen vererben sich von höheren Stufen (gesamtes Abonnement (Subscription) über Ressourcengruppen zu einzelnen Ressourcen) etc.
+        \item[$\Rightarrow$] \emph{Modell mit Zulassung}
+    \end{enumerate}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Vorteile von RBAC}
+    \vspace*{\stretch{1}}
+    \begin{enumerate}
+        \item Trennung von Sicherheitsprinzipalen?, Zugriffsrechten und Ressourcen
+        \item ermöglilcht einfache Verwaltung und differenzierte Steuerung.
+        \item Sicherstellung, dass nur erforderliche \emph{Mindestberechtigung} gewährt werden
+        \item[$\Rightarrow$] es sollten nie mehr Berechtigungen, als notwendig vergeben werden
+    \end{enumerate}
+    Fazit: genau bekannt wer auf welche Daten und Infrastruktur zugreifen kann
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Locks}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Sperre von Ressourcen um Änderungen zu verhindern (auch \emph{Löschung})
+        \begin{itemize}
+            \item Löschen:\newline Ressource kann verändert werden, \emph{aber nicht gelöscht}
+            \item Schreibgeschützt:\newline Ressource kann \emph{nur gelesen} werden, nicht verändert\newline
+            Achtung: manche Lesevorgänge sind doch Schreibvorgänge!
+        \end{itemize}
+        \item verschiedene Ebenen: Abonnement, Ressourcengruppe, einzelne Ressourcen
+        \item muss explizit gelöscht werden, bevor Resource gelöscht/verändert werden kann
+        \item nur Besitzer und Administratoren können Locks entfernen
+    \end{itemize}
+    
+    Wird benutzt um versehentliche Löschung von Ressourcen zu verhindern. \newline
+    $\Rightarrow$ nutzen, wenn Löschen weitreichende Auswirkungen auf produktionskritische Infrastruktur hat
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Azure Advisor Security Assistance}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Azure Blaupausen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Unterstützung von Sicherheits- und Complience-Anforderungen durch Vorlagen
+        \item ermöglicht wiederholbare Erstellung von Ressourcen
+        \item Vorlage ermöglicht schnelle Bereitstellung von ähnlichen und konformen Umgebungen
+        \item benutzbar auf allen Levels, bereits von Verwaltungsgruppen abwärts
+        \item Blaupausen werden an Azure Ressource Manager übergeben um Ressourcen zu erstellen
+        \item eingebaute Versionierung (direkt in Azure, im Unterschied zu Ressource-Manager-Vorlagen)
+    \end{itemize}
+    $\Rightarrow$ Richtlinien und Rollen auf Verwaltungsgruppen-Ebene sind der größte Vorteil von Blaupausen gegenüber Tools wie Terraform.
+    Für kleinteiligere Erstellung von Ressourcen weniger geeignet
+
+    \vspace*{\stretch{1}}
+\end{flashcard} 

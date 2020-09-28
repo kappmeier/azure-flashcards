@@ -1,0 +1,70 @@
+\subsectioncard{Beschreibe Vereinbarungen zum Servicelevel für Azure (SLAs)}
+
+\begin{flashcard}[Definition]{Vereinbarungen zum Servicelevel (SLA)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item formales Dokument/Vertrag mit spezifischen Bedinungen/Verpflichtungen, die Microsoft eingeht
+        \item Leistungsstandards, die eingehalten werden
+        \item spezifisch für einzelne Azure-Produkte und -Dienste
+        \item Bedingungen für nicht einhalten der Vereinbarung
+        \item
+            \begin{itemize}
+                \item Leistungsziele
+                \item Betriebszeit und Konnektivität
+                \item Dienstguthaben
+            \end{itemize}
+
+    \end{itemize}
+    Keine SLAs für Free- und Shared-Tarife.
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Auswirkungen der Betriebszeit}
+    \vspace*{\stretch{1}}
+    \begin{tabular}{l|lll}
+        SLA      &  Woche  & Monat  & Jahr    \\
+        \hline
+        99\%     &  1,68 h & 7,2 h  & 3,65 d  \\
+        99,9\%   &  10,1 M & 43,2 M & 8,76 h  \\
+        99,95\%  &  5 M    & 21,6 M & 4,38 h  \\
+        99,99\%  &  1,01 M & 4,32 M & 52,56 M \\
+        99,999\% &  6 s    & 25,9 s & 5,26 M  \\
+    \end{tabular}
+
+    \vspace{5mm}
+    Wenn die Betriebszeit in den Servicelevel-Vereinbarungen zu klein ist, kann sie schwer garantiert werden
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Zusammengesetzte SLAs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Kombination von mehreren Azure-Diensten
+        \item kann je nach Architektur \emph{niedrigere} oder \emph{höhere} Betriebszeiten ergeben
+    \end{itemize}
+    ``UND''
+    \begin{itemize}
+        \item eine Anwendung benötigt zwei (oder mehr) Dienste zusammen
+        \item zusammengesetzte Fehlerwahrscheinlichkeit \emph{höher}
+    \end{itemize}
+    ``ODER''
+    \begin{itemize}
+        \item eine Anwendung benötigt mindestens einer von zwei (oder mehreren) Diensten
+        \item zusammengesetzte Fehlerwahrscheinlichkeit \emph{niedriger}
+        \item teurer und komplexere Architektur
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Beschreibe]{Ein angemessenes SLA für eine Anwendung bestimmen}
+    \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item bestimmen der Anforderungen an die Anwendung
+            \item die passenden Azure-Dienste auswählen, sollten keine kleinere Verfügbarkeit haben als das angestrebte Ziel
+            \item höhere Verfügbarkeit erfordert komplexere Systeme\newline
+            Verfügbarkeitsklasse 4 (99,99\%) nicht mit manuellem Eingriff möglich
+            \item Zeitfenster für Betriebszeit enorm wichtig\newline
+            $\Rightarrow$ stündliche oder tägliche Betriebszeit führt zu unerreichbar kleinen Toleranzen
+        \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}

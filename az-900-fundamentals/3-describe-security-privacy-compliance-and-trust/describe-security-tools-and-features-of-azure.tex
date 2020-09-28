@@ -1,0 +1,97 @@
+\subsectioncard{Describe Security Tools and Features of Azure}
+
+\begin{flashcard}[\ ]{Verschlüsselung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \emph{Azure-Speicherdienstverschlüsselung} ermöglichen transparente (symmetrische) Verschlüsselung\newline
+            Verwaltete Festplatten, Blob, Azure Files, Queues, \ldots
+        \item \emph{Azure Disk Encryption} ermöglicht IaaS-Datenträger-Verschlüsselung\newline
+            \texttt{dm-crypt} mit Verbindung zu Azure Key Vault
+        \item \emph{Transparent Data Encryption}: transparente symmetrische Verschlüsselun von Azure SQL und Data Warehouse
+        \item \emph{Key Vault} speichert geheime Daten\newline
+            Schlüssel, Token, Kennwörter, Zertifikate, \ldots
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Zertifikate}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Dienstzertifikate
+        \begin{itemize}
+            \item manuell hochladen oder über Azure Portal
+            \item validierung von HTTPS-Endpunkten
+            \item getrennte Verwaltung von Diensten und zugeordneten Zertifikaten\newline
+            Aktualisierung ohne Update der Dienste möglich
+        \end{itemize}
+        \item Verwaltungszertifikate
+        \item automatische Verwaltung mit Azure Key VAult (z.\,B. Verlängerung)
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Azure Security Center}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Azure Security Center usage scenarios}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Key Vault}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Clouddienst zum Schützen von wichtigen geheimen Informationen
+        \item insbesondere Schlüssel, die für Ver- und Entschlüsselung notwendig sind
+        \item stellt Funktionen für Zugriff, Berechtigungen und Protokollierung bereit
+        \item unterstützt Verschlüsselung per Software oder mit Hardwaresicherheitsmodulen nach FIPS 140-2 Level 2
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Vorteile von Azure Key Vault}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item zentrale Verwaltung von Geheimnissen
+        \item sichere Speicherung nach aktuellen Sicherheitsstandards
+        \item Zugriff nur nach Authentifizierung und mit Autorisierung
+        \item Überwachung der Zugriffe auf Geheimnissen
+        \item Unterstützung bei der Verwaltung von Zertifikaten
+        \item einfache Integration in andere Azure-Dienste (z.\,B. Speicherdienste)
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Information Protection (AIP)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Schutz freigegebener Dokumente mittels Tags
+        \item Tags können automatisch abgeleitet oder manuell vergeben werden
+        \item Klassifikation nach Tags ermöglicht Analyse von Datenflüssen, riskantem Verhalten, Zugriff, verhindern des Zugriffs (Datenlecks)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Azure Advanced Threat Protection (ATP)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Schutz gegen 
+        \begin{itemize}
+            \item erweiterte Bedrohungen (?)
+            \item geklaute Identitäten
+            \item interne Angriffe
+        \end{itemize}
+        \item ATP-Portal: Überwachung verdächtiger Aktivitäten\newline
+            benötigt Freischaltung im Active Directory
+        \item ATP-Sensor: überwacht Datenverkehr auf dem Domänencontroller \emph{ohne} Server
+        \item ATP-Clouddienst: installiert auf Infrastructur
+    \end{itemize}
+    Benötigt Lizenz:
+    \vspace*{\stretch{1}}
+\end{flashcard}

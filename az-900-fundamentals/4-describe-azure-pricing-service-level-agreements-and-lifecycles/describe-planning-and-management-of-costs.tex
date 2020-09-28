@@ -1,0 +1,204 @@
+\subsectioncard{Understand Planning and Management of Costs}
+
+\begin{flashcard}[\ ]{Azure kaufen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \href{azure.com}{azure.com}\newline
+        einfachste Möglichkeit für Kunden aller Größen
+        \item Microsoft-Vertreter\newline
+        Für Großkunden, die direkt mit Microsoft zusammenarbeiten
+        \item Microsoft-Partner\newline
+        erwerb von verwalteten Diensten über Partner
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Möglichkeiten Azure-Produkte und Services zu erwerben}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Azure Portal: Aus dem Menü auswählen, Ressourcen erstellen
+        \item Ressourcen können aus Cloud Shell oder Azure CLI erstellt werden
+        \item Infrakstruktur automatisch erstellen, z.\,B. Terraform
+    \end{itemize}
+
+    \vspace{5mm}
+    Achtung: Sobald eine Ressource erstellt wird, muss eine Verbrauchseinheit bezahlt werden
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Azure Free Account}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item kostenloses Konto zum ausprobieren
+        \item 12 Monate kostenloser Zugriff auf einige Azure-Produkte
+        \item Guthaben für die ersten 30 Tage
+        \item benötigt Microsoft- oder GitHub-Konto
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Factors affecting costs}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Ressourcentyp
+        \item Dienste
+        \item Standord
+        \item Abrechnungszone
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Einfluss des Ressourcentyps auf Kosten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Kosten sind ressourcenspezifisch\newline
+        Ressourcentyp bestimmt preis pro Verbrauchseinheit
+        \item werden Bestimmt durch die Anzahl der Verbrauchseinheiten
+        \item und der Nutzungsart
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Kosteneinfluss von Diensten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item unterscheien sich abhängig vom Konto
+        \begin{itemize}
+            \item Enterprise
+            \item Web Direct
+            \item CSP
+        \end{itemize}
+        \item vorhandene Kontingente
+        \item verschiedene Abrechnungsstrukturen für Drittanbieterdienste
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Einfluss des Standorts auf Kosten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Variierende Kosten je nach Datencenter wegen
+        \begin{itemize}
+            \item Nachfrage
+            \item lokalen Infrastrukturkosten
+            \item Beliebtheit
+        \end{itemize}
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Einfluss von ausgehendem Datenverkehr}
+    \vspace*{\stretch{1}}
+    Daten, die aus Azure-Datencentern fließen, werden entsprechend der Abrechungszone abgerechnet
+
+    \vspace{5mm}
+    \emph{Meistens} sind 5 Gigabypte \emph{pro Zone} kostenfrei
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Kosten von eingehendem Datenverkehr}
+    \vspace*{\stretch{1}}
+    Daten, die in Azure-Datenzenter fließen sind kostenlos.
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Abrechnungszonen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item geografische Gruppierung von Azure-Regionen
+        \item \emph{nur} zu Abrechnungszwecken
+        \item wird für ausgehenden Datenverkehr genutzt
+        \item üblicherweise 5 Gigabyte pro Monat kostenlos
+    \end{itemize}
+    Nicht zu verwechseln mit \emph{Verfügbarkeitszonen}
+
+    \begin{tabular}{l|lll}
+        Zone        &  Bereich\\
+        \hline
+        Zone 1      &  Nordamerika, US Government, UK\\
+                    & Europa, Kanada, Frankreich, Schweiz\\
+        Zone 2      &  Asien (Osten, Südosten), Japan, Australien, Indien, Südkorea\\
+        Zone 3      &  Brasilien, Südafrika, VAE\\
+        Deutschland & Deutschland\\
+    \end{tabular}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Preisrechner}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Web-Werkzeug zur Kostenschätzung von Azure-Diensten
+        \item erlaubt verschiedene Eigenschaften und Optionen auszuwählen
+        \item unterstützt verschiedene Standorte
+        \item Auswahl des Azure-Tarifs (Free, Basic, \ldots)
+        \item Supportoptionen
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Total Cost of Ownership (TCO) calculator}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Tool zum Vorhersagen der Gesamtkosten einer existierenden Umgebung in Azure
+        \item Daten der existierenden lokalen Struktur als Eingabe
+        \item Benötigt spezifikation von
+        \begin{itemize}
+            \item Server
+            \item Datenbanken
+            \item Speicher
+            \item Netzwerk
+        \end{itemize}
+        \item Konfiguration von zahlreichen Parametern:\newline
+        Strom, Speicher, IT, Software, Hardware, Datencenter, \ldots
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Best practices for minimizing Azure costs}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Performing cost analysis}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Creating spending limits, quotas}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Tags to identify cost owners}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Azure reservations}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Azure Advisor recommendations}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Understand]{Azure Cost Management}
+    \vspace*{\stretch{1}}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}

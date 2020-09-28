@@ -1,0 +1,281 @@
+\subsectioncard{Beschreibe einige der in Azure verfügbaren Kernkomponenten}
+
+\begin{flashcard}[Definition]{Virtuelle Maschine}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item virtueller Computer, der in der Azure cloud gehostet wird und läuft
+        \item verfügbar für Linux (verschiedene Distributionen) und Windows
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Skalierungsgruppen für Virtuelle Maschinen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item \emph{automatische} Skalierung von in Azure gehosteten virtuellen Maschinen
+        \item mehrere virtuelle Maschinen gehören zu einer Gruppe
+        \item die Elemente der Skalierungsgruppe sind \emph{identisch}
+        \item eine große Zahl an Instanzen kann innerhalb von Minuten verwaltet werden
+    \end{itemize}
+    $\Rightarrow$ gut geeignet für Big Data-Analysen und Containerworkloads
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{App Service Functions}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item PaaS-Service in Azure\newline
+        $\Rightarrow$ keine eigene Infrastruktur notwendig
+        \item Enterprise-Anwendungen wie Webseiten, (REST)-APIs und für Mobilgeräte
+        \item unterstützt Entwicklung und Deployment, CI über Git-Repository
+        \item automatische Skalierung
+        \item unterstützte Programmiersprachen:
+        \begin{itemize}
+            \item Python
+            \item Java
+            \item Ruby
+            \item Node.js
+            \item .NET/.NET Core
+            \item PHP
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Azure App Service-Kosten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item festgelegt durch App Service-Plan
+        \item bestimmt die größe/Anzahl der verfügbaren Hardware
+        \item SKU F1 ermöglicht kostenlose Verwendung von kleinen Ressourcen im Free-Tarif
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Container Instances (ACI)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Container-Anwendungen in Azure
+        \item benötigt keine virtuelle Maschine oder Server
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Kubernetes Service (AKS)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verwaltet ein Kubernetes-Cluster aus mehreren virtuellen Maschinen
+        \item Dienste werden in Containern auf den Maschinen im Cluster ausgeführt
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Batch}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verwalteter Dienst für parallele Berechnungen
+        \item Batch-Dienst unterstüzt viele Batch-Knoten (virtuelle Maschinen oder Skalierungsgruppe)
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Virtuelles Netzwerk}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Dienst, der virtuelle Maschinen mit eingehenden VPN-Verbindungen (Virtual Private Network) verknüpft
+        \item Verbindung von Azure-VPN mit einem lokalen VPN ermöglicht sichere Kommunikation zwischen Azure und lokalem Datacenter
+        \item ExpressRoute ermöglicht dedizierte, sichere, \textbf{private} Verbindung zwischen Netzwerk und Azure\newline
+        $\Rightarrow$ erhöht Sicherheit (nicht ür Endnutzer zugänglich!)
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Load Balancer}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verteilt ein- und ausgehende Verbindungen
+        \item Ziel ist gleichmäßige Auslastung von Anwendungen und Endpunkten
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{VPN Gateway}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item ermöglicht den Zugriff auf Azure-VPNs
+        \item hochleistungsfähige Gateways
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Application Gateway}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item optimieren die Auslieferung aus Anwendungs-Serverfarmen
+        \item erhöht gleichzeitig Anwendungssicherheit:
+        \begin{itemize}
+            \item fungiert als Web Application Firewal (WAF)
+            \item[$\Rightarrow$] Schutz vor bekannten Sicherheitsrisiken
+        \end{itemize}
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Content Delivery Network (CDN)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Auslieferung von Inhalten mit hoher Bandbreite
+        \item schnelle Auslieferung weltweit
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Blob-Speicher}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Binary Large OBject
+        \item sehr große binäre Objekte, z.\,B. Videodateien oder Bilder
+        \item Schlüssel-Wert-Speicher
+        \item ansprechbar über HTTP-API (Bibliotheken für viele Sprachen verfügbar)
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Disk Storage}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Festplatten für virtuellle Maschinen, Apps, und Dienste
+        \item Managed Disk: verwaltete Disk, wird von Azure erstellt und freigegeben
+        \item größe beliebig, bezahlt nach Gigabytes in Zweierpotenzen
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{File Storage}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Dateifreigaben, die übe SMB eingebunden werden können
+        \item Zugriff wie auf Dateiserver
+        \item ermöglicht Quota
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Archivierung}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item speichern von Daten, die selten benötigt werden
+        \item Zugriff langsam
+        \item Zugriff teuer
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Eigenschaften von Speicherdiensten}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item dauerhafte Speicherung durch Redundanz und Replikation\newline
+        Replikation auf Wunsch
+        \item sichere Daten durch Verschlüsselung\newline
+        entweder durch Azure, oder durch Kunden
+        \item Skalierbarkeit,
+        \begin{itemize}
+            \item Kapazität: zwar endliche, aber für die meisten Anwendungsfälle unbegrenzte
+            \item Zugriffe: kann für zahllose parallele Zugriffe eingerichtet werden
+        \end{itemize}
+        \item sämtliche Speicherdienste sind verwaltet, d.\,h. keine Wartung und Fehlerbehandlung (des Dienstes selbst) notwendig
+        \item Zugriff über HTTP(S) weltweit möglich
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Cosmos DB}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item NoSQL-Datenbank
+        \item global verteilt
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure SQL-Datenbank}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verwaltete relationale Datenbank (generisch SQL)
+        \item automatische Skalierung
+        \item robuste Sicherheit
+        \item integrierte intelligente Funktionen?
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Azure Database for MySQL}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verwaltete relationale Datenbank (MySQL)
+        \item hohe Verfügbarkeit
+        \item Skalierbarkeit
+        \item Sicherheit
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Database for PostgreSQL}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verwaltete relationale Datenban (PostgreSQL)
+        \item hohe Verfügbarkeit
+        \item Skalierbarkeit
+        \item Sicherheit
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Azure Database Migration Service}
+    \vspace*{\stretch{1}}
+    Unterstützung beim Migrieren von Datenbanken in die Cloud
+
+    $\Rightarrow$ keine Änderungen am Anwendungscode notwendig
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Marketplace}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Sammlung von Applikationen und Services\newline
+        von verschiedenen Anbietern, zertifiziert für Azure-Kompatibilität
+        \begin{itemize}
+            \item KI + Machine Learning
+            \item Disk-Images
+            \item Webanwendungen
+            \item \ldots
+        \end{itemize}
+        \item erlaubt das Suchen, Ausprobieren, Kaufen und Bereitstellen mithilfe einer Benutzeroberfläche
+        \item Unterstützt die Verbindung von Endnutzern mit
+        \begin{itemize}
+            \item Microsoft-Parnern
+            \item unabhängige Softwareentwickler
+            \item Start-Ups, die Azure-Lösungen bereitstellen
+        \end{itemize}
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Marketplace Anwendungsfälle}
+    \vspace*{\stretch{1}}
+        \begin{itemize}
+            \item Verwenden von WordPress für eine Webseite
+            \item Suchen von Diensten und Lösungen für ein Problem
+        \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+

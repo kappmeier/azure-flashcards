@@ -1,0 +1,110 @@
+\subsectioncard{Understand the Core Azure Architectural Components}
+
+\begin{flashcard}[Definition]{Regionen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item mehrere Datencenter, die nahe beieinander sind (geringe Latenz)
+        \item viele (>42) ermöglichen Bereitstellung von Services, wo sie genutzt werden
+        \item Partner-Region in der gleichen Geographie:\newline
+        $\Rightarrow$ ermöglichen geordnetes herunterfahren von Datencentern
+        \item Priorisierung einer Region eines Paares im Fall von Ausfällen
+    \end{itemize}
+    $\Rightarrow$ es sollten nach Möglichkeit beide Regionen eines Paares genutzt werden
+
+    \vspace{5mm}
+    Geographien:
+    \begin{itemize}
+        \item geographische Regionen, die mindestens eine Region enthalten
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verfügbarkeitszone}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item ermöglicht Hochverfügbarkeit
+        \item physikalisch getrennte Bereiche innerhalb einer Region
+        \item bestehen aus Datencentern, die ihrerseits eigene Versorgung haben
+        \item 3 oder mehr Zonen pro Region ermöglichen Resilienz
+        \item Verfügbarkeitszonen haben eine Servicelevel-Vereinbarung von 99,99\% zur Verfügbarkeit von VMs
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Fehler- und Updatedomänen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Bereiche innerhalb einer Region, verbunden mit Verfügbarkeitszonen
+        \item falls mehr als 3 VMs in den 3 Verfügbarkeitszonen erstellt werden
+        \item Maschinen werden automatisch auf Fehler- und Updatedomänen verteilt
+        \item Fehlerdomänen:\newline
+            Verteilung der VMs um Verfügbarkeit zu erhöhen
+        \item Updatedomänen:\newline
+            VMs in verschiedenen Verfügbarkeitszonen werden nicht gleichzeitig Aktualisiert
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ressourcengrupps}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item logischer Container für Azure-Ressourcen:\newline
+        $\Rightarrow$ dient der Ordnung und Gruppierung (z.\,B. regional, nach Typ, Verwendungszweck)
+        \item \emph{jede} Ressource muss sich in einer Ressourcengruppe befinden (1:$n$)
+        \item Ressourcen können in andere Gruppe verschoben werden
+        \item Ressourcengruppen können \emph{keine} Ressourcengruppen beinhalten (flache Hierarchie)
+        \item beim Löschen werden alle enthaltenen Ressourcen ebenfalls gelöscht
+        \item Berechtigungen der RBAC werden vererbt
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Nutzung von Ressourcengruppen}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Organisation von Ressourcen in großen Unternehmen
+        \item z.\,B. durch geeignete Benennungskonvention
+        \item Organisationskriterien:
+            \begin{itemize}
+                \item Ressourcentyp (Virtuelle Maschine, Datenbank, \ldots)
+                \item Umgebung (Prod, Staging, Dev)
+                \item Abteilung (Research, HR, \ldots)
+            \end{itemize}
+            oder beliebige Kombination\newline
+            $\Rightarrow$ je nach Größe z.\,B. auch Abonemment (z.\,B. für Umgebung)
+        \item Kriterien: Zugriffssteuerung (Ownership), Abrechnung, Ressourcenlebenszyklus
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Ressourcenmanager}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item von Azure bereitgestellte Management-Plattform, um Resourcen zu verwalten:\newline
+        Bereitstellung, Modifikation, und Freigabe
+        \item kann Ressourcen zusammen als Gruppe verwalten
+        \item ermöglicht Templates um gleiche Ressourcen in unterschiedlichen Umgebungen zu erstellen
+        \item stellt Verwaltungsfeatures für Sicherheit, Audit, und Tagging\newline
+        z.\,B. RBAC
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Benefits and Usage of Core Azure Architectural Components}
+    \vspace*{\stretch{1}}
+    Grundlegende Komponenten von Azure um Infrastruktur in bereitzustellen und die Cloud-Vorteile auszunutzen:
+    \begin{itemize}
+        \item Regionen $\Rightarrow$ ermöglichen die Bereitstellung von Ressourcen an verschiedenen Orten
+        \item Verfügbarkeitszonen $\Rightarrow$ ermöglichen Redundanz von Ressourcen
+        \item Ressourcengruppen $\Rightarrow$ logische Verwaltung von Ressourcen
+    \end{itemize}
+
+    \vspace{5mm}
+    Ressourcen Manager ist die von Azure bereitgestellte Plattform, um Ressourcen in Azure bereitzustellen und zu verwalten
+
+    \vspace*{\stretch{1}}
+\end{flashcard}

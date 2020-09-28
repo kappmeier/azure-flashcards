@@ -1,0 +1,117 @@
+\subsectioncard{Sichere Netzwerkverbindungen in Azure}
+
+\begin{flashcard}[Definition]{Netzwerksicherheitsgruppe (NSG)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item stellen Richtlinien bereit, wie bestimmte IaaS-Infrastruktur im Netzwerk abgesichert sein soll
+        \item Integration in Azure Security Center: jede Ressource mit externem Internetzugriff soll in einer NSG sein
+        \item filtern Datenverkehr (ein- und ausgehend) zu Ressourcen, z.\,B. nach IP-Adresse, Port, Protokoll, Subnetzen, \ldots
+        \item öffentlicher Zugriff kann komplett gesperrt werden
+        \item NSGs befinden sich innerhalb von virtuellen Netzwerken\newline
+        $\Rightarrow$ schränken Kommunikation innerhalb eines virtuellen Netzwerks ein
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Describe]{Application Security Groups (ASG)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item Sicherheit auf Netzwerkebene nicht auf IP adressen, sondern Anwendungen
+        \item Virtuelle Maschinen können zu Gruppen zusammengefasst werden
+        \item Virtuelle Maschinen können teil mehrerer Application Security Groups sein
+        \item Zugriffskontrolle basierend auf Workloads
+        \item Spezifikation von Zugriffen auf Anwendungs-Ebene ermöglicht, die Anzahl der Netzwerksicherheitsgruppen zu reduzieren
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{User Defined Rules (UDR)}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item zusätzliche Netzwerkrouten in einem Subnetzen
+        \item benutzerdefinierte Routen können Systemrouten überschreiben
+        \item benutzerdefinierte Routen haben höchste Priorität
+        \item einzelne Routentabellen können mehreren virtuellen Subnetzen zugefügt werden
+        \item unterstützte nächste Hops:
+        \begin{itemize}
+            \item virtuelles Gerät
+            \item Gateway für virtuelle Netzwerke, \emph{außer ExpressRoute}
+            \item keine: falls Netzwerkverkehr verworfen werden soll
+            \item virtuelles Netzwerk: zum Überschreiben des Standardroutings
+            \item Internet
+        \end{itemize}
+
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Firewall}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item verwalteter cloudbasierter Dienst (Firewall-as-a-Service)
+        \item zustandsbehaftete Firewall
+        \item viele Protokolle: RDP, SSH, FTP, \ldots
+        \item Schutz für alle Protokolle auf Netzwerkebene für eingehende und ausgehende Verbindungen
+        \item Anwendungsebene: ebenfalls Schutz für HTTP(S)
+        \item globaler Schutz vor mehreren virtuellen Netzwerken
+    \end{itemize}
+
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Beschreibung]{Schutz vor DDoS-Angriffen}
+    \vspace*{\stretch{1}}
+    Denial-of-Service-Angriffe: Überlastung einer (Netwzerk-)Ressource durch zahlreiche Anfragen
+    \begin{itemize}
+        \item nutzt Umfang und Elastizität des globalen Microsoft-Netzwerks
+        \item Überwachung des Datenverkehrs im Edge-Bereich
+        \item automatische Benachrichtigung eines Angriffs (in Minuten)
+        \item es wird Verhindert, dass illegitimer Datenverkehr die Azure-Dienste erreicht
+        \item Datenverkehr des Kunden erreicht Azure-Dienste ungehindert
+    \end{itemize}
+    Zwei Tarife: Basic und Starndard-Tarif ($\rightarrow$ erweiterte Schutzfunktionen)
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Beschreibung]{DDos Protection Standard-Tarif}
+    \vspace*{\stretch{1}}
+    Basic:
+    \begin{itemize}
+        \item ständig aktiviert
+        \item Schutzmaßnahmen wie für Microsoft-Dienste (global)
+    \end{itemize}
+
+    Erweiterte Funktionen im Standard-Tarif
+    \begin{itemize}
+        \item optimierte Funktionen für Azure-Netzwerkressourcen
+        \item einfache Aktivierung
+        \item dedizierte Datenüberwachung + Machine Learning
+        \item Angriffsszenarien:
+        \begin{itemize}
+            \item Volumenangriffe: Überlastung des Netzwerks mit Datenverkehr
+            \item Protokollangriffe: Ausnutzen von Schwachstellen auf OSI Schichten 3 und 4
+            \item direkte Angriffe auf Anwendungsebene (7): Angriffe auf Web-Applikationen
+        \end{itemize}
+
+    \end{itemize}
+    \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[\ ]{Geeignete Lösung für Sicherheit}
+    \vspace*{\stretch{1}}
+    \begin{itemize}
+        \item mehrstufiges Sicherheitskonzept
+        \item abhängig von Anforderungen (z.\,B. rechtlich, \ldots)
+        \item mehrere stufen:\newline
+        \begin{enumerate}
+            \item sichtbar für Endkunden (im öffentlichen Netz) (z.\,B. Firewall)
+            \item Netzwerksicherheit innerhalb des Accounts (z\,B. NSG)
+            \item sichere Daten (z.\,B. Verschlüsselung)
+        \end{enumerate}
+        \item falls gewünscht, können Sicherheitskonzepte kombiniert werden
+    \end{itemize}
+    Immer Trade-Off zwischen Anforderungen, Sicherheit, und Produktivität
+    \vspace*{\stretch{1}}
+\end{flashcard}
