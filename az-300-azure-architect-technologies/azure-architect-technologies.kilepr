@@ -7,7 +7,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=3
 kileversion=2.9.91
-masterDocument=
+masterDocument=azure-architect-technologies.tex
 name=azure-architect-technologies
 pkg_extIsRegExp=false
 pkg_extensions=.cls .sty .bbx .cbx .lbx
@@ -73,12 +73,6 @@ highlight=LaTeX
 mode=LaTeX
 
 [item:2-implement-workloads-and-security/configure-serverless-computing.tex]
-archive=true
-encoding=UTF-8
-highlight=LaTeX
-mode=LaTeX
-
-[item:2-implement-workloads-and-security/implement-application-load-balancing.tex]
 archive=true
 encoding=UTF-8
 highlight=LaTeX
@@ -156,14 +150,14 @@ encoding=UTF-8
 highlight=LaTeX
 mode=LaTeX
 
-[item:azure-achtitect-technologies.tex]
+[item:azure-architect-technologies.kilepr]
+archive=true
+encoding=UTF-8
+highlight=None
+mode=Normal
+
+[item:azure-architect-technologies.tex]
 archive=true
 encoding=UTF-8
 highlight=LaTeX
 mode=LaTeX
-
-[item:azure-architect-technologies.kilepr]
-archive=true
-encoding=
-highlight=
-mode=
