@@ -1,0 +1,92 @@
+% A flashcard like document containing content relevant to prepare for Microsoft AZ-304 Azure
+% architect design exam. Supposed to be used by mobile/tablet phones, i.e. each page contains
+%  single flash card.
+\documentclass{scrartcl}
+
+\usepackage[hidelinks]{hyperref}
+
+% Set up LuaLaTex font configuration
+\usepackage{fontspec}
+%\setmainfont{Latin Modern Sans}
+\setmainfont{Myriad Pro}
+
+\usepackage{polyglossia}
+\enablehyphenation
+\setdefaultlanguage[]{german}
+\setotherlanguage[]{english}
+
+% Size of flash cards
+\usepackage[a6paper,landscape,margin=1cm]{geometry}
+
+% Vertical alignment also of the title page
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+% Nothing to see on flash cards
+\pagestyle{empty}
+\thispagestyle{empty}
+
+% Support showing the license as required by CC-BY-SA-4.0
+\usepackage[type={CC},modifier={by-nc-sa},version={4.0}]{doclicense}
+
+% Use meta data for creative commons in the produced pdf
+\usepackage{xmpincl}
+\includexmp{CC-BY-SA-4.0}
+
+% Flashcard environment similar to the flashcards package
+% Similar to https://tex.stackexchange.com/a/89347/47921
+\newenvironment{flashcard}[2][]{%
+    #1
+    \vfill
+    \centerline{\Large{#2}}
+    \vfill
+\newpage
+}
+{\newpage}
+
+% No intendation for multi line text on cards
+\setlength{\parindent}{0cm}
+
+% Use a single card for section
+\newcommand{\sectioncard}[1]{
+    \vspace*{\stretch{1}}
+    \section{#1}
+    \vspace*{\stretch{1}}
+    \pagebreak
+}
+
+% Use a single card for sub section
+\newcommand{\subsectioncard}[1]{
+    \vspace*{\stretch{1}}
+    \subsection{#1}
+    \vspace*{\stretch{1}}
+    \pagebreak
+}
+
+% Invisible sub section, not actually a card
+\newcommand{\subsubsectioncard}[1]{
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}%
+    \sectionmark{#1}
+}
+
+% Other packages required for content
+\usepackage{booktabs}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\tabitemindent}{~~~~}
+
+\begin{document}
+
+    \title{Microsoft Certified:\\Azure Solutions Architect Expert\\\vspace{2mm}AZ-304: Microsoft Azure Architect Design\\Flashcards}
+    \date{2021-11-08}
+    \author{Jan-Philipp Kappmeier}
+
+    \clearpage\maketitle
+    \thispagestyle{empty}
+    \pagebreak
+
+    \vspace*{\stretch{1}}
+    \doclicenseThis
+    \vspace*{\stretch{1}}
+    \pagebreak
+\end{document}          
