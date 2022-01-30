@@ -1,0 +1,119 @@
+\subsectioncard{Designen einer Lösung für Logging und Überwachung}
+
+\subsubsectioncard{determine levels and storage locations for logs}
+
+\begin{flashcard}[Definition]{Azure Monitor}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Service dealing with telemetry/information for from all services\newline (application, infrastructure, platform)
+      \begin{itemize}
+        \item collect
+        \item analyze
+        \item act with alerts and actions
+        \item passing forward
+      \end{itemize}
+ 
+    \item collects:
+      \begin{itemize}
+        \item logs
+        \item netrics
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Storing Azure Monitor data}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item resource log (text): \emph{Azure Monitor Log Analytics workspaces}
+    \item time-series numerical metrics: \emph{Azure Monitor Metrics}\newline
+      $\Rightarrow$ Automatically collected for \emph{Azure Resources} (short period)!
+    \item Data stored in Storage Account
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{plan for integration with monitoring tools including Azure Monitor and Azure Sentinel}
+
+\begin{flashcard}[Definition]{Integration der Services}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatisches Monitoring für Ressourcen-Metriken
+    \item Integration in Anwendungen über Instrumentierung\newline
+      (ohne Source-Code adaptierung!)
+    \item Installation von Log Analytics agent auf VMs (u.\,A. für Security)
+    \item Installation von Metric Agent auf VMs (u.\,A. für Metriken)
+    \item Aktivieren der Log-Verbindung z.B. zu Aktivitätsprotokoll
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Log Analytics Workspace}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Centralized storage for all logging data/events in Azure Monitor
+    \item Can be per subscription (Team), or for the whole Azure account
+    \item Log events stored in tables
+    \item allows for query
+    \item Authorization: old by Workspace, new by resource allowing RBAC
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Sentinel}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Automatic incident detection, threat intelligence
+    \item Requires data to be stored in Log Analytics workspace
+    \item Uses Azure Monitor Logs as underlying data source
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend appropriate monitoring tool(s) for a solution}
+
+\begin{flashcard}[Definition]{Logging Services}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Monitor (zusammenfassender Service)
+    \item Application Insights (für Webanwendungen)
+    \item VM insights (metriken zur VM-health)
+    \item Azure Security Center (Oberfläche zur Cyber-Sicherheit)
+    \item Azure Sentinel (überwacht Sicherheitsfeatures, wie Zugriffe)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{choose a mechanism for event routing and escalation}
+
+\begin{flashcard}[Definition]{Benachrichtigungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Tests in Application Insights (Ping, $\ldots$) verbunden mit einem Alert
+    \item Automatische Benachrichtigungen:
+    \begin{itemize}
+      \item Email
+      \item SMS
+      \item Runbooks
+      \item Webhooks
+    \end{itemize}
+
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a logging solution for compliance requirements}
+
+\begin{flashcard}[Definition]{Logging Azure AD}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Sign-in Logs (nur Nutzer)
+    \item Azure audit Logs: \newline
+      loggt jede Aktivität in einem Mandanten, Daten, Services, ...
+    \item Herunterladen für manuelle Analyse
+    \item Speichern der Daten in Log Analytics
+    \item Verbinden mit Azure Monitor logs
+    \item automatische Analyse (in \emph{Kusto}) über Tabellen- und Suchanfragen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}

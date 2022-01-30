@@ -1,0 +1,66 @@
+\subsectioncard{Designen von Awendungssicherheit}
+
+\subsubsectioncard{recommend a solution that includes Key Vault}
+
+\begin{flashcard}[Definition]{Key Vault}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verwaltung geheimer Daten:
+    \begin{itemize}
+      \item Geheimnisse: Passwörter, API-Keys, \ldots
+      \item Keys: Erstellung und Speicherung für Verschlüsselung
+      \item Zertifikate: TLS, Generierung und Speichern
+    \end{itemize}
+    \item Sicherheitsstufen: Standard (Software-Schlüssel) und Premium (Hardware-Sicherheitsmodul)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Key Vault Anwendungsfälle und Szenarien}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verhindert versehentliches Leaken\newline
+      Zugriff über URI, keine Speichrung im Code
+    \item Authentifizierung und Authorisierung bevor Zugriff gestattet wird\newline
+      offiziell hat sogar Microsoft keinen Zugriff \ldots
+    \item einfache Handhabe: Automatisierung, Lebensdauer, Replikation
+    \item einfache Einbindung in andere Azure-Services
+    \item Versionierung: Versionen haben UUIDs
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Sicherheitsfeatures Key Vault}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Zugriffsbeschränkung über Netzwerk-Firewall\newline
+      (IP-Bereiche (CIDR), virtuelle Subnetze, orivate Endpunkte)
+    \item Zugriff über HTTPS (TLS)
+    \item RBAC-Authentifizierung für Management und optional Daten
+    \item optional Datenzugriff über Richtlinien
+    \item Unterstützung für bedingten Zugriff und PIM
+    \item Logging über Azure Monitor, Ereignisse über Event Grid
+    \item Multi-Regional: entweder Partner-Regionen oder ZRS.\newline
+      Automatisches Failover wenn möglich. (Nur read-only während failover)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datentypen im Key Vault}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item kryptografische Schlüssel: verschiedene Algorithmen
+    \item Geheimnisse
+    \item Zertifikate: automatische Erneuerung
+    \item Speicherkontoschlüssel: automatische Rotation
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+
+
+\subsubsectioncard{recommend a solution that includes managed identities}
+
+\subsubsectioncard{recommend a solution for integrating applications into Azure AD}
+

@@ -1,0 +1,321 @@
+\subsubsectioncard{recommend a solution for single-sign on}
+
+\begin{flashcard}[Definition]{Single Sign-on (SSO)}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Benutze Azure-Login zur Authentifizierung in anderen Services
+    \item OAuth 2.0
+    \item Vorteil: 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Single Sign-on für externe Anwendungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item AD FS
+    \item benötigt moderne Protokolle wie SAML, OpenID Connect, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Voraussetzungen für SSO}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure AD Premium P1
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Varianten von SSO}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verbundanmeldung: mehrere Identitätsanbieter werden verwendet
+    \item Kennwort: Nutzer definieren Zugriffseinstellungen, die anschließend von Azure AD bereitgestellt werden
+    \item verknüpfte Anwendungen: Anmeldung über Links, Benutzer benötigen Konto für den Service
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for authentication}
+
+\begin{flashcard}[Definition]{Authentifizierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Ziel: Identität einer Entität ist gültig
+    \item Authentifizierung über Azure AD
+    \item keine Notwendigkeit, selbst Authentifizierung zu betreiben
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Varianten der Authentifizierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Passwort: standard, einfach, problematisch
+    \item zusätzlicher Faktor (z.\,B. Gegenstand wie Key, OTP, oder biometrisch)
+    \begin{itemize}
+      \item ok: SMS, Telefon
+      \item gut: OTP, Token OTP (Hardware)
+      \item ideal: ohne Passwort, Biometrie, FIDO2
+    \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Levels der Sicherheit}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Zweifaktor-Authentifizierung bei der Registrierung
+    \item für Administratoren
+    \item in bestimmten Anwendungsfällen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for Conditional Access, including multi-factor authentication}
+
+\begin{flashcard}[Definition]{Mehrfaktor-Authentifizierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item zusätzlich zu Username/Passwort weiterer Faktor
+    \item erzwungen, wenn Microsoft Sicherheitsstandard aktiv ist
+    \item empfohlen für Administratoren
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Schutz durch Mehrfaktor-Authentifizierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item alle Anwendungen im Azure AD können geschützt werden
+    \item auch SaaS-Anwendungen
+    \item nicht möglich für Legacyauthentifizierung!\newline
+    wichtiges Einfallstor für Angriffe!\newline
+    z.\,B. Office 2010, Protokolle wie POP3, IMAP, SMTP, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bedingter Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item nicht gleichzeitig mit Microsoft Sicherheitsstandards
+    \item Anforderung von zweitem Faktor abhängig von der Situation
+    \item bewertet außer Identität auch:\newline
+      Ort, Gerät, Anwendung, Zeit
+    \item Zugriff kann automatisch abgelehnt oder mit MFA durchgeführt werden\newline
+      (oder zugelassen werden)
+    \item Berichtsmodus um Zugriffe zu evaluieren, z.\,B. wenn Zugriffsarten nicht vorhersehbar sind
+    \item benötigt Azure AD Premium P1 oder höher
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Eigenschaften von bedingtem Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Nutzer müssen nicht ihren Flow unterbrechen
+    \item Risikobewertung jeder Anmeldung
+    \item Complience
+    \item Unterstützung für Zero Trust-Umgebungen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Richtlinien für bedingten Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Wenn-Dann-Bedingungen
+    \item Einteilung nach:\newline
+      Nutzer/Gruppen, Abwendungen, Geräte/Plattformen, Regionen
+    \item Zugriffssteuerung für den Dann-Teil\newline
+      Zugriffstoken wird ausgestellt
+    \item Nicht abgedeckte Bedingungen müssen explizit Ausgeschlossen werden!\newline
+      z.\,B. nur eine Gruppe erhält zugriff mit Mehrfach-Authentifizierung erfordert:\newline
+      nicht-Gruppe wird abgelehnt (sonst erhält nicht-Gruppe Zugriff \emph{ohne MFA})
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Absichern bei bedingtem Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Es können versehentlich Administratoren ausgeschlossen werden!
+    \item Sinnvoll ein Notfallkonto zu haben
+    \item Testen! der Zugriffsrichtlinien\newline
+      Szenarien, erwartete Ergebnisse, Testnutzer im AD
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Anwendungssicherheit}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Datenexfiltration verhindern
+    \item Complience bei Dokumenten (Up- und Download)
+    \item Zugriff blockieren abhängig vom Risiko (z.\,B. veraltete Zertifikate)
+    \item spezielle Aktivitäten der Anwendung verbieten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for network access authentication}
+
+\begin{flashcard}[Definition]{Netzwerk-Zugriffssteuerung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Teil des bedingten Zugriffs
+    \item auch benannte Orte
+    \item Zugriff wird gestattet abhängig vom Netzwerk an dem ein Nutzer eingeloggt ist\newline
+      z.\,B. Hauptsitz, etc.
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Netzwerk-Zugriff definieren}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Ortsabhängig
+    \item IPv4/IPv6-Bereiche
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for a hybrid identity including Azure AD Connect, Azure AD
+Connect cloud sync and Azure AD Connect Health}
+
+\begin{flashcard}[Definition]{Verbinden von Verzeichnissen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item lokales Verzeichnis: Azure DS
+    \item Cloud-Verzeichnis: Azure AD
+    \item synchronisierung möglich (DS => AD), mit Ausnahmen
+    \item Azure AD Seamless SSO für gleichzeitiges Login (nicht mit AD FS!)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure AD Connect}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Synchronisierung zwischen AD DS und Azure AD
+    \item Tool mit Wizard-Unterstützung zur Feature-Auswahl:
+    \begin{itemize}
+      \item Passwörter zurückschreiben
+      \item Synchronisierung von Azure AD
+    \end{itemize}
+    \item Synchronisierung:
+    \begin{itemize}
+      \item Nutzer, Gruppen, \ldots werden zu Azure AD hinzugefügt bzw. gelöscht
+      \item viele, aber nicht alle Attribute werden synchronisiert
+      \item Lizenzen werden weder automatisch hinzugefügt noch deaktiviert (falls Nutzer deaktiviert werden)
+    \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verwalter der Autorität}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item nur eine einzige Quelle hat Autorität
+    \item nach Synchronisierung mit Azure AD Connect ist die Autorität im lokalen AD DS
+    \item das Azure AD hat nur Lesezugriff
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Durchführen der Synchronisierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item benötigt Administratorzugriff auf AD DS und Azure AD\newline
+      Es kann nicht der Administrator-Account vom Azure Konto sein!
+    \item idealerweise ein dedizierter Account
+    \item sollte auf einem eigenen Server laufen
+    \item das lokale Verzeichnis sollte fehlerfrei sein. Vorbereiten!\newline
+      Überprüfungs-Tools sind verfügbar
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure AD Connect Health}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Service zur Benachrichtigung bei Schwierigkeiten mit Azure AD Connect
+    \item kann Emails verschicken an Verantwortliche
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for user self-service}
+
+\begin{flashcard}[Definition]{Self-service Passwort-Reset}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Feature von Azure AD
+    \item Kostenersparnis (kein Admin oder Service Desk)
+    \item Passwort ändern/neu setzen, Account-Freischaltung
+    \item einfach für Nutzer
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Features von self service password reset}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Passwort writeback in lokales Verzeichnis
+    \item logging von Passwortänderungen
+    \item Passwort ändern/neu setzen, Account-Freischaltung
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend and implement a solution for B2B integration}
+
+\begin{flashcard}[Definition]{Zusammenarbeit B2B mit Azure Active Directory}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Zugriff auf Ressourcen für externe Partner
+    \item externe Partner müssen selbst kein Active Directory betreiben
+    \item Zugriff über Einladungen
+    \item Beretistellung einer API z.\,B. für Self-Service-Applikationen
+    \item Integration in Services wie z.\,B. Conditional Access möglich
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Anmeldung der Partner bei B2B}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Partner nutzen eigene Identitätslösung
+    \item Anmeldung über Geschäfts, Schul- oder sonstiges Konto\newline
+    (Email, SAML-, WS-Fed)
+    \item keine Synchronisation oder Kennwortverwaltung erforderlich!
+    \item eigene Anmeldungs-Workflows möglich\newline
+      z.\,B. für benutzerspezifische Genehmigung, \ldots
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Einladen der Partner}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Gastbenutzer erstellen
+    \item Gruppen und Berechtigungen zuweisen
+    \item Einladung schicken per Email
+    \item Anwendungen (bzw. Besitzer) können Gastzugriff selbst verwalten\newline
+    (wenn Berechtigung delegiert wurde)
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Integration von Identitätslösungen}
+  \vspace*{\stretch{1}}  
+  \begin{enumerate}
+    \item Einige Identitätslösungen können direkt integriert werden:\newline
+    Google, Facebook, Microsoft-Konto
+    \item Nutzer müssen dann kein neues Konto erzeugen
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+

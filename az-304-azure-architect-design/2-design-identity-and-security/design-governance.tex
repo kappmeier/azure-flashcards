@@ -1,0 +1,149 @@
+\subsectioncard{Designen von Aufsicht}
+
+\subsubsectioncard{recommend a strategy for tagging}
+
+\begin{flashcard}[Definition]{Tags}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Key-Value Text-Paare die allen ARM-Ressourcen zugewiesen werden können
+    \item Einteilung von Ressourcen in Gruppen zur Klassifizierung:\newline
+      Bereich, Stage, Umgebungen, Costcenter, \ldots
+    \item Tags erlauben Gruppierung unabhängig von Abonnements, Verwaltungsgruppen, oder anderen Beschränkungen
+    \item werden nicht vererbt (z.\,B. von Ressourcengruppe zu Ressorucen)\newline
+      lässt sich aber mit Richtlinien bewirken
+    \item Grenzwerte: 50 Tags pro Ressource, 512 Zeichen für den Namen, 256 für den Wert\newline
+      (Speicherkonten nur 128 für den Namen)
+  \end{itemize}
+  $\Rightarrow$ nützlich zur Umsetzung einer Government-Strategie
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Mögliche Anwendungsfälle für Tags}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Ressourcenverwaltung: Umgebung, Anwendungsfälle, Besitzer
+    \item Kosten: übersicht über Kostencenter, Budgets
+    \item Operationelles: markieren von kritischen Ressourcen, SLAs, \ldots
+    \item Sicherheit: Klassifizierung von kritischen Daten
+    \item Aufsicht: garantieren von regulatorischen Bedingungen
+    \item Automatisierung: Ziele von Operationen auf Grundlage von Ressourcentags
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Vergeben von Tags}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Allgemeine Tag-Berechtigung: \texttt{Microsoft.Resources/tags}\newline
+      Erlaubt \emph{alle} Ressorucen zu taggen 
+    \item Schreibzugriff auf eine Ressource, z.\,B. \emph{Mitwirkender}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a strategy for using Azure Policy}
+
+\begin{flashcard}[Definition]{Azure Policy}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Service, der Richtlinien und Regeln verwaltet
+    \item Richtlinien werden für Ressourcen vergeben nach\newline
+      Verwaltungsgruppe, Abonnement, Ressourcengruppe
+  \end{itemize}
+  $\Rightarrow$: arbeiten mit vielen Services/Bereichen zusammen
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Durchsetzen von Regeln}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Resourcen, die gegen Regeln verstoßen können nicht erstellt werden
+    \item einige Regeln können automatisch durchgesetzt werden
+    \begin{itemize}
+      \item Tags z.B.
+    \end{itemize}
+    \item Übersicht über Regelverletzung
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Bereiche der Regelung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item erlaubte VM SKU
+    \item zulässige Regionen für Bereitstellungen
+    \item Authentifikation: 2-Faktor-Authentifikation
+    \item CORS (zulässige adressen für Web-Services)
+    \item Systemupdates erzwingen (Security Center)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Initiativen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Sammlung mehrerer Policies
+    \item Ziel: Compliance für ein Ziel herstellen (z.B. Sicherheitszertifikat, ISO 27k1, \ldots)
+    \item Zuweisen wie Policy an Gruppen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for using Azure Blueprints}
+
+\begin{flashcard}[Definition]{Azure Blueprint}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verwaltet Richtlinien und Bereitstellungen über mehrere Abonnements hinweg
+    \begin{itemize}
+      \item Rollenzuweisungen (RBAC)
+      \item Richtlinien
+      \item Ressourcengruppen
+      \item Vorlagen für Ressourcen-Manager (ARM)
+    \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Anwendungszenarien für Blueprints}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Skalierung von Richtlinien über eine ganze Organisation (mit vielen Abonnements) hinweg\newline
+      zentrale Verwaltung!
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Blueprints anwenden}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Blueprint erstellen und zuweisen (z.\,B. Verwaltungsgruppe)
+    \item Ressourcen werden erstellt (z.\,B. Policy, Ressourcegruppen, \ldots): \emph{Artefakt}
+    \item Analyse der erstellten Ressourcen möglich
+  \end{enumerate}
+  Parameter können pro Gruppe (Zuweisung) festgelegt werden
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution that leverages Azure Resource Graph}
+
+\begin{flashcard}[Definition]{Resource Graph}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item Service, der alle Azure Resourcen durchsucht
+    \item erlaubt Query-Anfragen, um Resourcen aufzulisten
+    \item Visualisierung der Ergebnisse
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Anwendungen für Resource Graph}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item filtern von Ressourcen, die Bedingungen erfüllen
+    \item z.\,B. VMs, die Sicherheitsfunktionen nicht erfüllen
+    \item Einhaltung von Regionen, Namen, \ldots
+    \item zu große Ressorucen (z.\,B. ungenutzte VMs) finden
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}

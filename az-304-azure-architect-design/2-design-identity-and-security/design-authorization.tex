@@ -1,0 +1,264 @@
+\subsectioncard{Designen von Authorisierung}
+
+\subsubsectioncard{choose an authorization approach}
+
+\begin{flashcard}[Definition]{Authorisierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Geewährung von Zugriff auf Ressourcen an eine \emph{bereits authentifizierte} Entität\newline
+    (normalerweise Person, aber auch Service Principal, \ldots)
+    \item Präzise Spezifikation welche Handlung mti der Ressource vorgenommen werden darf
+    \item Oauth 2 für Microsoft/Azure AD
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Authentifizierung ist Authorisierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item einfachste Art der authentifizierung
+    \item Zugangsentscheidung nur Abhängig davon, dass die Entität Authentifiziert worden ist
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Authorisierungs-Ansätze}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Authentifizierung ist Authorisierung
+    \item Zugriffskontrolllisten\newline
+      z.\,B. für Schlüsseltresore
+    \item RBAC\newline
+      z.\,B. rollenbasierte Zugriffssteuerung für Anwendungen, Azure RBAC oder Azure AD RBAC
+    \item Attributbasierte Zugriffskontrolle\newline
+      z.\,B dynamische Gruppen, Azzure RBAC mit Bedingungen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{RBAC}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Rollenbasierte Zugriffssteuerung
+    \item häufig genutzte Methode für Authorisierung von Anwendungen
+    \item Rollen beschreiben genau die Art der zugelassenen Handlungen
+    \item Zugriff wird dann für Rollen (\emph{nicht Entitäten}) gewährt
+    \item Administratoren können Entitäten bestimmten Rollen zuweisen,\newline
+      der Zugriff leitet sich dann von der Rolle ab
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Attributbasierte Zugriffskontrolle}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item ABAC, präziser als RBAC und erlaubt dynamischen Zugriff
+    \item Zugriff über Attribute der zugreifenden Entität
+    \item Festlegung durch Regeln über Attribute der zugreifenden Entität \emph{und} der Umgebung
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zugriffssteuerungslisten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item ACL
+    \item Verwaltung von expliziten Listen von Zugriffsberechtigten Entitäten
+    \item mehr Kontrolle als als nur über Authorisierung
+    \item Aufwändig bei wachsender Anzahl an Entitäten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a hierarchical structure that includes management groups, subscriptions and
+resource groups}
+
+\begin{flashcard}[Definition]{Verwaltungsebenen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Hierarchische Anordnung von Ebenen
+    \item niedrigere Ebenen erben Einstellungen von höheren Ebenen
+    \item Verwaltungseinstellungen werden auf ein Element einer Ebene angewendet
+  \end{itemize}
+  \vspace*{\stretch{1}}    
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Die 4 Verwaltungsebenen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verwaltungsgruppen
+    \item Abonnements
+    \item Ressourcnegruppen
+    \item Ressourcen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verwaltungsgruppen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item können mehrere Abonnements und \emph{auch Verwaltungsgruppen} enthalten\newline
+      (Oberste und 6 weitere Ebenen)
+    \item nur Verwaltungseinstellungen möglich, z.\,B. Rechtevergabe
+    \item übergeordnet existiert noch der Mandant selbst / die Stammverwaltungsgruppe
+    \item ermöglicht effiziente Verwaltung bei zahlreichen Abonnements\newline
+      Richtlinien, Complience, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Abonnements}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item können, müssen aber nicht in einer Verwaltungsgruppe sein
+    \item oberste Ebene zum Verwalten von Ressourcen
+    \item derzeit noch oberste Ebene auf der benutzerdefinierte Rollen zugewiesen werden können
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ressourcengruppen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Container für einzelne Ressourcen
+    \item sind in einem Abonnement enthalten\newline
+      (maximal 980)
+    \item verwaltet von Azure Resource Manager
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ressourcen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item einzelne Ressourcen\newline
+      (800 pro Ressourcentyp!)
+    \item sind in einer Ressourcengruppe
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend an access management solution including RBAC policies, access reviews, role assignments, Privileged Identity Management (PIM), Azure AD Identity Protection, Just In Time (JIT) access}
+
+\begin{flashcard}[Definition]{RBAC-Richtlinien}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Authorisierung zum Zugriff auf Ressourcen in Azure
+    \item Rollen werden Nutzern, Identitäten, Gruppen, oder Service Principals zugewiesen\newline
+      \emph{Rollenzuweisung}
+    \item Zugriff auf verschiedenen Ebenen (Verwaltungsebene -> Ressourcen)
+    \item einige Rollen haben zusätzliche Bedingungen
+    \item Berechtigungen mehrerer Zuweisungen werden vereinigt
+    \item zwei Ebenen:
+      \begin{itemize}
+        \item Aktionen
+        \item Daten
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Ablehnungszuweisungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item blockieren Aktionen für Nutzern
+    \item haben Vorrang vor Rollenzuweisungen
+    \item erlauben es für Benutzer Aktionen einzuschränken,\newline
+      auch wenn diese eigentlich die Rechte hätten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Active Directory-Zugriffsüberprüfungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item regelmäßige Überprüfung von Gruppenmitgliedschaften für Anwendungen und Rollen
+    \item z.\,B. automatische Zuweisungen für neue Mitarbeiter, oder Entfernung bei Wechsel
+    \item weit reichende Zugriffe werden entfernt
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Szenarien von Zugriffsüberprüfungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item viele Nutzer mit Privilegien
+    \item weiternutzung von Gruppen zu anderen Zwecken
+    \item Zugriff auf kritische Daten
+    \item Verwalten von Ausnahmen
+    \item externe Nutzer, Drittanbieter, Self-Service
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Identity Protection}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatisierte Behandlung von Risiken
+    \item Untersuchung von Risiken
+    \item Exportieren der gesammelten Risikodaten
+  \end{itemize}
+  Verwendet die gleichen Signale, wie für automatisierten bedingten Zugriff
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Erkannte Risiken}
+  \vspace*{\stretch{1}}
+  Abgeleitet aus beobachteten Daten von Microsoft:
+  \begin{itemize}
+    \item anonyme IP-Adressen
+    \item ungewöhnliche Ortswechsel
+    \item Schadsoftwareeinsatz
+    \item ungewöhnliche Anmeldungen, komprommitierte Accounts
+    \item Kennwortspray
+    \item \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Einsatz von Identity Protection}
+  \vspace*{\stretch{1}}
+  Abgeleitet aus beobachteten Daten von Microsoft:
+  \begin{itemize}
+    \item Risikoeinstufung in niedrig, mittel, hoch
+    \item exportieren der Daten zur Analyse mit anderen Tools
+    \item benötigt globale Rechte (Admin, Sicherheitsadmin, Sicherheitsoperator, \ldots)
+    \item enthalten in AZ Premium P2-Lizenz
+    \item \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Just in Time Access (JIT)}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item begrenzter Zugang zu VMs
+    \item enthält Auditing während des Logins
+    \item Kann für einzelne Ports konfiguriert werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Privileged Identity Management (PIM)}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item möglichst wenige Nutzer bekommen Zugriff auf wichtige Ressourcen
+    \item andere Nutzer können Just-in-Time privilegierten Zugriff auf Azure und Azure AD bekommen
+    \item benötigt Premium P2-Lizenz
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Dynamische Rollenzuweisung mit PIM}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Just-in-Time-Zugriff, zeitgebunden
+    \item Genehmigung
+    \item mehrstufige Authentifizierung
+    \item Anforderung einer Begründung für die erhöhung der Privilegien
+    \item Benachrichtigungen, Zugriffsüberpr und Überwachung
+  \end{itemize}
+  Mit der Überwachung kann verhindert werden, dass der letzte aktive Administrator entfernt wird
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
