@@ -57,10 +57,45 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-
-
-
 \subsubsectioncard{recommend a solution that includes managed identities}
+
+\begin{flashcard}[Definition]{Verwaltete Identitäten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item von Azure verwaltete Identität um Ressourcenzugriff zu erhalten
+    \item Vorteil: keine Verwaltung von Zugangsdaten
+    \item können überall verwendet werden, wo Azure AD-Authentifizierung möglich ist
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verwaltete Identitäten nutzen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Arten von Identitäten
+    \begin{itemize}
+      \item Systemseitig zugewiesen\newline
+        Automatisch in Azure AD erstellte Identität für eine Ressource in Azure
+      \item Nutzerseitig zugewiesen\newline
+        Selbst erstellte Identität (als Azure Resource); kann mehreren Ressourcen in Azure zugewiesen werden
+    \end{itemize}
+    \item Identitäten können Zielressourcen zugewiesen werden (mit RBAC-Rollen)
+    \item gängige Operationen wie Anmeldeprotokolle, erstellen, aktivieren, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
 
 \subsubsectioncard{recommend a solution for integrating applications into Azure AD}
 
+
+\begin{flashcard}[Definition]{Webanwendung in Azure AD registrieren}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item benötigt Azure B2C-Mandant
+    \item App-Registrierung erstellen, in Azure CLI, Powershell, Portal, Terraform, \ldots
+    \item benötigt eine Weiterleitungs-URI, an die das Token nach der Authentifizierung gesendet wird
+    \item benötigt Admin-Zustimmung zur Benutzung von Open ID
+    \item ein Passwort für die Anwendung muss erstellt werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}

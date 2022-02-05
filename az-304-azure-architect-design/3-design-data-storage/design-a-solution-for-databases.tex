@@ -1,0 +1,382 @@
+\subsectioncard{Design einer Lösung für Datanbanken}
+
+\subsubsectioncard{select an appropriate data platform based on requirements}
+
+\begin{flashcard}[Definition]{Auswahl einer Datenplattform}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item zahllose Datenplattformen verfügbar (auch in Azure)
+    \item Art der Datenstrukturierung
+    \item unterstützte Operationen auf den Datenbanken
+    \item Kosten
+    \item Wartbarkeit
+    \item möglicherweise sogar Multi-Model-Datenbanken
+    \item Features müssen zu den Anforderungen passen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datensysteme in Azure}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Relationale Datenbanken (RDBMS) (meistens SQL)
+    \item Schlüssel/Wert-Speicher
+    \item Dokument-Datenbanken
+    \item Graph-Datenbanken
+    \item Datenanalyse (für parallelisierung, Big Data, \ldots)
+    \item Spaltenfamilien
+    \item Datenbanken für Suche
+    \item Zeitreihen
+    \item Objektspeicher
+    \item Dateien/Dateisystem
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Relationale Datenbanken in Azure}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item klassische 2-dimensionaler Tabellen
+    \item verfügbare Richtungen
+      \begin{itemize}
+        \item Azure SQL Database (Microsoft SQL Server)
+        \item Azure Database for MySQL, PostreSQL, MariaDB
+      \end{itemize}
+    \item konsistent, ACID, operationen in Transaktionen
+    \item keine horizontale Skalieung
+    \item normalisierte Daten erforderlich
+    \item Daten passen in Schema (vorab)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Schlüssel/Wert-Speicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verfügbare Services:
+      \begin{itemize}
+        \item Azure Cosmos DB (Tabellen und SQL APIs)
+        \item Azure Cache für Redis
+        \item Azure Table Speicher
+      \end{itemize}
+    \item jeder Eintrag hat eindeutigen Schlüssel
+    \item Operationen auf Wert-Basis sind Atomar
+    \item optimiert für Schlüssel-Lookups
+    \item komplexe Operationen (Join, Locks, \ldots) nicht unterstützt
+    \item keine Relation zwischen einzelnen Einträgen
+    \item ein Schema wird nicht erzwungen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Dokument-Datenbanken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item in azure als Azure Cosmos DB (SQL API)
+    \item Sammlung von \emph{Dokumenten}, von einfach bis Komplex (z.\,B. JSON)
+    \item Dokumente können Objekte im Code gut repräsentieren
+    \item denormalisierte Daten
+    \item verschiedene Schemata pro Dokumenttyp, auch optionale Felder\newline
+      $\Rightarrow$ halb-strukturierte Daten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Graph-Datenbanken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verfügbare Services in Azure
+      \begin{itemize}
+        \item Azure Cosmos DB (Gremlin API)
+        \item SQL Server
+      \end{itemize}
+    \item erlauben effiziente Anfragen an Graphen
+    \item Objekte: Knoten, Kanten (zwischen zwei Knoten), Eigenschaften, Richtung
+    \item Ermöglicht Abfragen über Abhängigkeiten
+    \item im Unterschied zu relationalen Daten sind Relationen Teil des Datenmodells
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenanalyse}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verfügbare Azure-Services
+      \begin{itemize}
+        \item Azure Synapse Analytics
+        \item Azure Data Lake
+        \item Azure Data Explorer
+        \item Azure Analyisis Services
+        \item HDInsight
+        \item Azure Databricks
+      \end{itemize}
+    \item Dateiformate wie parquet, ORC
+    \item denormalisierte Daten, z.\,B. Stern- oder Schneeflockenartig
+    \item unterstützt massive parallelisierung
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Spaltenfamilien}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Unterstützung in Azure:
+      \begin{itemize}
+         \item Azure Cosmus DB (Cassandra API)
+         \item HBase (teil von HDInsight)
+      \end{itemize}
+    \item Daten in Spalten und Zeilen \emph{ähnlich} wie relationale Datenbanken
+    \item Spalten zu Familien zusammengefasst, Operationen oft nur auf Familien\newline
+    dafür aber atomar
+    \item Daten können \emph{dünn} sein, also optional
+    \item Zugriff auf Zeilen über einen Schlüssel, der indizierbar ist
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Datenbanken für Suche}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Search
+    \item Unterstützung für Suchanfragen, exact oder unscharf
+    \item basiert auf Index großer Datenmengen (mehrdimensional, Freitext)
+    \item Freitext- und komplexe Anfragen
+    \item Unstrukturierter Text, oder teilstrukturiert, mit Referenzen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Zeitreihendatenbanken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Time Series Insights
+    \item fast nur Schreiboperationen, Löschen nur in Blöcken
+    \item kleine Einträge, aber viele
+    \item Schlüssel sind Zeitpunkte, meistens sortiert
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Objektspeicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verfügbare Services in Azure
+      \begin{itemize}
+        \item Azure Blob Speicher
+        \item Azure Data Lake Storage Gen2
+      \end{itemize}
+      \item große (binäre) Objekte identifiziert als Schlüssel
+      \item z.\,B. Filme, PDFs, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Dateien/Dateisystem}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Files
+    \item Standardzugriff auf objekte in Verzeichnishierarchie
+    \item ermöglicht Einbindung in Legacy-Systeme\newline
+    (Zugriff mit standard I/O-Bibliotheken)
+    \item gemeinsamer Zugriff auf vielen Systemen (NFS/SMB)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure SQL Database}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item PAAS-Bereitstellung von Microsoft SQL Server
+    \item einzelne Datenbanken, oder Datenbankenpools
+    \item skalierbare Performance
+    \item Bezahlmodelle: Kern-Basiert, DTU, Serverless
+    \item SLA: 99,99\%, automatische Backups, Replikation, Redundanz, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure SQL}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verschiedene Klassen von SQL-Datenbanken
+      \begin{itemize}
+        \item Azure SQL Database: DBaaS als PaaS, SQL Server
+        \item Azure SQL Managed Instance: PaaS, verschiedene Engines
+          \item SQL Server auf einer VM: IaaS, VM ist verwaltet
+      \end{itemize}
+      \item SQL auf einer VM ist \emph{selbstverwaltet} (Updates, \ldots)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend database service tier sizing}
+
+\begin{flashcard}[Definition]{Azure SQL Service Tiers}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verfügbare Service Tiers für Kerne
+      \begin{itemize}
+        \item Allgemein/Standard
+        \item Geschäftskritisch/Premium: hohe Transaktionsrate, low-latency I/O,
+          \newline isolierte Replikationen
+        \item Hyperscale: automatische Skalierung von Speicher und Rechenleistung\newline
+          (nur serverlos)
+      \end{itemize}
+    \item Service Tiers für DTU
+      \begin{itemize}
+        \item Basic
+        \item Standard
+        \item Premium
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Allgemeines SQL Service Tier}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Cloud-Architektur mit guter Verfügbarkeit im Falle von Ausfällen
+    \item Speicher und Prozessierung laufen separiert
+      \begin{itemize}
+        \item Prozesse: stateless, können auf andere Hardware verschoben werden
+        \item Speicher: stateful Datenbank-Dateien in Azure Blob Storage
+      \end{itemize}
+    \item Prozesse laufen auf redundanten Knoten
+    \item gut für generelle Aufgaben, latenz 5-10 ms
+    \item Standard-SLA 99,99\%
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Geschäftskritisches SQL Service Tier}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item optimiert für hohen Durchsatz, geringe Fehlerwahrscheinlihckeit, Resilienz, Updates, \ldots
+    \item Datenbanken laufen auf Cluster und Replikas
+    \item unterschiedliche Schreib- und Lese-Knoten
+    \item Hochveffügbarkeit durch Verfügbarkeitsgruppen
+    \item Daten werden auf lokalen Datenspeichern gespeichert
+    \item kostenlose Skalierung für Leseoperationen
+    \item latenz 1-2 ms, Datenschutz
+    \item Premium-SLA 99,995\%
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Hyperscale}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item nur für Azure SQL Database
+    \item nur vCore-Bezahlmodell
+    \item 100 TiB Datenbankgröße
+    \item sofortige BAckups, schnelle Dateneinspielung
+    \item schnelle Skalierung (vertikal und horizontal)
+    \item Lese-Replizierunge, Caches
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for database scalability}
+
+\begin{flashcard}[Definition]{SQL-Skalierbarkeit}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatische Skalierung und minimale Downtime durch PaaS
+    \item dynamische Anpassung an wachsende (schrumpfende) Anforderungen
+    \item Skalierung in beiden Bezahlmodellen
+      \begin{itemize}
+        \item DTU-basiert\newline
+          Operationen, Durchsatz
+        \item Kern-basiert\newline
+          anzahl Kerne
+      \end{itemize}
+    \item dynamisch können Datenbanken in einen Pool verschoben werden\newline
+      (oder extrahiert)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Arten der Skalierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item hoch und runter skalieren
+      \begin{itemize}
+        \item Prozess startet neu!
+        \item möglicherweise verschoben auf andere virtuelle Maschine
+        \item Verschiebung ist ein online-Prozess ohne downtime\newline
+          (Transaktionen werden möglicherweise abgebrochen)
+        \item Skalierung während eines langen Prozesses sollte nicht durchgeführt werden!
+        \item benötigt Wiederholungs-Logik in Clientanwendung
+      \end{itemize}
+    \item Lese-Skalierung: Nur-Lesen-Replika der Datenbank um aufwändige\newline
+      Leseanfragen zu beantworten (z.\,B. Reporting)
+    \item Sharding: Aufteilen der Daten auf mehrere Datenbanken\newline
+      (nicht automatisch)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for encrypting data at rest, data in transmission, and data in use}
+
+\begin{flashcard}[Definition]{Verschlüsselung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item oft von Azure direkt bereitgestellt
+    \item möglich eigene Schlüssel zu verwenden
+    \item Schlüssel werden im Key Vault gespeichert\newline
+      auch ohne Möglichkeit von Microsoft darauf zuzugreifen
+    \item Unterstützung für Schlüsselverschlüsselungsschlüssel
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verschlüsselung ruhender Daten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item oftmals erforderlich wegen Richtlinien
+    \item Verschlüsselung mit einem symmetrischen Schlüssel
+    \item transparent verschlüsseln beim Schreiben und entschlüsseln beim Lesen
+    \item falls Zugriff auf eine Festplatte besteht, können die Daten nicht gelesen werden
+    \item Schlüssel sollten im Key Vault gespeichert werden
+    \item Verschlüsselung mit Umschlagverschlüsselung:\newline
+      ermöglicht leichtes Austauschen des Schlüsselverschlüsselungsschlüssels ohne Daten neu zu verschlüsseln
+    \item Kundenschlüssel möglich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Unterstützung für Verschlüsselung ruhender Daten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Disk Encryption
+    \item Azure Storage (Blob, Queue, Tabele, Files)
+    \item Azure SQL-Datenbank
+    \item verwaltete Datenträger
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verschlüsselung von Daten während der Übertragung}
+  \vspace*{\stretch{1}}
+  Verschlüsselung beim Übertragen zwischen verschiedenen Speicherorten
+  \begin{itemize}
+    \item Schutz z.\,B. vor Man-in-the-middle-Attacken
+    \item Verschlüsselung im Rechenzentrum (\emph{MACsec}), in der Netzwerkhardware
+    \item TLS-Versclüsselung bei allen Anfragen von Kunden
+    \item Datenzugriff: HTTPS über web, SMB 3.0
+    \item Zugriff auf Virtuelle Computer: RDP, SSH
+    \item Zugriff auf Azure durch ein VPN (VPN Gateway, Point-to-Site-VPN, Site-to-Site)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Transparente Verschlüsselung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Transparente Datenverschlüsselung von SQL-Datenbanken und Synapse
+    \item Daten sind Verschlüsselt im ruhenden Speicher \emph{und} in Speicherseiten
+    \item Verarbeitung der unverschlüsselten Daten nur im SQL-Prozess
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
