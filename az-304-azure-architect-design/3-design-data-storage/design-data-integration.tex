@@ -1,0 +1,198 @@
+\subsectioncard{Design von Datenintegration}
+
+\subsubsectioncard{recommend a data flow to meet business requirements}
+
+\begin{flashcard}[Definition]{Datenfluss}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item unterstützte Services in Azure
+      \begin{itemize}
+        \item Azure Data Factory
+        \item Azure Synapse Analytics
+      \end{itemize}
+    \item auch: ``Zuordnungsddatenflüsse''
+    \item erlaubt Transformationen von Daten ohne Code
+    \item graphischer Editor mit Transformationsschritten
+      \begin{itemize}
+        \item Quelltransformationen
+        \item Datentransformationen
+        \item Senken
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Quelltransformation}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Datenquelle für einen Datenfluss
+    \item mehrere Möglich, mindestens 1
+    \item zusammenfügen von Quellen mit \emph{Join}, \emph{Lookup} oder \emph{Union}
+    \item jede Quelltransformation ist genau einem Dienst oder Datensatz zugeordnet
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Quelltypen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Daraset
+      \begin{itemize}
+        \item wiederverwendbar als Template
+        \item nicht in Spark
+      \end{itemize}
+    \item Inline-Dataset
+      \begin{itemize}
+        \item Verbunden mit Quelldaten-Service
+        \item in Spark
+      \end{itemize}
+    \item Workspace DB
+      \begin{itemize}
+        \item nur Azure Synapse
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Quelltypen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Amazon S3
+    \item Azure Blob Storage
+    \item Aure Cosmos DB
+    \item Azure Data Lake 1/2
+    \item SQL: SQL Database, MySQL, Postgre, SQL Server, verwaltet, Cosmos DB
+    \item Azure Data Explorer
+    \item Dataverse
+    \item Dynamics 365/CRM
+    \item Hive
+    \item Snowflake
+    \item REST
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for data integration, including Azure Data Factory, Azure Databricks, Azure Data Lake, Azure Synapse Analytics}
+
+\begin{flashcard}[Definition]{Data Factory}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item macht Rohdaten in brauchbarem Format für Analyse verfügbar
+    \item fügt Kontext und Datentypen hinzu (oft unorganisierte Daten)
+    \item Dienst für
+      \begin{itemize}
+        \item ETL (Extrahieren, Transformiren, Laden)
+        \item ELT (Extrahieren, Laden, Transformieren)
+        \item Datenintegration
+      \end{itemize}
+    \item im Anschluss: Pipelines/Workflows mit Transformationen
+    \item speichern in Azure HDInsight Hadoop, Databricks, SQL-Datenbank
+  \end{itemize}
+  $\Rightarrow$ Rohdaten in nutzbaren Datenspeichern und Data Lakes organisieren und für geschäftliche Entscheidungen nutzbar machen
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Data Factory einsetzen}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item verbinden von Data Factory mit der Datenquelle
+    \item verschieben der Daten in einen Analysebereich
+    \item Datenflüsse zur Transformation in Spark\newline
+      (auch manuelle Transformation auf anderen Diensten)
+    \item Veröffentlichung der Daten (z.\,B. Data Warehous, CosmosDB, \ldots)
+    \item Nutzung in BI-Tools
+    \item Überwachung auf Fehlerraten
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Databricks}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Analyseplattform optimiert für interaktion mit Cloud-Services
+    \item Umgebungen für Datenanalyse:
+      \begin{itemize}
+        \item Databricks SQL: SQL-Abfragen auf data lake
+        \item Databricks Data Science \& Engineering: Arbeitsumgebung für Entwickler, Data Scientists, \ldots.
+        \item Databricks Machine Learning: integrierte Umgebung für maschinelles Lernen, Feature-Entwidklung, Model-Training, \ldots
+      \end{itemize}
+      \item Spark-Umgebung mit interaktiven Arbeitsbereich und automatischer Skalierung
+      \item Unterstützung zahlreicher Sprachen und Bibliotheken
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Data Lake}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Speicher in Azure zur Unterstützung von Enterprise Big Data-Analysen
+    \item Gen1: unabhängiger Speicher (\emph{HDFS}), Gen2: überführung in standard Blob-Storage.
+    \item unbegrenzter Speicher, automatische Skalierung
+    \item Gen2: hierarchische Namensraum auf Blobspeicher
+    \item feine Sicherheit: POSIX, RBAC, Verschlüsselung, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Data Lake Analytics}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Abfrageumgebung für Analyseaufräge von Big Data
+    \item Skalierung pro Auftrag, Bezahlung nach Bedarf
+    \item U-SQL-Abfrage von Daten in Azure Data Lake
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Data Lake Analytics}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Synapse Analytics}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Analysedienst für Data Warehousing und Bit Data-Analysen
+    \item serverlose Ressourcen in großer Menge für Abfragen
+    \item vereinheitlichung von Erfassung, Verwaltung, Aufbereitung und Bereitstellung der Daten
+    \item als Folge:
+      \begin{itemize}
+        \item Business Intelligence-Analyse
+        \item Machine Learning
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Synapse Analytics}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Analysedienst für Data Warehousing und Big Data-Analysen
+    \item serverlose Ressourcen in großer Menge für Abfragen (SQL Serverless Pool)
+    \item vereinheitlichung von Erfassung, Verwaltung, Aufbereitung und Bereitstellung der Daten
+    \item als Folge:
+      \begin{itemize}
+        \item Business Intelligence-Analyse
+        \item Machine Learning
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Features von Azure Synapse Analytics}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Datenextraktion aus verschiedenen Quellen
+    \item Analyse mit
+      \begin{itemize}
+        \item Synapse SQL (skalierend)
+        \item Apache Spark
+        \item Data Explorer
+      \end{itemize}
+
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}

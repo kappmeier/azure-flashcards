@@ -1,0 +1,79 @@
+\subsectioncard{Auswahl eines Speicherkontos}
+
+\subsubsectioncard{choose between storage tiers}
+
+\begin{flashcard}[Definition]{Zugriffsebenen in Azure}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Ebene bestimmt Kosten und Geschwindigkeit (online/offline)
+    \item verfügbare Zugriffsebenen
+      \begin{itemize}
+        \item Heiß
+        \item Kalt
+        \item Archiv
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Online-Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item heiße und kalte Zugriffsebenen
+    \item schneller (direkter) Datenzugriff
+    \item Kosten pro Zugriff (API-Aufruf) und für Speicher
+    \item kalt: höhere Kosten für Zugriff, geringere für Daten, Mindestspeicherzeit 30 Tage, geringere Availability
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+ 
+\begin{flashcard}[Definition]{Offline-Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Archiv-Zugriffsebene
+    \item Daten müssen bereitgestellt werden, bevor Zugriff möglich ist (nur lesen!)\newline
+      \emph{rehydrierung}
+    \item Mindestspeicherzeit: 180 Tage
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+ 
+\begin{flashcard}[Definition]{Wechsel der Zugriffsebene}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Standardebene für neue Blobs (vererbt)
+    \item pro Blob kann Zugriffsebene gesetzt werden
+    \item Zugriffsebenen können mit Richtlinien wechseln (Lebenszyklus-Management)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+ 
+\subsubsectioncard{recommend a storage access solution}
+
+\begin{flashcard}[Definition]{Azure Speicherdienste}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Typen:
+      \begin{itemize}
+        \item Blob (auch Data Lake Gen2): Objektspeicher
+        \item Files: Dateisystem, SMB/NFS mountbar
+        \item Tabellen
+        \item Queue
+        \item Disks: Festplatten, die auf Blobs liegen
+      \end{itemize}
+    \item Redundanz: Zonen, Geo-Redundanz
+    \item Verfügbarkeit: hochverfügbar
+    \item Skalierbarkeit
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend storage management tools}
+
+\begin{flashcard}[Definition]{Datenfluss}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
