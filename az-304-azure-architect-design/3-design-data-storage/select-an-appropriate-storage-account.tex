@@ -57,23 +57,127 @@
       \begin{itemize}
         \item Blob (auch Data Lake Gen2): Objektspeicher
         \item Files: Dateisystem, SMB/NFS mountbar
-        \item Tabellen
+        \item Tabellen: NoSQL
         \item Queue
         \item Disks: Festplatten, die auf Blobs liegen
       \end{itemize}
     \item Redundanz: Zonen, Geo-Redundanz
     \item Verfügbarkeit: hochverfügbar
     \item Skalierbarkeit
+    \item automatisch verwaltet
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\subsubsectioncard{recommend storage management tools}
-
-\begin{flashcard}[Definition]{Datenfluss}
+\begin{flashcard}[Definition]{Blobspeicher}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Daten-Streams und wahlfreier Zugriff von überall
+    \item Unterstützung für Data Lakes
+    \item riesige Mengen unstrukturierter Daten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Files-Speicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item geeignet für Lift-and-Shift-Szenarien
+    \item erweitert lokalen NFS-Speicher
+    \item Zugriff von vielen virtuellen Maschinen
+    \item einbinden über NFS oder SMB
+    \item keine Unterstützung für Azure AD-Integration!
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Queue-Speicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item asynchroner Nachrichtenversand\newline
+    (ähnlich wie Service Bus-Schlangen)
+    \item unbegrenzte Nachrichten von maximal 64 KiB
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Tabellenspeicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item flexible Daten, z.\,B. für Web-Anwendungen\newline
+    (ähnlich wie Cosmos DB Tabellen-API)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Disk-Speicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Lift-and-Shift-Szenarien mit Festplatten
+    \item Daten, die von einer VM und von außerhalb zugegriffen werden
+    \item verwaltete virtuelle Festplatten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Sicherer Zugriff auf Speicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure AD-Integration und RBAC\newline
+      Lese- und Schreibzugriff auf Daten, Zugriff auf Schlüssel
+    \item Einbindung von Azure Files in virtuelle Maschinen
+    \item SAS-Token erlauben Zugriff mit Einschränkungen
+    \item Zugriff mit gemeinsamen Schlüssel möglich, aber möglicherweise Sicherheitsrisiko:\newline
+      benötigt Zugriff auf den Account-Schlüssel (zum signieren)
+    \item anonymer Zugriff: öffentliche Blobs/Dateien
+    \item HTTPS: im idealfall, HTTP sollte nicht verwendet werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Active Directory-Zuang zu Blobs}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verschiedene Level: Container, Speicherkonto,\newline
+      und die übliche Hierarchie darüber
+    \item Rollen: Daten-Rollen und Verwaltungsrollen
+      \begin{itemize}
+        \item Storage Blob Data Owner: Besitzer und POSIX-Rollen verwalten
+        \item Storage Blob Data Contributor: voller Datenzugriff
+        \item Storage Blob Data Reader: Lese-Zugriff
+        \item Storage Blob Delegator: kann Benutzerdelegierungsschlüssel erstellen\newline
+        (mit eigenen Rechten)
+      \end{itemize}
+    \item \texttt{Microsoft.Storage/storageAccounts/listkeys/action} für Vollzugriff, z.\,B. im Portal
+    \item Reader-Rolle ist auch nötig (auch für Datenzugriff!)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Speicherkontoschlüssel}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item zwei Schlüssel
+    \item erlauben Rotieren
+    \item werden idealerweise in einem Key Vault gespeichert
+    \item automatische Erinnerung für Ablaufdatum
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\subsubsectioncard{recommend storage management tools}
+
+\begin{flashcard}[Definition]{Tools mit Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Portal (mit eingebautem Storage Explorer)
+    \item Azure Storage Explorer
+    \item Visual Studio Cloud Explorer
+    \item \texttt{azcopy}
+    \item Azure CLI
+    \item \ldots Powershell
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
