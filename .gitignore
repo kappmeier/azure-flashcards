@@ -1,3 +1,9 @@
+# System
+## Linux
+*.directory
+
+# TeX/LaTeX and related
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
