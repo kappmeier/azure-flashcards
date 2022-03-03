@@ -235,6 +235,64 @@
 
 \subsubsectioncard{recommend a solution for Azure Backup management}
 
+\begin{flashcard}[Definition]{Monitoring und Verwaltung von Azure Recovery}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Overview-Dashboard im Azure Portal
+    \item Alarme (Kritisch, oder nur Warnungen)
+    \item laufende und abgeschlossene Backups
+    \item gesicherte Daten (Mengen!)
+    \item auch Warnungen über VMs mit problemen (\emph{vor} dem Backup)
+    \item automatische Benachrichtigungen möglich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Sicherungsvorüberprüfung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Prüfen der Konfiguration von virtuellen Computern
+    \item Zustände:
+      \begin{itemize}
+        \item Erfolgreich: vermutlich erfolgreiche Sicherungen
+        \item Warnungen: möglicherweise Probleme, mit Lösungen
+        \item Kritisch: Sicherung \emph{wird} fehlschlagen, erforderliche Schritte zur Problemlösung
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure Backup-Konfiguration}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item lokale VMs
+      \begin{itemize}
+        \item Windows mit MARS
+        \item Data Protection Manager (DPM) oder MABS
+      \end{itemize}
+    \item Azure VMs
+      \begin{itemize}
+        \item alle VMs können direkt gesichert werden (mit Agent als VM Erweiterung)
+        \item einzelne Verzeichnisse/Dateien: mit MARS
+        \item auch mit MABS
+      \end{itemize}
+    \item Sicherungstypen: Voll, Inkrementell (differentiell wird nicht unterstützt)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Backup-Richtlinien}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item eine pro Recovery Vault\newline
+      $\Rightarrow$ wird für viele VMs (oder andere Ressourcen) genutzt
+    \item Zeitplan: taglich, wöchentlich
+    \item Aufbewahrung: taglich, wöchentlich, monatlich, jährlich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
 \subsubsectioncard{design a solution for data archiving and retention}
 
 \begin{flashcard}[Definition]{}
