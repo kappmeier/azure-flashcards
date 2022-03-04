@@ -1,332 +1,271 @@
-\subsectioncard{Auswahl eines Speicherkontos}
+\subsectioncard{Designen für Hochverfügbarkeit}
 
-\subsubsectioncard{recommend a recovery solution for Azure hybrid and on-premises workloads that meets recovery objectives (RTO, RLO, RPO)}
+\subsubsectioncard{recommend a solution for application and workload redundancy, including compute, database, and storage}
 
-\begin{flashcard}[Definition]{Geschäftskontinuiät}
+\begin{flashcard}[]{Regions}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item BCDR - Business Continuity and Disaster Recovery
+    \item mehrere Geographien können Azure-Services enthalten
+    \item innerhalb einer Geographie kann es mehrere Regionen geben
+    \item Regionen sind weit voneinander entfernt um for regionalen und größeren Katastrophen zu schützen
+    \item einige Azure-Services erlauben Replikation in mehrere Regionen\newline
+      $\Rightarrow$ Partner-Region
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{RTO}
+\begin{flashcard}[]{Verfügbarkeitszonen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Recovery Time Objective
-    \item Maximale Zeitspanne, die da Unternehmen nach einem Notfall überleben kann, bevor der normale Betrieb wiederhergestellt wurde
+    \item Innerhalb einer region physikalisch getrennte Orte
+    \item jede Verfügbarkeitszone kann ein oder mehrere Rechenzentren enthalten
+    \item Verfügbarkeitszonen sind über schnelle Verbindungen miteinander verbunden
+    \item Anwendungen können zwischen Verfügbarkeitszonen wechslen, falls ein Rechenzentrum ausfällt
   \end{itemize}
+  $\Rightarrow$ schutz vor kleineren Szenarios, wie ausfälle eines Rechenzentrums
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{RPO}
+\begin{flashcard}[]{Verfügbarkeitsgruppe}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Recovery Point Objective
-    \item Maximaler Datenverlust, der im Notfall akzeptabel ist
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{RLO}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Recovery Level objective
-    \item Level/Ebene, die widerhergestellt werden müssen
-    \item z.\,B. die ganze Umgebung, eine Anwendung, eine einzelne Datei
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Azure Site Recovery}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Backup für
+    \item mehrere VMs können in eine Verfügbarkeitsgruppe bereitgestellt werden
+    \item unterstützt Update-Domänen
       \begin{itemize}
-        \item verschiedene VMs: Azure, VMware, lokale Server und VMs, Hyper-V
-        \item verschiedene Workloads: Apps, \ldots
+        \item Neustart der VMs der gleichen Domäne \emph{zeitgleich}
       \end{itemize}
-    \item Datenresilienz durch Speicherung in Azure Storage
-    \item automatisches Failover
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Eigenschaften von Sicherungen}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item kontinuierliche Replikation für Azure, VMware, phyisische Server (RPO)
-    \item 30 Sekunden maximal für Hyper-V (RPO)
-    \item Disks können gesichert und ausgeschlossen werden
-    \item Konsistenz von Anwendungssicherungen (mit Skripten)
-    \item Absturzkonsistenz: alle 5 Minuten (kein Speicher-Backup)
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{VMware Site Recovery}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item initialie Replikation und Deltas
-    \item Sicherung auf verwaltete Datenträger
-    \item Installation des Agenten auf physischen und virtuellen Computern
-    \item Konto im vCenter
-    \item viele Windows- und Linux-Versionen unterstützt
-    \item Anwendungsbackup unterstützt für viele verbreitete Anwendungen
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Hyper-V Site Recovery}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Sicherung mit oder ohne VMM (Virtual Machine Manager)
-    \item Sicherung nicht nur nach Azure sondern auch in weitere Datencenter (nur VMM)\newline
-      eingeschränkte Betriebssystemauswahl
-    \item alle virtuellen Datenträger werden gesichert
-    \item Sicherung beginnt mit Hyper-V-Snapshot
-    \item automatisches und manuelles Failover und Failback
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Azure Backup}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item einfacher Service für Datensicherung von Speicher
-    \item lokale und Cloud-Daten\newline
-      $\Rightarrow$ keine Notwendigkeit von lokalen Backup-Lösungen
-    \item automatische Verwaltung von Speicherpunkten
-    \item keine Begrenzung der Datenmenge beim Transfer
-    \item verschlüsselt (in Transit und abgelegt)
-    \item alle Azure-Speichertypen werden unterstützt: Redundanz, Replikation, \ldots
-    \item Test auf (teilweise Schutz vor) Verschlüsselungstrojaner
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Unterstützte Daten von Azure Backup}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item lokale Daten (mit MARS-Agent)
-    \item Daten von VM (Dateien, System, \ldots) (mit MARS-Agent)
-    \item verwaltete Platten
-    \item Azure Speicher: Files, Blobs
-    \item Datenbanken: SQL, PostgreSQL, SAP HANA
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\subsubsectioncard{design an Azure Site Recovery solution}
-
-\begin{flashcard}[Definition]{Azure Site Recovery}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Tool zur Wiederherstellung von Daten
-    \item Replikation zwischen primärem und sekundärem Standort
-    \item unterstützt lokale (inkls. physische Maschinen) und Azure als Quell-Standort
-    \item Failback (nicht zu physische Maschinen)
-    \item erstellt Momentaufnahmen und Wiederherstellungspunkte
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Voraussetzungen in Azure}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Berechtigung für Resourcen (Subscription, VM, Speicher, \ldots)
-    \item Recovery Services Vault
-    \item Netzwerk, Speicher für die gesicherten VMs
-    \item[!] Vault, Speicher und Netzwerk müssen in der gleichen Region sein
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Azure Backup Server}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item MABS
-    \item Software zur Verwaltung von lokalen Backups
-    \item MARS muss auf den zu sichernden Servern installiert sein
-    \item MABS auf dediziertem Server zur Verwaltung von Endpunkten und Sicherungen
-    \item verbunden mit Recovery Services Vault
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\subsubsectioncard{recommend a solution for recovery in different regions}
-
-\begin{flashcard}[Definition]{Sicherung in sekundäre Region}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Azure VMs können einfach in die sekundäre Region repliziert werden
-    \item Im Portal: Notfallwiederherstellung aktivieren
-    \item Auswählen einer Region (viele sind möglich)
-    \item einfache
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Replikation in Verfügbarkeitszone}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item wenn VM in Verfügbarkeitszone bereitgestellt worden ist
-    \item kann in andere Zone repliziert werden
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Datenssicherung in Regionen}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Azure Speicherkonten unterstützen eine sekundäre Region\newline
-    $\Rightarrow$ Sicherung mit letztlicher Konsistenz
-    \item Geo-Redundanter Speicher (auch zusammen mit Zonenredundanz)
-    \item RA-GRS: erlaubt Lesen des gesicherten Speichers (auch ohne Failover)
-    \item nach Failover wird die sekundäre Region die primäre
-    \item nicht möglich für Premium-Speicherkonten
-  \end{itemize}
-  $\Rightarrow$ Wenn Beschränkungen zu stark, möglicherweise manuell mit Tools
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Failover für Datenredundanz}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item möglicherweise Datenverlust durch asynchrone Speicherung\newline
-      $\Rightarrow$ Vorsicht bei Failback!    
-    \item Anwendungen müssen Failover unterstützen
-    \item Schlüsseltechnologie für Hochverfügbarkeit
-    \item archivierte Blobs müssen erst wieder Rehydriert werden
-    \item hierarchischer Namespace (Datalake Gen 2) ist noch nicht unterstützt
-    \item kein Failover bei aktiviertem WORM
-    \item möglicherweise automatisch von Microsoft initiiert (im Notfall!)
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\subsubsectioncard{recommend a solution for geo-redundancy of workloads}
-
-\begin{flashcard}[Definition]{Zugriff auf redundante Daten}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item RA-GRS, RA-GZRS: Lesezugriff ständig möglich, möglicherweise verzögert\newline
-    $\Rightarrow$ testen der letztlichen Konsistenz mit \emph{Last Sync Time}
-    \item Lese-Kopien in Azure Files werden nicht unterstützt
-    \item automatisches Fallback falls Timeout
-    \item Entscheidung: kompletter Failover (Table, Queue, Blob) oder einzeln je nach Service
-    \item Anwendungen: einfach, Lese-Anforderungen an sekundäre Region weiterzuleiten, aber nicht Schreib-Anforderungen
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Automatischer Endpunktwechsel}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item im Failover-Fall muss der Endpunkt gewechselt werden
-    \item ideal: transparent für Anwendungen
-    \item unterstützt von Traffic Manager
-    \item DNS-basierter Load-Balancer mit Endpunkt-Monitoring
-    \item unterstüzt auch lokale Endpunkte\newline
-    (und damit auch Failover in die Cloud)
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\subsubsectioncard{recommend a solution for Azure Backup management}
-
-\begin{flashcard}[Definition]{Monitoring und Verwaltung von Azure Recovery}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Overview-Dashboard im Azure Portal
-    \item Alarme (Kritisch, oder nur Warnungen)
-    \item laufende und abgeschlossene Backups
-    \item gesicherte Daten (Mengen!)
-    \item auch Warnungen über VMs mit problemen (\emph{vor} dem Backup)
-    \item automatische Benachrichtigungen möglich
-  \end{itemize}
-  \vspace*{\stretch{1}}
-\end{flashcard}
-
-\begin{flashcard}[Definition]{Sicherungsvorüberprüfung}
-  \vspace*{\stretch{1}}
-  \begin{itemize}
-    \item Prüfen der Konfiguration von virtuellen Computern
-    \item Zustände:
+    \item unterstützt Fehler-Domänen
       \begin{itemize}
-        \item Erfolgreich: vermutlich erfolgreiche Sicherungen
-        \item Warnungen: möglicherweise Probleme, mit Lösungen
-        \item Kritisch: Sicherung \emph{wird} fehlschlagen, erforderliche Schritte zur Problemlösung
+         \item gemeinsam genutzter Speicher
+         \item gemeinsam genutzte Netzwerke
+         \item gemeinsam genutzte Stromversorgung
+      \end{itemize}
+    \item[!] VMs müssen bei der Erstellung hinzugefügt werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Speicher-Redundanz}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item innerhalb einer Region
+      \begin{itemize}
+        \item standardmäßig LRS: bereits drei Replikationen innerhalb \emph{eines} Rechenzentrums
+        \item Zonen-Redundanter Speicher: Replikation in drei Verfügbarkeitszonen\newline
+          $\Rightarrow$ also verschiedene Rechenzentren
+      \end{itemize}
+    \item in mehreren Regionen
+      \begin{itemize}
+        \item zusätzlich wird in eine Kopie in der zweiten Region erstellt
+        \item asynchrone Kopie in die zweite Region, innerhalb dann synchron\newline
+          RPO: 15 Minuten, aber nicht garantiert
+        \item geo-redundanter Speicher: LRS in der primären Region, LRS sekundär
+        \item geo-zonen-redundanter Speicher: ZRS primär, LRS sekundär
+        \item Daten in der sekundären Region \emph{nicht} für Lesen (und natürlich Schreiben) verfügbar
+      \end{itemize}
+    \item ebenfalls: zusätzlich Lese-Zugriff in sekundärer Region möglich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Lesezugriff auf sekundären Speicher}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item mit RA-SKUs kann aus der sekundären Region gelesen werden
+    \item regulär ohne Failover
+    \item[!] wegen Asynchronität und RPO möglicherweise verzögert\newline
+      $\Rightarrow$ abfragen von \texttt{Last Sync Time}
+    \item Zugriff über \texttt{-secondary}-URL
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Hochverfügbarkeit von SQL-Datenbanken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Ziel: 99,99\% Uptime ohne Probleme durch Wartung, \ldots
+    \item automatische Updates durch Azure
+    \item commitete Änderungen bleiben erhalten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure-Modelle für hochverfügbare Datenbanken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Standard
+      \begin{itemize}
+        \item hochverfügbarer Speicher (Blob)
+        \item Trennung von Prozess (zustandslos!) und Daten\newline
+          $\Rightarrow$ erlaubt Absturz des Datenbank-Prozesses ohne Datenverlust
+        \item teilweise schlechtere Performance während Wartung
+        \item günstiger Preis
+        \item Servicelevels: Basic, Standard, General Purpose
+        \item demnächst: Zonenredundanz (Speicher ZRS, failover VMs in anderen Zonen)
+      \end{itemize}
+    \item premium
+      \begin{itemize}
+        \item Datenbank-Cluster (optional in Verfügbarkeitszonen ohne Aufpreis)
+        \item auch während Wartung bleibt die Mehrheit des Clusters verfügbar
+        \item teuer, für kritische Anwendungen
       \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Azure Backup-Konfiguration}
+\begin{flashcard}[]{Kontinuität bei SQL-Datenbanken}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item lokale VMs
-      \begin{itemize}
-        \item Windows mit MARS
-        \item Data Protection Manager (DPM) oder MABS
-      \end{itemize}
-    \item Azure VMs
-      \begin{itemize}
-        \item alle VMs können direkt gesichert werden (mit Agent als VM Erweiterung)
-        \item einzelne Verzeichnisse/Dateien: mit MARS
-        \item auch mit MABS
-      \end{itemize}
-    \item Sicherungstypen: Voll, Inkrementell (differentiell wird nicht unterstützt)
+    \item Sicherungen: komplett (1 Woche), differentiell (12 Stunden), Transaktionslogs (10 Minuten)
+    \item temporäre Tabellen erlauben einzelne Einträge wiederherzustellen
+    \item gelöschte komplette Datenbanken können wiederhergestellt werden (solagne der Server da ist)
+    \item Geo-Replikation mit Failover schützt vor Rechenzentrumsausfall\newline
+      auch (Auto-Failover-Gruppe)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Backup-Richtlinien}
+\subsubsectioncard{recommend a solution for autoscaling}
+
+\begin{flashcard}[]{Skalierungsgruppen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item eine pro Recovery Vault\newline
-      $\Rightarrow$ wird für viele VMs (oder andere Ressourcen) genutzt
-    \item Zeitplan: taglich, wöchentlich
-    \item Aufbewahrung: taglich, wöchentlich, monatlich, jährlich
+    \item automatische Vergrößerung oder Verkleinerung (Anzahl VMs)\newline
+      $\Rightarrow$ Reaktion auf schwankende Nachfrage, reduzierte Kosten
+    \item eine Gruppe VMs mit Load Balancer
+    \item daher hohe Verfügbarkeit, auch Verfügbarkeitsgruppen möglich
+    \item einfache, zentrale Verwaltung mehrerer VMs
+    \item bis zu 600 (verwaltetes Image)/1000 (angebotene Images) VMs in einer Gruppe
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\subsubsectioncard{design a solution for data archiving and retention}
-
-\begin{flashcard}[Definition]{Lebenszyklus von Daten}
+\begin{flashcard}[]{Verwaltung von Skalierungsgruppen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Daten haben unterschiedliche Lebenszyklen (manchmal gesetzlich, manchmal ganz praktisch)
-    \item Zugriffshäufigkeit ändert sich (alte Daten werden möglicherweise nicht mehr zugegriffen)
+    \item konsistente Konfiguration, gleiche VM-Einstellungen, Betriemssystem-Image, \ldots
+    \item Azure Load Balancer für OSI Level 4 und Application Gateway für Levl 7 Lastverteilung
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Lebenszyklusverwaltung in Azure}
+\begin{flashcard}[]{Automatische Skalierung}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item regelbasierte Änderung der Speicherart für Blobs in Azure (\emph{cool}, \emph{hot})
-    \item überführung von Blobs in kältere Speicherebenen (bis zu \emph{archive})
-      \begin{itemize}
-        \item Snapshots
-        \item alte Versionen
-        \item aber auch: aktuelle Versionen, wenn selten (nicht) genutzt
-      \end{itemize}
-     \item Löschen von Blobs am Ende des Lebenszyklus
-     \item pro Container, oder Blob-Präfix, oder Blob-Index-Tags
-     \item Änderung von Blobs nur einmal am Tag
+    \item automatische Anpassung von Ressourcen an schwankenden Bedarf
+    \item vertikale Skalierung: (hoch/runter skalieren)\newline
+      Kapazität verändern, z.\,B. VM size
+    \item horizontale Skalierung: (in/out skalieren)\newline
+      Anzahl Ressourcen erhöhen
+    \item Nachteile vertikale Skalierung: mögliche Auszeiten
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Regeln zum Lebenszyklus}
+\begin{flashcard}[]{Services mit automatischer Skalierung}
+  \vspace*{\stretch{1}}
+  Regelbasiert:
+  \begin{itemize}
+    \item Skalierungsgruppen
+    \item Service Fabric
+    \item App Service
+    \item Cloud Services
+  \end{itemize}
+  Vollautomatisch:
+  \begin{itemize}
+    \item Functions
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Automatische Skalierung}
+  \vspace*{\stretch{1}}
+  Allgemein mit Azure Monitor
+  \begin{itemize}
+    \item Zeitplan (Wochentage/Wochenende)
+    \item nach CPU-Auslastung
+    \item Größe der Aufträge in Warteschlangen
+    \item \ldots andere messbare Größen
+    \item auch benutzerdefinierte Metriken (Über Application Insights)
+  \end{itemize}
+  $\Rightarrow$ Auch Kombinationen möglich
+  \begin{itemize}
+    \item Fluktuation (abwechselndes Hoch- und Runterskalieren)
+    \item Minimum und Maximum müssen festgelegt sein
+    \item[!] manuelle Grenzüberschreitung gilt immer nur temporär
+  \end{itemize}
+  
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Skalierung von Datenbanken}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item abhängig vom Alter eines Blobs (nach Tagen)
-    \item abhängig vom letzten Zugriff (z.\,B. nach mehreren Tagen)
-    \item abhängig von Index-Tags
-    \item abhängig von Aktualität (z.\,B. gelöschte oder geänderte Versionen)
+    \item Skalierung möglich während des Betriebs (z.\,B. DTUs, vCores (vertikale Skalierung))
+    \item[!] Transaktionen können fehlschlagen
+    \item Lese-Skalierung: zusätzliche Nur-Lesen-Replikationen
+    \item sharding: Aufteilen der Datenbank auf mehrere Server (horizontale Skalierung)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{identify resources that require high availability}
+
+\begin{flashcard}[]{Hochverfügbarkeit}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verfügbarkeit (als Prozent), SLA, z.\,B. 99.99\%
+    \item durchschnittliche Zeit bis zur Wiederherstellung (MTTR)
+    \item Vergleich mit SLAs von Azure
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Datenspeicher überprüfen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item überprüfung jedes Speichers, ob erforderliche Verfügbarkeit vorhanden ist
+    \item falls nicht: möglicherweise skalieren, SKU wechseln, \ldots
+    \item Service Wechseln (z.\,B. verwaltete Datenbank)
+    \item Backups in anderen Regionen erstellen
+    \item Anwendungen auf Failover vorbereiten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Berechnung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Analyse von VMs, Instanzen, etc
+    \item Backups erstellen
+    \item Skalierungsgruppen, Fehler-Domänen, Update-Domänen einführen
+    \item Verfügbarkeitszonen
+    \item Anwendungen auf kurze Timeouts (z.\,B. bei Skalierung) vorbereiten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{identify storage types for high availability}
+
+\begin{flashcard}[]{Hochverfügbarkeit von Speicherkonten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item generell haben Speicherkonten hohe Verfügbarkeit
+    \item Verfügbarkeitszonen
+    \item kann verbessert werden durch Geo-redundante Speicherung\newline
+      $\Rightarrow$ automatischer Failover (general purpose and Blob storage, \emph{nicht} für hierarchischen Speicher)
+    \item GRS/GZRS als Backup vs. RA-GRS/RA-GZRS mit zusätzlichem zur-Lesen-Speicher
+    \item[!] sämtliche Maßnahmen werden nur von Blob-Speicher erfüllt\newline
+      $\Rightarrow$ Files, Tables, Queues nur eingeschränkt. Ebenso Premium-Blob und Konten mit WORM-Richtlinien
+    \item verwaltete Datenträger
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
