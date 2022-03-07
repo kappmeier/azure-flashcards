@@ -1,0 +1,165 @@
+\subsectioncard{Designen von Netzwerk-Lösungen}
+
+\subsubsectioncard{recommend a network architecture (hub and spoke, Virtual WAN)}
+
+\begin{flashcard}[]{Hub-And-Spoke-Netzwerktopologie}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item ein virtuelles Hub-Netzwerk fungiert als zentrale Verbindung
+    \item viele virtuelle Spoke-Netzwerke sind mit dem Hub verbunden
+    \item auch lokale Netzwerke sind mit dem Hub verbunden
+    \item Peering zwischen Hub und anderen Netzwerken
+  \end{itemize}
+  $\Rightarrow$ isolation von Workloads in Spoke-Netzwerken
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Infrastruktur im Hub}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Gateway um lokale Netzwerke zu verbinden
+    \item Sicherheitseinrichtungen
+      \begin{itemize}
+        \item Bastions-Hosts
+        \item Firwall
+        \item DMZ
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien für Hub-and-Spoke}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item getrennte Umgebungen (in Spoke-Netzen), die gemeinssame Dienste nutzen (im Hub-Netzwerk)
+    \item keine Verbindung zwischen Services notwendig (in Spoke-Netzen)
+    \item zentral verwaltete Sicherheitsmaßnahmen (Firewall, Hub als DMZ)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Beispielarchitektur für Hub-and-Spoke}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item ein virtuelles Hub-Netzwerk
+    \item mehrere virtuelle Spoke-Netzwerke
+    \item Peeringverbindungen zwischen Spoke- und Hub-Netzwerken
+    \item Bastionhost (im Hub-Netzwerk)
+    \item Azure Firewall als verwalteter Dienst im Hub-Netz (in eigenem Subnetz)
+    \item VPN-Gateway für virtuelles Netzwerk oder ExpressRoute-Gateway\newline
+      zur Anbindung lokaler Netze
+    \item VPN-Gerät zur Verbindung ins lokale Netz
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Eigenschaften der Hub-and-Spoke-Architektur}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Peering zwischen Hub- und Spoke-Netzwerken ist \emph{nicht} transitiv
+    \item wenn erforderlich, Peering zwischen Spoke-Netzwerken
+    \item[!] Grenzwert für Peeringverbindungen muss beachtet werden\newline
+      $\Rightarrow$ möglicherwiese benutzerdefinierte Routen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Virtuelles WAN}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verwalteter Azure-Dienst
+    \item vollständig Microsoft-Verwaltet
+    \item Netwerk spannt mehrere Regionen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Hub-and-Spoke mit Virtuellem WAN}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Einteilung in Branches
+    \item Verbindung zwischen Branches und von Branch zu Azure
+    \item mehrere lokale private Netzwerke (Büros, Standorte, Endgeräte)
+    \item Verbindungen über VPN und ExpressRoute
+    \item Endgeräte und Standorte mit VPN-to-Site
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Gründe für Einsatz eines virtuellen WAN}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item bessere Skalierung bei hohen Durchsätzen
+    \item private Verbindungen möglich
+    \item ExpressRoute-VPN-Verbindung
+    \item bessere Überwachung mit Monitor für Metriken und Health-Status
+    \item Mesh zwischen Spoke-Netzwerken
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for network addressing and name resolution}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for network security including Private Link, firewalls, gateways, network segmentation (perimeter networks/DMZs/NVAs}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for network connectivity to the Internet, on-premises networks, and other Azure virtual networks}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for automating network management}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for load balancing and traffic routing}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}

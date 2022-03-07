@@ -1,0 +1,446 @@
+\subsectioncard{Designen von Prozessierungs-Lösungen}
+
+\subsubsectioncard{recommend a solution for compute provisioning}
+
+\begin{flashcard}[]{Azure Rechendienste}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Virtuelle Maschinen (VMs)
+    \item Azure Batch
+    \item App Service
+    \item Azure Functions
+    \item Azure Container Instances (ACI)
+    \item Service Fabric
+    \item Azure Spring Cloud
+    \item Red Hat Openshift
+    \item Azure Kubernetes Service (AKS)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Container-basierte Dienste}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure Container Instances (ACI)
+    \item Service Fabric
+    \item Azure Spring Cloud
+    \item Red Hat Openshift
+    \item Azure Kubernetes Service (AKS)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Migration von Prozessen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Lift \& Shift
+      \begin{itemize}
+        \item ohne neues Design von anwendungen
+        \item nutzt PaaS und IaaS
+        \item geeignete Dienste: VMs und App Service
+      \end{itemize}
+    \item Cloud-Optimiert
+      \begin{itemize}
+        \item Refactoring von Anwendungen um von Cloud-Diensten zu profitieren
+        \item neue Anwendungen
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Zustandsspeicher}
+  \vspace*{\stretch{1}}  
+  \begin{itemize}
+    \item Alle Compute-Lösungen können zustandslos betrieben werden
+    \item zusätzlich zustandsbasiert sind:
+      \begin{itemize}
+        \item VMs
+        \item Service Fabric
+        \item AKS
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Web-Hosting}
+  \vspace*{\stretch{1}}  
+  \begin{itemize}
+    \item Eingebaut:
+      \begin{itemize}
+        \item App Service
+        \item Spring Cloud
+        \item AKS
+      \end{itemize}
+    \item manuell verfügbar:
+      \begin{itemize}
+        \item VMs
+        \item Service Fabric
+        \item AKS
+        \item ACI
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Skalierbarkeit von Rechendienste}
+  \vspace*{\stretch{1}}  
+  \begin{itemize}
+    \item Manuell:
+      \begin{itemize}
+        \item VMs (auch teilautomatisiert über Skalierungsgruppen)
+      \end{itemize}
+    \item unterstützt:
+      \begin{itemize}
+        \item App Service
+        \item Spring Cloud
+        \item AKS
+        \item Azure Batch
+      \end{itemize}
+    \item serverlos:
+      \begin{itemize}
+        \item Azure Functions
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Unterstützte Architekturen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Mikroservices:\newline
+      Spring Cloud, Service Fabric, Functions, AKS, ACI
+    \item Allgemein/hierarchische Ebenen:\newline
+      VMs, App Service, Azure Batch, ACI
+    \item Ereignisbasiert:\newline
+      Service Fabric, Functions, AKS
+    \item Sonstiges:\newline
+      Spring Cloud, ACI, App Service
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{determine appropriate compute technologies, including virtual machines, App Services, Service Fabric, Azure Functions, Azure Virtual Desktop, Batch, HPC and containers}
+
+\begin{flashcard}[]{App Service}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Hosting von Web-Anwendungen, REST-APIs, \ldots
+    \item viele Programmiersprachen verfügbar
+    \item profitieren von Azure-Services (Logging, Sicherheit, DevOps, \ldots)
+    \item Zahlung nach genutzten Ressourcen gemäß \emph{App Service Plan}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Vorteile App Service}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item viele Umgebungen nativ unterstützt (Sprachen, Betriebssysteme)
+    \item komplett verwaltete Systeme, kein Bedarf für Betriebssystem- oder Framework-Updates
+    \item Unterstützung von Containern
+    \item automatische Skalierung
+    \item Integration in DevOps (dev, test-Deployments), Enterprise-Umgebungen, \ldots
+    \item automatische Sicherheit, Richtlinieneinhaltung, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{App Service Environment}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item dedizierte Umgebung
+    \item nicht geteilt mit anderen Anwendern
+    \item höhere Unterstützung von Regeln, Sicherheit, \ldots
+    \item Multi-Tier-Anwendungen in der gleichen Umgebung
+    \item unterstützung von Zonen-Redundanz
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{App Service Plan}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item beschreiben Ressourcen, die für App Service (und Functions) genutzt werden können
+    \item mehrere Apps in den gleichen Ressourcen
+    \item Eigenschaften: Betriebssystem, Region, VMs, Preisstufe (definiert Features)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{App Service Plan Preisstufen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item gemeinsam genutzt: Free, Shared\newline
+      Anwendungen teilen sich Server mit anderen Kunden
+    \item dediziert: Basic, Standard, PremiumV\texttt{x}\newline
+      dedizierte VMs (Isolation der Rechenkapazität)
+    \item isoliert: IsolatedV\texttt{x}\newline
+      zusätzlich dediziertes Netzwerk (schnellste und weiteste Skalierung)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Batch}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Lösung für paralleles Rrechnen großer Aufträge
+    \item BatchJobs
+    \item automatische Skalierung
+    \item unterstützung für automatisches VM-Management
+    \item Bezahlung nur der genutzten Ressourcen für die Berechnung
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Jobs für Azure Batch}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item leicht und stark parallelisierbare Jobs\newline
+      $\Rightarrow$ Aufträge gut aufteilbar
+    \item Aufträge sollen unabhängig voneinander arbeiten\newline
+      $\Rightarrow$ keine Interprozess-Kommunikation, aber natürlich gemeinsam genutzte Daten
+    \item Beispiele:
+      \begin{itemize}
+        \item Simulation
+        \item Grafikrendering \& Medienbearbeitung
+        \item Daten-Prozessierung
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Batch für verbundene Aufträge}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Verbindung von Batch-Aufträgen mit Nachrichten-Versand\newline
+      z.\,B. Microsoft MPI
+    \item Training von KI-Modellen, physikalische Modellierungen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Einbindung in Azure-Abläufe}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Unterstützung für Rechenjobs in Data Factory
+    \item Tools für Rendering
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Container Instances}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item einfacher möglichkeit Container in Azure auszuführen
+    \item keine Verwaltung virtueller Maschinen notwendig
+    \item für isolierte Aufgaben\newline
+      $\Rightarrow$ insbesondere keine automatische Erkennung von anderen Containern
+    \item Unterstützung von Linux und Windows Docker containern von Docker oder Azure Container Registries
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Container-Eigenschaften}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item öffentlich erreichbar mit DNS-Eintrag
+    \item verfügbare Größen: maximal 15 GiB, 4 Cores
+    \item Unterstützung von virtuellen Netzwerken in vielen Regionen
+    \item Mounting von Azure Files
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Functions}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item serverlose Ausführung von Code\newline
+      $\Rightarrow$ keine Serververwaltung
+    \item mit wenig Code viel kostengünstig erreichen
+    \item automatische Skalierung
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Anwendungsszenarien von Functions}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Reagieren auf Speicheränderungen (z.\,B. Blob-Upload)
+    \item APIs (über HTTP-Trigger)
+    \item Tasks (über terminierte Ausführungen)
+    \item Verkettung von Funktionen für Workflows
+    \item Reagieren auf Ereignisse in Warteschlangen, Hubs, \ldots
+    \item jede Art von On-Demand-Ausführung mit Ereignissen: IoT, Datenbankänderungen, \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Service Fabric}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item verteilte Plattform für Microservices
+    \item Container-basiert (Container-Orchestrator)
+    \item leicht skalierbar
+    \item unterstützung für zustandslose und zustandsbehaftete Services
+    \item Unterstützung für DevOps and kontinuierliche Bereitstellung
+    \item Java (nur Linux) und .NET
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Virtuelle Maschinen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item komplett konfigurierbar
+    \item unterstützen zahllose Betriebssysteme (Windows, Linux, MacOS) in vielen Ausprägungen
+    \item Einbindung ins Netzwerk
+    \item skalierbar über Skalierungsgruppen (Semi-Automatisch)
+    \item unterstützen Lift \& Shift-Szenarien
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Virtueller Desktop}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item vollständiges Windows Server, 7 und 10, 11 in der Cloud
+    \item oder Microsoft 365-Anwendungen und andere Anwendungen
+    \item unterstützung von Multi-Anwender-Systemen
+    \item erlaubt Migration von existierenden RDS und Windows Server-Systemen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Eigenschaften virtueller Desktops}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item kostengünstig skalierbar mit Pools
+    \item eigene Images
+    \item persistente Desktops
+    \item Zugriffsrichtlinien und Sicherheitsfunktionen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for containers}
+
+\begin{flashcard}[]{Container in Azure}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item ACI
+      \begin{itemize}
+        \item verwaltetes Kubernetes-Cluster
+        \item nur benutzte Knoten müssen gezahlt werden
+        \item von Azure bereitgestellte Sicherheit, Logging, Monitoring
+      \end{itemize}
+    \item Kubernetes
+      \begin{itemize}
+        \item einfach und schnell einzelne Container bereitstellen
+        \item einfacher als VMs zu bedienen
+        \item nicht ganz so flexibel wie AKS
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Eigenschaften AKS}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Identität \& Sicherheit: Kubernetes RBAC, integration in Azure AD
+    \item Logging in Log Analytics, Service Container Health
+    \item jede beliebige VM-Größen (+ alle VM-Features)
+    \item automatische Skalierung von Knoten und Pods
+    \item Unterstützung von GPU-Unterstützung in Knoten
+    \item vollständige Integration in Azure-Netzwerke
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend a solution for automating compute management}
+
+\begin{flashcard}[]{Azure Automation}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Bereiche für Automatisierung:
+      \begin{itemize}
+        \item Bereitstellung von Infrastruktur/Ressourcen
+        \item Reagieren auf Anforderungen (Warnungen, \ldots)
+        \item Orchestrierung mehrerer Produkte
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Prozess-Automatisierung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatisierung einfacher Prozesse
+    \item reduziert Fehleranfäligkeit
+    \item Unterstützung in Azure Runbooks\newline
+      \begin{itemize}
+        \item graphisch
+        \item PowerShell
+        \item Python
+      \end{itemize}
+    \item werden direkt auf VMs in der Umgebung ausgeführt
+    \item ausgeführt durch Webhooks
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Konfigurationsverwaltung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Nachverfolgung von Änderungen
+      \begin{itemize}
+        \item Alarmierung im Fall ungewünschter/unerwarteter Änderungen
+        \item unterstützt viele Dämonen, Services, Registrierungen, Konfigurationsdateien, \ldots
+      \end{itemize}
+    \item Verwaltung des gewünschten Status (DSC)
+      \begin{itemize}
+        \item Statusverwaltung über Server in Azure
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Updateverwaltung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatische Aktualisierung von VMs
+    \item Reaktion auf Anforderungsänderungen (in der Cloud und lokal)
+    \item geplante Bereitstellungen im Wartungsbereich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Automatisierungs-Features}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item heterogene Systeme (Linux, Windwos, Cloud und lokal (über \emph{Arc}))
+    \item Aufgaben (VM runterfahren, monatlich, \ldots)
+    \item Bereitstellung von Ressourcen (inklusive Integration in Tools wie Jenkins und DevOps)
+    \item Ressourcen-Management (jede Art)
+    \item Test-unterstützung
+    \item Nachverfolgung von Änderung, Inventarerstellung
+    \item Integration in andere Services:\newline
+      Arc, Monitor und Alerts, Policy, Site Recovery
+    \item Aufruf über Azure Services:\newline
+      Logik-Apps, Power Apps, Event Grid, Power Automate
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Logik-apps}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatisierte Workflows
+    \item hervorragende Integration in Anwendungen, Daten, Services und Cloud-Systeme
+    \item einfach skalierbar (serverlos)
+    \item Verbindung von Legacy, Drittanbieter- und eigenen Anwendungen
+    \item grafischer Designer (zur Benutzung von (Produkt-)Management)
+    \item automatisierte Deployments über ARM-Vorlagen
+    \item manuelle Schritte im Workflow (z.\,B. über Email oder Slack-Integration)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
