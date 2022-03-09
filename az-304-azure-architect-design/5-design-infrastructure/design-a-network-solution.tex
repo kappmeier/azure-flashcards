@@ -100,41 +100,411 @@
 
 \subsubsectioncard{recommend a solution for network addressing and name resolution}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Name resolution in Azure}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Azure DNS private Zonen
+    \item Azure Namensauflösung
+    \item eigener DNS-Server\newline
+      Weiterleitung an Azure DNS-Server
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien Azure DNS private Zonen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Auflösung von VMs im selben oder anderen virtuellen Netzwerk
+    \item Reverse-DNS für interne IPs
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien eigener DNS-Server}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Auflösung von VMs in verschiedenen virtuellen Netzwerken
+    \item Auflösung von App Service VMs in virtuellen Netzwerken
+      \begin{itemize}
+        \item im eigenen virtuellen Netz
+        \item zu anderen virtuellen Netzen
+        \item mit Integration in virtuelle Netzwerke
+      \end{itemize}
+    \item Auflösung von lokalen VMs aus Azure
+    \item Azure-Hostnamen aus dem lokalen Netz\newline
+      (weiterleitung an Azure)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien von Azure bereitgestellter Namensauflösung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Auflösung von VMs im gleichen virtuellen Netzwerk
+    \item Reverse-DNS für interne IPs
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Namensauflösung}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item sehr grundlegender Service, dafür einfach zu nutzen
+    \item DNS-Zonen und DNS-Einträge von Azure verwaltet\newline
+      $\Rightarrow$ keine manuelle Verwaltung und fester Name!
+    \item hochverfügbar (da von Azure verwaltet)
+    \item Arbeitet gut mit eigenen DNS-Servern zusammen
+    \item Auflösung in \emph{gleichen} Services und Netzwerken ohne FQDN
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Eigener DNS-Server}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item zuständig für eine Domäne
+    \item weiterleitung an Azure\newline
+      $\Rightarrow$ ermöglicht Auflösung von unterschiedlichen virtuellen Netzen
+    \item Azure verteilt interne DNS-Namen, die in diesem Fall nicht genutzt werden
+    \item mehrere DNS-Server pro virtuellem Netzwerk möglich
+    \item[!] DNS dürfen \emph{nicht} in der VM konfiguriert werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Private DNS}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item DNS-Domänen, die nicht im öffentlichen Internet erreichbar sind
+    \item keine benutzerdefinierten DNS-Lösungen notwendig
+    \item unterstützt alle Einträge (A, AAA, CNAME, MX, TXT, PTR, SOA, SRV)
+    \item automatische Verwaltung von VM-Hostnamen
+    \item gemeinsame Nutzung in mehreren virtuellen Netzwerken\newline
+      $\Rightarrow$ Auflösung zwischen diesen Netzen
+    \item unterstützt Split-Horizon-DNS
+    \item VMs erhalten automatisch A-Eintrag
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Benutzerdefinierte Domains}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Azure-DNS kann mit benutzerdefinierten Apps genutzt werden
+    \item die Domain muss an Azure-DNS delegiert werden
+    \item Services können über CNAME-Eintrag mit der Domain verbunden werden
+      \begin{itemize}
+        \item App Service
+        \item Function App
+        \item Blob storace
+        \item CDN
+      \end{itemize}
+    \item kann auch mit öffentlicher IP verbunden werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure-DNS}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Voraussetzung: eigene Domain
+    \item benötigt Ressourcen-Gruppe, ist aber global
+    \item Verbinden mit Nameservern ist notwendig (wird von Azure bereitgestellt)
+    \item im Registrar der Domäne muss auf Azure DNS umgesteltl werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Privates Azure-DNS}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Besitz der Domän nicht notwendig
+    \item verbunden mit einem virtuellen Netzwerk
+    \item Verbindung über Virtual network link
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsectioncard{recommend a solution for network provisioning}
+
+\begin{flashcard}[]{Virtuelles Netzwerk}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item ein Netzwerk in Azure
+    \item ermöglicht Ressourcen sichere und isolierte Kommunikation
+    \item ermöglicht Cloud-Aspekte wie Sicherheit und Skalierbarkeit
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features von virtuellen Netzwerken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Kommunikation mit dem Internet/draußen
+    \item Kommunikation innerhalb des Netzwerkes
+    \item Kommunikation zwischen virtuellen Netzwerken
+    \item Kommunikation mit lokalen Netzwerken
+    \item Filter (z.\,B. durch Firewall)
+    \item benutzerdefinierte Routen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Kommunikationswege in virtuellen Netzwerken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Ressourcen innerhalb eines Netzwerks (automatisch)
+    \item durch virtuellen Dienst-Endpunkt (erweiterung des Netzwerks auf einen Service)
+    \item Peering (zu anderen virtuellen Netzen)
+    \item VPN mit lokalen Netzen (Point-to-site, Site-to-Site, ExpressRoute)
+    \item Private Link: Verbindung zu einem spezifischen Dienst über ein virtuelles Netzwerk
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Sicherheit in virtuellen Netzwerken}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Netzwerksicherheitsgruppe
+      \begin{itemize}
+        \item Filter für ein- und ausgehende Verbinungen
+        \item abhängig von Ports, Protokoll, IPs, Diensten, \ldots
+      \end{itemize}
+    \item virtuelle Geräte
+      \begin{itemize}
+        \item Firewall
+        \item WAN
+        \item \ldots
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Netzwerkrouting}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Standard-Routing von Azure (zwischen Subnetzen, lokalen Netzen, Internet)
+    \item benutzerdefinierte Routing-Tabellen
+    \item BGP/Border-gateway-protocol: Verbinungen von lokalen Netzen über VPN/ExpressRoute
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Dienstendpunkte}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Filtern von ausgehendem Verkehr zu Diensten
+    \item Endpunkt-Richtlinien
+    \item Filter, z.\,B. für spezifischen Speicherkonten
+    \item Service-Tags, z.\,B. zum Filtern nach Regionen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Filtern von Verkehr zwischen gepeerten Netzwerken
+    \item Filtern von Internet-Verkehr
+    \item Filtern von Verkehr aus lokalen Netzwerken
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Vorteile von Dienstendpunkten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Sicherheit für Azure-Ressourcen:\newline
+      Dienste in einem Netzwerk sind von außen nicht mehr erreichbar
+    \item Effizienz:\newline
+      von Azure optimierte Route durch das Microsoft-Backbone
+    \item einfaches Aufsetzen ohne Konfiguration von IP-Adressen, NAT, Gateways, \ldots
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
 \subsubsectioncard{recommend a solution for network security including Private Link, firewalls, gateways, network segmentation (perimeter networks/DMZs/NVAs}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Netzwerksicherheitsgruppe}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Sammlung von Sicherheitsregeln zum Filtern
+    \item für eingehenden und ausgehenden Netzwerkverkehr
+    \item verfügbar für mehrere Arten von Azure-Ressourcen
+    \item werden auf privater IP-Ebene (Azure) ausgewertet
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Sicherheitsregel}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Priorität: 100 -- 4096, werden in der Reihenfolge bearbeitet \emph{bis eine Regel zutrifft!}
+    \item Quelle/Ziel: IP-Adress/CIDR, Service Tag, Anwendungssicherheitsgruppe, \ldots
+    \item Port: einzelne oder mehrere Ports
+    \item Protokoll: TCP, UDP, ICMP, ESP, AH, alle
+    \item Aktion: zulassen oder verbieten
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Anwendungssicherheitsgruppe}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Sicherheit als Teil einer Anwendung
+    \item VMs einer Anwendung können gruppiert werden
+    \item wiederverwendbare Sicherheitsregeln
+    \item[!] Azure verwaltet die tatsächlichen IPs
+    \item VMs (Netzwerkinterfaces) können teil mehrerer Anwendungssicherheitsgruppen sein
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Sicherere Verbindung ins Netz}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item lokale Netzwerke zu Azure:
+      \begin{itemize}
+        \item VPN-Gateway (IPsec)
+        \item ExpressRoute
+      \end{itemize}
+    \item Application Gateway (OSI-Level 7-Load-Balancer) enthält WAF
+    \item ExpressRoute 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Firewall}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Cloud-native Lösung für Firewall\newline
+      $\Rightarrow$ optimiert für hohe Verfügbarkeit und Skalierbarkeit
+    \item vollständig zustandsbehaftete Firewall
+    \item Untersuchung von Ost-West und Nord-Süd-Datenverkehr
+    \item SKUs: Standard \& Premium (mehr Features)
+    \item in virtuellen Netzwerken und Virtual WAN
+    \item verwaltet über Azure Firewall Manager
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features Azure Firewall}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item OSI Level 3 bis Level 7-Filter
+    \item intelligente Bedrohungsfilter (mit Microsoft Cyber Security)
+  \end{itemize}
+  Premium-Features:
+  \begin{itemize}
+    \item TLS-Inspektion
+    \item IDPS (Signaturfilter basierend auf Patterns)
+    \item URL-Filterung
+    \item Web-Kategorien (soziale Medien, Glücksspiel, \ldots)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Virtuelle Netzwerkgeräte (NVA)}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item filtert Verkehr zwischen Netzwerk-Segmenten mit unterschielichem Sicherheitslevel\newline
+      z.\,B. Internet, DMZ, \ldots
+    \item Anwendungsfälle
+      \begin{itemize}
+        \item erkennen/verhindern von Datenabfluss (ausgehender Verkehr)
+        \item erkennen/verhindern von Angriffen (eingehender Verkehr)
+        \item verhindern von Ausbreitung nach einem Angriff innerhalb des Netzwerks (zwischen virtuellen Netzwerken)
+        \item Filter für Netzwerkverkehr zwischen lokalen/virtuellen Netzwerken unterschiedlicher Sicherheitsstufe
+      \end{itemize}
+    \item Hochverfügbarkeit ist Schlüsselkriterium! Ohne Netzwerkverbindung klappt kein Service
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Biespiele von NVAs}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Firewalls
+    \item OSI-Level 4-(reverse)-Proxies
+    \item VPN-Endpunkte (IPsec)
+    \item WAF (Web Application Firewall)
+    \item Internet-Proxy-Server
+    \item OSI-Level 7-Lastausgleich
+    \item \ldots
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Architekturen für hochverfügbare Applikationen}
+  \vspace*{\stretch{1}}
+  (In Hub-Spoke-Netzwerken)
+  \begin{itemize}
+    \item Azure Load Balancer:\newline
+      zwei Load-Balancer, einer öffentlich, einer privat
+    \item Azure Route Server:\newline
+      RouteServer bestimmt Routen und teilt den NVAs mit, Traffic über BGP-Protokoll
+    \item Gateway Load Balancer:\newline
+      NVA wird transparent in die Route eingebunden, so dass vom Gateway über das NVA geleitet wird
+    \item Changing PIP/UDR:\newline
+      Design ohne Redundanz, modifizierte Routen wenn ein Problem auftritt
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{DMZ oder Perimeter-Netzwerk}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item zwischen zwei Netzwerkbereichen (lokal $\leftrightarrow$ Cloud, öffentlich $\leftrightarrow$ intern)
+    \item eingehender und ausgehender Verkehr läuft über eine Firewall
+    \item Zugriff auf die Infrastruktur sollte nur eingeschränkt möglich sein (RBAC)
+    \item alle Nutzerdaten müssen durch die Firewall gehen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Anwendungsfälle}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Anwendungen, die lokal und in Azure laufen
+    \item Analyse des ausgehenden Verkehrs, z.\,B. für Audits
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
 \subsubsectioncard{recommend a solution for network connectivity to the Internet, on-premises networks, and other Azure virtual networks}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
 
 \begin{flashcard}[]{}
   \vspace*{\stretch{1}}
