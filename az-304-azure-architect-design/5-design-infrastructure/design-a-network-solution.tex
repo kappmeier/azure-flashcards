@@ -474,62 +474,238 @@
 
 \subsubsectioncard{recommend a solution for network connectivity to the Internet, on-premises networks, and other Azure virtual networks}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Gateways in Azure}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item VMs in einem Subnetz (Gateway-Subnets)
+    \item stellen Routing-Tabellen bereit
+    \item Verwaltet über Azure (\emph{nicht} über die VMs)
+    \item Typen
+      \begin{itemize}
+        \item VPN-Gateway
+        \item ExpressRoute
+      \end{itemize}
+    \item je eins pro virtellem Netzwerk
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{VPN-Gateway}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Verbindung von Azure Netzwerken mit lokalen Netzen über das öffentliche Internet (sicher)
+    \item alternativ: Nutzung des Microsoft-Netzwerks (anstelle des öffentlichen Netzes)
+    \item maximal ein pro virtuellem Netz
+    \item \emph{aber}: mehrere Verbindungen für ein Gateway möglich\newline
+      $\Rightarrow$ geteilte Kapazität
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{VPN-Gateway-Verbindungstypen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item VNet-zu-VNet: zwei VPN-Gateways mit IPsec/IKE
+    \item Site-zu-Site: zu lokalem Netz mit IPsec/IKE-Tunnel zu lokalem VPN-Gerät
+    \item Point-zuSite: verbindung mit entferntem Ort/Gerät über OpenVPN, IKEv2, SSTP
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Point-zu-Site-Verbindungen}
   \vspace*{\stretch{1}}
+  Verbindet Benutzer mit Azure:
   \begin{itemize}
-    \item 
+    \item mit Azure-Cloud-Diensten
+    \item mit virtuellen Maschinen
+    \item Protokolle: SSTP, OpenVPN, IPsec
+    \item Verbindung über dynamische Routen
+    \item aktiv-passiv
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Site-zu-Site}
+  \vspace*{\stretch{1}}
+  Verbindet lokale Netze (kleine Rechenzentren, Entwicklungsabteilung, \ldots) mit Azure
+  \begin{itemize}
+    \item mit Azure-Cloud-Diensten
+    \item mit virtuellen Maschinen
+    \item IPsec
+    \item Verbindung über danamische Routen und statisch mit Richtlinien
+    \item aktiv-passiv oder aktiv-aktiv
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{ExpressRoute}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Erweiterung des lokalen Netzwerks in die Cloud
+    \item Verbindung zu Services mit öffentlichen IPs über Microsoft-Peering
+    \item Verbindungen gehen über das Azure-Netzwerk, \emph{nicht} das öffentliche Internet
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{ExpressRoute-Eigenschaften}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item OSI-Level 3-Verbindungen
+    \item Verbindung mit Microsoft-Cloud in allen Regionen
+    \item dynamische Routen mit BGP
+    \item hohe Redundanz
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{ExpressRoute-Verbindungen}
+  \vspace*{\stretch{1}}
+  Verbindet kritische Infrastruktur mit Azure
+  \begin{itemize}
+    \item mit virtuellen Netzwerken (Azure-Dienste, VMs, \ldots)
+    \item mit Enterprise-Diensten (Office, PowerBI, Azure AD, Azure DevOps, \ldots)
+    \item \emph{nicht} mit CDN, Front Door, Traffic Manager, Logic Apps
+    \item Protokoll: BGP
+    \item aktiv-aktiv
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
 \subsubsectioncard{recommend a solution for automating network management}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Automated virtual network}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item ARM Manager-Vorlagen
+    \item Provisioning unterstützt auch Aure CLI und Powershell
+    \item Voralgen von Microsoft verfügbar (z.\,B. Hub-Spoke)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
 \subsubsectioncard{recommend a solution for load balancing and traffic routing}
 
-\begin{flashcard}[]{}
+\begin{flashcard}[]{Dimensionen von Azure-Load-Balancern}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item 
+    \item Protokoll
+      \begin{itemize}
+        \item HTTP/HTTPS (OSI-Level 7)
+        \item andere Protokolle
+      \end{itemize}
+    \item Region
+      \begin{itemize}
+        \item Global: Nutzer in mehrere Regionen\newline
+          $\Rightarrow$ Ausgleich der Azure-Endpunkte
+        \item Regional
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Lastausgleichsservices in Azure}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Front Door: Globaler HTTP(S)-Ausgleich
+    \item Traffic Manager: Globaler DNS-basierter Lastausgleich
+    \item Application Gateway: lokaler Level-7-Lastausgleich
+    \item Azure Load Balancer: lokaler Level-4-Lastausgleich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Lastausgleichs-Szenarien}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Öffentliche globale nicht-HTTP-Anwendungen: Traffic Manager + Load Balancer
+    \item lokale nicht-HTTP-Anwendungen: Load Balancer
+    \item lokale Web-Anwendungen (nicht öffnetlich, oder ohne Performance-Unterstützung): Application Gateway
+    \item globale, öffentliche Web-Anwendungen: Front Door\newline
+      wenn \emph{nicht} PaaS: zusätzlich Load Balancer oder Application Gateway\newline
+      (PaaS-Dienste enthalten die Lastverteilung)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Front Door}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item globaler Verbindungspunkt zum Microsoft Edge-Netzwerk
+    \item OSI-Level-7-Lastausgleich für Web-Anwendungen
+    \item für sichere, skalierbare Webanwendungen
+    \item automatisches Failover
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features/Vorteile Front Door}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item hohe Performance (split TCP, anycast)
+    \item effizienter Failover mit Health-Probes
+    \item URL-basiertes Routing, URL-Redirect, URL-Rewrite
+    \item SSL offloading
+    \item integrierte WAF
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Traffic Manager}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item DNS-Basierter Load Balancer
+    \item Verteilung des Verkehrs über mehrere Regionen
+    \item etwas langsamer im Failover (durch DNS-Basierung)
+    \item Resilient gegenüber Ausfällen einer ganzen Azure-Region
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features Traffic Manager}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item hohe Verfügbarkeit
+    \item geringe Latenz (Weiterleitung an nächsten Endpunkt)
+    \item Wartung ohne Down-Time
+    \item hybride Anwendungen (lokal-cloud, Burst-to-Cloud, failover-to-cloud)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Application Gateway}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item HTTP(s)-Lastausgleich (basierend auf URL, nicht IP)\newline
+      $\Rightarrow$ unterstützt URL-basiertes Routing und Redirection, Rewrite
+    \item möglich hinter globalem Laustausgleich einzusetzen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features Application Gatway}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item SSL-Terminierung
+    \item automatische Skalierung
+    \item Zonen-Redundanz
+    \item eingebaute WAF
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Load Balancer}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item OSI-Level-4
+    \item öffentlich oder privat: z.\,B. in \textit{n}-Tier-Umgebungen\newline
+      vor Datenbanken oder anderen internen Services
+    \item unterstützt Zonenredundanz
+    \item Health probes zum Überwachen
+    \item mehrere IPs und Ports
+    \item jede art von TCP und UDP-Datenverkehr
+    \item Sicherheit: benötigt Netzwerksicherheitsgruppe, andernfalls\newline
+      \texttt{kein Datenverkehr möglich}
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
