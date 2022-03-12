@@ -2,6 +2,254 @@
 
 \subsubsectioncard{recommend microservices architecture including Event Grid, Event Hubs, Service Bus, Azure Queue Storage, Logic Apps, Azure Functions, Service Fabric, AKS, Azure App Configuration and webhooks}
 
+\begin{flashcard}[]{Microservice-Architektur}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item kleine, unabhängigige Dienste
+    \item nur lose Abhängigkeiten
+    \item unabhängige Bereitstellung
+    \item verantwortlich für eigene Daten
+    \item Kommunikation über API
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Umgebung einer Mikroservice-Architektur}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Orchestrierungsdienst:
+      \begin{itemize}
+        \item Verwaltung
+        \item Lastausgleich
+        \item Fehlerbehandlung
+      \end{itemize}
+    \item API-Gateway:\newline
+      \begin{itemize}
+        \item Verbindung nach Außen (zu Kunden)
+        \item Trennung von Diensten und Kunden
+        \item SSL-Terminierung
+        \item Unterstützung für nicht-HTTP-Protokolle (z\,B. AMQP)
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Vorteile von Mikroservices}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item agile Entwicklung (da geringe Abhängigkeit)
+    \item kleine Teams, DevOps
+    \item kleine Codebase und Technologiemix
+    \item Isolierung im Fehlerfall
+    \item Isolierung der Anwendungsdaten
+    \item Skalierbarkeit
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Probleme bei Mikroservices}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Komplexität: einzelne Dienste gering, aber Zusammenwirken groß!
+    \item Entwicklung gemeinsamer Komponenten und Testen
+    \item Netzwerkbelastung durch hohe API-Auslastung
+    \item Bereitstellung und Verwaltung (DevOps!)
+    \item Isolierung und Hoheit der Daten erfordert Sicherstellen der Datenintegrität
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Event Grid}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Dienst für ereignisbsierte Anwendungen
+    \item viele Azure-Dienste als Quellen
+    \item Ereignis-Handler oder WebHooks
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Ablauf der Ereignsbehandlung}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item ein \emph{Ereignis} tritt an einer \emph{Quelle} auf
+    \item das Ereignis wird an einem \emph{Topic} veröffentlicht
+    \item über \emph{Ereignis-Abonnements} wird das Ereignis an \emph{Handler} weitergeleitet
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features von Event Grid}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item einfaches Aufsetzen (inklusive graphischer Oberfläche)
+    \item vielzahl von Filtermöglichkeiten um die korrekten Handler zu erreichen
+    \item viele Ziele für ein Event
+    \item Cloud-Vorteile: Verfügbarkeit, hoher Durchsatz
+    \item zahllose Vordefinierte Ereignisse, erweiterbar durch eigene für Anwendungen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien für Event Grid}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Serverlose Architekturen:\newline
+      Auslösen von Funktionen, Datenspeichern, \ldots
+    \item Automatisierung\newline
+      Auslösen von Bereitstellungen, Aktualisierungen, operationelle Aufgaben
+    \item Anwendungsintegration:\newline
+      vorhandene Daten bearbeiten (z.\,B. Funktionen, Logik-Apps, \ldots) oder Daten von Anwendungen bereitstellen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Event Hub}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Dienst zur Verarbeitung von großen Mengen an Ereignissen
+    \item Kafka in Azure (unterstützt auch Kafka-Prokoll)
+    \item verfügbar über DNS-Netzwerk-Endpunkte (inklusive Filter, \ldots)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Event-Hub-Ereignisse}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item veröffentlicht über HTTPS, AMQP, oder Kafka
+    \item hohe Performance, aber aufwendiger mit AMQP
+    \item jedes Ereignis wird mit \emph{Partition-Key} veröffentlicht (alternativ: Round-Robin)\newline
+      $\Rightarrow$ zusammengehörige Ereignisse kommen in die gleiche Partition
+    \item alternativ: Publisher-Richtlinien
+    \item Speicherdauer: 1 tag bis 7 Tage (90 für Premium)
+    \item Archivieren: Integration in Azure Synapse und Speicherkonten (mit \emph{Event Hub Capture})\newline
+      $\Rightarrow$ Ereignisströme sollen nciht als Datensenke oder Langzeitspeicher genutzt werden!
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Event-Hub-Partitionen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Sequenzen von Ereignissen werden in Partitionen sortiert
+    \item Durchsatz für geordnete Events nur pro Partition garantiert
+    \item Anzahl Ereignisse kann zu hoch sein für Anwendungen\newline
+      $\Rightarrow$ einfache Skalierung auf mehrere Prozesse, die einzelne Partitionen bearbeiten
+    \item Anzahl der Partitionen wird festgelegt und ist \emph{nicht Änderbar}
+    \item Kosten unabhängig von der Anzahl der Partitionen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Event-Hub-Ereignisse konsumieren}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Konsumption durch Consumer-Gruppen
+    \item jede Gruppe hat eigene Offsets und kann in eigener Geschwindigkeit konsumieren
+    \item mehrere (bis 5) Leser pro Consumer-Gruppe möglich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[]{Service Bus}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Nachrichten-Broker mit Warteschlangen
+    \item Abruf und Einreihen der Nachrichten in Topics/Namespaces
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Szenarien für Service Bus}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Nachrichtenversand
+    \item Entkopplung von Anwendungen (sicherer Versand)
+    \item Lastausgleich (z.\,B. bei Anwendungen mit vielen Knoten)
+    \item \texttt{1:n}-Beziehungen über Veröffentlichungen und Abonnements
+    \item Koordination von Arbeitsschritten mit Transaktionen\newline
+      (blockieren weiter Schritte durch belassen der Nachricht in der Warteschlange)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Hintergrund von Service Bus}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Nachrichten sortiert nach Zeitstempel in Warteschlange
+    \item gesichert über Verfügbarkeitszonen
+    \item[!] Nachrichten werden nur auf Nachfrage abgerufen
+    \item optional Topics zum für mehrere Abnehmer
+    \item Verwaltung mehrerer Warteschlangen und Topics in Namensbereichen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Features von Service Bus}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item FIFO-Unterstützung durch Sitzungen
+    \item Forwading durch verbinden mehrerer Warteschlangen
+    \item terminierte/zurückgehaltene Nachrichten
+    \item Senke für Nachrichten ohne Empfänger
+    \item Zurückhalten von Nachrichten auf Empfängerwunsch
+    \item fortgeschrittene Filtern
+    \item automatisches Löschen und Erkennung von Duplikaten
+    \item failover in andere Regionen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Warteschlangen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item teil von Speicherkonten
+    \item millionen von Elementen, aber nur 64 KiB
+    \item Lebensdauer von Nachrichten beliebig
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Logik-App in Anwendungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item können von Wehooks aufgerufen werden (gut für Integration in Mikroservices, alternativ auch bei anderen Bedingungen)
+    \item über Konnektoren können andere Dienste aufgerufen werden
+      $\Rightarrow$ verbindet unterschiedliche Services
+    \item Workflow: eine Reihe von Schritten
+    \item Design ohne Code, kann von Business oder Product Management gemacht werden
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Azure Functions als Microservice}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item jede Function kan als Microservice angesehen werden
+    \item Aufruf über HTTP(S)/API
+    \item automatische Skalierung, serverlos
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Runbooks mit WebHook}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item kann als Element einer Mikroservice-Architektur eingesetzt werden
+    \item startet ein Runbook in Azure Automation über eine HTTP(S)-Anfrage
+      $\Rightarrow$ erlaubt Zugriff auf Runbooks ohne Azure-Automation-API zu implementieren
+    \item ieingabe von \texttt{WebHookData} als JSON im HTTP-Request
+    \item Zugriff über URL mit enthaltendem Token (kein Login notwendig)\newline
+      $\Rightarrow$ nicht für kritische Operationen!
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\subsubsectioncard{recommend an orchestration solution for deployment and maintenance of applications including ARM templates, Azure Automation, Azure Pipelines, Logic Apps, or Azure Functions}
+
 \begin{flashcard}[]{}
   \vspace*{\stretch{1}}
   \begin{itemize}
@@ -10,6 +258,72 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\subsubsectioncard{recommend an orchestration solution for deployment and maintenance of applications including ARM templates, Azure Automation, Azure Pipelines, Logic Apps, or Azure Functions}
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
 
 \subsubsectioncard{recommend a solution for API integrations}
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\begin{flashcard}[]{}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
