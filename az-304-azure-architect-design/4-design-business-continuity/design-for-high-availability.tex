@@ -222,7 +222,7 @@
 \begin{flashcard}[]{Hochverfügbarkeit}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item verfügbarkeit (als Prozent), SLA, z.\,B. 99.99\%
+    \item verfügbarkeit (als Prozent), SLA, z.\,B. 99 recommend a solution for recovery in different regions.99\%
     \item durchschnittliche Zeit bis zur Wiederherstellung (MTTR)
     \item Vergleich mit SLAs von Azure
   \end{itemize}
@@ -249,6 +249,18 @@
     \item Skalierungsgruppen, Fehler-Domänen, Update-Domänen einführen
     \item Verfügbarkeitszonen
     \item Anwendungen auf kurze Timeouts (z.\,B. bei Skalierung) vorbereiten
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Key Vault-Verfügbarkeit}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item[!] Schlüsseltresore müssen verfügbar sein, um Anwendungen, die darauf zugreifen, zu unterstützen
+    \item Key-Vault-Daten werden automatisch in der Partner-Region gesichert (Redundanz)
+    \item wenn eine Region nicht mehr verfügbar ist, wird automatisch ein Failover durchgeführt
+    \item Wartezeit wenige Minuten\newline
+      $\Rightarrow$ während des Failovers ist der Schlüsseltresor im Nur-Lesen-Modus
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}

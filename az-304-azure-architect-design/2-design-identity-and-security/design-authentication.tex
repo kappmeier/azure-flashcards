@@ -44,7 +44,7 @@
 \begin{flashcard}[Definition]{Authentifizierung}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Ziel: Identität einer Entität ist gültig
+    \item Ziel: Identität einer Entität ist 
     \item Authentifizierung über Azure AD
     \item keine Notwendigkeit, selbst Authentifizierung zu betreiben
   \end{itemize}
@@ -71,6 +71,27 @@
     \item Zweifaktor-Authentifizierung bei der Registrierung
     \item für Administratoren
     \item in bestimmten Anwendungsfällen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Levels der Sicherheit}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Zweifaktor-Authentifizierung bei der Registrierung
+    \item für Administratoren
+    \item in bestimmten Anwendungsfällen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Authorisierung für Anwendungen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item möglich über Azure AD-Enterprise-Anwendungen
+    \item Anwendung kann in Web-Anwendungen integriert werden\newline
+      $\Rightarrow$ Nutzer können sich über die Anwendung mit ihren Azure AD-Zugangsdaten authentifizieren und einloggen
+    \item nutzt OAuth-Kontrollfluss
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -102,14 +123,39 @@
 \begin{flashcard}[Definition]{Bedingter Zugriff}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item nicht gleichzeitig mit Microsoft Sicherheitsstandards
-    \item Anforderung von zweitem Faktor abhängig von der Situation
-    \item bewertet außer Identität auch:\newline
-      Ort, Gerät, Anwendung, Zeit
+    \item einfordern bestimmter Sicherheitsstandards
+    \item zugewiesen einzelnen Nutzern, Gruppen, oder Anwendungen
+    \item abhängig von vielen Parametern
+      \begin{itemize}
+        \item Risiko (des Nutzers und allgemein)
+        \item Geräte-Art
+        \item Region (z.\,B. auch Firmensitz)
+        \item Zeit
+        \item Anwendung
+      \end{itemize}
     \item Zugriff kann automatisch abgelehnt oder mit MFA durchgeführt werden\newline
       (oder zugelassen werden)
     \item Berichtsmodus um Zugriffe zu evaluieren, z.\,B. wenn Zugriffsarten nicht vorhersehbar sind
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{mögliche Anforderungen für bedingten Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item zweiter Faktor
+    \item Hybrid-Azure-AD-Gerät
+    \item zugelassene Geräte, Anwendungen, Richtlinien
+    \item Passwortwechsel
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Voraussetzungen für bedingten Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
     \item benötigt Azure AD Premium P1 oder höher
+    \item nicht gleichzeitig mit Microsoft Sicherheitsstandards
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}

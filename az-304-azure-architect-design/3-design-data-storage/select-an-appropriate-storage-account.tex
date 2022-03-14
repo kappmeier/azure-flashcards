@@ -120,6 +120,22 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+
+\begin{flashcard}[Definition]{Speicherkontotypen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Allgemein v2:\newline
+      Standardspeicher, der alle Zugriffsebenen und Redundanzen unterstützt
+    \item Premium-Blockblobs\newline
+      Optimiert für Block- und Append-Blobs. Keine Zugriffsebenen und nur LRS/ZRS-Redundanz. Schnellster Zugriff.
+    \item Premium-Files\newline
+      Optimiert für effiziente Fileshares. Nur LRS/ZRS-Redundanz. Schnellster Zugriff.
+    \item Premium-Blockblobs\newline
+      Nur Page-Blobs, LRS-Redundanz, keine Zugriffsebenen.
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
 \begin{flashcard}[Definition]{Sicherer Zugriff auf Speicher}
   \vspace*{\stretch{1}}
   \begin{itemize}
@@ -134,7 +150,6 @@
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
-
 
 \begin{flashcard}[Definition]{Active Directory-Zuang zu Blobs}
   \vspace*{\stretch{1}}
@@ -162,6 +177,23 @@
     \item erlauben Rotieren
     \item werden idealerweise in einem Key Vault gespeichert
     \item automatische Erinnerung für Ablaufdatum
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Unveränderlicher Zugriff}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Blobs können unveränderlich gemacht werden
+    \item nur noch Lese-Operationen möglich, kein Löschen oder Überschreiben
+    \item Konfiguration über Richtlinien
+      \begin{itemize}
+        \item zeitliche Richtlinie: gilt für bestimmte Zeit (Jahre)
+        \item gesperrt/ungesperrt: wenn gesperrt, kann die Richtlinie\newline
+          (z.\,B. Geltungsdauer) nicht mehr verändert werden
+        \item juristische Richtlinie: gilt bis die Richtlinie gelöscht ist
+      \end{itemize}
+    \item Definiert auf Container-Ebene (Container-Richtlinien), oder für eine Blobversion
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}

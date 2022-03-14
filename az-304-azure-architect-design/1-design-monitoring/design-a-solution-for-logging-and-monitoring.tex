@@ -33,6 +33,18 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Alarme mit Azure Monitor}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Alarmierungsregeln
+    \item Aktionsgruppen
+    \item 
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+
 \subsubsectioncard{plan for integration with monitoring tools including Azure Monitor and Azure Sentinel}
 
 \begin{flashcard}[Definition]{Integration der Services}
@@ -70,6 +82,20 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Azure Montior-Integrationen}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item IT-Service-Management-Connectors
+      \begin{itemize}
+        \item ServiceNow
+        \item System Center Service Manager
+      \end{itemize}
+    \item basierend auf Alarmen (Metric, Activity Log, Log Anayltics) Aufgaben erzeugen
+    \item Synchronisierung mit Log Analytics-Arbeitsbereich
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
 \subsubsectioncard{recommend appropriate monitoring tool(s) for a solution}
 
 \begin{flashcard}[Definition]{Logging Services}
@@ -80,6 +106,20 @@
     \item VM insights (metriken zur VM-health)
     \item Azure Security Center (Oberfläche zur Cyber-Sicherheit)
     \item Azure Sentinel (überwacht Sicherheitsfeatures, wie Zugriffe)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure-Monitor-Agenten}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item \emph{Log Analytics Agent}
+    \item Installation: VM insights, Log Analytics VM-Erweiterung, im Portal für eine VM, Log Analytics-Arbeitsbereich
+    \item Logging von System-Ereignissen in Log Analytics Arbeitsbereich\newline
+      $\Rightarrow$ aktivieren in Log-Analytics-Agenten-Konfiguration
+    \item Linux: Syslog
+    \item Windwos: Ereignislog
+    \item IIS-Logs
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
