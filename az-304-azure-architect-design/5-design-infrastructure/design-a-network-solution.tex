@@ -370,7 +370,7 @@
         \item ExpressRoute
       \end{itemize}
     \item Application Gateway (OSI-Level 7-Load-Balancer) enthält WAF
-    \item ExpressRoute 
+    \item Express Route 
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -401,6 +401,22 @@
     \item IDPS (Signaturfilter basierend auf Patterns)
     \item URL-Filterung
     \item Web-Kategorien (soziale Medien, Glücksspiel, \ldots)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Web Application Firewall (WAF)}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item eingebaute Firewall in anderen Services
+      \begin{itemize}
+        \item Azure Application Gateway
+      \end{itemize}
+    \item Schutz vor Internet-Angriffen:
+      \begin{itemize}
+        \item SQL-Injektion
+        \item Cross-Site-Scripting
+      \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -483,7 +499,7 @@
     \item Typen
       \begin{itemize}
         \item VPN-Gateway
-        \item ExpressRoute
+        \item Express Route
       \end{itemize}
     \item je eins pro virtellem Netzwerk
   \end{itemize}
@@ -507,7 +523,7 @@
   \begin{itemize}
     \item VNet-zu-VNet: zwei VPN-Gateways mit IPsec/IKE
     \item Site-zu-Site: zu lokalem Netz mit IPsec/IKE-Tunnel zu lokalem VPN-Gerät
-    \item Point-zuSite: verbindung mit entferntem Ort/Gerät über OpenVPN, IKEv2, SSTP
+    \item Point-zu-Site: verbindung mit entferntem Ort/Gerät über OpenVPN, IKEv2, SSTP
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -538,7 +554,18 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{ExpressRoute}
+\begin{flashcard}[]{Absichern von Verbindungen}
+  \vspace*{\stretch{1}}
+  zusätzliche Zertifikate müssen gespeichert werden
+  \begin{itemize}
+    \item Public Root CA im Gateway
+    \item Public Root CA in Endgeräten
+    \item private Nutzer Zertifikat auf Endgeräten (mit privatem Schlüssel!)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Express Route}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Erweiterung des lokalen Netzwerks in die Cloud
@@ -568,6 +595,18 @@
     \item \emph{nicht} mit CDN, Front Door, Traffic Manager, Logic Apps
     \item Protokoll: BGP
     \item aktiv-aktiv
+    \item \emph{hochverfügbar}, durch redundante Verbindungen
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Mehrere ExpressRoute-Verbindungen}
+  \vspace*{\stretch{1}}
+  Verbindet kritische Infrastruktur mit Azure
+  \begin{itemize}
+    \item wenn mehrere ExpressRoute-Verbindungen existieren, muss die richtige ausgewählt werden
+    \item Konfiguration des BGP und der BGP-Routen
+    \item standardmäßig sind Pfade falsch konfigurirt (Präfix unf Priorität)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -674,6 +713,16 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[]{Traffic Manager-Routingmethoden}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Prioritätsrouting (eine Region bevorzugen)
+    \item Aktiv-Aktiv-Konfiguration: Regionen gleichzeitig ansteuern
+  \end{itemize}
+  Da Level-4, kein Support für Web Application Firewall (oder andere Level-7-Features)
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
 \begin{flashcard}[]{Application Gateway}
   \vspace*{\stretch{1}}
   \begin{itemize}
@@ -701,6 +750,9 @@
     \item OSI-Level-4
     \item öffentlich oder privat: z.\,B. in \textit{n}-Tier-Umgebungen\newline
       vor Datenbanken oder anderen internen Services
+      \begin{itemize}
+        \item für öffetnlichen Einsatz: benötigt öffentliche IP
+      \end{itemize}
     \item unterstützt Zonenredundanz
     \item Health probes zum Überwachen
     \item mehrere IPs und Ports

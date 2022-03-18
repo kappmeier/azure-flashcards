@@ -102,6 +102,12 @@ encoding=UTF-8
 highlight=LaTeX
 mode=LaTeX
 
+[item:5-design-infrastructure/design-migrations.tex]
+archive=true
+encoding=UTF-8
+highlight=LaTeX
+mode=LaTeX
+
 [item:azure-architect-design.kilepr]
 archive=true
 encoding=

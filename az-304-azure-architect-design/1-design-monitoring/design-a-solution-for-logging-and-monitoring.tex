@@ -37,12 +37,35 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Alarmierungsregeln
+      \begin{itemize}
+        \item können Anfragen an Log Analytics-Workspace schicken
+      \end{itemize}
     \item Aktionsgruppen
     \item 
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{SQL DB auditing}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Storage
+      \begin{itemize}
+        \item in der selben Region
+        \item Append-Blobs
+        \item[!] nicht: Premium-Speicher, hierarchischer Namespace
+      \end{itemize}
+    \item Event Hubs
+      \begin{itemize}
+        \item in der selben Region
+      \end{itemize}
+    \item Log Analytics
+      \begin{itemize}
+        \item worksapce kann überall sein
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
 
 
 \subsubsectioncard{plan for integration with monitoring tools including Azure Monitor and Azure Sentinel}
@@ -68,6 +91,7 @@
     \item Log events stored in tables
     \item allows for query
     \item Authorization: old by Workspace, new by resource allowing RBAC
+    \item Aufbewahrung/Retention: 4 bis maximal 730 Tage
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -75,9 +99,16 @@
 \begin{flashcard}[Definition]{Azure Sentinel}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Automatic incident detection, threat intelligence
-    \item Requires data to be stored in Log Analytics workspace
-    \item Uses Azure Monitor Logs as underlying data source
+    \item (logbasierte) automatische Erkennung von Sicherheitszwischenfällen, threat intelligence\newline
+      $\Rightarrow$ automatische Antworten
+    \item Daten müssen in Log Analytics workspace gespeichert werden
+    \item Azure Monitor Logs als Datenquelle
+    \item Unterstützte Datne-Provider
+      \begin{itemize}
+        \item Azure Abonnements
+        \item Azure AD
+        \item Drittanbieter-Lösungen
+      \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -120,6 +151,65 @@
     \item Linux: Syslog
     \item Windwos: Ereignislog
     \item IIS-Logs
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Alarme in Azure Monitor}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item basierend auf Metriken (z.\,B. CPU, Speicher, \ldots)
+    \item oder Logs (aus Activity Log), für andere überwachte Werte
+    \item Grenzwerte:
+      \begin{itemize}
+        \item statisch: feste Werte
+        \item dynamisch: benutzt historische Daten
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Service Map}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item automatisches Detektieren von (Web-)Services
+    \item benötigt den Log Anayltics Agent (und einen workspace) und Dependency agent
+    \item es werden alle Verbindungen zu anderen Rechnern erkannt
+    \item Anwendungsfälle:
+      \begin{itemize}
+        \item Erkennen von Diensten und Verbindungen (auch unerwünschte)
+        \item Unterstützung bei Migration
+        \item Problemerkennung (fehlerhafte Verbindungen, Miskonfiguration, \ldots)
+        \item Hilfe bei Site Recovery (da Abhängigkeiten angezeigt werden)
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Application Insights}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Teil von Azure Monitor
+    \item Überwachung von von Web-Anwendungen
+    \item Performance-Analysen
+    \item Erkennung von Problemen
+    \item Nutzer-Analysen (User flows, retention, \ldots)
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[]{Monitoring von Datenbanken}
+  \vspace*{\stretch{1}}
+  Für Azure SQL-Datenbanken, und verwaltete SQL-Instanzen
+  \begin{itemize}
+    \item Diagnoseeinstellungen aktivieren stellt as \emph{SQLInsights}-Log bereit
+    \item Ziele für Logs:
+      \begin{itemize}
+        \item Log Analytics (SQL Analytics) in jeder Region
+        \item Event Hub: weiterleiten an andere Anwendungen (in der gleichen Region)
+        \item Azure Speicherkonten (Bobs) (in der gleichen Region)
+      \end{itemize}
+    \item bis zu 5 Diagnoseeinstellungen können gespeichert werdens
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}

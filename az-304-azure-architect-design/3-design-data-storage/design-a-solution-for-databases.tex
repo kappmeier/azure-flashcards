@@ -276,6 +276,20 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Auswertung/Effizienz}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item Query Performance Insight
+    \begin{itemize}
+      \item Analyse für einzelne und gepoolte Datenbanken
+      \item erkennt die teuerste und am längsten laufenden Queries
+    \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+ Query Performance Insight
+
 \subsubsectioncard{recommend a solution for database scalability}
 
 \begin{flashcard}[Definition]{SQL-Skalierbarkeit}
@@ -376,6 +390,29 @@
     \item Transparente Datenverschlüsselung von SQL-Datenbanken und Synapse
     \item Daten sind Verschlüsselt im ruhenden Speicher \emph{und} in Speicherseiten
     \item Verarbeitung der unverschlüsselten Daten nur im SQL-Prozess
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Verstecken von Daten}
+  \vspace*{\stretch{1}}
+  Data Masking
+  \begin{itemize}
+    \item dynamisches Verstecken von sensitiven Daten
+    \item richtlinienbasiert
+    \item versteckt Daten in Antworten/Queries
+    \item Anwendbare Dienste:
+      \begin{itemize}
+        \item Azure SQL Database
+        \item Azure SQL Managed Instance
+        \item Azure Synapse Analytics
+      \end{itemize}
+    \item Richtlinie:
+      \begin{itemize}
+        \item Benutzer: SQL-Nutzer/Azure AD-Entitäten mit Vollzugriff
+        \item Maskierungsregeln und Funktionen, z.\,B.\newline
+          Kreditkarten, Emails, Standardwerte
+      \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}

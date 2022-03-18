@@ -85,6 +85,23 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Identity Platfrom}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item OAuth 2.0/OpenID Connect: login mit Konten von Schule, Arbeitsplatz, Microsoft, local Accounts (über AD B2C)
+    \item
+    \item Versionen:
+      \begin{itemize}
+        \item v1: veraltet, \emph{nicht} benutzen
+        \item v2: aktuell.
+      \end{itemize}
+
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+
+
 \begin{flashcard}[Definition]{Authorisierung für Anwendungen}
   \vspace*{\stretch{1}}
   \begin{itemize}
@@ -92,6 +109,17 @@
     \item Anwendung kann in Web-Anwendungen integriert werden\newline
       $\Rightarrow$ Nutzer können sich über die Anwendung mit ihren Azure AD-Zugangsdaten authentifizieren und einloggen
     \item nutzt OAuth-Kontrollfluss
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{(Azure )AD Domain Services}
+  \vspace*{\stretch{1}}
+  (Azure )AD DS
+  \begin{itemize}
+    \item domänen-Dienst
+    \item Lokal, oder in Azure
+    \item benötigt um SMB-Zugriff auf Azure Files zu bekommen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -263,6 +291,24 @@ Connect cloud sync and Azure AD Connect Health}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[Definition]{Identitätsanbieter in Azure AD}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item synchronisierte Identitäten:\newline
+      \begin{itemize}
+        \item Synchronisierung von Idenetitäten lokal nach Azure
+        \item Azure AD Domain Service macht sie in der Cloud verfügbar
+        \item über Azure AD Connect
+      \end{itemize}
+    \item federated:
+      \begin{itemize}
+        \item \emph{jede} Authentifizierung findet lokal statt
+        \item AD FS
+      \end{itemize}
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
 \begin{flashcard}[Definition]{Verwalter der Autorität}
   \vspace*{\stretch{1}}
   \begin{itemize}
@@ -291,6 +337,15 @@ Connect cloud sync and Azure AD Connect Health}
   \begin{itemize}
     \item Service zur Benachrichtigung bei Schwierigkeiten mit Azure AD Connect
     \item kann Emails verschicken an Verantwortliche
+  \end{itemize}
+  \vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Azure AD Application-Proxy}
+  \vspace*{\stretch{1}}
+  \begin{itemize}
+    \item macht lokale Anwendungen im Internet verfügbar
+    \item Einbindung in die Anwendung über eine Azure AD App (``Service Principal'')
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -367,3 +422,11 @@ Connect cloud sync and Azure AD Connect Health}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
+\begin{flashcard}[]{B2C}
+  \vspace*{\stretch{1}}
+  \begin{enumerate}
+    \item soziale oder Lokale Anbieter
+    \item unterstützt 2-Faktor-Authentifizierung
+  \end{enumerate}
+  \vspace*{\stretch{1}}
+\end{flashcard}
