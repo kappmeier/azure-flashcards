@@ -17,7 +17,7 @@
 \begin{flashcard}[Describe]{Application Security Groups (ASG)}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Sicherheit auf Netzwerkebene nicht auf IP adressen, sondern Anwendungen
+        \item Sicherheit auf Netzwerkebene nicht auf IP-Adressen, sondern auf Anwendungen
         \item Virtuelle Maschinen können zu Gruppen zusammengefasst werden
         \item Virtuelle Maschinen können teil mehrerer Application Security Groups sein
         \item Zugriffskontrolle basierend auf Workloads
@@ -29,7 +29,7 @@
 \begin{flashcard}[Definition]{User Defined Rules (UDR)}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item zusätzliche Netzwerkrouten in einem Subnetzen
+        \item zusätzliche Netzwerkrouten in einem Subnetz
         \item benutzerdefinierte Routen können Systemrouten überschreiben
         \item benutzerdefinierte Routen haben höchste Priorität
         \item einzelne Routentabellen können mehreren virtuellen Subnetzen zugefügt werden
@@ -63,19 +63,19 @@
 
 \begin{flashcard}[Beschreibung]{Schutz vor DDoS-Angriffen}
     \vspace*{\stretch{1}}
-    Denial-of-Service-Angriffe: Überlastung einer (Netwzerk-)Ressource durch zahlreiche Anfragen
+    Denial-of-Service-Angriffe: Überlastung einer (Netzwerk-)Ressource durch zahlreiche Anfragen
     \begin{itemize}
         \item nutzt Umfang und Elastizität des globalen Microsoft-Netzwerks
         \item Überwachung des Datenverkehrs im Edge-Bereich
         \item automatische Benachrichtigung eines Angriffs (in Minuten)
-        \item es wird Verhindert, dass illegitimer Datenverkehr die Azure-Dienste erreicht
+        \item es wird verhindert, dass illegitimer Datenverkehr die Azure-Dienste erreicht
         \item Datenverkehr des Kunden erreicht Azure-Dienste ungehindert
     \end{itemize}
-    Zwei Tarife: Basic und Starndard-Tarif ($\rightarrow$ erweiterte Schutzfunktionen)
+    Zwei Tarife: Basic und Standard-Tarif ($\rightarrow$ erweiterte Schutzfunktionen)
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Beschreibung]{DDos Protection Standard-Tarif}
+\begin{flashcard}[Beschreibung]{DDoS Protection Standard-Tarif}
     \vspace*{\stretch{1}}
     Basic:
     \begin{itemize}
@@ -91,7 +91,7 @@
         \item Angriffsszenarien:
         \begin{itemize}
             \item Volumenangriffe: Überlastung des Netzwerks mit Datenverkehr
-            \item Protokollangriffe: Ausnutzen von Schwachstellen auf OSI Schichten 3 und 4
+            \item Protokollangriffe: Ausnutzen von Schwachstellen auf OSI-Schichten 3 und 4
             \item direkte Angriffe auf Anwendungsebene (7): Angriffe auf Web-Applikationen
         \end{itemize}
 
@@ -104,10 +104,10 @@
     \begin{itemize}
         \item mehrstufiges Sicherheitskonzept
         \item abhängig von Anforderungen (z.\,B. rechtlich, \ldots)
-        \item mehrere stufen:\newline
+        \item mehrere Stufen:\newline
         \begin{enumerate}
             \item sichtbar für Endkunden (im öffentlichen Netz) (z.\,B. Firewall)
-            \item Netzwerksicherheit innerhalb des Accounts (z\,B. NSG)
+            \item Netzwerksicherheit innerhalb des Accounts (z.\,B. NSG)
             \item sichere Daten (z.\,B. Verschlüsselung)
         \end{enumerate}
         \item falls gewünscht, können Sicherheitskonzepte kombiniert werden

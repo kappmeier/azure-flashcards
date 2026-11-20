@@ -6,7 +6,7 @@
         \item Überprüfung einer \emph{Person} oder eines \emph{Dienstes} vor Zugriff auf Ressource
         \item Anforderung von Anmeldeinformationen
         \item Nachweis, dass es tatsächlich die Person/der Dienst ist
-        \item Grundlage eines Sicherheitsprinzipals-Security Principle
+        \item Grundlage eines Sicherheitsprinzipals (Security Principal)
         \item verwaltet über Azure Active Directory
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -64,8 +64,8 @@
         \item Authentifizierung
         \item Single Sign-On (SSO)
         \item Verwaltung von Anwendungen
-        \item Business-to-Business Identitätsdienste (B2B)
-        \item Business-to-Customer Identitätsdienste (B2C)
+        \item Business-to-Business-Identitätsdienste (B2B)
+        \item Business-to-Customer-Identitätsdienste (B2C)
         \item Geräteverwaltung
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -91,11 +91,11 @@
         \item Drei Kategorien:
             \begin{itemize}
                 \item etwas, das der Nutzer \emph{weiß}: Kennwort oder Antwort auf Sicherheitsfrage
-                \item etwas, das der Nutzer \emph{hat}: App (Microsoft Authenticator, oder Google Authenticator, etc) oder Tokengerät
+                \item etwas, das der Nutzer \emph{hat}: App (Microsoft Authenticator oder Google Authenticator etc.) oder Tokengerät
                 \item persönliche \emph{Merkmale} des Nutzers: Fingerabdruck, Gesichtsscan, \ldots
         \end{itemize}
         \item Erhöhung der Sicherheit, denn: falls eine Anmeldeinformation an einen Angreifer gerät, kann er sich nicht authentifizieren.
-        \item Automatisch in Azure Active Directory integriert und kombinierbar mit MFA von Dittanbietern
+        \item Automatisch in Azure Active Directory integriert und kombinierbar mit MFA von Drittanbietern
         \item Globaler Administrator sollte \emph{auf jeden Fall} diese Methode verwenden
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -106,13 +106,13 @@
         Problem bei der Identifizierung:
         \begin{itemize}
             \item Anmeldeinformationen sind in Konfigurationsdateien enthalten.
-            \item Mangelnde Sicherheitsrichtlinien ermöglichen Zugriff für jeden mit Zugriff auf die entsprechendne Systeme und Repositories
+            \item Mangelnde Sicherheitsrichtlinien ermöglichen Zugriff für jeden mit Zugriff auf die entsprechenden Systeme und Repositories
         \end{itemize}
         $\Rightarrow$ Lösung sind \emph{Identitäten für Dienste}
 
         Zwei Möglichkeiten in Azure:
         \begin{enumerate}
-            \item Dinstprinzipale
+            \item Dienstprinzipale
             \item verwaltete Identitäten
         \end{enumerate}
         \vspace*{\stretch{1}}
@@ -135,7 +135,7 @@
 \begin{flashcard}[Definition]{Verwaltete Identität}
     \vspace*{\stretch{1}}
         \begin{itemize}
-            \item Konto in der ActivevDirectory-Instanz
+            \item Konto in der Active-Directory-Instanz
             \item Wird automatisch von Azure authentifiziert und verwaltet
             \item Dieses Konto kann wie jedes Azure Active Directory-Konto verwendet werden
                 \begin{itemize}
@@ -144,7 +144,7 @@
         \end{itemize}
         Vorteile gegenüber Dienstprinzipalen:
         \begin{itemize}
-            \item Einrichtung von Dienstprinzipal aufwändig
+            \item Einrichtung von Dienstprinzipalen aufwändig
             \item direkt nutzbar von unterstützten Diensten
         \end{itemize}
     \vspace*{\stretch{1}}
