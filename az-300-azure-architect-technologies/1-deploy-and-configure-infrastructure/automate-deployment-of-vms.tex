@@ -18,7 +18,7 @@
     \begin{itemize}
         \item JSON-Datei
         \item Vereinheitlichen VMs und Konfiguration (über Erweiterungen)
-        \item können mit Variablen und Paramtern konfiguriert werden\newline
+        \item können mit Variablen und Parametern konfiguriert werden\newline
             $\Rightarrow$ benötigt Parameter-Datei
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -49,7 +49,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Virtuelle Festplatte, die in Azure gespeichert wird: hochverfügbar, managed, \ldots
-        \item VHD Image: Festplatte, die ein Betreibssystem für VMs enthält
+        \item VHD-Image: Festplatte, die ein Betriebssystem für VMs enthält
             \begin{itemize}
                 \item Ubuntu und andere Linux-Varianten
                 \item Windows Server, SQL
@@ -70,7 +70,7 @@
         \item VHDX muss konvertiert werden
         \item Größe muss fest sein (kann konvertiert werden)
         \item Version 1 und 2 VMs
-        \item maximale größe 2 T(i?)B für Generation 2
+        \item maximale Größe 2 T(i?)B für Generation 2
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -104,12 +104,12 @@
 
 \subsubsectioncard{deploy from template}
 
-\begin{flashcard}[Definition]{Ressourcen von einer Eine Resource-Manager-Vorlage bereitstellen}
+\begin{flashcard}[Definition]{Ressourcen aus einer Resource-Manager-Vorlage bereitstellen}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcegruppe
+                \item Ressourcengruppe
                 \item Vorlagen-Datei
                 \item Parameter: \texttt{--parameters name=value name2=aValue}
             \end{itemize}
@@ -126,7 +126,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Komplett\newline
-            Ressourcengruppe wird erstetzt mit der im Template konfigurierten Infrastruktur
+            Ressourcengruppe wird ersetzt mit der im Template konfigurierten Infrastruktur
         \item Inkrementell\newline
             Existierende Infrastruktur bleibt unverändert
     \end{itemize}
@@ -139,7 +139,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Aus dem Portal:\newline
-            \texttt{Vorlage Exportieren}
+            \texttt{Vorlage exportieren}
         \item Zip-Datei
         \item Enthält:
             \begin{itemize}
@@ -156,12 +156,12 @@
     \vspace*{\stretch{1}}
     Resource Manager Template:
     \begin{itemize}
-        \item Resource vom Typ \texttt{Microsoft.Compute/virtualMachines}
+        \item Ressource vom Typ \texttt{Microsoft.Compute/virtualMachines}
         \item Eigenschaften:
             \begin{itemize}
                 \item \texttt{hardwareProfile}: VM SKU
                 \item \texttt{osProfile}: Username, Password, VM-Name
-                \item \texttt{storageProfile}: OS disk, Daten-Disk
+                \item \texttt{storageProfile}: OS-Disk, Daten-Disk
                 \item \texttt{networkProfile}: die Netzwerkinterfaces
             \end{itemize}
 
@@ -175,13 +175,13 @@
     \begin{enumerate}
         \item \texttt{imageReference}
             \begin{itemize}
-                \item \texttt{publisher} (Microsoft, oder RedHat, \ldots)
+                \item \texttt{publisher} (Microsoft oder RedHat, \ldots)
                 \item \texttt{offer} (Betriebssystem, z.\,B. CentOS, WindowsServer, \ldots)
-                \item \texttt{sku} (Version, z.\,B. 2016, oder 8.0)
+                \item \texttt{sku} (Version, z.\,B. 2016 oder 8.0)
                 \item \texttt{version} (Bugfix-Release)
             \end{itemize}
         \item \texttt{osDisk}:\newline
-            Setze auf \texttt{FromImage} um das unter 1 spezifizierte Image zu wählen
+            Setze auf \texttt{FromImage}, um das unter 1 spezifizierte Image zu wählen
         \item \texttt{dataDisks}\newline
             Leer:
             \begin{itemize}
@@ -207,7 +207,7 @@
 \begin{flashcard}[Definition]{Linux als Betriebssystem}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Publisher: OpenLogic, Debian, RedHat, SUSE, Canoncial
+        \item Publisher: OpenLogic, Debian, RedHat, SUSE, Canonical
         \item Offer: CentOS, debian-10, RHEL, SLES, UbuntuServer
         \item SKU: 7.5, 10, 7-LVM, 15, 18.04-LTS
         \item version: latest
@@ -219,7 +219,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Portal:\newline
-            Ressoruce auswählen, \texttt{Übersicht | Ressourcengruppe (Ändern)}, Zielgruppe auswählen
+            Ressource auswählen, \texttt{Übersicht | Ressourcengruppe (Ändern)}, Zielgruppe auswählen
         \item CLI:\newline
             \texttt{az resource move --destination-group \ldots --ids \ldots}
         \item PowerShell:\newline

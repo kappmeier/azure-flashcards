@@ -4,9 +4,9 @@
 
 \begin{flashcard}[Definition]{VPN Gateways}
     \vspace*{\stretch{1}}
-    Szenarios:
+    Szenarien:
     \begin{itemize}
-        \item Standord-zu-Standord (Site-to-Site) verbinden lokale Rechenzentren mit einem virtuellen Netzwerk in Azure
+        \item Standort-zu-Standort (Site-to-Site) verbinden lokale Rechenzentren mit einem virtuellen Netzwerk in Azure
         \item Point-to-Site-Gateways verbinden ein einzelnes Gerät mit einem virtuellen Netzwerk in Azure
         \item Netzwerk-zu-Netzwerk-Verbindung zwischen zwei virtuellen Netzwerken in Azure
     \end{itemize}
@@ -21,7 +21,7 @@
     Typen:
     \begin{itemize}
         \item richtlinienbasiert (statisches Routing)
-        \item routenbasiert (dynamisches Routen)
+        \item routenbasiert (dynamisches Routing)
     \end{itemize}
 
     \vspace{1cm}
@@ -34,9 +34,9 @@
 \begin{flashcard}[Definition]{Richtlinienbasiertes VPN Gateway}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item nur IKEv1-Veschlüsselung
+        \item nur IKEv1-Verschlüsselung
         \item statisches Routing über Routingtabelle und Adresspräfixen
-        \item unterstützt gegebenfalls ältere lokale VPN-Hardware
+        \item unterstützt gegebenenfalls ältere lokale VPN-Hardware
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -49,9 +49,9 @@
         \item $n$:$n$-Datenverkehrsselektoren
     \end{itemize}
 
-    Scenarios:
+    Szenarien:
     \begin{itemize}
-        \item Netwerk-zu-Netzwerk-Verbindungen
+        \item Netzwerk-zu-Netzwerk-Verbindungen
         \item Point-to-Site
         \item mehrere Standorte
         \item parallele Nutzung mit ExpressRoute-Gateway
@@ -61,10 +61,10 @@
 
 \begin{flashcard}[Definition]{Erstellen und Konfigurieren eines VPN Gateways}
     \vspace*{\stretch{1}}
-    Benötigte Resourcen (in Azure!):
+    Benötigte Ressourcen (in Azure!):
     \begin{itemize}
         \item Virtuelles Netzwerk\newline
-            benötigt genügend Platz für zusätzliches Subnetzdes VPN Gateways
+            benötigt genügend Platz für zusätzliches Subnetz des VPN Gateways
         \item Gateway Subnetz\newline
             groß genug, mindestens $/27$. Kann nicht für andere Zwecke verwendet werden
         \item öffentliche IP-Adresse: dynamisch, aber konstant solange VPN Gateway existiert
@@ -73,7 +73,7 @@
         \item Verbindung: von öffentlicher IP-Adresse mit IPv4-Adresse des lokalen Netzwerkgateways
     \end{itemize}
 
-    Benötigte lokale Resourcen
+    Benötigte lokale Ressourcen
     \begin{itemize}
         \item VPN-Gerät
         \item IPv4-Adresse (siehe lokales Netzwerkgateway)
@@ -87,14 +87,14 @@
         \item Größenauswahl/SKU:
             \begin{itemize}
                 \item Anzahl Tunnel, Durchsatz und BGP-Unterstützung
-                \item wechsel von Basic in höherwertige SKUs erfordet erneute Bereitstellung
+                \item wechsel von Basic in höherwertige SKUs erfordert erneute Bereitstellung
             \end{itemize}
         \item Hochverfügbarkeit:
             \begin{itemize}
                 \item zwei VPN Gateways mit Active/Standby\newline
                     (automatisch aktiv)
                 \item Active/Active (mit zwei öffentlichen IP-Adressen)\newline
-                    (kann erweitert werden mit zweitem Lokalen VPN-Gerät)
+                    (kann erweitert werden mit zweitem lokalen VPN-Gerät)
                 \item als Backup/Failover für ExpressRoute
                 \item Zonenredundanz
             \end{itemize}
@@ -145,7 +145,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Partner zum Einrichten der Verbindung
-        \item Azure-Abonnement mit registriefung beim Partner
+        \item Azure-Abonnement mit Registrierung beim Partner
         \item Microsoft-Konto
         \item Optional: Office 365-Abonnement
         \item BGP-fähiger Router
@@ -162,7 +162,7 @@
         \item Verbindungstypen:
             \begin{itemize}
                 \item Cloud Exchange: ISP, Server-Anbieter, etc verbinden
-                \item Point-to-Point: lokales Rechenzenter verbinden
+                \item Point-to-Point: lokales Rechenzentrum verbinden
                 \item Any-to-any: Einbinden ins WAN
             \end{itemize}
         \item Peering-Schema:
@@ -198,21 +198,21 @@
 \begin{flashcard}[Definition]{Express-Route im Portal erstellen}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Resourcen-Definition
+        \item Ressourcen-Definition
             \begin{itemize}
-                \item Abonnement + Resourcengruppe
+                \item Abonnement + Ressourcengruppe
                 \item Name: name ohne Leer- und Sonderzeichen
             \end{itemize}
         \item Anbieter
         \item SKU: Lokal, Standard, Premium: Premium für > 10 virtuelle Netzwerke
         \item Abrechnungsmodell: getaktet oder unbegrenzt\newline
             eingehende Datenübertragungen sind immer kostenlos
-        \item Standort: Standord (in Azure) für die Leitung
+        \item Standort: Standort (in Azure) für die Leitung
     \end{itemize}
     Sobald die Leitung in Azure verfügbar ist, muss der \emph{Dienstschlüssel} an den Anbieter gesendet werden
 
     \vspace{1cm}
-    Zum aktivieren (wenn alles erledigt ist), muss ein \emph{Gateway für virtuelle Netze} mit der Option \emph{ExpressRoute} erstellt werden
+    Zum Aktivieren (wenn alles erledigt ist) muss ein \emph{Gateway für virtuelle Netze} mit der Option \emph{ExpressRoute} erstellt werden
     \vspace*{\stretch{1}}
 \end{flashcard}
 
@@ -220,10 +220,10 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Peer-ASN: private oder öffentliche autonome Systemnummer
-        \item primäres Subnetz: ein /30-Subnetz, IP\#1 für router, IP\#2 für Microsoft-Router\newline
+        \item primäres Subnetz: ein /30-Subnetz, IP\#1 für Router, IP\#2 für Microsoft-Router\newline
             Die anderen zwei?
-        \item sekundäres Subnetz: ein /30-Subnetz, aus sicherheitsgründen
-        \item VLAN-ID: VLAN in dem das Peering hergestellt wird
+        \item sekundäres Subnetz: ein /30-Subnetz, aus Sicherheitsgründen
+        \item VLAN-ID: VLAN, in dem das Peering hergestellt wird
         \item Schlüssel: optionaler MD5-Hash für Codierung von Nachrichten
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -247,11 +247,11 @@
         Funktion       &  VPN Gateway               & ExpressRoute                    \\
         \hline
         Azure-Dienste  &  Azure-Dienste \& VMs      & Microsoft Cloud                 \\
-        Bandbreite     &  10 GBit/s                 & 10 GBit/s, 100 GBit/S           \\
+        Bandbreite     &  10 GBit/s                 & 10 GBit/s, 100 GBit/s           \\
         Protokoll      &  SSTP, IPsec               & VLAN oder MPLS                  \\
         Routing        &  Statisch, dynamisch       & BGP (Border Gateway)            \\
         Resilienz      &  Aktiv-passiv, aktiv-aktiv & Aktiv-passiv, aktiv-aktiv       \\
-        Use-Cases      & Prototyp, Dev              & Unternehmenskritsiche Workloads \\
+        Use-Cases      & Prototyp, Dev              & Unternehmenskritische Workloads \\
         SLA            & 99,95\% -- 99,99\%         & 99,95\%                         \\
     \end{tabular}
     \vspace*{\stretch{1}}

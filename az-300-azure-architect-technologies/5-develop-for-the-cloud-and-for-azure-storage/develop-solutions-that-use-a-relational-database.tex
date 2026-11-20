@@ -7,7 +7,7 @@
     \begin{itemize}
         \item Single Database:\newline
             für kleine Services geeignet
-        \item Verwlatet:\newline
+        \item Verwaltet:\newline
             verwaltete, große Instanz
         \item elastische Pools:\newline
             mehrere Datenbanken, die einen Pool teilen
@@ -48,7 +48,7 @@
         \item vorkonfiguriert
         \item kann für kleine Anwendungen günstiger sein
     \end{itemize}
-    vKern
+    vCore
     \begin{itemize}
         \item virtuelle Kerne (für den Datenbank-Server)
         \item Kerne und Speicher können unabhängig konfiguriert werden
@@ -62,12 +62,12 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Global eindeutiger Servername (URL)
+                \item global eindeutiger Servername (URL)
                 \item Administrator-Zugangsdaten
                 \item Location
                 \item Zugriff von Azure-Diensten?
             \end{itemize}
-        \item Portal: \texttt{Resource erstellen | Datenbanken | SQL-Datenbank | Server | Neu erstellen }
+        \item Portal: \texttt{Ressource erstellen | Datenbanken | SQL-Datenbank | Server | Neu erstellen }
         \item Azure CLI: \newline
             \texttt{az sql server create}
     \end{itemize}
@@ -85,7 +85,7 @@
                 \item elastische Pools Ja/Nein?
                 \item Leistung (Rechenkraft und Speicher)
             \end{itemize}
-        \item Portal: \texttt{Resource erstellen | Datenbanken | SQL-Datenbank}
+        \item Portal: \texttt{Ressource erstellen | Datenbanken | SQL-Datenbank}
         \item Azure-CLI:\newline
             \texttt{az sql db create \ldots}
     \end{itemize}
@@ -96,7 +96,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Portal: Beim Erstellen einer Datenbank ("Compute + Storage")
-        \item vCore-Basiert
+        \item vCore-basiert
         \item Basic, Standard, Premium für DTUs
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -122,16 +122,16 @@
 \begin{flashcard}[Definition]{Pools für elastische SQL-Datenbanken}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item gemeinsam genutzte Resourcen (eDTUs) für mehrere Datenbanken
-        \item Datenbanken können (mit Beschränkung) Resourcen von dem Pool nutzen
-        \item Anwendungsfälle: unterschiedlicher, unverhergesehener Ressourcnebedarf
+        \item gemeinsam genutzte Ressourcen (eDTUs) für mehrere Datenbanken
+        \item Datenbanken können (mit Beschränkung) Ressourcen aus dem Pool nutzen
+        \item Anwendungsfälle: unterschiedlicher, unvorhergesehener Ressourcenbedarf
         \item Architektur:
             \begin{itemize}
                 \item gewisse Ressourcen für den gesamten Pool
                 \item verschiedene Datenbanken werden dem Pool zugewiesen
                 \item[$\Rightarrow$] teilen sich die Ressourcen
             \end{itemize}
-        \item Größe: kombinierte Ressourcen (theoretisch) müssen 1,5 mal die Kapaztität für den Pool überschreiben. Mehr als 2 S3-Datenbanken oder 15 S0-Datenbanken
+        \item Größe: kombinierte Ressourcen (theoretisch) müssen 1,5 mal die Kapazität für den Pool überschreiben. Mehr als 2 S3-Datenbanken oder 15 S0-Datenbanken
         \item Grenzen: 100 bzw. 500 Datenbanken pro Pool
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -148,7 +148,7 @@
             \end{itemize}
         \item Azure-CLI:\newline
             \texttt{az sql elastic-pools create}
-        \item Portal: \texttt{Elastischer SQL-Datenbankpool} suchen als Ressourcetyp
+        \item Portal: \texttt{Elastischer SQL-Datenbankpool} suchen als Ressourcentyp
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -220,6 +220,6 @@
         \item Löschen\newline
             \texttt{DELETE FROM table WHERE x=y;}
     \end{itemize}
-    Login von CloudShell z.\,B. über \texttt{sqlcmd}
+    Login von Cloud Shell z.\,B. über \texttt{sqlcmd}
     \vspace*{\stretch{1}}
 \end{flashcard}

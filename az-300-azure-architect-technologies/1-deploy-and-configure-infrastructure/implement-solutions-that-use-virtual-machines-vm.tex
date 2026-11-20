@@ -4,9 +4,9 @@
 
 \subsubsectioncard{create Azure Resource Manager templates}
 
-\begin{flashcard}[Definition]{Azure Rsource Manager-Vorlagen-Format}
+\begin{flashcard}[Definition]{Azure-Resource-Manager-Vorlagen-Format}
     \vspace*{\stretch{1}}
-    JSON -- Java Script Object Notation
+    JSON -- JavaScript Object Notation
     \vspace*{\stretch{1}}
 \end{flashcard}
 
@@ -18,7 +18,7 @@
     Form: \texttt{[expression]}
 
     \vspace{1cm}
-    In Ausdrücken kann auf objekte wie Ressourcen und Funktionen zugegriffen werden
+    In Ausdrücken kann auf Objekte wie Ressourcen und Funktionen zugegriffen werden
     \vspace*{\stretch{1}}
 \end{flashcard}
 
@@ -28,9 +28,9 @@
 \begin{flashcard}[Definition]{Verschlüsselung von VMs}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Standardmäßig Ausführugn
-        \item benutzt Bitlocker (für Windows) oder DM-Crypt (Linux)
-        \item Schlüssel in Azure KeyVault ($\rightarrow$ \texttt{key})\newline
+        \item Standardmäßig Ausführung
+        \item benutzt BitLocker (für Windows) oder DM-Crypt (Linux)
+        \item Schlüssel in Azure Key Vault ($\rightarrow$ \texttt{key})\newline
             \emph{(in gleicher Region)}\newline
             [!] verwaltet von Azure
         \item Voraussetzung: bessere Maschine als A, mehr als 2 GiB Hauptspeicher, Generation 1 VM
@@ -56,7 +56,7 @@
         \item CLI:\newline
             \texttt{az vm encryption enable -resource-group \ldots --name <vm-name>\\--disk-encryption-keyvault \ldots}
         \item PowerShell:\newline
-            \texttt{Set-AzVMDiskEncryptionExtension -ResourceGroupName \ldots\\-VMName \ldots -DiskEncryptionKeyVaultUrl \$KeyVault.VaultUri\\-DiskEncryptionKeyVaultId \$KeyVault.ResourceId}
+            \texttt{Set-AzVMDiskEncryptionExtension -ResourceGroupName \ldots\\-VMName \ldots -DiskEncryptionKey VaultUrl \$Key Vault.VaultUri\\-DiskEncryptionKey VaultId \$Key Vault.ResourceId}
         \item Parameter: \texttt{--volume-type}: \texttt{DATA, OS, ALL}
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -69,8 +69,8 @@
     \begin{itemize}
         \item Tool zur Wiederherstellung von Daten
         \item Replikation zwischen primärem und sekundärem Standort
-        \item unterstützt lokale (inkls. physische Maschinen) und Azure als Quell-Standort
-        \item Failback (nicht zu physische Maschinen)
+        \item unterstützt lokale (inkl. physische Maschinen) und Azure als Quell-Standort
+        \item Failback (nicht zu physischen Maschinen)
         \item Erstellt Momentaufnahmen und Wiederherstellungspunkte
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -96,7 +96,7 @@
 
 \begin{flashcard}[Definition]{Failover}
     \vspace*{\stretch{1}}
-    Übertragung der Ausführugn an einen sekundären Standort (z.\,B. weil der primäre nicht verfügbar ist)
+    Übertragung der Ausführung an einen sekundären Standort (z.\,B. weil der primäre nicht verfügbar ist)
     \vspace{1cm}
     Nach einem Failover wird der Schutz deaktiviert!
     \vspace*{\stretch{1}}
@@ -104,7 +104,7 @@
 
 \begin{flashcard}[Definition]{Failback}
     \vspace*{\stretch{1}}
-    Rück-Übertragung der Ausführugn von einem sekundären Standort (z.\,B. weil der primäre wieder verfügbar ist)
+    Rückübertragung der Ausführung von einem sekundären Standort (z.\,B. weil der primäre wieder verfügbar ist)
     \vspace*{\stretch{1}}
 \end{flashcard}
 
@@ -156,7 +156,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Netzwerk einrichten
-        \item Site-Recovery-Tresor ertellen
+        \item Site-Recovery-Tresor erstellen
         \item Azure-Mobilitätsdienst auf VMs installieren (Linux und Windows)\newline
             wird normalerweise von Site Recovery automatisch erledigt
     \end{itemize}
@@ -172,7 +172,7 @@
         \item Ziel-SKU
         \item Verfügbarkeitsgruppe
         \item Verwaltete Disks
-        \item Netzwerke: VNet + Subnetz, IP-Addresse
+        \item Netzwerke: VNet + Subnetz, IP-Adresse
     \end{itemize}
     \ldots können alle angepasst werden!
     \vspace*{\stretch{1}}
@@ -184,7 +184,7 @@
     \begin{itemize}
         \item erstellt und verwaltet Backups
         \item keine Infrastruktur notwendig
-        \item erstellt Kopien zustandsbehafter Daten um alte Zustände wieder herzustellen
+        \item erstellt Kopien zustandsbehafteter Daten, um alte Zustände wiederherzustellen
         \item Langzeitaufbewahrung (mehrere Jahre)
         \item sicherer Zugriff (RBAC, Verschlüsselung, \ldots)
         \item vorläufiges Löschen
@@ -199,7 +199,7 @@
         \item Virtuelle Maschinen in Azure sichern
         \item lokale Maschinen sichern (MARS, DPM)
             \begin{itemize}
-                \item physische server und Hyper-V und VMware
+                \item physische Server und Hyper-V und VMware
                 \item Rückspielung nur auf virtuelle Maschinen
             \end{itemize}
         \item Dateifreigaben
@@ -228,9 +228,9 @@
                 \item Anwendungen (SQL, \ldots)
                 \item Dateien
                 \item vollständige Systeme (Windows)
-                \item Hyper-V VMs, (Windows + Linux)
+                \item Hyper-V VMs (Windows + Linux)
             \end{itemize}
-        \item Sicherungs-Ziele
+        \item Sicherungsziele
             \begin{itemize}
                 \item Platte (kurzzeitige Sicherungen)
                 \item Azure (kurzzeitig, Langzeitaufbewahrung)
@@ -248,7 +248,7 @@
         \item Unterstützte Backups
             \begin{itemize}
                 \item Hyper-V oder VMware (Linux, vollständige Maschine)
-                \item Hyper-V oder VMware (Windows: Maschinen, oder einzelne Dateien, Shares)
+                \item Hyper-V oder VMware (Windows: Maschinen oder einzelne Dateien, Shares)
                 \item Servers: Dateien, SQL, Exchange
             \end{itemize}
     \end{itemize}
@@ -256,17 +256,17 @@
 \end{flashcard}
 
 
-\begin{flashcard}[Definition]{VM Backup einrichten}
+\begin{flashcard}[Definition]{VM-Backup einrichten}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Recovery Services-Tresor einrichten\newline
+        \item Recovery-Services-Tresor einrichten\newline
             enthält Sicherungen
         \item Azure Backup-Erweiterung auf der VM aktivieren\newline
             \emph{VMSnapshot} bzw. \emph{VMSnapshotLinux}
         \item Sicherungsrichtlinie erstellen. Konsistenzebenen für Backups:
             \begin{itemize}
              \item Anwendungskonsistent\newline
-                Kopie der gesamten VM, vollstänidge Konsistenz aller Anwendungen
+                Kopie der gesamten VM, vollständige Konsistenz aller Anwendungen
              \item Dateisystemkonsistent\newline
                 Kopie aller Dateien, Anwendungen müssen ggf. bereinigt werden
              \item Absturzkonsistent\newline
@@ -277,19 +277,19 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Sicherung einer VM mit dem Poral}
+\begin{flashcard}[Definition]{Sicherung einer VM mit dem Portal}
     \vspace*{\stretch{1}}
     Einrichten:
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcengruppe
-                \item Recovery Services-Tresor
+                \item Ressourcengruppe
+                \item Recovery-Services-Tresor
                 \item Sicherungsrichtlinie
             \end{itemize}
         \item Im Portal:\newline
             \texttt{Vorgänge | Sicherung | Sicherung} im VM-Blade
-        \item Tresor, Resourcengruppe und Richtlinie können neu erstellt werden
+        \item Tresor, Ressourcengruppe und Richtlinie können neu erstellt werden
     \end{itemize}
     Durchführen:
     \begin{itemize}
@@ -302,7 +302,7 @@
 
 \begin{flashcard}[Definition]{Sicherung einer VM mit Azure CLI}
     \vspace*{\stretch{1}}
-    (Benötigt vorhandene Resourcnegruppe, Recovery-Services-Tresor, Policy
+    (Benötigt vorhandene Ressourcengruppe, Recovery-Services-Tresor, Policy
     \begin{itemize}
         \item Sicherung einrichten:\newline
             \texttt{az backup protection enable-for-vm --resource-group \ldots --vault-name \ldots --vm \ldots --policy-name \ldots}
@@ -312,13 +312,13 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Wiederhertellen einer Sicherung}
+\begin{flashcard}[Definition]{Wiederherstellen einer Sicherung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Erstellen einer VM: eine virtuelle Maschine in der gleichen Region als Kopie erstellen
         \item Datenträger wiederherstellen: erstellt einen Datenträger mit Daten aus dem Backup
         \item Vorhandene ersetzen: ersetzt einen Datenträger auf einer existierenden VM
-        \item Regionsübergreifende Wiederherstellung: wiederherstellung in die gekoppelte Partner-Region
+        \item Regionsübergreifende Wiederherstellung: Wiederherstellung in die gekoppelte Partner-Region
     \end{itemize}
     Ein Backup kann in wenigen Minuten wiederhergestellt werden!
     \vspace*{\stretch{1}}

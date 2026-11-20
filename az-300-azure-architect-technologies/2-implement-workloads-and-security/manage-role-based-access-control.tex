@@ -1,4 +1,4 @@
-\subsectioncard{Verwalten von rollenbasierter Zugrangsbeschränkung}
+\subsectioncard{Verwalten von rollenbasierter Zugriffsbeschränkung}
 
 \subsubsectioncard{create a custom role}
 
@@ -28,14 +28,14 @@
         \item Beschränkungen haben höheren Rang als RBAC-Rollen-Erlaubnisse
     \end{itemize}
     \vspace{1cm}
-    z\,B. Mitarbeiter, der VMs nicht runterfahren darf
+    z.\,B. Mitarbeiter, der VMs nicht runterfahren darf
     \vspace*{\stretch{1}}
 \end{flashcard}
 
 \begin{flashcard}[Definition]{Besitzer-Rolle}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item hat vollständigen Zugriff auf Resourcen
+        \item hat vollständigen Zugriff auf Ressourcen
         \item kann weitere Rollendefinitionen setzen
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -44,27 +44,27 @@
 \begin{flashcard}[Definition]{Mitarbeiter-Rolle}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item hat vollständigen Zugriff auf Resourcen
+        \item hat vollständigen Zugriff auf Ressourcen
     \end{itemize}
-    $\Rightarrow$ kann nicht weitere Nutzer hinzufügen/entfernen
+    $\Rightarrow$ kann keine weiteren Nutzer hinzufügen/entfernen
     \vspace*{\stretch{1}}
 \end{flashcard}
 
 \begin{flashcard}[Definition]{Leser-Rolle}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item hat Lesezugriff auf alle resourcen
+        \item hat Lesezugriff auf alle Ressourcen
         \item \emph{keine} Nutzerverwaltung möglich
-        \item \emph{keine} Veränderungen von Resourcen möglich
+        \item \emph{keine} Veränderungen von Ressourcen möglich
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Nutzerzugriff-Adminstrator-Rolle}
+\begin{flashcard}[Definition]{Nutzerzugriff-Administrator-Rolle}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item kann Rollen für Azure-Resourcen vergeben
-        \item \emph{keine} Veränderungen von Resourcen mölgich
+        \item kann Rollen für Azure-Ressourcen vergeben
+        \item \emph{keine} Veränderungen von Ressourcen möglich
     \end{itemize}
     $\Rightarrow$ Besitzer = Mitarbeiter + Nutzerzugriff-Administrator
     \vspace*{\stretch{1}}
@@ -73,8 +73,8 @@
 \begin{flashcard}[Definition]{Backups}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Sicherungsoperator: durchführen von Sicherungen, aber \emph{nicht löschen}, Tresorerstellung oder anderen Rechte zuweisen
-        \item Sicherungsmitwirkender: komplette Verwaltung von Sicherungen, inklusive löschen, keine Tresorerstellung und Rechtezuweisung
+        \item Sicherungsoperator: Durchführen von Sicherungen, aber \emph{nicht löschen}, Tresorerstellung oder anderen Rechte zuzuweisen
+        \item Sicherungsmitwirkender: komplette Verwaltung von Sicherungen, inklusive Löschen, keine Tresorerstellung und Rechtezuweisung
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -83,8 +83,8 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Site-Recovery-Leser: Anzeige des Status
-        \item Site-Recovery-Operator: durchführen von Failover und Failback
-        \item Site-Recovery-Mitwirkender: verwaltung von Site Recovery, aber keine Tresorerstellung
+        \item Site-Recovery-Operator: Durchführen von Failover und Failback
+        \item Site-Recovery-Mitwirkender: Verwaltung von Site Recovery, aber keine Tresorerstellung
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -96,8 +96,8 @@
         \item Password Administrator: darf Passwörter ändern (von normalen Nutzern)
         \item Nutzer-Administrator: Nutzer verwalten (erstellen, \ldots)
         \item Nutzerzugriff-Administrator: darf Rollen für Nutzer ändern
-        \item Helpdesk-Administrator: kann verschiedene Service-Aufträge erledigen (auch Paswörter)
-        \item Sicherheits-Adminsotrator: viele Rechte für Sicherheitsaspekte, aber keine Nutzerrechte
+        \item Helpdesk-Administrator: kann verschiedene Service-Aufträge erledigen (auch Passwörter)
+        \item Sicherheits-Administrator: viele Rechte für Sicherheitsaspekte, aber keine Nutzerrechte
         \item Global Administrator: hat alle Rechte
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -115,7 +115,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Im Portal:\newline
-            \item eine Resource auswählen
+            \item eine Ressource auswählen
             \item \texttt{Zugriffssteuerung (IAM)}
             \item \texttt{+ Hinzufügen}
         \item CLI:\newline
@@ -128,7 +128,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Im Portal:\newline
-            \item eine Resource auswählen
+            \item eine Ressource auswählen
             \item \texttt{Zugriffssteuerung (IAM)}
         \item CLI:\newline
             \texttt{az role assignment delete --role \ldots\\--assignee <name|email-adress|object-id> --scope}

@@ -7,7 +7,7 @@
     Account:
     \begin{itemize}
         \item Benötigt Cosmos DB-Konto (wie Speicherkonto)
-        \item verschlüsselung: immer aktiviert (at rest)
+        \item Verschlüsselung: immer aktiviert (at rest)
     \end{itemize}
     mehrere Datenmodell-APIs verfügbar: SQL, Graphen, Tabellen
     \vspace*{\stretch{1}}
@@ -29,7 +29,7 @@
     \begin{enumerate}
         \item Anforderungseinheit (RU): 1 GET-Anfrage für ein Dokument per id von 1 KiB
         \item Andere Anfragen (PUT, ...) teurer
-        \item Preis steigt mit höheren Konsistenz-anforderungen (stark, begrenzte Veraltung)
+        \item Preis steigt mit höheren Konsistenzanforderungen (stark, begrenzte Veraltung)
         \item Für gleiche Anfragen ist der Preis deterministisch
         \item alle Container teilen sich die Anforderungseinheiten
     \end{enumerate}
@@ -61,7 +61,7 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Cosmos DB-Kontoname + Resourcengruppe
+            \item Cosmos DB-Kontoname + Ressourcengruppe
             \item Datenbank-ID (Name), kann mehrere Container enthalten
             \item Durchsatz in RUs pro Sekunde
         \end{itemize}
@@ -77,7 +77,7 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Cosmos DB-Kontoname + Resourcengruppe
+            \item Cosmos DB-Kontoname + Ressourcengruppe
             \item Datenbank-ID (Name), kann mehrere Container enthalten
             \item Container-ID (Name)
             \item Durchsatz in RUs pro Sekunde
@@ -92,7 +92,7 @@
 \begin{flashcard}[Definition]{Daten-Explorer}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Benutzeroberfläche um Cosmos DB-Daten zu verwalten
+        \item Benutzeroberfläche, um Cosmos-DB-Daten zu verwalten
         \item Im Portal: \texttt{Daten-Explorer} im Blade der Cosmos DB
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -103,18 +103,18 @@
     \begin{itemize}
         \item Auswahl des Containers: \texttt{Konto | Container | Datenbank}
         \item Neues Element erstellen: \texttt{New Item}
-        \item Dokument kann eingetragen Werden (als JSON)
+        \item Dokument kann eingetragen werden (als JSON)
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Daten Lesen}
+\begin{flashcard}[Definition]{Daten lesen}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Eine SQL-Abfrage erstellen: Innerhalb einer Datenbank
         \item \texttt{FROM} kann einen Container oder eine Datenbank sein
         \item Zugriff auf Datenbank: \texttt{Container.Datenbank}
-        \item Auch auf unter-elemente des JSON-Objekts kann so zugegriffen werden
+        \item Auch auf Unterelemente des JSON-Objekts kann so zugegriffen werden
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -123,7 +123,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Sammlung von mehreren Operationen in einer Transaktion
-        \item einzige Möglichkeit \emph{ACID}-Transaktionen zu garantieren
+        \item einzige Möglichkeit, \emph{ACID}-Transaktionen zu garantieren
         \item im Container gespeichert
         \item JavaScript
     \end{itemize}
@@ -148,7 +148,7 @@
         \item horizontale Skalierung für Cosmos DB-Datenbanken
         \item \emph{Partitionsschlüssel}: Strategie für Erstellung von Partitionen \emph{pro Container}\newline
             \emph{Kann nicht geändert werden!}
-        \item \emph{Hot Partition}: eine Partition, die deutlich mehr Anforderungen erhält, als andere\newline
+        \item \emph{Hot Partition}: eine Partition, die deutlich mehr Anforderungen erhält als andere\newline
             Schlüssel sollten sowohl eindeutig sein als auch zum Suchen benutzt werden (\emph{id} z.\,B.)
         \item Limit: 20 GiB pro Partitionsschlüssel\newline
             falls Schlüssel zu groß: Schlüssel kombinieren
@@ -177,8 +177,8 @@
         \item für Hochverfügbarkeit
         \item mehrere Regionen können ausgewählt werden
         \item erlaubt Failover
-        \item einzelne Schreib-Regionen: schreiben nur in einer Region
-        \item multi Schreib-Regionen: teuer
+        \item einzelne Schreibregionen: schreiben nur in einer Region
+        \item Multi-Schreibregionen: teuer
         \item automatisches Failover: falls die Schreibregion ausfällt, automatisch eine andere Region zur Schreibregion promovieren
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -206,7 +206,7 @@
         \item Konfliktlösungen:
         \begin{itemize}
             \item Last-Writer-Wins (LWW): ganzzahlige Eigenschaft im Dokument, z.\,B. Zeitstempel
-            \item Benutzerdefiniert: spezielle gespeicherte Prozedur, fallback Asynchron
+            \item Benutzerdefiniert: spezielle gespeicherte Prozedur, Fallback asynchron
             \item Asynchron: Konflikte werden ausgeschlossen und in einem Feed an Benutzer geleitet
         \end{itemize}
     \end{itemize}
@@ -219,10 +219,10 @@
     \begin{enumerate}
         \item stark\newline
             Linearisiert. Garantiert neueste Version gelesen.
-        \item Begrenzte veraltung\newline
+        \item Begrenzte Veraltung\newline
             Präfixkonsistenz + Lesen höchstens hängt k zurück
         \item Sitzung\newline
-            Präfixkonsistenz + Monotone schreib/lesevorgänge
+            Präfixkonsistenz + Monotone Schreib-/Lesevorgänge
         \item Präfixkonsistenz\newline
             Aktualisierungen sind Präfix aller Aktualisierungen ohne Lücken
         \item letztlich\newline
@@ -237,26 +237,26 @@
         \item Linearisierbarkeit:\newline
             Lesevorgänge geben garantiert die neueste Version zurück
         \item Schreibvorgang wird erst sichtbar, nachdem er repliziert worden ist
-        \item Lesevorgänge liefer immer neueste bestätigte Version zurück
+        \item Lesevorgänge liefern immer neueste bestätigte Version zurück
         \item wenn mehrere Regionen genutzt werden, kein Vorteil durch geringe Latenz
         \item hohe Kosten (gleich wie \emph{begrenzte veraltung})
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Begrenzte veraltung}
+\begin{flashcard}[Definition]{Begrenzte Veraltung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Ergebnis eines Lesevorgangs ist begrenzt alt
             \begin{itemize}
-                \item entweder $K$ Versionen (Präfixlnge)
+                \item entweder $K$ Versionen (Präfixlänge)
                 \item oder Zeitintervall $t$
             \end{itemize}
             (wie starke Konsistenz, aber zeitlich verzögert)
         \item ideal für hohe Konsistenz und hohe Verfügbarkeit (99,99\%) und niedrige Latenz
-        \item höhere Konsistenzgarantie als \emph{Sizung}, \emph{Präfixkonsistenz} und \emph{letztliche Konsistenz}
+        \item höhere Konsistenzgarantie als \emph{Sitzung}, \emph{Präfixkonsistenz} und \emph{letztliche Konsistenz}
         \item unterstützen beliebige Anzahl von Regionen
-        \item höhere Kosten, wie bei \emph{stark}er Konsistenz
+        \item höhere Kosten wie bei \emph{stark}er Konsistenz
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -277,8 +277,8 @@
 \begin{flashcard}[Definition]{Präfixkonsistenz}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Konsistenz für clients in einer Region oder mit Single-Master-Konto. Multi-Region-Kontos: letztlich konsistent
-        \item Keine Lücken oder Lesevorgänge außer der Reihenfolge
+        \item Konsistenz für Clients in einer Region oder mit Single-Master-Konto. Multi-Region-Kontos: letztlich konsistent
+        \item Keine Lücken oder Lesevorgänge außerhalb der Reihenfolge
         \item unterstützen beliebige Anzahl von Regionen
     \end{itemize}
     \vspace*{\stretch{1}}
