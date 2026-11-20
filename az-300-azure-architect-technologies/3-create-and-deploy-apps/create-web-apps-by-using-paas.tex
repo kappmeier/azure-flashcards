@@ -1,6 +1,6 @@
 \subsectioncard{Erstellen von Webanwendungen und PaaS}
 
-\subsubsectioncard{create an Azzure app service Web App}
+\subsubsectioncard{create an Azure app service Web App}
 
 \begin{flashcard}[Definition]{Was wird für eine Web App benötigt?}
     \vspace*{\stretch{1}}
@@ -8,7 +8,7 @@
         \item App Service Plan
             \begin{itemize}
                 \item App Service Plan: dauerhafte Bezahlung
-                \item Consumption Plan: bezahlung nach Nutzen, maximale Laufzeit einer Funktion 10 Minuten
+                \item Consumption Plan: Bezahlung nach Nutzung, maximale Laufzeit einer Funktion 10 Minuten
             \end{itemize}
         \item Web App
     \end{enumerate}
@@ -22,7 +22,7 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Resourcegruppe + Location
+            \item Ressourcengruppe + Location
             \item SKU
             \item Name
         \end{itemize}
@@ -77,7 +77,7 @@
         \item Nur Apps desselben Plans können sich eine VM teilen
         \item bessere Stufe $\Rightarrow$ höhere Anzahl Instanzen für horizontale Skalierung verfügbar
     \end{itemize}
-    Eigenschaften: (Über Pläne für freigegebene Resourcen hinaus)
+    Eigenschaften: (Über Pläne für freigegebene Ressourcen hinaus)
     \begin{itemize}
         \item Zertifikate\vspace{-0.5mm}
         \item Unbegrenzte App-Anzahl\vspace{-0.5mm}
@@ -87,7 +87,7 @@
         \item Ab \emph{Standard}:\vspace{-1mm}
             \begin{itemize}
                 \item automatische Skalierung\vspace{-1mm}
-                \item integration virtueller Netzwerke\vspace{-1mm}
+                \item Integration virtueller Netzwerke\vspace{-1mm}
                 \item 5 Staging-Slots, dann 20\vspace{-1mm}
                 \item Backups\vspace{-1mm}
             \end{itemize}
@@ -98,7 +98,7 @@
 \begin{flashcard}[Definition]{App Service Plan-Features Isoliert}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Netzwerkisolation: die dedizierten VMs werden in eigneen virtuellen Netzen ausgeführt\newline
+        \item Netzwerkisolation: die dedizierten VMs werden in eigenen virtuellen Netzen ausgeführt\newline
             (zusätzlich zu Isolation für Berechnungen (wie dedizierte Ressourcen))
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -109,7 +109,7 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Resourcegruppe
+            \item Ressourcengruppe
             \item Name
             \item App-Service-Plan
             \item deployment source (URL, Branch)
@@ -143,7 +143,7 @@
                 \item Fortlaufend: werden in einer Schleife ausgeführt
                 \begin{itemize}
                     \item Multi-Instance: Script auf jeder Instanz ausführen (Ja/Nein).\newline
-                        (Nicht bei freigegebenen Resourcen (Free, Shared), da nicht horizontal skalierbar)
+                        (Nicht bei freigegebenen Ressourcen (Free, Shared), da nicht horizontal skalierbar)
                 \end{itemize}
                 \item Ausgelöst: werden nach Zeitplan oder manuell ausgeführt
             \end{itemize}
@@ -166,7 +166,7 @@
 
 \subsubsectioncard{enable diagnostics logging}
 
-\begin{flashcard}[Definition]{Diagnoseprotokollierung}
+\begin{flashcard}[Definition]{DiagnoseProtokollierung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item automatisch verfügbares Logging zum Debuggen von Web Service-Anwendungen
@@ -180,16 +180,16 @@
 \begin{flashcard}[Definition]{Arten von Web Service-Logging}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Anwendungsprotokollierung
-        \item Webserverprotokollierung
+        \item AnwendungsProtokollierung
+        \item WebserverProtokollierung
         \item Detaillierte Fehlermeldungen
         \item Ablaufverfolgung fehlgeschlagener Anforderungen
-        \item Bereitstellungsprotokollierung
+        \item BereitstellungsProtokollierung
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Web Service Anwendungsprotokollierung}
+\begin{flashcard}[Definition]{Web Service AnwendungsProtokollierung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Windows + Linux
@@ -200,11 +200,11 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Web Service Webserverprotokollierung}
+\begin{flashcard}[Definition]{Web Service WebserverProtokollierung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item[!] nur Windows
-        \item protokollierung von HTTP-Anforderungen
+        \item Protokollierung von HTTP-Anforderungen
         \item geeignet für Metriken
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -228,12 +228,12 @@
         \item inklusive IIS
         \item enthält genaue Timings für jede Komponente
         \item praktisch, um Seitenperformance nachzuvollziehen
-        \item genaue analyse eines speziellen HTTP-Fehlers
+        \item genaue Analyse eines speziellen HTTP-Fehlers
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Web Service Bereitstellungsprotokollierung}
+\begin{flashcard}[Definition]{Web Service BereitstellungsProtokollierung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Windows + Linux

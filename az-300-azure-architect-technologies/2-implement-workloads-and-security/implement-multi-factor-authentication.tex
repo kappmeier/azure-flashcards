@@ -1,6 +1,6 @@
-\subsectioncard{Mehrstufige Authentifikation einrichten}
+\subsectioncard{Mehrstufige Authentifizierung einrichten}
 
-\begin{flashcard}[Definition]{Mehrstufige Authentifikation}
+\begin{flashcard}[Definition]{Mehrstufige Authentifizierung}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Mindestens zwei Methoden zum Login
@@ -31,13 +31,13 @@
 
 \begin{flashcard}[Definition]{Betrugs-Benachrichtigung}
     \vspace*{\stretch{1}}
-    Benutzer können betrügerische Anmeldeverusche melden
+    Benutzer können betrügerische Anmeldeversuche melden
     \begin{itemize}
         \item Betrugsversuch:\newline
             falls eine MFA-Aufforderung ohne Anmeldeversuch eingeht
         \item Automatische Blockierung:\newline
-            Sperrung von Benutzerkonten, die Betrug melden für 90 Tage oder \emph{bis ein Administrator die Sperre aufhebt}
-        \item Code zur Meldung über Telefonanrufe (standard 0)
+            Sperrung von Benutzerkonten, die Betrug melden, für 90 Tage oder \emph{bis ein Administrator die Sperre aufhebt}
+        \item Code zur Meldung über Telefonanrufe (Standard 0)
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -49,7 +49,7 @@
     \begin{itemize}
         \item Nutzer innerhalb der Organisation können MFA überspringen
         \item benötigt einen Nachweis durch Active Directory Federation Services (AD FS)
-        \item bestimmte Ip-Bereiche können übersprungen werden (Trusted IP)
+        \item bestimmte IP-Bereiche können übersprungen werden (Trusted IP)
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -69,15 +69,15 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item IP-Bereiche, für die keine mehrstufige Authentifizierung notwendig ist
-        \item[!] für das intranet der Organisation\newline
-            für generelle Standort-Freigate: Bedingter Zugriff
+        \item[!] für das Intranet der Organisation\newline
+            für generelle Standort-Freigabe: Bedingter Zugriff
         \item Bis zu 50 CIDR-Bereiche
     \end{itemize}
     Zwei Möglichkeiten:
     \begin{itemize}
         \item Einstellung für mehrstufige Authentifizierung:\newline
-            \texttt{Azure Active Directory | Benutzer | Multi-Factor Authentication | service Settings | Trusted IPs}
-        \item Über Bedingten Zugriff:\newline
+            \texttt{Azure Active Directory | Benutzer | Multi-Factor Authentication | Service Settings | Trusted IPs}
+        \item Über bedingten Zugriff:\newline
             \texttt{Azure Active Directory | Sicherheit | Conditional Access | Named Locations}
     \end{itemize}
 

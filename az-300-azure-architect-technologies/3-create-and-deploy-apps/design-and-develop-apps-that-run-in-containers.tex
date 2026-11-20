@@ -11,7 +11,7 @@
         \item Datei namens \emph{Dockerfile}
         \item Teile eines Dockerfiles:
             \begin{itemize}
-                \item \texttt{FROM}: Basisimage, das angepasst word
+                \item \texttt{FROM}: Basisimage, das angepasst wird
                 \item \texttt{RUN}: beliebiger Befehl, der im Container ausgeführt wird
                 \item \texttt{COPY}: kopiert Dateien vom Hostcomputer
                 \item \texttt{EXPOSE}: öffnet einen Port
@@ -22,9 +22,9 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\subsubsectioncard{creat an Azure Kubernetes Service}
+\subsubsectioncard{create an Azure Kubernetes Service}
 
-\begin{flashcard}[Definition]{Kobernetes-Komponenten}
+\begin{flashcard}[Definition]{Kubernetes-Komponenten}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item kube-apiserver\newline
@@ -39,12 +39,12 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Azure Kubernets-Cluster erstellen}
+\begin{flashcard}[Definition]{Azure Kubernetes-Cluster erstellen}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcegruppe + Abonnement
+                \item Ressourcengruppe + Abonnement
                 \item Name
             \end{itemize}
         \item CLI:\newline
@@ -83,7 +83,7 @@
                 \item CLI: \texttt{az acr create --name \ldots}
             \end{itemize}
         \item Administratorbenutzer für Zugriffsschlüssel
-        \item[!] eine private Registrierunt, anonymer Zugriff ist nicht möglich
+        \item[!] eine private Registrierung, anonymer Zugriff ist nicht möglich
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -121,7 +121,7 @@
 \begin{flashcard}[Definition]{Container in der Registrierung replizieren}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item um Container in anderer Region zu speichern (zwecks schnellem Zugriff)
+        \item um Container in anderer Region zu speichern (zwecks schnellen Zugriffs)
         \item \texttt{az acr replication create --registry \ldots --location <target>}
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -139,7 +139,7 @@
                 \item Quelle: Azure Containerregistrierung (oder Docker Hub, Schnellstart)
                 \item Image und Tag
             \end{itemize}
-        \item Portal: \texttt{+ Ressoruce Erstellen | Container | Container Instance}
+        \item Portal: \texttt{+ Ressource erstellen | Container | Container Instance}
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}

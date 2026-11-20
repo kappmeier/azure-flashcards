@@ -17,7 +17,7 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Latenz
-        \item Anzahl Operation pro Zeiteinheit
+        \item Anzahl an Operationen pro Zeiteinheit
         \item Komplexität einzelner Anfragen
         \item notwendige Filtermöglichkeiten
     \end{itemize}
@@ -47,7 +47,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\subsubsectioncard{create and configure sotrage account}
+\subsubsectioncard{create and configure storage account}
 
 \begin{flashcard}[Definition]{Azure Storage}
     \vspace*{\stretch{1}}
@@ -58,7 +58,7 @@
         \item Azure-Warteschlangen
         \item Azure-Tabellen
     \end{itemize}
-    Nicht dazu gehören weitere Speicherdienste
+    Nicht dazugehören weitere Speicherdienste
     \begin{itemize}
         \item Azure SQL
         \item Cosmos DB
@@ -69,7 +69,7 @@
 \begin{flashcard}[Definition]{Speicherkonto}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Azure Resourcen (in Resourcengruppe)
+        \item Azure Ressourcen (in Ressourcengruppe)
         \item kann mehrere Datendienste enthalten
         \item kombiniert Einstellungen, die für sämtliche enthaltenen Dienste gelten
     \end{itemize}
@@ -97,7 +97,7 @@
         \item Benötigt:
             \begin{itemize}
                 \item Name. 3-24 Zeichen aus \texttt{[a-z0-9]}, weltweit eindeutig
-                \item Bereitstellungsmodell: ARM (Azure Resource Manager), klassich\newline
+                \item Bereitstellungsmodell: ARM (Azure Resource Manager), klassisch\newline
                 klassisch ist veraltet und wird schlecht unterstützt. Nicht verwenden.
                 \item Kontoart: General Purpose v1/v2, Blob
             \end{itemize}
@@ -117,7 +117,7 @@
         \item Daten-Replikation: Datenkopien zum Schutz vor Hardwarefehlern und Katastrophen. LRS, ZRS, GRS, GZRS, RA-GZRS, ...
         \item Zugriffsebene: heiß, kalt, archiviert
         \item Sichere Übertragung: HTTPS zwangsweise
-        \item IP-Filter: Viertuelle Netzwerke, oder IP-Adresse-Bereiche
+        \item IP-Filter: Virtuelle Netzwerke oder IP-Adressbereiche
         \item Hierarchischer Speicher
         \item vorläufiges Löschen (Blob, Files), Versionierung
     \end{itemize}
@@ -130,7 +130,7 @@
     Standard:
     \begin{itemize}
         \item 100 TiB
-        \item maximual 1000 IOPS
+        \item maximal 1000 IOPS
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -143,20 +143,20 @@
     \begin{itemize}
         \item im Speicherkonto-Blade in Azure
         \item über Storage Explorer
-        \item per command line\newline
+        \item per Command Line\newline
             \texttt{az storage container generate-sas}
-        \item als code (Signieren des Strings mit dem Zugriffsschlüssel)
+        \item als Code (Signieren des Strings mit dem Zugriffsschlüssel)
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
 \subsubsectioncard{implement Azure AD authentication for storage}
 
-\begin{flashcard}[Definition]{Azure AD-Authorisierung für Speicher}
+\begin{flashcard}[Definition]{Azure-AD-Autorisierung für Speicher}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item empfohlener Zugriff (sicherer als SAS)
-        \item für General Purpose Speicher und Blob für Blobs und Warteschlangen
+        \item für General-Purpose-Speicher und Blob für Blobs und Warteschlangen
         \item für Files: preview
         \item Table: not supported
     \end{itemize}
@@ -175,11 +175,11 @@
             \begin{itemize}
                 \item Blobs: Mitwirkender an Blobdaten, Blobdatenleser
                 \item Blobdatenbesitzer: Vollzugriff, POSIX-Zugriff auf Data Lake
-                \item Blob-Delegierer: erstellt user SAS key
+                \item Blob-Delegierer: erstellt User-SAS-Key
                 \item Warteschlangen: Mitwirkender/Absender/Verarbeiter/Leser von Warteschlangendaten
             \end{itemize}
         \item Schlüssel:\newline
-            Berechtigung \texttt{Microsoft.Storage/storageAccounts/listKeys/action} erlaubt Erstellung eines Shared Keys $\Rightarrow$ kann sich selbst Lesezugriff selbst verschaffen
+            Berechtigung \texttt{Microsoft.Storage/storageAccounts/listKeys/action} erlaubt Erstellung eines Shared Keys $\Rightarrow$ kann sich selbst Lesezugriff verschaffen
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -190,9 +190,9 @@
         \item Container (geringste Berechtigung)
         \item Warteschlange (geringste Berechtigung)
         \item Speicherkonto
-        \item Resourcengruppe
+        \item Ressourcengruppe
         \item Abonnement
-        \item Managmentgruppe
+        \item Managementgruppe
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -207,7 +207,7 @@
         \item mehrere Speicherkonten und Abonnements können Verbunden werden
         \item unterstützt CosmosDB und Data Lake
         \item unterstützt lokale Speicher-Emulatoren
-        \item hochladen, verschieben, runterladen
+        \item hochladen, verschieben, herunterladen
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -224,7 +224,7 @@
 \end{flashcard}
 
 
-\begin{flashcard}[Definition]{Storage Explorer Verbinden}
+\begin{flashcard}[Definition]{Storage Explorer verbinden}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Azure-Account direkt verbinden\newline
@@ -281,7 +281,7 @@
 \begin{flashcard}[Definition]{Zugriffsschlüssel}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item zwei Schlüssel: primär und sekundäre
+        \item zwei Schlüssel: primär und sekundär
         \item ermöglicht key rotation
             \begin{enumerate}
             \item Primary -> Secondary
@@ -302,7 +302,7 @@
     \begin{itemize}
         \item jeder Zugriff auf Speicherkonto ist über Azure AD authentifiziert
         \item Ausnahme: es kann öffentlicher Lesezugriff eingestellt werden (im Account)
-        \item RBAC-Rollen: Betragender zum Speicherkonto
+        \item RBAC-Rollen: Beitragender zum Speicherkonto
         \item Rollenverwaltung außerdem auch für Verwaltung, nicht nur Datenzugriff
         \item Rollen für:
             \begin{itemize}
@@ -337,7 +337,7 @@
         \item Attribute:
             \begin{itemize}
                 \item Kategorie: Verwaltung, Dienstintegrität, Autoskalierung, Richtlinie, Empfehlung
-                \item Bereich: Abbonement/Ressourcengruppe/Ressource
+                \item Bereich: Abonnement/Ressourcengruppe/Ressource
                 \item Ressourcengruppe: Speicherort der Regel
                 \item Ressourcentyp:
                 \item Vorgangsname
@@ -364,11 +364,11 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item jeder Speicher in Azure ist immer redundant
-        \item verschieden Stufen möglich
+        \item verschiedene Stufen möglich
         \begin{itemize}
             \item LRS: Lokal redundanter Speicher: 3 Kopien in einem Datencenter\newline
                 Schutz vor Hardwarefehlern (Rack + Disk)
-            \item ZRS: Zonenredundanter Speicher: 3 Kopien Verfügbarkeitszonen\newline
+            \item ZRS: Zonenredundanter Speicher: 3 Kopien in Verfügbarkeitszonen\newline
                 Schutz vor komplettem Datencenter-Ausfall
             \item GRS: Geo-redundanter Speicher: 6 Kopien in zwei Regionen (jeweils LRS)\newline
                 Schutz vor Ausfall einer kompletten Region

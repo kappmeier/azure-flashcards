@@ -4,11 +4,11 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Application Gateway\newline
-            Level 7, HTTP-Basierter Ausgleich
+            Level 7, HTTP-basierter Ausgleich
         \item Load Balancer\newline
-            Hochperformanter Level 4-Load-Balancer (IP-Basiert)
+            Hochperformanter Level-4-Load-Balancer (IP-basiert)
         \item Traffic Manager\newline
-            DNS lastenausgleich
+            DNS-Lastenausgleich
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}   
@@ -21,7 +21,7 @@
         \item Weiterleitung abhängig von URL
         \item Anwendungsschichtrouting
         \item Ziele: VMs, Skalierungsgruppen, lokale Server\newline
-            genaugenommen: nicht nur lokale Server sondern beliebige Endpunkte! (Externe URLs)
+            genau genommen: nicht nur lokale Server, sondern beliebige Endpunkte! (Externe URLs)
         \item Routing
             \begin{itemize}
                 \item Pfadbasiert:\newline
@@ -36,9 +36,9 @@
 \begin{flashcard}[Definition]{Lastenausgleich im Application Gateway}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Round robin
+        \item Round Robin
         \item möglich: Persistenz
-        \item auf Anwendngsschicht (OSI 7)\newline
+        \item auf Anwendungsschicht (OSI 7)\newline
             $\Rightarrow$ im Unterschied zu Load Balancer (OSI 4, IP-Adressen)
         \item z.\,B. Ausgleich von Traffic zum Webserver
     \end{itemize}
@@ -49,12 +49,12 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Front-End-IP-Adresse: öffentliche oder private Adresse
-        \item Listener: empfängt Daten nach \emph{Protokoll,Port,Host,IP}
+        \item Listener: empfängt Daten nach \emph{Protokoll, Port, Host, IP}
         \item Routing-Regeln: binden Listener an Back-End-Pools
         \item Back-End-Pools: mehrere Webserver, z.\,B. auch Skalierungsgruppen oder App Service App
         \item Web Application Firewall: optional, blockiert eingehende Anfragen vor Listener
         \item Integritätstest: tested Server im Back-End-Pool\newline
-            Integritätstest für Port und Pool an den weitergeleitet wird
+            Integritätstest für Port und Pool, an den weitergeleitet wird
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -69,18 +69,18 @@
     Listener für mehrere Standorte
     \begin{itemize}
         \item nutzt auch Hostname
-        \item für Unter-Domänen
+        \item für Subdomänen
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
 \begin{flashcard}[Definition]{Application Gateway erstellen}
     \vspace*{\stretch{1}}
-    Eigenes Subnetz im VNET für skalierung benötigt!
+    Eigenes Subnetz im VNET für Skalierung benötigt!
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcegruppe + Name
+                \item Ressourcengruppe + Name
                 \item SKU: Standard, WAF, jeweils v1 und v2
                 \item Kapazität
                 \item VNET + Subnet
@@ -106,7 +106,7 @@
                 \item Zonenredundanz (Verfügbarkeitszonen)
                 \item Statische IPs
             \end{itemize}
-        \item WAF v1: features von Web Application Firewall
+        \item WAF v1: Features von Web Application Firewall
         \item WAF v2: zusätzlich benutzerdefinierte Regeln
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -116,14 +116,14 @@
     \vspace*{\stretch{1}}
     Managed Service, der eine HTTP Firewall darstellt
     \begin{itemize}
-        \item Eingebundne in weitere Systeme:
+        \item Eingebundene in weitere Systeme:
             \begin{itemize}
                 \item Application Gateway
                 \item Front Door
                 \item CDN
             \end{itemize}
-        \item SQL injection
-        \item Cross site scripting
+        \item SQL-Injection
+        \item Cross-Site-Scripting
         \item viele weitere Regeln
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -135,7 +135,7 @@
         \item Benötigt:
             \begin{itemize}
                 \item Gateway-Name
-                \item Resourcegruppe + Name
+                \item Ressourcengruppe + Name
                 \item Server (als IPs)
             \end{itemize}
         \item CLI: \texttt{az network application-gateway address-pool create}
@@ -150,7 +150,7 @@
         \item Benötigt:
             \begin{itemize}
                 \item Gateway-Name
-                \item Resourcegruppe + Name
+                \item Ressourcengruppe + Name
                 \item Port
             \end{itemize}
         \item CLI: \texttt{az network application-gateway frontend-port create}
@@ -165,7 +165,7 @@
         \item Benötigt:
             \begin{itemize}
                 \item Gateway-Name
-                \item Resourcegruppe
+                \item Ressourcengruppe
                 \item Name
                 \item Frontend-Port-Name
             \end{itemize}
@@ -196,7 +196,7 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Gateway-Name + Resourcegruppe
+                \item Gateway-Name + Ressourcengruppe
                 \item Name
                 \item Pfad
                 \item Intervall, Threshold, Timeout
@@ -214,7 +214,7 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Gateway-Name + Resourcegruppe
+                \item Gateway-Name + Ressourcengruppe
                 \item Name
                 \item Pfade
                 \item HTTP-Einstellungen
@@ -228,11 +228,11 @@
 
 \begin{flashcard}[Definition]{Application Gateway Regeln erstellen}
     \vspace*{\stretch{1}}
-    Schritt 2: URL-Pfad-Zuordnuns-Regel erstellen
+    Schritt 2: URL-Pfad-Zuordnungs-Regel erstellen
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Gateway-Name + Resourcegruppe
+                \item Gateway-Name + Ressourcengruppe
                 \item Name
                 \item Pfade
                 \item HTTP-Einstellungen
@@ -251,7 +251,7 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Gateway-Name + Resourcegruppe
+                \item Gateway-Name + Ressourcengruppe
                 \item Name
                 \item Listener
                 \item Regeltyp: \emph{PathBasedRouting}
@@ -282,7 +282,7 @@
 \begin{flashcard}[Definition]{Front Door}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Anwendungs-Auslieferungs-Netz, also level 7 Lastausgleich
+        \item Anwendungs-Auslieferungs-Netz, also Level-7-Lastausgleich
         \item Beschleunigung
         \item Realzeit-Failover
         \item hochverfügbar und skalierbar, vollständig von Azure verwaltet
@@ -321,7 +321,7 @@
     \begin{itemize}
         \item Latency: das am schnellsten zu erreichende Backend wird genutzt
         \item Priority: Priorisierung von Backends mit Backup-Backend
-        \item Weighted: Gewichtung für die verschiedneen Backends
+        \item Weighted: Gewichtung für die verschiedenen Backends
         \item Session Affinity: nachfolgende Anforderungen werden an das gleiche Backend geliefert
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -333,7 +333,7 @@
         \item GET: ruft Information von URL ab
         \item HEAD: nur Header, kein Message Body
         \item Status: muss 200 sein
-        \item Latency: zeit zwischen Senden der Probe und erhalt der Antwort
+        \item Latency: zeit zwischen Senden der Probe und Erhalt der Antwort
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -342,7 +342,7 @@
     \vspace*{\stretch{1}}
     Front Door kann als Redirection-Service eingesetzt werden
     \begin{itemize}
-        \item Untertsützt Forward/Redirect (301)
+        \item Unterstützt Forward/Redirect (301)
         \item Protokolle: HTTPS, HTTP, wie angefordert
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -353,7 +353,7 @@
 \begin{flashcard}[Definition]{Azure Traffic Manager}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item DNS-basierendes Load Balancing
+        \item DNS-basiertes Load Balancing
         \item unterstützt Hochverfügbarkeit, Resilienz, Reaktionszeit:
             \begin{itemize}
                 \item automatisches Failover
@@ -376,7 +376,7 @@
     \begin{itemize}
         \item Azure: Dienste oder VMs in Azure
         \item Extern: \emph{externe} Dienste, per IP oder FQDN
-        \item geschachtelt: kombination von Profilen für komplexe Anforderungen
+        \item geschachtelt: Kombination von Profilen für komplexe Anforderungen
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -386,19 +386,19 @@
     \begin{itemize}
         \item gewichtetes Routing
             \begin{itemize}
-                \item gleichmäßig (ggf. gewichtete) Verteilung\newline
+                \item gleichmäßige (ggf. gewichtete) Verteilung\newline
                     (von 1 - 1000)
                 \item Auswahl zufällig anhand Gewichtung
             \end{itemize}
         \item leistungsbasiertes Routing
             \begin{itemize}
-                \item möglich, wenn verschiedene geographische Standorte existierende
+                \item möglich, wenn verschiedene geographische Standorte existieren
                 \item Auswahl nach Internetlatenztabelle
             \end{itemize}
         \item geographisches Routing
             \begin{itemize}
-                \item verbindung nach Geographieen (aber nicht Latenz)
-                \item z.\,B. für Complience-Anforderungen
+                \item Verbindung nach Geographien (aber nicht Latenz)
+                \item z.\,B. für Compliance-Anforderungen
             \end{itemize}
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -415,12 +415,12 @@
         \item prioritätsbasiertes Routing
             \begin{itemize}
                 \item Endpunkte sortiert nach Priorität
-                \item es wird immer der mit der höchsten Priorität verwendet, der Verfügbar ist
+                \item es wird immer der mit der höchsten Priorität verwendet, der verfügbar ist
             \end{itemize}
         \item Subnetz-Routing
             \begin{itemize}
                 \item Endpunkte per IP-Adresse bestimmen
-                \item Filtern z.\,  B. nach Nutzern, Anbietern, \ldots
+                \item Filtern z.\,B. nach Nutzern, Anbietern, \ldots
             \end{itemize}
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -446,13 +446,13 @@
                     \item eindeutiger DNS-Name\newline
                         DNS-Name: FQDN=name.trafficmanager.net
                     \item Abonnement
-                    \item Resourcengruppe
+                    \item Ressourcengruppe
                     \item Routingmethode: \emph{Performance}, \emph{Priority}
                     \item Standort
                 \end{itemize}
             \item CLI: \texttt{az network traffic-manager profile create}\newline
                 eindeutiger DNS-Name kann selbst vergeben werden
-            \item Portal: Traffic Manager-Profil-Resource\newline
+            \item Portal: Traffic Manager-Profil-Ressource\newline
                 Name ist gleichzeitig eindeutiger DNS-Name
         \end{itemize}
     \vspace*{\stretch{1}}
@@ -463,7 +463,7 @@
     \begin{itemize}
         \item Benötigte Parameter:
             \begin{itemize}
-                \item Resourcegruppe
+                \item Ressourcengruppe
                 \item Profilname: das Traffic Manager-Profil
                 \item Name
                 \item Typ: Azure, Extern, geschachtelt

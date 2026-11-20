@@ -6,8 +6,8 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Dynamisch: DHCP-Lease basierend, können sich ändern
-        \item Statisch: statisch während der Lebensdauer einer Resource
-        \item Restriktionen: die ersten drei und die letztze IP-Adressen in jedem \emph{Subnetz}.
+        \item Statisch: statisch während der Lebensdauer einer Ressource
+        \item Restriktionen: die ersten drei und die letzte IP-Adresse in jedem \emph{Subnetz}.
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -26,10 +26,10 @@
         \item Standard SKU:
             \begin{itemize}
                 \item immer statisch
-                \item Standardmäßig geschlossen
+                \item standardmäßig geschlossen
                 \item Netzwerksicherheitsgruppen erforderlich
             \end{itemize}
-        \item Load-Balancer muss zum SKU passen (Basic, Standard)
+        \item Load Balancer muss zur SKU passen (Basic, Standard)
         \item IP-Bereiche je nach Region
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -74,24 +74,24 @@
 \begin{flashcard}[Definition]{Erstellen von Routen}
     \vspace*{\stretch{1}}
     \begin{enumerate}
-        \item Routing Tabelle
+        \item Routing-Tabelle
         \item Route
-        \item Zuordnen der Route an Subnetz
+        \item Zuordnen der Route zu einem Subnetz
     \end{enumerate}
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Route-Tabelle einrichten}
+\begin{flashcard}[Definition]{Routentabelle einrichten}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcegruppe
+                \item Ressourcengruppe
                 \item Name
                 \item disable-bgp-route-propagation / Gateway-Weiterleitung
             \end{itemize}
         \item CLI: \texttt{az network route-table create}
-        \item Portal: neue Resource vom Typ Route Table
+        \item Portal: neue Ressource vom Typ Route Table
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -101,14 +101,14 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcegruppe
+                \item Ressourcengruppe
                 \item Name
                 \item Route Table, zu dem die Route gehört
                 \item address-prefix
                 \item Nächster Hop: Typ und Adresse
             \end{itemize}
         \item CLI: \texttt{az network route-table route create}
-        \item Portal: \texttt{Einstellungen | Routen | Hinzufügen} im Route-Tabellen-Blade
+        \item Portal: \texttt{Einstellungen | Routen | Hinzufügen} im Routentabellen-Blade
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -118,13 +118,13 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Identifikation: Subnetz + VNET + Resourcegruppe
+                \item Identifikation: Subnetz + VNET + Ressourcengruppe
                 \item Routentabelle
             \end{itemize}
         \item CLI: \texttt{az network vnet subnet update}
         \item Portal: \texttt{Routingtabelle} im \texttt{Subnetz}-Blade ( \texttt{Einstellungen | Subnetz} im VNET-Blade) \newline
             oder \newline
-            \texttt{Einstellungen | Subnetze | Subnetz zuordnen} im Routen-Tabellen-Blade
+            \texttt{Einstellungen | Subnetze | Subnetz zuordnen} im Routentabellen-Blade
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}
@@ -134,7 +134,7 @@
 \begin{flashcard}[Definition]{Erstellen von Netzwerkinterfaces}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Standardmäßig hat jede VM ein Netzwerkinterfaces
+        \item Standardmäßig hat jede VM ein Netzwerkinterface
         \item zusätzliche können erstellt werden
         \item je nach SKU können VMs mehrere haben
     \end{itemize}
@@ -150,7 +150,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Nicht-Zugelassene IP-Adressen}
+\begin{flashcard}[Definition]{Nicht zugelassene IP-Adressen}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Multicast:\newline
@@ -162,7 +162,7 @@
             127.0.0.0
         \item Link-Local:\newline
             169.254.0.0 bis 169.254.255.255
-        \item Azure-Internes DNS:\newline
+        \item Azure-internes DNS:\newline
             168.63.129.16
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -206,7 +206,7 @@
 \begin{flashcard}[Definition]{Virtuelles Netzwerk}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Isolation von Resourcen
+        \item Isolation von Ressourcen
         \item Verbindung mit lokalen Computern (und anderen Netzen)
         \item externe Verbindung (zum Internet)
         \item Kommunikation zwischen Azure-Ressourcen
@@ -219,11 +219,11 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Ressourceengruppe + Abonnement, Location
+            \item Ressourcengruppe + Abonnement, Location
             \item Name
             \item Adressraum (CIDR)
             \item Subnetz (oder neu anlegen)
-            \item Eigenschaften: DDos-Schutz, Dienstendpunkte, Firewall
+            \item Eigenschaften: DDoS-Schutz, Dienstendpunkte, Firewall
         \end{itemize}
         \item CLI: \texttt{az network vnet create}
         \item Portal: \texttt{Ressource erstellen | Netzwerk | virtuelles Netzwerk}
@@ -252,7 +252,7 @@
     \begin{itemize}
         \item Benötigt:
             \begin{itemize}
-                \item Resourcengruppe: existierende Resourcengruppe
+                \item Ressourcengruppe: existierende Ressourcengruppe
                 \item Name: beliebiger Name
             \end{itemize}
         \item Portal: Ressource erstellen, Netzwerksicherheitsgruppe suchen
@@ -281,11 +281,11 @@
     \begin{itemize}
         \item Regeln (>= 1) zum Zulassen oder Verweigern von Datenverkehr
         \item Priorität (100 bis 4069), kleiner ist besser (wird zuerst evaluiert)
-        \item Quelle/Ziel: CIDR, Anwendungssicherheitsgruppe, Tag, oder \emph{Any}
+        \item Quelle/Ziel: CIDR, Anwendungssicherheitsgruppe, Tag oder \emph{Any}
         \item Ports
         \item Protokolle (TCP, UDP, \emph{Any}
         \item Ein- oder ausgehender Datenverkehr
-        \item Aktion: Allow or Deny
+        \item Aktion: Allow oder Deny
     \end{itemize}
     Standardregeln: DenyAll, AllowLoadBalancer, AllowVNetInbound (vom gleichen Subnetz)
     \vspace*{\stretch{1}}
@@ -299,7 +299,7 @@
         \item Quellen+Zieladressen:
         \begin{itemize}
             \item IP-Adressen, z.\,B. \texttt{10.0.0.4}
-            \item Anwendungssicherheitsgruppe: leerer Präfix, und asg definieren
+            \item Anwendungssicherheitsgruppe: leerer Präfix und ASG definieren
             \item Nur Quelle: Virtuelles Netzwerk
             \item Nur Ziel: Service Tag, z.\,B. Endpunkte wie \emph{Storage}
         \end{itemize}
@@ -316,7 +316,7 @@
         \item Wird NIC zugeordnet
         \item Verbindung mit Netzwerksicherheitsgruppe über Regeln:\newline
             \texttt{--source-asgs ERP-DB-SERVERS-ASG} anstelle von \texttt{--source-address-prefixes}
-        \item Allow/Deny funktioniert auch mit Dienstendpunkten, z.b. \texttt{Storage} \newline
+        \item Allow/Deny funktioniert auch mit Dienstendpunkten, z.\,B. \texttt{Storage} \newline
             Dienstendpunkte werden als storage-account network-rule definiert
         \item \texttt{az network asg create}
     \end{itemize}
