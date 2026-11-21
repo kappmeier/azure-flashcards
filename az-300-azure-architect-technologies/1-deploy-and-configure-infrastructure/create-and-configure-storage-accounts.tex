@@ -205,7 +205,7 @@
         \item externes Tool für Windows, Linux, macOS, Azure Portal (als Preview)
         \item ermöglicht Ansicht/Bearbeitung von Speicherkonten, ähnlich Windows Explorer
         \item mehrere Speicherkonten und Abonnements können Verbunden werden
-        \item unterstützt CosmosDB und Data Lake
+        \item unterstützt Cosmos DB und Data Lake
         \item unterstützt lokale Speicher-Emulatoren
         \item hochladen, verschieben, herunterladen
     \end{itemize}
@@ -229,7 +229,7 @@
     \begin{itemize}
         \item Azure-Account direkt verbinden\newline
         Zugriff auf Blobs, Files, Warteschlangen, Tabellen
-        \item CosmosDB einbinden mit Verbindungszeichenfolge (Key aus Azure abrufen), Typ SQL oder Tabelle\newline
+        \item Cosmos DB einbinden mit Verbindungszeichenfolge (Key aus Azure abrufen), Typ SQL oder Tabelle\newline
         Erstellen von Datenbanken, Sammlungen und Dokumenten. Editieren.
         \item Data Lake Gen2\newline
         Features im Storage Explorer wie Blobs.
@@ -243,8 +243,8 @@
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item müssen geheim gehalten werden
-        \item entsprechen Benutzername und Kennwort\newline
-            Speicherkontoname=Nutzer, Schlüssel=Kennwort
+        \item entsprechen Benutzername und Passwort\newline
+            Speicherkontoname=Nutzer, Schlüssel=Passwort
         \item Zwei Schlüssel ermöglichen Rotation
     \end{itemize}
     \vspace{1cm}
@@ -297,7 +297,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Azure AD-Zugriff auf Speicherkonto}
+\begin{flashcard}[Definition]{Azure-AD-Zugriff auf Speicherkonto}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item jeder Zugriff auf Speicherkonto ist über Azure AD authentifiziert
@@ -366,10 +366,10 @@
         \item jeder Speicher in Azure ist immer redundant
         \item verschiedene Stufen möglich
         \begin{itemize}
-            \item LRS: Lokal redundanter Speicher: 3 Kopien in einem Datencenter\newline
+            \item LRS: Lokal redundanter Speicher: 3 Kopien in einem Rechenzentrum\newline
                 Schutz vor Hardwarefehlern (Rack + Disk)
             \item ZRS: Zonenredundanter Speicher: 3 Kopien in Verfügbarkeitszonen\newline
-                Schutz vor komplettem Datencenter-Ausfall
+                Schutz vor komplettem Rechenzentrumsausfall
             \item GRS: Geo-redundanter Speicher: 6 Kopien in zwei Regionen (jeweils LRS)\newline
                 Schutz vor Ausfall einer kompletten Region
             \item RA-GRS: Geo-redundanter Speicher mit Lesemöglichkeit in der zweiten Region\newline

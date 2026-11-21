@@ -6,14 +6,14 @@
     \vspace*{\stretch{1}}
     Account:
     \begin{itemize}
-        \item Benötigt Cosmos DB-Konto (wie Speicherkonto)
+        \item Benötigt Cosmos-DB-Konto (wie Speicherkonto)
         \item Verschlüsselung: immer aktiviert (at rest)
     \end{itemize}
     mehrere Datenmodell-APIs verfügbar: SQL, Graphen, Tabellen
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Cosmos DB-Struktur}
+\begin{flashcard}[Definition]{Cosmos-DB-Struktur}
     \vspace*{\stretch{1}}
     \begin{enumerate}
         \item Instanz
@@ -37,7 +37,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}{Azure Cosmos DB-Konto erstellen}
+\begin{flashcard}{Azure-Cosmos-DB-Konto erstellen}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Benötigt:
@@ -61,7 +61,7 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Cosmos DB-Kontoname + Ressourcengruppe
+            \item Cosmos-DB-Kontoname + Ressourcengruppe
             \item Datenbank-ID (Name), kann mehrere Container enthalten
             \item Durchsatz in RUs pro Sekunde
         \end{itemize}
@@ -77,12 +77,12 @@
     \begin{itemize}
         \item Benötigt:
         \begin{itemize}
-            \item Cosmos DB-Kontoname + Ressourcengruppe
+            \item Cosmos-DB-Kontoname + Ressourcengruppe
             \item Datenbank-ID (Name), kann mehrere Container enthalten
             \item Container-ID (Name)
             \item Durchsatz in RUs pro Sekunde
         \end{itemize}
-        \item Portal: \texttt{Daten-Explorer | Neuer Container} im Cosmos DB-Konto-Blade
+        \item Portal: \texttt{Daten-Explorer | Neuer Container} im Cosmos-DB-Konto-Blade
         \item CLI:\newline
         \texttt{az cosmosdb sql container create}
     \end{itemize}
@@ -145,7 +145,7 @@
 \begin{flashcard}[Definition]{Partitionierung}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item horizontale Skalierung für Cosmos DB-Datenbanken
+        \item horizontale Skalierung für Cosmos-DB-Datenbanken
         \item \emph{Partitionsschlüssel}: Strategie für Erstellung von Partitionen \emph{pro Container}\newline
             \emph{Kann nicht geändert werden!}
         \item \emph{Hot Partition}: eine Partition, die deutlich mehr Anforderungen erhält als andere\newline
@@ -187,7 +187,7 @@
 \begin{flashcard}[Definition]{Datenreplikation aktivieren}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Portal: \texttt{Einstellungen | Daten global replizieren} im Cosmos DB-Konto-Blade
+        \item Portal: \texttt{Einstellungen | Daten global replizieren} im Cosmos-DB-Konto-Blade
         \item Auswahl: \texttt{+ Region hinzufügen}
     \end{itemize}
     \vspace*{\stretch{1}}
@@ -298,7 +298,7 @@
 \begin{flashcard}[Definition]{Konsistenz einstellen}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Portal: \texttt{Einstellungen | Standardkonsistenz} im Cosmos DB-Konto-Blade
+        \item Portal: \texttt{Einstellungen | Standardkonsistenz} im Cosmos-DB-Konto-Blade
     \end{itemize}
     \vspace*{\stretch{1}}
 \end{flashcard}

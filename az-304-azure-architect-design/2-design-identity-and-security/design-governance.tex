@@ -7,7 +7,7 @@
   \begin{itemize}
     \item Key-Value-Text-Paare, die allen ARM-Ressourcen zugewiesen werden können
     \item Einteilung von Ressourcen in Gruppen zur Klassifizierung:\newline
-      Bereich, Stage, Umgebungen, Costcenter, \ldots
+      Bereich, Stage, Umgebungen, Kostenstellen, \ldots
     \item Tags erlauben Gruppierung unabhängig von Abonnements, Verwaltungsgruppen oder anderen Beschränkungen
     \item werden nicht vererbt (z.\,B. von Ressourcengruppe zu Ressourcen)\newline
       lässt sich aber mit Richtlinien bewirken
@@ -22,7 +22,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Ressourcenverwaltung: Umgebung, Anwendungsfälle, Besitzer
-    \item Kosten: übersicht über Kostencenter, Budgets
+    \item Kosten: Übersicht über Kostenstellen, Budgets
     \item Operationelles: markieren von kritischen Ressourcen, SLAs, \ldots
     \item Sicherheit: Klassifizierung von kritischen Daten
     \item Aufsicht: garantieren von regulatorischen Bedingungen
@@ -72,7 +72,7 @@
   \begin{itemize}
     \item erlaubte VM SKU
     \item zulässige Regionen für Bereitstellungen
-    \item Authentifizierung: 2-Faktor-Authentifizierung
+    \item Authentifizierung: Multi-Faktor-Authentifizierung
     \item CORS (zulässige adressen für Web-Services)
     \item Systemupdates erzwingen (Security Center)
   \end{itemize}
@@ -141,7 +141,7 @@
     \item Definition: Blueprint erstellen
     \item Assignment: Blueprint zuweisen (z.\,B. Verwaltungsgruppe).\newline
       muss veröffentlicht sein
-      Blueprint in Verwaltungsgruppe kann Kind-Subscriptions zugewiesen werden, aus Subscriptions nur der eigenen Subscription
+      Blueprint in Verwaltungsgruppe kann Kind-Abonnements zugewiesen werden, aus Abonnements nur dem eigenen Abonnement
     \item[!] zunächst ist ein Blueprint im Status ``Entwurf''. Muss veröffentlicht werden, bevor Zuweisung möglich ist (versioniert)
     \item Ressourcen werden erstellt (z.\,B. Policy, Ressourcengruppen, \ldots): \emph{Artefakt}
     \item Analyse der erstellten Ressourcen möglich
