@@ -55,7 +55,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Passwort: standard, einfach, problematisch
-    \item zusätzlicher Faktor (z.\,B. Gegenstand wie Key, OTP, oder biometrisch)
+    \item zusätzlicher Faktor (z.\,B. Gegenstand wie Key, OTP oder biometrisch)
     \begin{itemize}
       \item ok: SMS, Telefon
       \item gut: OTP, Token OTP (Hardware)
@@ -85,10 +85,10 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Identity Platfrom}
+\begin{flashcard}[Definition]{Identity Platform}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item OAuth 2.0/OpenID Connect: login mit Konten von Schule, Arbeitsplatz, Microsoft, local Accounts (über AD B2C)
+    \item OAuth 2.0/OpenID Connect: Login mit Konten von Schule, Arbeitsplatz, Microsoft, lokalen Accounts (über AD B2C)
     \item
     \item Versionen:
       \begin{itemize}
@@ -102,7 +102,7 @@
 
 
 
-\begin{flashcard}[Definition]{Authorisierung für Anwendungen}
+\begin{flashcard}[Definition]{Autorisierung für Anwendungen}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item möglich über Azure AD-Enterprise-Anwendungen
@@ -117,9 +117,9 @@
   \vspace*{\stretch{1}}
   (Azure )AD DS
   \begin{itemize}
-    \item domänen-Dienst
-    \item Lokal, oder in Azure
-    \item benötigt um SMB-Zugriff auf Azure Files zu bekommen
+    \item Domänendienst
+    \item Lokal oder in Azure
+    \item benötigt, um SMB-Zugriff auf Azure Files zu bekommen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -130,7 +130,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item zusätzlich zu Username/Passwort weiterer Faktor
-    \item erzwungen, wenn Microsoft Sicherheitsstandard aktiv ist
+    \item erzwungen, wenn Microsoft-Sicherheitsstandard aktiv ist
     \item empfohlen für Administratoren
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -141,7 +141,7 @@
   \begin{itemize}
     \item alle Anwendungen im Azure AD können geschützt werden
     \item auch SaaS-Anwendungen
-    \item nicht möglich für Legacyauthentifizierung!\newline
+    \item nicht möglich für Legacy-Authentifizierung!\newline
     wichtiges Einfallstor für Angriffe!\newline
     z.\,B. Office 2010, Protokolle wie POP3, IMAP, SMTP, \ldots
   \end{itemize}
@@ -152,7 +152,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item einfordern bestimmter Sicherheitsstandards
-    \item zugewiesen einzelnen Nutzern, Gruppen, oder Anwendungen
+    \item zugewiesen einzelnen Nutzern, Gruppen oder Anwendungen
     \item abhängig von vielen Parametern
       \begin{itemize}
         \item Risiko (des Nutzers und allgemein)
@@ -163,7 +163,7 @@
       \end{itemize}
     \item Zugriff kann automatisch abgelehnt oder mit MFA durchgeführt werden\newline
       (oder zugelassen werden)
-    \item Berichtsmodus um Zugriffe zu evaluieren, z.\,B. wenn Zugriffsarten nicht vorhersehbar sind
+    \item Berichtsmodus, um Zugriffe zu evaluieren, z.\,B. wenn Zugriffsarten nicht vorhersehbar sind
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -183,7 +183,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item benötigt Azure AD Premium P1 oder höher
-    \item nicht gleichzeitig mit Microsoft Sicherheitsstandards
+    \item nicht gleichzeitig mit Microsoft-Sicherheitsstandards
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -193,8 +193,8 @@
   \begin{itemize}
     \item Nutzer müssen nicht ihren Flow unterbrechen
     \item Risikobewertung jeder Anmeldung
-    \item Complience
-    \item Unterstützung für Zero Trust-Umgebungen
+    \item Compliance
+    \item Unterstützung für Zero-Trust-Umgebungen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -204,12 +204,12 @@
   \begin{itemize}
     \item Wenn-Dann-Bedingungen
     \item Einteilung nach:\newline
-      Nutzer/Gruppen, Abwendungen, Geräte/Plattformen, Regionen
+      Nutzer/Gruppen, Anwendungen, Geräte/Plattformen, Regionen
     \item Zugriffssteuerung für den Dann-Teil\newline
       Zugriffstoken wird ausgestellt
-    \item Nicht abgedeckte Bedingungen müssen explizit Ausgeschlossen werden!\newline
+    \item Nicht abgedeckte Bedingungen müssen explizit ausgeschlossen werden!\newline
       z.\,B. nur eine Gruppe erhält zugriff mit Mehrfach-Authentifizierung erfordert:\newline
-      nicht-Gruppe wird abgelehnt (sonst erhält nicht-Gruppe Zugriff \emph{ohne MFA})
+      Nicht-Gruppe wird abgelehnt (sonst erhält Nicht-Gruppe Zugriff \emph{ohne MFA})
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -229,7 +229,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Datenexfiltration verhindern
-    \item Complience bei Dokumenten (Up- und Download)
+    \item Compliance bei Dokumenten (Up- und Download)
     \item Zugriff blockieren abhängig vom Risiko (z.\,B. veraltete Zertifikate)
     \item spezielle Aktivitäten der Anwendung verbieten
   \end{itemize}
@@ -243,8 +243,8 @@
   \begin{itemize}
     \item Teil des bedingten Zugriffs
     \item auch benannte Orte
-    \item Zugriff wird gestattet abhängig vom Netzwerk an dem ein Nutzer eingeloggt ist\newline
-      z.\,B. Hauptsitz, etc.
+    \item Zugriff wird gestattet abhängig vom Netzwerk, an dem ein Nutzer eingeloggt ist\newline
+      z.\,B. Hauptsitz usw.
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -266,7 +266,7 @@ Connect cloud sync and Azure AD Connect Health}
   \begin{itemize}
     \item lokales Verzeichnis: Azure DS
     \item Cloud-Verzeichnis: Azure AD
-    \item synchronisierung möglich (DS => AD), mit Ausnahmen
+    \item Synchronisierung möglich (DS => AD), mit Ausnahmen
     \item Azure AD Seamless SSO für gleichzeitiges Login (nicht mit AD FS!)
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -296,7 +296,7 @@ Connect cloud sync and Azure AD Connect Health}
   \begin{itemize}
     \item synchronisierte Identitäten:\newline
       \begin{itemize}
-        \item Synchronisierung von Idenetitäten lokal nach Azure
+        \item Synchronisierung von Identitäten lokal nach Azure
         \item Azure AD Domain Service macht sie in der Cloud verfügbar
         \item über Azure AD Connect
       \end{itemize}
@@ -323,7 +323,7 @@ Connect cloud sync and Azure AD Connect Health}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item benötigt Administratorzugriff auf AD DS und Azure AD\newline
-      Es kann nicht der Administrator-Account vom Azure Konto sein!
+      Es kann nicht der Administrator-Account vom Azure-Konto sein!
     \item idealerweise ein dedizierter Account
     \item sollte auf einem eigenen Server laufen
     \item das lokale Verzeichnis sollte fehlerfrei sein. Vorbereiten!\newline
@@ -336,7 +336,7 @@ Connect cloud sync and Azure AD Connect Health}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Service zur Benachrichtigung bei Schwierigkeiten mit Azure AD Connect
-    \item kann Emails verschicken an Verantwortliche
+    \item kann E-Mails verschicken an Verantwortliche
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -352,7 +352,7 @@ Connect cloud sync and Azure AD Connect Health}
 
 \subsubsectioncard{recommend a solution for user self-service}
 
-\begin{flashcard}[Definition]{Self-service Passwort-Reset}
+\begin{flashcard}[Definition]{Self-Service-Passwort-Reset}
   \vspace*{\stretch{1}}
   \begin{enumerate}
     \item Feature von Azure AD
@@ -366,8 +366,8 @@ Connect cloud sync and Azure AD Connect Health}
 \begin{flashcard}[Definition]{Features von self service password reset}
   \vspace*{\stretch{1}}
   \begin{enumerate}
-    \item Passwort writeback in lokales Verzeichnis
-    \item logging von Passwortänderungen
+    \item Passwort-Writeback in lokales Verzeichnis
+    \item Logging von Passwortänderungen
     \item Passwort ändern/neu setzen, Account-Freischaltung
   \end{enumerate}
   \vspace*{\stretch{1}}
@@ -381,7 +381,7 @@ Connect cloud sync and Azure AD Connect Health}
     \item Zugriff auf Ressourcen für externe Partner
     \item externe Partner müssen selbst kein Active Directory betreiben
     \item Zugriff über Einladungen
-    \item Beretistellung einer API z.\,B. für Self-Service-Applikationen
+    \item Bereitstellung einer API z.\,B. für Self-Service-Applikationen
     \item Integration in Services wie z.\,B. Conditional Access möglich
   \end{enumerate}
   \vspace*{\stretch{1}}
@@ -391,8 +391,8 @@ Connect cloud sync and Azure AD Connect Health}
   \vspace*{\stretch{1}}
   \begin{enumerate}
     \item Partner nutzen eigene Identitätslösung
-    \item Anmeldung über Geschäfts, Schul- oder sonstiges Konto\newline
-    (Email, SAML-, WS-Fed)
+    \item Anmeldung über Geschäfts-, Schul- oder sonstiges Konto\newline
+    (E-Mail, SAML-, WS-Fed)
     \item keine Synchronisation oder Kennwortverwaltung erforderlich!
     \item eigene Anmeldungs-Workflows möglich\newline
       z.\,B. für benutzerspezifische Genehmigung, \ldots
@@ -405,7 +405,7 @@ Connect cloud sync and Azure AD Connect Health}
   \begin{enumerate}
     \item Gastbenutzer erstellen
     \item Gruppen und Berechtigungen zuweisen
-    \item Einladung schicken per Email
+    \item Einladung schicken per E-Mail
     \item Anwendungen (bzw. Besitzer) können Gastzugriff selbst verwalten\newline
     (wenn Berechtigung delegiert wurde)
   \end{enumerate}
@@ -425,7 +425,7 @@ Connect cloud sync and Azure AD Connect Health}
 \begin{flashcard}[]{B2C}
   \vspace*{\stretch{1}}
   \begin{enumerate}
-    \item soziale oder Lokale Anbieter
+    \item soziale oder lokale Anbieter
     \item unterstützt 2-Faktor-Authentifizierung
   \end{enumerate}
   \vspace*{\stretch{1}}

@@ -2,7 +2,7 @@
 
 \subsubsectioncard{recommend a recovery solution for Azure hybrid and on-premises workloads that meets recovery objectives (RTO, RLO, RPO)}
 
-\begin{flashcard}[Definition]{Geschäftskontinuiät}
+\begin{flashcard}[Definition]{Geschäftskontinuität}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item BCDR - Business Continuity and Disaster Recovery
@@ -14,7 +14,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Recovery Time Objective
-    \item Maximale Zeitspanne, die da Unternehmen nach einem Notfall überleben kann, bevor der normale Betrieb wiederhergestellt wurde
+    \item Maximale Zeitspanne, die das Unternehmen nach einem Notfall überleben kann, bevor der normale Betrieb wiederhergestellt wurde
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -31,8 +31,8 @@
 \begin{flashcard}[Definition]{RLO}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Recovery Level objective
-    \item Level/Ebene, die widerhergestellt werden müssen
+    \item Recovery Level Objective
+    \item Level/Ebene, die wiederhergestellt werden müssen
     \item z.\,B. die ganze Umgebung, eine Anwendung, eine einzelne Datei
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -55,7 +55,7 @@
 \begin{flashcard}[Definition]{Eigenschaften von Sicherungen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item kontinuierliche Replikation für Azure, VMware, phyisische Server (RPO)
+    \item kontinuierliche Replikation für Azure, VMware, physische Server (RPO)
     \item 30 Sekunden maximal für Hyper-V (RPO)
     \item Disks können gesichert und ausgeschlossen werden
     \item Konsistenz von Anwendungssicherungen (mit Skripten)
@@ -67,7 +67,7 @@
 \begin{flashcard}[Definition]{VMware Site Recovery}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item initialie Replikation und Deltas
+    \item initiale Replikation und Deltas
     \item Sicherung auf verwaltete Datenträger
     \item Installation des Agenten auf physischen und virtuellen Computern
     \item Konto im vCenter
@@ -126,8 +126,8 @@
   \begin{itemize}
     \item Tool zur Wiederherstellung von Daten
     \item Replikation zwischen primärem und sekundärem Standort
-    \item unterstützt lokale (inkls. physische Maschinen) und Azure als Quell-Standort
-    \item Failback (nicht zu physische Maschinen)
+    \item unterstützt lokale (inkl. physische Maschinen) und Azure als Quell-Standort
+    \item Failback (nicht zu physischen Maschinen)
     \item erstellt Momentaufnahmen und Wiederherstellungspunkte
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -136,7 +136,7 @@
 \begin{flashcard}[Definition]{Voraussetzungen in Azure}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Berechtigung für Resourcen (Subscription, VM, Speicher, \ldots)
+    \item Berechtigung für Ressourcen (Subscription, VM, Speicher, \ldots)
     \item Recovery Services Vault
     \item Netzwerk, Speicher für die gesicherten VMs
     \item[!] Vault, Speicher und Netzwerk müssen in der gleichen Region sein
@@ -178,7 +178,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Datenssicherung in Regionen}
+\begin{flashcard}[Definition]{Datensicherung in Regionen}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Azure Speicherkonten unterstützen eine sekundäre Region\newline
@@ -199,7 +199,7 @@
       $\Rightarrow$ Vorsicht bei Failback!    
     \item Anwendungen müssen Failover unterstützen
     \item Schlüsseltechnologie für Hochverfügbarkeit
-    \item archivierte Blobs müssen erst wieder Rehydriert werden
+    \item archivierte Blobs müssen erst wieder rehydriert werden
     \item hierarchischer Namespace (Datalake Gen 2) ist noch nicht unterstützt
     \item kein Failover bei aktiviertem WORM
     \item möglicherweise automatisch von Microsoft initiiert (im Notfall!)
@@ -207,7 +207,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Backups von Schlüssseltresoren}
+\begin{flashcard}[Definition]{Backups von Schlüsseltresoren}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Backup eines Schlüsseltresors kann in mehreren Regionen eingespielt werden
@@ -241,7 +241,7 @@
     \item ideal: transparent für Anwendungen
     \item unterstützt von Traffic Manager
     \item DNS-basierter Load-Balancer mit Endpunkt-Monitoring
-    \item unterstüzt auch lokale Endpunkte\newline
+    \item unterstützt auch lokale Endpunkte\newline
     (und damit auch Failover in die Cloud)
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -253,7 +253,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Overview-Dashboard im Azure Portal
-    \item Alarme (Kritisch, oder nur Warnungen)
+    \item Alarme (kritisch oder nur Warnungen)
     \item laufende und abgeschlossene Backups
     \item gesicherte Daten (Mengen!)
     \item auch Warnungen über VMs mit problemen (\emph{vor} dem Backup)
@@ -290,7 +290,7 @@
         \item einzelne Verzeichnisse/Dateien: mit MARS
         \item auch mit MABS
       \end{itemize}
-    \item Sicherungstypen: Voll, Inkrementell (differentiell wird nicht unterstützt)
+    \item Sicherungstypen: voll, inkrementell (differentiell wird nicht unterstützt)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -300,8 +300,8 @@
   \begin{itemize}
     \item eine pro Recovery Vault\newline
       $\Rightarrow$ wird für viele VMs (oder andere Ressourcen) genutzt
-    \item Zeitplan: taglich, wöchentlich
-    \item Aufbewahrung: taglich, wöchentlich, monatlich, jährlich
+    \item Zeitplan: täglich, wöchentlich
+    \item Aufbewahrung: täglich, wöchentlich, monatlich, jährlich
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -321,7 +321,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item regelbasierte Änderung der Speicherart für Blobs in Azure (\emph{cool}, \emph{hot})
-    \item überführung von Blobs in kältere Speicherebenen (bis zu \emph{archive})
+    \item Überführung von Blobs in kältere Speicherebenen (bis zu \emph{archive})
       \begin{itemize}
         \item Snapshots
         \item alte Versionen

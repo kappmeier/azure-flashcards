@@ -5,7 +5,7 @@
 \begin{flashcard}[Definition]{Azure Monitor}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Service dealing with telemetry/information for from all services\newline (application, infrastructure, platform)
+    \item Service dealing with telemetry/information from all services\newline (application, infrastructure, platform)
       \begin{itemize}
         \item collect
         \item analyze
@@ -16,7 +16,7 @@
     \item collects:
       \begin{itemize}
         \item logs
-        \item netrics
+        \item metrics
       \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -25,7 +25,7 @@
 \begin{flashcard}[Definition]{Storing Azure Monitor data}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item resource log (text): \emph{Azure Monitor Log Analytics workspaces}
+    \item resource log (text): \emph{Azure Monitor Log-Analytics-Workspaces}
     \item time-series numerical metrics: \emph{Azure Monitor Metrics}\newline
       $\Rightarrow$ Automatically collected for \emph{Azure Resources} (short period)!
     \item Data stored in Storage Account
@@ -46,22 +46,22 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{SQL DB auditing}
+\begin{flashcard}[Definition]{SQL-DB-Auditing}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Storage
       \begin{itemize}
-        \item in der selben Region
+        \item in derselben Region
         \item Append-Blobs
         \item[!] nicht: Premium-Speicher, hierarchischer Namespace
       \end{itemize}
     \item Event Hubs
       \begin{itemize}
-        \item in der selben Region
+        \item in derselben Region
       \end{itemize}
     \item Log Analytics
       \begin{itemize}
-        \item worksapce kann überall sein
+        \item Workspace kann überall sein
       \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -75,10 +75,10 @@
   \begin{itemize}
     \item automatisches Monitoring für Ressourcen-Metriken
     \item Integration in Anwendungen über Instrumentierung\newline
-      (ohne Source-Code adaptierung!)
-    \item Installation von Log Analytics agent auf VMs (u.\,A. für Security)
-    \item Installation von Metric Agent auf VMs (u.\,A. für Metriken)
-    \item Aktivieren der Log-Verbindung z.B. zu Aktivitätsprotokoll
+      (ohne Source-Code-Adaption!)
+    \item Installation von Log-Analytics-Agent auf VMs (u.\,a. für Security)
+    \item Installation von Metrics-Agent auf VMs (u.\,a. für Metriken)
+    \item Aktivieren der Log-Verbindung z.\,B. zu Aktivitätsprotokoll
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -99,11 +99,11 @@
 \begin{flashcard}[Definition]{Azure Sentinel}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item (logbasierte) automatische Erkennung von Sicherheitszwischenfällen, threat intelligence\newline
+    \item (logbasierte) automatische Erkennung von Sicherheitszwischenfällen, Threat Intelligence\newline
       $\Rightarrow$ automatische Antworten
-    \item Daten müssen in Log Analytics workspace gespeichert werden
+    \item Daten müssen in Log-Analytics-Workspace gespeichert werden
     \item Azure Monitor Logs als Datenquelle
-    \item Unterstützte Datne-Provider
+    \item Unterstützte Daten-Provider
       \begin{itemize}
         \item Azure Abonnements
         \item Azure AD
@@ -113,7 +113,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Azure Montior-Integrationen}
+\begin{flashcard}[Definition]{Azure Monitor-Integrationen}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item IT-Service-Management-Connectors
@@ -121,7 +121,7 @@
         \item ServiceNow
         \item System Center Service Manager
       \end{itemize}
-    \item basierend auf Alarmen (Metric, Activity Log, Log Anayltics) Aufgaben erzeugen
+    \item basierend auf Alarmen (Metric, Activity Log, Log Analytics) Aufgaben erzeugen
     \item Synchronisierung mit Log Analytics-Arbeitsbereich
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -134,7 +134,7 @@
   \begin{itemize}
     \item Azure Monitor (zusammenfassender Service)
     \item Application Insights (für Webanwendungen)
-    \item VM insights (metriken zur VM-health)
+    \item VM Insights (Metriken zur VM-Health)
     \item Azure Security Center (Oberfläche zur Cyber-Sicherheit)
     \item Azure Sentinel (überwacht Sicherheitsfeatures, wie Zugriffe)
   \end{itemize}
@@ -146,10 +146,10 @@
   \begin{itemize}
     \item \emph{Log Analytics Agent}
     \item Installation: VM insights, Log Analytics VM-Erweiterung, im Portal für eine VM, Log Analytics-Arbeitsbereich
-    \item Logging von System-Ereignissen in Log Analytics Arbeitsbereich\newline
+    \item Logging von System-Ereignissen in Log-Analytics-Arbeitsbereich\newline
       $\Rightarrow$ aktivieren in Log-Analytics-Agenten-Konfiguration
     \item Linux: Syslog
-    \item Windwos: Ereignislog
+    \item Windows: Ereignislog
     \item IIS-Logs
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -173,7 +173,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item automatisches Detektieren von (Web-)Services
-    \item benötigt den Log Anayltics Agent (und einen workspace) und Dependency agent
+    \item benötigt den Log Analytics Agent (und einen Workspace) und Dependency Agent
     \item es werden alle Verbindungen zu anderen Rechnern erkannt
     \item Anwendungsfälle:
       \begin{itemize}
@@ -190,26 +190,26 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Teil von Azure Monitor
-    \item Überwachung von von Web-Anwendungen
+    \item Überwachung von Web-Anwendungen
     \item Performance-Analysen
     \item Erkennung von Problemen
-    \item Nutzer-Analysen (User flows, retention, \ldots)
+    \item Nutzer-Analysen (User Flows, Retention, \ldots)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
 \begin{flashcard}[]{Monitoring von Datenbanken}
   \vspace*{\stretch{1}}
-  Für Azure SQL-Datenbanken, und verwaltete SQL-Instanzen
+  Für Azure SQL-Datenbanken und verwaltete SQL-Instanzen
   \begin{itemize}
-    \item Diagnoseeinstellungen aktivieren stellt as \emph{SQLInsights}-Log bereit
+    \item Diagnoseeinstellungen aktivieren stellt es \emph{SQLInsights}-Log bereit
     \item Ziele für Logs:
       \begin{itemize}
         \item Log Analytics (SQL Analytics) in jeder Region
         \item Event Hub: weiterleiten an andere Anwendungen (in der gleichen Region)
-        \item Azure Speicherkonten (Bobs) (in der gleichen Region)
+        \item Azure Speicherkonten (Blobs) (in der gleichen Region)
       \end{itemize}
-    \item bis zu 5 Diagnoseeinstellungen können gespeichert werdens
+    \item bis zu 5 Diagnoseeinstellungen können gespeichert werden
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -222,7 +222,7 @@
     \item Tests in Application Insights (Ping, $\ldots$) verbunden mit einem Alert
     \item Automatische Benachrichtigungen:
     \begin{itemize}
-      \item Email
+      \item E-Mail
       \item SMS
       \item Runbooks
       \item Webhooks
@@ -238,11 +238,11 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Sign-in Logs (nur Nutzer)
-    \item Azure audit Logs: \newline
+    \item Azure Audit Logs: \newline
       loggt jede Aktivität in einem Mandanten, Daten, Services, ...
     \item Herunterladen für manuelle Analyse
     \item Speichern der Daten in Log Analytics
-    \item Verbinden mit Azure Monitor logs
+    \item Verbinden mit Azure Monitor Logs
     \item automatische Analyse (in \emph{Kusto}) über Tabellen- und Suchanfragen
   \end{itemize}
   \vspace*{\stretch{1}}

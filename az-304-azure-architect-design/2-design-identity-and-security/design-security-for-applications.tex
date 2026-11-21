@@ -1,4 +1,4 @@
-\subsectioncard{Designen von Awendungssicherheit}
+\subsectioncard{Designen von Anwendungssicherheit}
 
 \subsubsectioncard{recommend a solution that includes Key Vault}
 
@@ -16,12 +16,12 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Key Vault Anwendungsfälle und Szenarien}
+\begin{flashcard}[Definition]{Key-Vault-Anwendungsfälle und Szenarien}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item verhindert versehentliches Leaken\newline
-      Zugriff über URI, keine Speichrung im Code
-    \item Authentifizierung und Authorisierung bevor Zugriff gestattet wird\newline
+      Zugriff über URI, keine Speicherung im Code
+    \item Authentifizierung und Autorisierung bevor Zugriff gestattet wird\newline
       offiziell hat sogar Microsoft keinen Zugriff \ldots
     \item einfache Handhabe: Automatisierung, Lebensdauer, Replikation
     \item einfache Einbindung in andere Azure-Services
@@ -34,14 +34,14 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Zugriffsbeschränkung über Netzwerk-Firewall\newline
-      (IP-Bereiche (CIDR), virtuelle Subnetze, orivate Endpunkte)
+      (IP-Bereiche (CIDR), virtuelle Subnetze, private Endpunkte)
     \item Zugriff über HTTPS (TLS)
     \item RBAC-Authentifizierung für Management und optional Daten
     \item optional Datenzugriff über Richtlinien
     \item Unterstützung für bedingten Zugriff und PIM
     \item Logging über Azure Monitor, Ereignisse über Event Grid
     \item Multi-Regional: entweder Partner-Regionen oder ZRS.\newline
-      Automatisches Failover wenn möglich. (Nur read-only während failover)
+      Automatisches Failover wenn möglich. (Nur read-only während Failover)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -62,7 +62,7 @@
 \begin{flashcard}[Definition]{Verwaltete Identitäten}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item von Azure verwaltete Identität um Ressourcenzugriff zu erhalten
+    \item von Azure verwaltete Identität, um Ressourcenzugriff zu erhalten
     \item Vorteil: keine Verwaltung von Zugangsdaten
     \item können überall verwendet werden, wo Azure AD-Authentifizierung möglich ist\newline
       $\Rightarrow$ unzählige Dienste
@@ -93,9 +93,9 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item benötigt Azure B2C-Mandant
-    \item App-Registrierung erstellen, in Azure CLI, Powershell, Portal, Terraform, \ldots
+    \item App-Registrierung erstellen, in Azure CLI, PowerShell, Portal, Terraform, \ldots
     \item benötigt eine Weiterleitungs-URI, an die das Token nach der Authentifizierung gesendet wird
-    \item benötigt Admin-Zustimmung zur Benutzung von Open ID
+    \item benötigt Admin-Zustimmung zur Benutzung von OpenID
     \item ein Passwort für die Anwendung muss erstellt werden
   \end{itemize}
   \vspace*{\stretch{1}}
