@@ -2,7 +2,7 @@
 
 \subsubsectioncard{recommend a network architecture (hub and spoke, Virtual WAN)}
 
-\begin{flashcard}[]{Hub-And-Spoke-Netzwerktopologie}
+\begin{flashcard}[]{Hub-and-Spoke-Netzwerktopologie}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item ein virtuelles Hub-Netzwerk fungiert als zentrale Verbindung
@@ -21,7 +21,7 @@
     \item Sicherheitseinrichtungen
       \begin{itemize}
         \item Bastions-Hosts
-        \item Firwall
+        \item Firewall
         \item DMZ
       \end{itemize}
   \end{itemize}
@@ -31,7 +31,7 @@
 \begin{flashcard}[]{Szenarien für Hub-and-Spoke}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item getrennte Umgebungen (in Spoke-Netzen), die gemeinssame Dienste nutzen (im Hub-Netzwerk)
+    \item getrennte Umgebungen (in Spoke-Netzen), die gemeinsame Dienste nutzen (im Hub-Netzwerk)
     \item keine Verbindung zwischen Services notwendig (in Spoke-Netzen)
     \item zentral verwaltete Sicherheitsmaßnahmen (Firewall, Hub als DMZ)
   \end{itemize}
@@ -59,7 +59,7 @@
     \item Peering zwischen Hub- und Spoke-Netzwerken ist \emph{nicht} transitiv
     \item wenn erforderlich, Peering zwischen Spoke-Netzwerken
     \item[!] Grenzwert für Peeringverbindungen muss beachtet werden\newline
-      $\Rightarrow$ möglicherwiese benutzerdefinierte Routen
+      $\Rightarrow$ möglicherweise benutzerdefinierte Routen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -68,8 +68,8 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item verwalteter Azure-Dienst
-    \item vollständig Microsoft-Verwaltet
-    \item Netwerk spannt mehrere Regionen
+    \item vollständig Microsoft-verwaltet
+    \item Netzwerk spannt mehrere Regionen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -81,7 +81,7 @@
     \item Verbindung zwischen Branches und von Branch zu Azure
     \item mehrere lokale private Netzwerke (Büros, Standorte, Endgeräte)
     \item Verbindungen über VPN und ExpressRoute
-    \item Endgeräte und Standorte mit VPN-to-Site
+    \item Endgeräte und Standorte mit Point-to-Site
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -132,7 +132,7 @@
       \end{itemize}
     \item Auflösung von lokalen VMs aus Azure
     \item Azure-Hostnamen aus dem lokalen Netz\newline
-      (weiterleitung an Azure)
+      (Weiterleitung an Azure)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -164,7 +164,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item zuständig für eine Domäne
-    \item weiterleitung an Azure\newline
+    \item Weiterleitung an Azure\newline
       $\Rightarrow$ ermöglicht Auflösung von unterschiedlichen virtuellen Netzen
     \item Azure verteilt interne DNS-Namen, die in diesem Fall nicht genutzt werden
     \item mehrere DNS-Server pro virtuellem Netzwerk möglich
@@ -197,7 +197,7 @@
       \begin{itemize}
         \item App Service
         \item Function App
-        \item Blob storace
+        \item Blob Storage
         \item CDN
       \end{itemize}
     \item kann auch mit öffentlicher IP verbunden werden
@@ -209,9 +209,9 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Voraussetzung: eigene Domain
-    \item benötigt Ressourcen-Gruppe, ist aber global
+    \item benötigt Ressourcengruppe, ist aber global
     \item Verbinden mit Nameservern ist notwendig (wird von Azure bereitgestellt)
-    \item im Registrar der Domäne muss auf Azure DNS umgesteltl werden
+    \item im Registrar der Domäne muss auf Azure DNS umgestellt werden
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -268,7 +268,7 @@
   \begin{itemize}
     \item Netzwerksicherheitsgruppe
       \begin{itemize}
-        \item Filter für ein- und ausgehende Verbinungen
+        \item Filter für ein- und ausgehende Verbindungen
         \item abhängig von Ports, Protokoll, IPs, Diensten, \ldots
       \end{itemize}
     \item virtuelle Geräte
@@ -286,7 +286,7 @@
   \begin{itemize}
     \item Standard-Routing von Azure (zwischen Subnetzen, lokalen Netzen, Internet)
     \item benutzerdefinierte Routing-Tabellen
-    \item BGP/Border-gateway-protocol: Verbinungen von lokalen Netzen über VPN/ExpressRoute
+    \item BGP/Border-gateway-protocol: Verbindungen von lokalen Netzen über VPN/ExpressRoute
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -296,7 +296,7 @@
   \begin{itemize}
     \item Filtern von ausgehendem Verkehr zu Diensten
     \item Endpunkt-Richtlinien
-    \item Filter, z.\,B. für spezifischen Speicherkonten
+    \item Filter, z.\,B. für spezifische Speicherkonten
     \item Service-Tags, z.\,B. zum Filtern nach Regionen
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -341,7 +341,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Priorität: 100 -- 4096, werden in der Reihenfolge bearbeitet \emph{bis eine Regel zutrifft!}
-    \item Quelle/Ziel: IP-Adress/CIDR, Service Tag, Anwendungssicherheitsgruppe, \ldots
+    \item Quelle/Ziel: IP-Adresse/CIDR, Service Tag, Anwendungssicherheitsgruppe, \ldots
     \item Port: einzelne oder mehrere Ports
     \item Protokoll: TCP, UDP, ICMP, ESP, AH, alle
     \item Aktion: zulassen oder verbieten
@@ -356,7 +356,7 @@
     \item VMs einer Anwendung können gruppiert werden
     \item wiederverwendbare Sicherheitsregeln
     \item[!] Azure verwaltet die tatsächlichen IPs
-    \item VMs (Netzwerkinterfaces) können teil mehrerer Anwendungssicherheitsgruppen sein
+    \item VMs (Netzwerkinterfaces) können Teil mehrerer Anwendungssicherheitsgruppen sein
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -381,7 +381,7 @@
     \item Cloud-native Lösung für Firewall\newline
       $\Rightarrow$ optimiert für hohe Verfügbarkeit und Skalierbarkeit
     \item vollständig zustandsbehaftete Firewall
-    \item Untersuchung von Ost-West und Nord-Süd-Datenverkehr
+    \item Untersuchung von Ost-West- und Nord-Süd-Datenverkehr
     \item SKUs: Standard \& Premium (mehr Features)
     \item in virtuellen Netzwerken und Virtual WAN
     \item verwaltet über Azure Firewall Manager
@@ -424,7 +424,7 @@
 \begin{flashcard}[]{Virtuelle Netzwerkgeräte (NVA)}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item filtert Verkehr zwischen Netzwerk-Segmenten mit unterschielichem Sicherheitslevel\newline
+    \item filtert Verkehr zwischen Netzwerk-Segmenten mit unterschiedlichem Sicherheitslevel\newline
       z.\,B. Internet, DMZ, \ldots
     \item Anwendungsfälle
       \begin{itemize}
@@ -438,7 +438,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Biespiele von NVAs}
+\begin{flashcard}[]{Beispiele von NVAs}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Firewalls
@@ -501,7 +501,7 @@
         \item VPN-Gateway
         \item Express Route
       \end{itemize}
-    \item je eins pro virtellem Netzwerk
+    \item je eins pro virtuellem Netzwerk
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -509,7 +509,7 @@
 \begin{flashcard}[]{VPN-Gateway}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Verbindung von Azure Netzwerken mit lokalen Netzen über das öffentliche Internet (sicher)
+    \item Verbindung von Azure-Netzwerken mit lokalen Netzen über das öffentliche Internet (sicher)
     \item alternativ: Nutzung des Microsoft-Netzwerks (anstelle des öffentlichen Netzes)
     \item maximal ein pro virtuellem Netz
     \item \emph{aber}: mehrere Verbindungen für ein Gateway möglich\newline
@@ -548,7 +548,7 @@
     \item mit Azure-Cloud-Diensten
     \item mit virtuellen Maschinen
     \item IPsec
-    \item Verbindung über danamische Routen und statisch mit Richtlinien
+    \item Verbindung über dynamische Routen und statisch mit Richtlinien
     \item aktiv-passiv oder aktiv-aktiv
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -560,7 +560,7 @@
   \begin{itemize}
     \item Public Root CA im Gateway
     \item Public Root CA in Endgeräten
-    \item private Nutzer Zertifikat auf Endgeräten (mit privatem Schlüssel!)
+    \item privates Nutzerzertifikat auf Endgeräten (mit privatem Schlüssel!)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -591,7 +591,7 @@
   Verbindet kritische Infrastruktur mit Azure
   \begin{itemize}
     \item mit virtuellen Netzwerken (Azure-Dienste, VMs, \ldots)
-    \item mit Enterprise-Diensten (Office, PowerBI, Azure AD, Azure DevOps, \ldots)
+    \item mit Enterprise-Diensten (Office, Power BI, Azure AD, Azure DevOps, \ldots)
     \item \emph{nicht} mit CDN, Front Door, Traffic Manager, Logic Apps
     \item Protokoll: BGP
     \item aktiv-aktiv
@@ -606,7 +606,7 @@
   \begin{itemize}
     \item wenn mehrere ExpressRoute-Verbindungen existieren, muss die richtige ausgewählt werden
     \item Konfiguration des BGP und der BGP-Routen
-    \item standardmäßig sind Pfade falsch konfigurirt (Präfix unf Priorität)
+    \item standardmäßig sind Pfade falsch konfiguriert (Präfix und Priorität)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -617,8 +617,8 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item ARM Manager-Vorlagen
-    \item Provisioning unterstützt auch Aure CLI und Powershell
-    \item Voralgen von Microsoft verfügbar (z.\,B. Hub-Spoke)
+    \item Provisioning unterstützt auch Azure CLI und PowerShell
+    \item Vorlagen von Microsoft verfügbar (z.\,B. Hub-Spoke)
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -635,7 +635,7 @@
       \end{itemize}
     \item Region
       \begin{itemize}
-        \item Global: Nutzer in mehrere Regionen\newline
+        \item Global: Nutzer in mehreren Regionen\newline
           $\Rightarrow$ Ausgleich der Azure-Endpunkte
         \item Regional
       \end{itemize}
@@ -659,7 +659,7 @@
   \begin{itemize}
     \item Öffentliche globale nicht-HTTP-Anwendungen: Traffic Manager + Load Balancer
     \item lokale nicht-HTTP-Anwendungen: Load Balancer
-    \item lokale Web-Anwendungen (nicht öffnetlich, oder ohne Performance-Unterstützung): Application Gateway
+    \item lokale Web-Anwendungen (nicht öffentlich, oder ohne Performance-Unterstützung): Application Gateway
     \item globale, öffentliche Web-Anwendungen: Front Door\newline
       wenn \emph{nicht} PaaS: zusätzlich Load Balancer oder Application Gateway\newline
       (PaaS-Dienste enthalten die Lastverteilung)
@@ -681,10 +681,10 @@
 \begin{flashcard}[]{Features/Vorteile Front Door}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item hohe Performance (split TCP, anycast)
+    \item hohe Performance (split TCP, Anycast)
     \item effizienter Failover mit Health-Probes
     \item URL-basiertes Routing, URL-Redirect, URL-Rewrite
-    \item SSL offloading
+    \item SSL-Offloading
     \item integrierte WAF (Web Application Firewall)
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -693,7 +693,7 @@
 \begin{flashcard}[]{Traffic Manager}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item DNS-Basierter Load Balancer
+    \item DNS-basierter Load Balancer
     \item Verteilung des Verkehrs über mehrere Regionen
     \item etwas langsamer im Failover (durch DNS-Basierung)
     \item Resilient gegenüber Ausfällen einer ganzen Azure-Region
@@ -706,7 +706,7 @@
   \begin{itemize}
     \item hohe Verfügbarkeit
     \item geringe Latenz (Weiterleitung an nächsten Endpunkt)
-    \item Wartung ohne Down-Time
+    \item Wartung ohne Downtime
     \item hybride Anwendungen (lokal-cloud, Burst-to-Cloud, failover-to-cloud)
   \end{itemize}
   Da Level-4, kein Support für Web Application Firewall (oder andere Level-7-Features)
@@ -726,14 +726,14 @@
 \begin{flashcard}[]{Application Gateway}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item HTTP(s)-Lastausgleich (basierend auf URL, nicht IP)\newline
+    \item HTTP(S)-Lastausgleich (basierend auf URL, nicht IP)\newline
       $\Rightarrow$ unterstützt URL-basiertes Routing und Redirection, Rewrite
-    \item möglich hinter globalem Laustausgleich einzusetzen
+    \item möglich hinter globalem Lastausgleich einzusetzen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Features Application Gatway}
+\begin{flashcard}[]{Features Application Gateway}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item SSL-Terminierung
@@ -751,12 +751,12 @@
     \item öffentlich oder privat: z.\,B. in \textit{n}-Tier-Umgebungen\newline
       vor Datenbanken oder anderen internen Services
       \begin{itemize}
-        \item für öffetnlichen Einsatz: benötigt öffentliche IP
+        \item für öffentlichen Einsatz: benötigt öffentliche IP
       \end{itemize}
     \item unterstützt Zonenredundanz
     \item Health probes zum Überwachen
     \item mehrere IPs und Ports
-    \item jede art von TCP und UDP-Datenverkehr
+    \item jede Art von TCP- und UDP-Datenverkehr
     \item Sicherheit: benötigt Netzwerksicherheitsgruppe, andernfalls\newline
       \texttt{kein Datenverkehr möglich}
   \end{itemize}

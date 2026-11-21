@@ -1,4 +1,4 @@
-\subsectioncard{Design einer Lösung für Datanbanken}
+\subsectioncard{Design einer Lösung für Datenbanken}
 
 \subsubsectioncard{select an appropriate data platform based on requirements}
 
@@ -23,7 +23,7 @@
     \item Schlüssel/Wert-Speicher
     \item Dokument-Datenbanken
     \item Graph-Datenbanken
-    \item Datenanalyse (für parallelisierung, Big Data, \ldots)
+    \item Datenanalyse (für Parallelisierung, Big Data, \ldots)
     \item Spaltenfamilien
     \item Datenbanken für Suche
     \item Zeitreihen
@@ -36,14 +36,14 @@
 \begin{flashcard}[Definition]{Relationale Datenbanken in Azure}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item klassische 2-dimensionaler Tabellen
+    \item klassische zweidimensionale Tabellen
     \item verfügbare Richtungen
       \begin{itemize}
         \item Azure SQL Database (Microsoft SQL Server)
-        \item Azure Database for MySQL, PostreSQL, MariaDB
+        \item Azure Database for MySQL, PostgreSQL, MariaDB
       \end{itemize}
-    \item konsistent, ACID, operationen in Transaktionen
-    \item keine horizontale Skalieung
+    \item konsistent, ACID, Operationen in Transaktionen
+    \item keine horizontale Skalierung
     \item normalisierte Daten erforderlich
     \item Daten passen in Schema (vorab)
   \end{itemize}
@@ -72,12 +72,12 @@
 \begin{flashcard}[Definition]{Dokument-Datenbanken}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item in azure als Azure Cosmos DB (SQL API)
-    \item Sammlung von \emph{Dokumenten}, von einfach bis Komplex (z.\,B. JSON)
+    \item in Azure als Azure Cosmos DB (SQL API)
+    \item Sammlung von \emph{Dokumenten}, von einfach bis komplex (z.\,B. JSON)
     \item Dokumente können Objekte im Code gut repräsentieren
     \item denormalisierte Daten
     \item verschiedene Schemata pro Dokumenttyp, auch optionale Felder\newline
-      $\Rightarrow$ halb-strukturierte Daten
+      $\Rightarrow$ halbstrukturierte Daten
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -106,13 +106,13 @@
         \item Azure Synapse Analytics
         \item Azure Data Lake
         \item Azure Data Explorer
-        \item Azure Analyisis Services
+        \item Azure Analysis Services
         \item HDInsight
         \item Azure Databricks
       \end{itemize}
-    \item Dateiformate wie parquet, ORC
-    \item denormalisierte Daten, z.\,B. Stern- oder Schneeflockenartig
-    \item unterstützt massive parallelisierung
+    \item Dateiformate wie Parquet, ORC
+    \item denormalisierte Daten, z.\,B. stern- oder schneeflockenartig
+    \item unterstützt massive Parallelisierung
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -122,7 +122,7 @@
   \begin{itemize}
     \item Unterstützung in Azure:
       \begin{itemize}
-         \item Azure Cosmus DB (Cassandra API)
+         \item Azure Cosmos DB (Cassandra API)
          \item HBase (teil von HDInsight)
       \end{itemize}
     \item Daten in Spalten und Zeilen \emph{ähnlich} wie relationale Datenbanken
@@ -141,7 +141,7 @@
     \item Unterstützung für Suchanfragen, exact oder unscharf
     \item basiert auf Index großer Datenmengen (mehrdimensional, Freitext)
     \item Freitext- und komplexe Anfragen
-    \item Unstrukturierter Text, oder teilstrukturiert, mit Referenzen
+    \item Unstrukturierter Text oder teilstrukturiert, mit Referenzen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -186,10 +186,10 @@
 \begin{flashcard}[Definition]{Azure SQL Database}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item PAAS-Bereitstellung von Microsoft SQL Server
+    \item PaaS-Bereitstellung von Microsoft SQL Server
     \item einzelne Datenbanken, oder Datenbankenpools
     \item skalierbare Performance
-    \item Bezahlmodelle: Kern-Basiert, DTU, Serverless
+    \item Bezahlmodelle: Kern-basiert, DTU, Serverless
     \item SLA: 99,99\%, automatische Backups, Replikation, Redundanz, \ldots
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -242,7 +242,7 @@
         \item Speicher: stateful Datenbank-Dateien in Azure Blob Storage
       \end{itemize}
     \item Prozesse laufen auf redundanten Knoten
-    \item gut für generelle Aufgaben, latenz 5-10 ms
+    \item gut für generelle Aufgaben, Latenz 5-10 ms
     \item Standard-SLA 99,99\%
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -251,13 +251,13 @@
 \begin{flashcard}[Definition]{Geschäftskritisches SQL Service Tier}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item optimiert für hohen Durchsatz, geringe Fehlerwahrscheinlihckeit, Resilienz, Updates, \ldots
+    \item optimiert für hohen Durchsatz, geringe Fehlerwahrscheinlichkeit, Resilienz, Updates, \ldots
     \item Datenbanken laufen auf Cluster und Replikas
     \item unterschiedliche Schreib- und Lese-Knoten
-    \item Hochveffügbarkeit durch Verfügbarkeitsgruppen
+    \item Hochverfügbarkeit durch Verfügbarkeitsgruppen
     \item Daten werden auf lokalen Datenspeichern gespeichert
     \item kostenlose Skalierung für Leseoperationen
-    \item latenz 1-2 ms, Datenschutz
+    \item Latenz 1-2 ms, Datenschutz
     \item Premium-SLA 99,995\%
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -269,9 +269,9 @@
     \item nur für Azure SQL Database
     \item nur vCore-Bezahlmodell
     \item 100 TiB Datenbankgröße
-    \item sofortige BAckups, schnelle Dateneinspielung
+    \item sofortige Backups, schnelle Dateneinspielung
     \item schnelle Skalierung (vertikal und horizontal)
-    \item Lese-Replizierunge, Caches
+    \item Lese-Replikate, Caches
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -282,7 +282,7 @@
     \item Query Performance Insight
     \begin{itemize}
       \item Analyse für einzelne und gepoolte Datenbanken
-      \item erkennt die teuerste und am längsten laufenden Queries
+      \item erkennt die teuersten und am längsten laufenden Queries
     \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -317,12 +317,12 @@
       \begin{itemize}
         \item Prozess startet neu!
         \item möglicherweise verschoben auf andere virtuelle Maschine
-        \item Verschiebung ist ein online-Prozess ohne downtime\newline
+        \item Verschiebung ist ein Online-Prozess ohne Downtime\newline
           (Transaktionen werden möglicherweise abgebrochen)
         \item Skalierung während eines langen Prozesses sollte nicht durchgeführt werden!
-        \item benötigt Wiederholungs-Logik in Clientanwendung
+        \item benötigt Wiederholungslogik in Clientanwendung
       \end{itemize}
-    \item Lese-Skalierung: Nur-Lesen-Replika der Datenbank um aufwändige\newline
+    \item Lese-Skalierung: Nur-Lesen-Replika der Datenbank, um aufwändige\newline
       Leseanfragen zu beantworten (z.\,B. Reporting)
     \item Sharding: Aufteilen der Daten auf mehrere Datenbanken\newline
       (nicht automatisch)
@@ -336,7 +336,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item oft von Azure direkt bereitgestellt
-    \item möglich eigene Schlüssel zu verwenden
+    \item möglich, eigene Schlüssel zu verwenden
     \item Schlüssel werden im Key Vault gespeichert\newline
       auch ohne Möglichkeit von Microsoft darauf zuzugreifen
     \item Unterstützung für Schlüsselverschlüsselungsschlüssel
@@ -363,7 +363,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Azure Disk Encryption
-    \item Azure Storage (Blob, Queue, Tabele, Files)
+    \item Azure Storage (Blob, Queue, Tabelle, Files)
     \item Azure SQL-Datenbank
     \item verwaltete Datenträger
   \end{itemize}
@@ -376,8 +376,8 @@
   \begin{itemize}
     \item Schutz z.\,B. vor Man-in-the-middle-Attacken
     \item Verschlüsselung im Rechenzentrum (\emph{MACsec}), in der Netzwerkhardware
-    \item TLS-Versclüsselung bei allen Anfragen von Kunden
-    \item Datenzugriff: HTTPS über web, SMB 3.0
+    \item TLS-Verschlüsselung bei allen Anfragen von Kunden
+    \item Datenzugriff: HTTPS über Web, SMB 3.0
     \item Zugriff auf Virtuelle Computer: RDP, SSH
     \item Zugriff auf Azure durch ein VPN (VPN Gateway, Point-to-Site-VPN, Site-to-Site)
   \end{itemize}
@@ -411,7 +411,7 @@
       \begin{itemize}
         \item Benutzer: SQL-Nutzer/Azure AD-Entitäten mit Vollzugriff
         \item Maskierungsregeln und Funktionen, z.\,B.\newline
-          Kreditkarten, Emails, Standardwerte
+          Kreditkarten, E-Mails, Standardwerte
       \end{itemize}
   \end{itemize}
   \vspace*{\stretch{1}}

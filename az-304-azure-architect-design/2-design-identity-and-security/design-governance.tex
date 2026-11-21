@@ -5,16 +5,16 @@
 \begin{flashcard}[Definition]{Tags}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Key-Value Text-Paare die allen ARM-Ressourcen zugewiesen werden können
+    \item Key-Value-Text-Paare, die allen ARM-Ressourcen zugewiesen werden können
     \item Einteilung von Ressourcen in Gruppen zur Klassifizierung:\newline
       Bereich, Stage, Umgebungen, Costcenter, \ldots
-    \item Tags erlauben Gruppierung unabhängig von Abonnements, Verwaltungsgruppen, oder anderen Beschränkungen
-    \item werden nicht vererbt (z.\,B. von Ressourcengruppe zu Ressorucen)\newline
+    \item Tags erlauben Gruppierung unabhängig von Abonnements, Verwaltungsgruppen oder anderen Beschränkungen
+    \item werden nicht vererbt (z.\,B. von Ressourcengruppe zu Ressourcen)\newline
       lässt sich aber mit Richtlinien bewirken
     \item Grenzwerte: 50 Tags pro Ressource, 512 Zeichen für den Namen, 256 für den Wert\newline
       (Speicherkonten nur 128 für den Namen)
   \end{itemize}
-  $\Rightarrow$ nützlich zur Umsetzung einer Government-Strategie
+  $\Rightarrow$ nützlich zur Umsetzung einer Governance-Strategie
   \vspace*{\stretch{1}}
 \end{flashcard}
 
@@ -26,7 +26,7 @@
     \item Operationelles: markieren von kritischen Ressourcen, SLAs, \ldots
     \item Sicherheit: Klassifizierung von kritischen Daten
     \item Aufsicht: garantieren von regulatorischen Bedingungen
-    \item Automatisierung: Ziele von Operationen auf Grundlage von Ressourcentags
+    \item Automatisierung: Ziele von Operationen auf Grundlage von Ressourcen-Tags
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -35,7 +35,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Allgemeine Tag-Berechtigung: \texttt{Microsoft.Resources/tags}\newline
-      Erlaubt \emph{alle} Ressorucen zu taggen 
+      Erlaubt \emph{alle} Ressourcen zu taggen 
     \item Schreibzugriff auf eine Ressource, z.\,B. \emph{Mitwirkender}
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -57,7 +57,7 @@
 \begin{flashcard}[Definition]{Durchsetzen von Regeln}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Resourcen, die gegen Regeln verstoßen können nicht erstellt werden
+    \item Ressourcen, die gegen Regeln verstoßen, können nicht erstellt werden
     \item einige Regeln können automatisch durchgesetzt werden
     \begin{itemize}
       \item Tags z.B.
@@ -72,7 +72,7 @@
   \begin{itemize}
     \item erlaubte VM SKU
     \item zulässige Regionen für Bereitstellungen
-    \item Authentifikation: 2-Faktor-Authentifikation
+    \item Authentifizierung: 2-Faktor-Authentifizierung
     \item CORS (zulässige adressen für Web-Services)
     \item Systemupdates erzwingen (Security Center)
   \end{itemize}
@@ -90,11 +90,11 @@
         \item audit
         \item modify
         \item append
-        \item auditFifNotExists
+        \item auditIfNotExists
         \item deployIfNotExists
         \item disabled
       \end{itemize}
-    \item benötigt verwaltete Identität \emph{mit genug Rechten} um die Aktion durchzuführen
+    \item benötigt verwaltete Identität \emph{mit genug Rechten}, um die Aktion durchzuführen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -103,7 +103,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Sammlung mehrerer Policies
-    \item Ziel: Compliance für ein Ziel herstellen (z.B. Sicherheitszertifikat, ISO 27k1, \ldots)
+    \item Ziel: Compliance für ein Ziel herstellen (z.B. Sicherheitszertifikat, ISO 27001, \ldots)
     \item Zuweisen wie Policy an Gruppen
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -141,9 +141,9 @@
     \item Definition: Blueprint erstellen
     \item Assignment: Blueprint zuweisen (z.\,B. Verwaltungsgruppe).\newline
       muss veröffentlicht sein
-      Blueprint in Verwaltungsgruppe kann Kind-Subscriptions zugwiesen werden, aus Subscriptions nur der eigenen Subscription
+      Blueprint in Verwaltungsgruppe kann Kind-Subscriptions zugewiesen werden, aus Subscriptions nur der eigenen Subscription
     \item[!] zunächst ist ein Blueprint im Status ``Entwurf''. Muss veröffentlicht werden, bevor Zuweisung möglich ist (versioniert)
-    \item Ressourcen werden erstellt (z.\,B. Policy, Ressourcegruppen, \ldots): \emph{Artefakt}
+    \item Ressourcen werden erstellt (z.\,B. Policy, Ressourcengruppen, \ldots): \emph{Artefakt}
     \item Analyse der erstellten Ressourcen möglich
   \end{enumerate}
   Parameter können pro Gruppe (Zuweisung) festgelegt werden
@@ -155,8 +155,8 @@
 \begin{flashcard}[Definition]{Resource Graph}
   \vspace*{\stretch{1}}
   \begin{enumerate}
-    \item Service, der alle Azure Resourcen durchsucht
-    \item erlaubt Query-Anfragen, um Resourcen aufzulisten
+    \item Service, der alle Azure Ressourcen durchsucht
+    \item erlaubt Query-Anfragen, um Ressourcen aufzulisten
     \item Visualisierung der Ergebnisse
   \end{enumerate}
   \vspace*{\stretch{1}}
@@ -168,7 +168,7 @@
     \item filtern von Ressourcen, die Bedingungen erfüllen
     \item z.\,B. VMs, die Sicherheitsfunktionen nicht erfüllen
     \item Einhaltung von Regionen, Namen, \ldots
-    \item zu große Ressorucen (z.\,B. ungenutzte VMs) finden
+    \item zu große Ressourcen (z.\,B. ungenutzte VMs) finden
   \end{enumerate}
   \vspace*{\stretch{1}}
 \end{flashcard}
