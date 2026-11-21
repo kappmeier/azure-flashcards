@@ -45,7 +45,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Application Gateway-Komponenten}
+\begin{flashcard}[Definition]{Application-Gateway-Komponenten}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Front-End-IP-Adresse: öffentliche oder private Adresse
@@ -59,7 +59,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Application Gateway-Listener}
+\begin{flashcard}[Definition]{Application-Gateway-Listener}
     \vspace*{\stretch{1}}
     Basislistener
     \begin{itemize}
@@ -265,7 +265,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Konfiguration von Application Gateway-Komponenten}
+\begin{flashcard}[Definition]{Konfiguration von Application-Gateway-Komponenten}
     \vspace*{\stretch{1}}
     \begin{itemize}
         \item Listener: \texttt{az network application-gateway http-listener}
@@ -282,7 +282,7 @@
 \begin{flashcard}[Definition]{Front Door}
     \vspace*{\stretch{1}}
     \begin{itemize}
-        \item Anwendungs-Auslieferungs-Netz, also Level-7-Lastausgleich
+        \item Anwendungs-Auslieferungs-Netz, also Level-7-Lastenausgleich
         \item Beschleunigung
         \item Realzeit-Failover
         \item hochverfügbar und skalierbar, vollständig von Azure verwaltet
@@ -392,12 +392,12 @@
             \end{itemize}
         \item leistungsbasiertes Routing
             \begin{itemize}
-                \item möglich, wenn verschiedene geographische Standorte existieren
+                \item möglich, wenn verschiedene geografische Standorte existieren
                 \item Auswahl nach Internetlatenztabelle
             \end{itemize}
-        \item geographisches Routing
+        \item geografisches Routing
             \begin{itemize}
-                \item Verbindung nach Geographien (aber nicht Latenz)
+                \item Verbindung nach Geografien (aber nicht Latenz)
                 \item z.\,B. für Compliance-Anforderungen
             \end{itemize}
     \end{itemize}
@@ -429,7 +429,7 @@
 \begin{flashcard}[Definition]{Konfiguration von Traffic Manager}
     \vspace*{\stretch{1}}
     \begin{enumerate}
-        \item Traffic Manager-Profil erstellen
+        \item Traffic-Manager-Profil erstellen
         \item Endpunkt hinzufügen
     \end{enumerate}
     \vspace{1cm}
@@ -437,7 +437,7 @@
     \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Traffic Manager-Profil erstellen}
+\begin{flashcard}[Definition]{Traffic-Manager-Profil erstellen}
     \vspace*{\stretch{1}}
         \begin{itemize}
             \item Benötigte Parameter:
@@ -452,7 +452,7 @@
                 \end{itemize}
             \item CLI: \texttt{az network traffic-manager profile create}\newline
                 eindeutiger DNS-Name kann selbst vergeben werden
-            \item Portal: Traffic Manager-Profil-Ressource\newline
+            \item Portal: Traffic-Manager-Profil-Ressource\newline
                 Name ist gleichzeitig eindeutiger DNS-Name
         \end{itemize}
     \vspace*{\stretch{1}}
@@ -464,7 +464,7 @@
         \item Benötigte Parameter:
             \begin{itemize}
                 \item Ressourcengruppe
-                \item Profilname: das Traffic Manager-Profil
+                \item Profilname: das Traffic-Manager-Profil
                 \item Name
                 \item Typ: Azure, Extern, geschachtelt
                 \item Ziel-ID: z.\,B. IP-Adresse, Azure Dienst, \ldots

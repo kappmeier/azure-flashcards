@@ -14,13 +14,13 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Umgebung einer Mikroservice-Architektur}
+\begin{flashcard}[]{Umgebung einer Microservice-Architektur}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Orchestrierungsdienst:
       \begin{itemize}
         \item Verwaltung
-        \item Lastausgleich
+        \item Lastenausgleich
         \item Fehlerbehandlung
       \end{itemize}
     \item API-Gateway:\newline
@@ -34,7 +34,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Vorteile von Mikroservices}
+\begin{flashcard}[]{Vorteile von Microservices}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item agile Entwicklung (da geringe Abhängigkeit)
@@ -47,7 +47,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Probleme bei Mikroservices}
+\begin{flashcard}[]{Probleme bei Microservices}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Komplexität: einzelne Dienste gering, aber Zusammenwirken groß!
@@ -82,7 +82,7 @@
 \begin{flashcard}[]{Features von Event Grid}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item einfaches Aufsetzen (inklusive graphischer Oberfläche)
+    \item einfaches Aufsetzen (inklusive grafischer Oberfläche)
     \item Vielzahl von Filtermöglichkeiten um die korrekten Handler zu erreichen
     \item viele Ziele für ein Event
     \item Cloud-Vorteile: Verfügbarkeit, hoher Durchsatz
@@ -99,7 +99,7 @@
     \item Automatisierung\newline
       Auslösen von Bereitstellungen, Aktualisierungen, operationelle Aufgaben
     \item Anwendungsintegration:\newline
-      vorhandene Daten bearbeiten (z.\,B. Funktionen, Logik-Apps, \ldots) oder Daten von Anwendungen bereitstellen
+      vorhandene Daten bearbeiten (z.\,B. Funktionen, Logic Apps, \ldots) oder Daten von Anwendungen bereitstellen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -167,7 +167,7 @@
   \begin{itemize}
     \item Nachrichtenversand
     \item Entkopplung von Anwendungen (sicherer Versand)
-    \item Lastausgleich (z.\,B. bei Anwendungen mit vielen Knoten)
+    \item Lastenausgleich (z.\,B. bei Anwendungen mit vielen Knoten)
     \item \texttt{1:n}-Beziehungen über Veröffentlichungen und Abonnements
     \item Koordination von Arbeitsschritten mit Transaktionen\newline
       (blockieren weiter Schritte durch belassen der Nachricht in der Warteschlange)
@@ -213,10 +213,10 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Logik-App in Anwendungen}
+\begin{flashcard}[]{Logic App in Anwendungen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item können von Webhooks aufgerufen werden (gut für Integration in Mikroservices, alternativ auch bei anderen Bedingungen)
+    \item können von Webhooks aufgerufen werden (gut für Integration in Microservices, alternativ auch bei anderen Bedingungen)
     \item über Konnektoren können andere Dienste aufgerufen werden
       $\Rightarrow$ verbindet unterschiedliche Services
     \item Workflow: eine Reihe von Schritten
@@ -238,7 +238,7 @@
 \begin{flashcard}[]{Runbooks mit WebHook}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item kann als Element einer Mikroservice-Architektur eingesetzt werden
+    \item kann als Element einer Microservice-Architektur eingesetzt werden
     \item startet ein Runbook in Azure Automation über eine HTTP(S)-Anfrage
       $\Rightarrow$ erlaubt Zugriff auf Runbooks ohne Azure-Automation-API zu implementieren
     \item Eingabe von \texttt{WebHookData} als JSON im HTTP-Request

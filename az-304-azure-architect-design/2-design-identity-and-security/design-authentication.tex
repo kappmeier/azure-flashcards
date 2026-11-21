@@ -33,7 +33,7 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Verbundanmeldung: mehrere Identitätsanbieter werden verwendet
-    \item Kennwort: Nutzer definieren Zugriffseinstellungen, die anschließend von Azure AD bereitgestellt werden
+    \item Passwort: Nutzer definieren Zugriffseinstellungen, die anschließend von Azure AD bereitgestellt werden
     \item verknüpfte Anwendungen: Anmeldung über Links, Benutzer benötigen Konto für den Service
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -68,7 +68,7 @@
 \begin{flashcard}[Definition]{Levels der Sicherheit}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Zweifaktor-Authentifizierung bei der Registrierung
+    \item Multi-Faktor-Authentifizierung bei der Registrierung
     \item für Administratoren
     \item in bestimmten Anwendungsfällen
   \end{itemize}
@@ -78,7 +78,7 @@
 \begin{flashcard}[Definition]{Levels der Sicherheit}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item Zweifaktor-Authentifizierung bei der Registrierung
+    \item Multi-Faktor-Authentifizierung bei der Registrierung
     \item für Administratoren
     \item in bestimmten Anwendungsfällen
   \end{itemize}
@@ -105,9 +105,9 @@
 \begin{flashcard}[Definition]{Autorisierung für Anwendungen}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item möglich über Azure AD-Enterprise-Anwendungen
+    \item möglich über Azure-AD-Enterprise-Anwendungen
     \item Anwendung kann in Web-Anwendungen integriert werden\newline
-      $\Rightarrow$ Nutzer können sich über die Anwendung mit ihren Azure AD-Zugangsdaten authentifizieren und einloggen
+      $\Rightarrow$ Nutzer können sich über die Anwendung mit ihren Azure-AD-Zugangsdaten authentifizieren und einloggen
     \item nutzt OAuth-Kontrollfluss
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -126,7 +126,7 @@
 
 \subsubsectioncard{recommend a solution for Conditional Access, including multi-factor authentication}
 
-\begin{flashcard}[Definition]{Mehrfaktor-Authentifizierung}
+\begin{flashcard}[Definition]{Multi-Faktor-Authentifizierung}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item zusätzlich zu Username/Passwort weiterer Faktor
@@ -136,7 +136,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[Definition]{Schutz durch Mehrfaktor-Authentifizierung}
+\begin{flashcard}[Definition]{Schutz durch Multi-Faktor-Authentifizierung}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item alle Anwendungen im Azure AD können geschützt werden
@@ -208,7 +208,7 @@
     \item Zugriffssteuerung für den Dann-Teil\newline
       Zugriffstoken wird ausgestellt
     \item Nicht abgedeckte Bedingungen müssen explizit ausgeschlossen werden!\newline
-      z.\,B. nur eine Gruppe erhält zugriff mit Mehrfach-Authentifizierung erfordert:\newline
+      z.\,B. nur eine Gruppe erhält zugriff mit Multi-Faktor-Authentifizierung erfordert:\newline
       Nicht-Gruppe wird abgelehnt (sonst erhält Nicht-Gruppe Zugriff \emph{ohne MFA})
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -393,7 +393,7 @@ Connect cloud sync and Azure AD Connect Health}
     \item Partner nutzen eigene Identitätslösung
     \item Anmeldung über Geschäfts-, Schul- oder sonstiges Konto\newline
     (E-Mail, SAML-, WS-Fed)
-    \item keine Synchronisation oder Kennwortverwaltung erforderlich!
+    \item keine Synchronisation oder Passwortverwaltung erforderlich!
     \item eigene Anmeldungs-Workflows möglich\newline
       z.\,B. für benutzerspezifische Genehmigung, \ldots
   \end{enumerate}
@@ -426,7 +426,7 @@ Connect cloud sync and Azure AD Connect Health}
   \vspace*{\stretch{1}}
   \begin{enumerate}
     \item soziale oder lokale Anbieter
-    \item unterstützt 2-Faktor-Authentifizierung
+    \item unterstützt Multi-Faktor-Authentifizierung
   \end{enumerate}
   \vspace*{\stretch{1}}
 \end{flashcard}

@@ -20,7 +20,7 @@
     \item Gateway um lokale Netzwerke zu verbinden
     \item Sicherheitseinrichtungen
       \begin{itemize}
-        \item Bastions-Hosts
+        \item Bastion-Hosts
         \item Firewall
         \item DMZ
       \end{itemize}
@@ -44,7 +44,7 @@
     \item ein virtuelles Hub-Netzwerk
     \item mehrere virtuelle Spoke-Netzwerke
     \item Peeringverbindungen zwischen Spoke- und Hub-Netzwerken
-    \item Bastionhost (im Hub-Netzwerk)
+    \item Bastion-Host (im Hub-Netzwerk)
     \item Azure Firewall als verwalteter Dienst im Hub-Netz (in eigenem Subnetz)
     \item VPN-Gateway für virtuelles Netzwerk oder ExpressRoute-Gateway\newline
       zur Anbindung lokaler Netze
@@ -369,8 +369,8 @@
         \item VPN-Gateway (IPsec)
         \item ExpressRoute
       \end{itemize}
-    \item Application Gateway (OSI-Level 7-Load-Balancer) enthält WAF
-    \item Express Route 
+    \item Application Gateway (OSI-Level-7-Load-Balancer) enthält WAF
+    \item ExpressRoute 
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
@@ -446,7 +446,7 @@
     \item VPN-Endpunkte (IPsec)
     \item WAF (Web Application Firewall)
     \item Internet-Proxy-Server
-    \item OSI-Level 7-Lastausgleich
+    \item OSI-Level-7-Lastenausgleich
     \item \ldots
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -457,7 +457,7 @@
   (In Hub-Spoke-Netzwerken)
   \begin{itemize}
     \item Azure Load Balancer:\newline
-      zwei Load-Balancer, einer öffentlich, einer privat
+      zwei Load Balancer, einer öffentlich, einer privat
     \item Azure Route Server:\newline
       RouteServer bestimmt Routen und teilt den NVAs mit, Traffic über BGP-Protokoll
     \item Gateway Load Balancer:\newline
@@ -499,7 +499,7 @@
     \item Typen
       \begin{itemize}
         \item VPN-Gateway
-        \item Express Route
+        \item ExpressRoute
       \end{itemize}
     \item je eins pro virtuellem Netzwerk
   \end{itemize}
@@ -522,13 +522,13 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item VNet-zu-VNet: zwei VPN-Gateways mit IPsec/IKE
-    \item Site-zu-Site: zu lokalem Netz mit IPsec/IKE-Tunnel zu lokalem VPN-Gerät
-    \item Point-zu-Site: verbindung mit entferntem Ort/Gerät über OpenVPN, IKEv2, SSTP
+    \item Site-to-Site: zu lokalem Netz mit IPsec/IKE-Tunnel zu lokalem VPN-Gerät
+    \item Point-to-Site: Verbindung mit entferntem Ort/Gerät über OpenVPN, IKEv2, SSTP
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Point-zu-Site-Verbindungen}
+\begin{flashcard}[]{Point-to-Site-Verbindungen}
   \vspace*{\stretch{1}}
   Verbindet Benutzer mit Azure:
   \begin{itemize}
@@ -541,7 +541,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Site-zu-Site}
+\begin{flashcard}[]{Site-to-Site}
   \vspace*{\stretch{1}}
   Verbindet lokale Netze (kleine Rechenzentren, Entwicklungsabteilung, \ldots) mit Azure
   \begin{itemize}
@@ -565,7 +565,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Express Route}
+\begin{flashcard}[]{ExpressRoute}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Erweiterung des lokalen Netzwerks in die Cloud
@@ -643,18 +643,18 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Lastausgleichsservices in Azure}
+\begin{flashcard}[]{Lastenausgleichsservices in Azure}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Front Door: Globaler HTTP(S)-Ausgleich
-    \item Traffic Manager: Globaler DNS-basierter Lastausgleich
-    \item Application Gateway: lokaler Level-7-Lastausgleich
-    \item Azure Load Balancer: lokaler Level-4-Lastausgleich
+    \item Traffic Manager: Globaler DNS-basierter Lastenausgleich
+    \item Application Gateway: lokaler Level-7-Lastenausgleich
+    \item Azure Load Balancer: lokaler Level-4-Lastenausgleich
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Lastausgleichs-Szenarien}
+\begin{flashcard}[]{Lastenausgleichs-Szenarien}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Öffentliche globale nicht-HTTP-Anwendungen: Traffic Manager + Load Balancer
@@ -671,8 +671,8 @@
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item globaler Verbindungspunkt zum Microsoft Edge-Netzwerk
-    \item OSI-Level-7-Lastausgleich für Web-Anwendungen
-    \item für sichere, skalierbare Webanwendungen
+    \item OSI-Level-7-Lastenausgleich für Web-Anwendungen
+    \item für sichere, skalierbare Web-Anwendungen
     \item automatisches Failover
   \end{itemize}
   \vspace*{\stretch{1}}
@@ -713,7 +713,7 @@
   \vspace*{\stretch{1}}
 \end{flashcard}
 
-\begin{flashcard}[]{Traffic Manager-Routingmethoden}
+\begin{flashcard}[]{Traffic-Manager-Routingmethoden}
   \vspace*{\stretch{1}}
   \begin{itemize}
     \item Prioritätsrouting (eine Region bevorzugen)
@@ -726,9 +726,9 @@
 \begin{flashcard}[]{Application Gateway}
   \vspace*{\stretch{1}}
   \begin{itemize}
-    \item HTTP(S)-Lastausgleich (basierend auf URL, nicht IP)\newline
+    \item HTTP(S)-Lastenausgleich (basierend auf URL, nicht IP)\newline
       $\Rightarrow$ unterstützt URL-basiertes Routing und Redirection, Rewrite
-    \item möglich hinter globalem Lastausgleich einzusetzen
+    \item möglich hinter globalem Lastenausgleich einzusetzen
   \end{itemize}
   \vspace*{\stretch{1}}
 \end{flashcard}
