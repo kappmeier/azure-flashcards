@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Jan-Philipp Kappmeier
+# SPDX-License-Identifier: Apache-2.0
 """Generic conversion of LaTeX flashcards to Anki draft.md content.
 
 Reads a LaTeX deck that uses ``\\sectioncard``/``\\subsectioncard``/

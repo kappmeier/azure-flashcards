@@ -1,6 +1,9 @@
+# SPDX-FileCopyrightText: 2020 Jan-Philipp Kappmeier
+# SPDX-License-Identifier: Apache-2.0
+
 # System
 ## Linux
-*.directory
+.directory
 
 # TeX/LaTeX and related
 

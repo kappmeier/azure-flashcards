@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Jan-Philipp Kappmeier
+# SPDX-License-Identifier: Apache-2.0
 """Convert this repo's LaTeX flashcards to Anki decks under anki-decks/<deck>/.
 
 Usage: python3 tools/tex_to_anki.py

@@ -1,0 +1,16 @@
+version = 1
+
+[[annotations]]
+path = "az-300-azure-architect-technologies/**"
+SPDX-FileCopyrightText = "2020 Jan-Philipp Kappmeier"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = "az-304-azure-architect-design/**"
+SPDX-FileCopyrightText = "2022 Jan-Philipp Kappmeier"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = "az-900-fundamentals/**"
+SPDX-FileCopyrightText = "2020 Jan-Philipp Kappmeier"
+SPDX-License-Identifier = "CC-BY-SA-4.0"

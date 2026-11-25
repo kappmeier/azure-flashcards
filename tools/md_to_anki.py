@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Jan-Philipp Kappmeier
+# SPDX-License-Identifier: Apache-2.0
 """Convert draft.md files to Anki import .txt files.
 
 Usage: python3 md_to_anki.py deck_dir [deck_dir ...] [--out DIR] [--tag TAG ...]

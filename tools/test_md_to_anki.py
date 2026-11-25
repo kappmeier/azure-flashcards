@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2026 Jan-Philipp Kappmeier
+# SPDX-License-Identifier: Apache-2.0
 """Tests for md_to_anki. Run with: python3 -m unittest discover tools"""
 
 import contextlib

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2020 Jan-Philipp Kappmeier
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # azure-flashcards
 
 Flashcards for some Azure exams by Microsoft.
@@ -48,4 +53,12 @@ python3 -m unittest discover tools
 
 ## License
 
-This project is [licensed](LICENSE) under the terms of the [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode) license.
+Copyright © 2020 Jan-Philipp Kappmeier
+
+- **Content** (flashcards, text, images, and the generated decks) is licensed
+  under the terms of the [Creative Commons Attribution-ShareAlike 4.0 International](LICENSES/CC-BY-SA-4.0.txt) license.
+- **Code and scripts** (everything under `tools/`, plus build scripts) are licensed
+  under the terms of the [Apache License 2.0](LICENSES/Apache-2.0.txt) license.
+
+When reusing the content, attribute it as:
+"Azure Flashcards" by Jan-Philipp Kappmeier, https://github.com/kappmeier/azure-flashcards, licensed under `CC BY-SA 4.0`.
