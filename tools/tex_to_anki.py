@@ -1,12 +1,13 @@
-"""Convert this repo's LaTeX flashcards to Anki draft.md files (anki-decks/<deck>/draft.md).
+"""Convert this repo's LaTeX flashcards to Anki decks under anki-decks/<deck>/.
 
-Usage: python3 tools/tex_to_anki.py, then build the decks with the anki skill (see README).
-The LaTeX-to-Anki translation itself lives in latex_flashcards.py; this file
-only lists the decks that exist in this repository.
+Usage: python3 tools/tex_to_anki.py
+Each deck gets a draft.md (written by latex_flashcards.py) and, next to it, the Anki
+import .txt (written by md_to_anki.py). This file only lists the decks of this repository.
 """
 
 from pathlib import Path
 
+import md_to_anki
 from latex_flashcards import convert
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -38,3 +39,4 @@ DECKS = [
 
 for tex_rel, deck, prefix, tag, out_rel in DECKS:
     convert(REPO_ROOT / tex_rel, deck, prefix, tag, DECKS_DIR / out_rel)
+    print(md_to_anki.convert(DECKS_DIR / out_rel))
