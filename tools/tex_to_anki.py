@@ -1,0 +1,40 @@
+"""Convert this repo's LaTeX flashcards to Anki draft.md files (anki-decks/<deck>/draft.md).
+
+Usage: python3 tools/tex_to_anki.py, then build the decks with the anki skill (see README).
+The LaTeX-to-Anki translation itself lives in latex_flashcards.py; this file
+only lists the decks that exist in this repository.
+"""
+
+from pathlib import Path
+
+from latex_flashcards import convert
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DECKS_DIR = REPO_ROOT / 'anki-decks'
+
+DECKS = [
+    (
+        'az-900-fundamentals/azure-fundamentals.tex',
+        'Azure::AZ-900 Fundamentals',
+        'az900',
+        'azure az-900',
+        'az-900-fundamentals/draft.md',
+    ),
+    (
+        'az-300-azure-architect-technologies/azure-architect-technologies.tex',
+        'Azure::AZ-300 Architect Technologies',
+        'az300',
+        'azure az-300',
+        'az-300-architect-technologies/draft.md',
+    ),
+    (
+        'az-304-azure-architect-design/azure-architect-design.tex',
+        'Azure::AZ-304 Architect Design',
+        'az304',
+        'azure az-304',
+        'az-304-architect-design/draft.md',
+    ),
+]
+
+for tex_rel, deck, prefix, tag, out_rel in DECKS:
+    convert(REPO_ROOT / tex_rel, deck, prefix, tag, DECKS_DIR / out_rel)
