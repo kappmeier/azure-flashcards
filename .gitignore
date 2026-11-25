@@ -281,3 +281,12 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Artifacts
+anki-decks/ 
