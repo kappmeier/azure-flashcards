@@ -8,8 +8,10 @@ Each deck directory holds one draft.md. The .txt is written
 next to draft.md, or to DIR/<deck> when --out is given. --tag can be repeated and adds a
 tag to every card of every converted deck. Cards without tags or src are listed on stderr.
 
-A draft.md starts with front matter (deck, guid-prefix, tags). Each "## " heading opens a
-section, whose slug becomes a tag. Each card looks like this:
+A draft.md starts with front matter (deck, guid-prefix, tags and optionally copyright). A
+copyright line becomes a "# " comment at the top of the output .txt and a last card
+"License" with that text on its back. Each "## " heading opens a section, whose slug becomes
+a tag. Each card looks like this:
 
     ### <id> <type> | tags: <tags> | src: <source>
     <front>
@@ -235,9 +237,19 @@ def convert(draft_path, out_dir=None, extra_tags=()):
         seen_guids.add(guid)
         warn_missing(draft_path.parent.name, card)
         rows.append(card_row(guid, card, front_matter, extra_tags))
+    header = HEADER
+    if 'copyright' in front_matter:
+        # Anki reads the leading "#" lines as file headers and ignores the keys it does not know
+        header = f"# {front_matter['copyright']}\n" + HEADER
+        guid = f"{front_matter['guid-prefix']}-license"
+        if guid in seen_guids:
+            raise ValueError(f'duplicate card id {guid}')
+        license_card = {'type': 'basic', 'section': '', 'tags': 'license', 'src': '',
+                        'front': 'License', 'back': front_matter['copyright']}
+        rows.append(card_row(guid, license_card, front_matter, extra_tags))
     out_path = (out_dir or draft_path.parent) / (front_matter['deck'].replace('::', ' - ') + '.txt')
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(HEADER + '\n'.join(rows) + '\n', encoding='utf-8')
+    out_path.write_text(header + '\n'.join(rows) + '\n', encoding='utf-8')
     return out_path
 
 

@@ -15,6 +15,10 @@ from latex_flashcards import convert
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DECKS_DIR = REPO_ROOT / 'anki-decks'
 
+# The content license; the same as in README.md and REUSE.toml.
+LICENSE = ('Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). '
+           'Source: https://github.com/kappmeier/azure-flashcards')
+
 DECKS = [
     (
         'az-900-fundamentals/azure-fundamentals.tex',
@@ -40,5 +44,6 @@ DECKS = [
 ]
 
 for tex_rel, deck, prefix, tag, out_rel in DECKS:
-    convert(REPO_ROOT / tex_rel, deck, prefix, tag, DECKS_DIR / out_rel)
+    front_matter = {'deck': deck, 'guid-prefix': prefix, 'tags': tag}
+    convert(REPO_ROOT / tex_rel, DECKS_DIR / out_rel, front_matter, LICENSE)
     print(md_to_anki.convert(DECKS_DIR / out_rel))

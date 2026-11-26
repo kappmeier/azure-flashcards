@@ -140,6 +140,20 @@ class Convert(unittest.TestCase):
         _, text, _ = convert_text(FRONT_MATTER + '### one basic | src: A & B <x>\nq\n---\na\n')
         self.assertIn('Source: A &amp; B &lt;x&gt;</div>', text)
 
+    def test_copyright_becomes_last_card(self):
+        front_matter = FRONT_MATTER.replace('tags:', 'copyright: © 2020 A & B. CC: x\ntags:')
+        _, text, stderr = convert_text(front_matter + '### one basic | tags: t | src: s\nq\n---\na\n')
+        self.assertTrue(text.endswith(
+            '\n"pre-license"\t"Einfach"\t"Top::Sub"\t"License"\t"© 2020 A &amp; B. CC: x"'
+            '\t"deck-tag shared license"\n'), text[-120:])
+        self.assertTrue(text.startswith('# © 2020 A & B. CC: x\n' + md_to_anki.HEADER), text[:40])
+        self.assertEqual(stderr, '')
+
+    def test_copyright_card_id_is_reserved(self):
+        front_matter = FRONT_MATTER.replace('tags:', 'copyright: c\ntags:')
+        with self.assertRaisesRegex(ValueError, 'duplicate card id pre-license'):
+            convert_text(front_matter + '### license basic\nq\n---\na\n')
+
     def test_duplicate_id_raises(self):
         with self.assertRaisesRegex(ValueError, 'duplicate card id pre-one'):
             convert_text(FRONT_MATTER + '### one basic\nq\n---\na\n\n### one basic\nq\n---\na\n')

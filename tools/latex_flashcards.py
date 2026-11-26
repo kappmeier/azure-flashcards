@@ -311,20 +311,37 @@ class DeckWriter:
         src = f' | src: {self.subsubsection}' if self.subsubsection else ''
         self.lines.append(f'### {card_id(front)} basic{tags}{src}\n{front}\n---\n{back}\n')
 
-    def write(self, out_path, deck, prefix, tag):
+    def write(self, out_path, front_matter):
         """Write the accumulated lines with the deck header to ``out_path`` and print a summary."""
-        header = f'---\ndeck: {deck}\nguid-prefix: {prefix}\ntags: {tag}\n---\n'
+        header = '---\n' + ''.join(f'{key}: {value}\n' for key, value in front_matter.items()) \
+            + '---\n'
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(header + '\n'.join(self.lines), encoding='utf-8')
         print(out_path, self.count)
 
 
-def convert(main_tex, deck, prefix, tag, out_path):
-    """Convert the LaTeX deck ``main_tex`` into an Anki draft file at ``out_path``."""
+def copyright_notice(text, license_text):
+    """Return ``© <year> <author>. <license_text>`` from the deck's ``\\date`` and ``\\author``."""
+    author = re.search(r'\\author\{([^}]*)\}', text)
+    year = re.search(r'\\date\{(\d{4})', text)
+    if not (author and year):
+        raise ValueError('copyright notice needs \\author{...} and \\date{YYYY...}')
+    return f'© {year.group(1)} {author.group(1)}. {license_text}'
+
+
+def convert(main_tex, out_path, front_matter, license_text=None):
+    """Convert the LaTeX deck ``main_tex`` into an Anki draft file at ``out_path``.
+
+    ``front_matter`` holds the draft's deck, guid-prefix and tags. With ``license_text`` the
+    draft also gets a copyright line, which becomes the deck's license card.
+    """
     writer = DeckWriter()
-    for event in parse_deck(expand_inputs(main_tex)):
+    text = expand_inputs(main_tex)
+    if license_text:
+        front_matter = {**front_matter, 'copyright': copyright_notice(text, license_text)}
+    for event in parse_deck(text):
         if event[0] == 'heading':
             writer.add_heading(event[1], event[2])
         else:
             writer.add_card(event[1], event[2], event[3])
-    writer.write(out_path, deck, prefix, tag)
+    writer.write(out_path, front_matter)
